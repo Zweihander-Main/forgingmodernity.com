@@ -10,6 +10,9 @@
 			"tab.activeBorder": "#32A8E3",
 			"tab.hoverBackground": "#161616",
 			"tab.border": "#303030"
-		}
+		},
+		"cSpell.enableFiletypes": [
+			"astro"
+		]
 	},
 }
