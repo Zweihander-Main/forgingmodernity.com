@@ -1,16 +1,173 @@
 {
-  "name": "@example/basics",
-  "type": "module",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^2.0.5"
-  }
+	"name": "forgingmodernity.com",
+	"type": "module",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"astro": "^2.0.5"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.50.0",
+		"@typescript-eslint/parser": "^5.50.0",
+		"eslint": "^8.33.0",
+		"eslint-plugin-astro": "^0.23.0",
+		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"eslint-plugin-prettier": "^4.2.1",
+		"prettier": "^2.8.3",
+		"stylelint": "^14.16.1",
+		"stylelint-config-prettier": "^9.0.4",
+		"stylelint-config-standard": "^29.0.0",
+		"tslib": "^2.5.0"
+	}
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Zweihander-Main/forgingmodernity.com"
+	},
+	"eslintConfig": {
+		"parser": "@typescript-eslint/parser",
+		"parserOptions": {
+			"project": "tsconfig.json",
+			"ecmaVersion": 2023,
+		},
+		"plugins": [
+			"@typescript-eslint",
+		],
+		"extends": [
+			"eslint:recommended",
+			"plugin:@typescript-eslint/eslint-recommended",
+			"plugin:@typescript-eslint/recommended",
+			"plugin:@typescript-eslint/recommended-requiring-type-checking",
+			"plugin:astro/recommended",
+			"plugin:jsx-a11y/recommended",
+			"prettier"
+		],
+		"rules": {
+			"quotes": [
+				"error",
+				"single"
+			],
+			"semi": [
+				"error",
+				"always"
+			],
+			"no-console": [
+				"error",
+				{
+					"allow": [
+						"warn",
+						"error",
+						"debug"
+					]
+				}
+			],
+			"no-mixed-spaces-and-tabs": [
+				"error",
+				"smart-tabs"
+			],
+			"react/prop-types": 0,
+			"@typescript-eslint/unbound-method": [
+				"error",
+				{
+					"ignoreStatic": true
+				}
+			]
+		},
+		"overrides": [
+			{
+				"files": [
+					"*.astro"
+				],
+				"parser": "astro-eslint-parser",
+				"parserOptions": {
+					"parser": "@typescript-eslint/parser",
+					"extraFileExtensions": [
+						".astro"
+					]
+				}
+			}
+		]
+	},
+	"eslintIgnore": [
+		"/*.js",
+		"test",
+		"cypress",
+	],
+	"prettier": {
+		"singleQuote": true,
+		"trailingComma": "es5",
+		"tabWidth": 4,
+		"useTabs": true,
+		"arrowParens": "always",
+		"editorconfig": true,
+		"overrides": [
+			{
+				"files": "*.yml",
+				"options": {
+					"tabWidth": 2,
+					"useTabs": false
+				}
+			}
+		]
+	},
+	"stylelint": {
+		"extends": [
+			"stylelint-config-standard",
+			"stylelint-config-prettier"
+		],
+		"rules": {
+			"indentation": [
+				"tab",
+				{
+					"ignore": "value"
+				}
+			],
+			"at-rule-no-unknown": [
+				true,
+				{
+					"ignoreAtRules": [
+						"tailwind",
+						"apply",
+						"layer",
+						"variants",
+						"responsive",
+						"screen"
+					]
+				}
+			],
+			"max-empty-lines": 2,
+			"comment-whitespace-inside": null,
+			"declaration-block-no-shorthand-property-overrides": true,
+			"declaration-colon-newline-after": null,
+			"no-descending-specificity": null,
+			"value-keyword-case": null,
+			"selector-pseudo-class-no-unknown": [
+				true,
+				{
+					"ignorePseudoClasses": [
+						"global"
+					]
+				}
+			]
+		}
+	},
+	"browserslist": {
+		"production": [
+			"> 0.2%",
+			"Firefox ESR",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }
