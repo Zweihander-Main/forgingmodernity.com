@@ -1,11 +1,12 @@
 {
-	"css.validate": false,
-	"less.validate": false,
-	"scss.validate": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
 	"files.exclude": {
 		"**/node_modules": true
 	},
-	"vim.useSystemClipboard": true
+	"vim.useSystemClipboard": true,
+	"cSpell.enableFiletypes": ["astro"],
+	"[astro]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
 }
