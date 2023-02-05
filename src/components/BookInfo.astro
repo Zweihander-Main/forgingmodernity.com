@@ -7,25 +7,67 @@ const {} = Astro.props;
 <section>
 	<div class="grid-container">
 		<div>Image here</div>
-		<div>Blurb here</div>
+		<div>
+			<h1>
+				Forging Modernity: Why and How Britain Developed the Industrial
+				Revolution
+			</h1>
+			<h2>By <a href="./author/">Martin Hutchinson</a></h2>
+			<p>
+				The Industrial Revolution provided the greatest increase in
+				living standards the world has ever known while propelling
+				Britain to dominance on the global stage. In Forging Modernity,
+				Martin Hutchinson looks at how and why Britain gained this prize
+				ahead of its European competitors. After comparing their
+				endowments and political structures as far back as 1600, he then
+				traces how Britain, through better policies primarily from the
+				political Tory party, diverged from other European countries.
+				Hutchinson’s Harvard MBA allows a unique perspective on the
+				early industrial enterprises – many successes resulted from
+				marketing, control systems and logistics rather than from
+				production technology alone, while on a national scale the
+				scientific method and commercial competition were as important
+				as physical infrastructure.
+			</p>
+			<p>
+				By 1830, through ever-improving policies, Britain had built a
+				staggering industrial lead, half a century ahead of its rivals.
+				Then the Tories lost power and policy changed forever. In his
+				conclusion, Hutchinson shows how changes welcomed by
+				conventional historians caused the decline of Industrial
+				Britain. Nevertheless, the policies that drove growth, ingenuity
+				and rising living standards are still available for those bold
+				enough to adopt them.
+			</p>
+		</div>
 	</div>
 </section>
 <style>
 	section {
 		width: 100%;
-		height: 100vh;
 		background: #ddf;
 		text-align: center;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-	} /* TODO: DRY */
+	}
 
 	.grid-container {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
-		grid-gap: 1rem;
+		grid-gap: 5rem;
+		margin: 5rem;
+	}
+
+	h1 {
+		font-size: 2rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+	p {
+		font-size: 1rem;
 	}
 </style>
