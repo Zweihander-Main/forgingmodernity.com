@@ -8,16 +8,15 @@
 		"declaration": true,
 		"experimentalDecorators": true,
 		"importHelpers": true,
-		"lib": [
-			"dom",
-			"esnext"
-		],
+		"lib": ["dom", "esnext"],
 		"outDir": "public",
+		"paths": {
+			"components": ["src/components"],
+			"layouts": ["src/layouts"],
+			"pages": ["src/pages"]
+		},
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,
-		"typeRoots": [
-			"./.typings",
-			"./node_modules/@types"
-		],
+		"typeRoots": ["./.typings", "./node_modules/@types"]
 	}
 }
