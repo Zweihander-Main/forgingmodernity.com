@@ -1,6 +1,7 @@
 ---
 import Layout from 'layouts/Layout.astro';
 import Hero from 'components/Hero.astro';
+import BookInfo from 'components/BookInfo.astro';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -9,13 +10,11 @@ import Hero from 'components/Hero.astro';
 			title="Forging Modernity"
 			subtitle="Why and How Britain Developed the Industrial Revolution"
 		/>
+		<BookInfo />
 	</main>
 </Layout>
 
 <style>
 	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
 	}
 </style>

@@ -1,0 +1,31 @@
+---
+export interface Props {}
+
+const {} = Astro.props;
+---
+
+<section>
+	<div class="grid-container">
+		<div>Image here</div>
+		<div>Blurb here</div>
+	</div>
+</section>
+<style>
+	section {
+		width: 100%;
+		height: 100vh;
+		background: #ddf;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	} /* TODO: DRY */
+
+	.grid-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+		grid-gap: 1rem;
+	}
+</style>

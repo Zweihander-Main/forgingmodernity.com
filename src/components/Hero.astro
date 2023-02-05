@@ -10,5 +10,26 @@ const { title, subtitle } = Astro.props;
 <section>
 	<h1>{title}</h1>
 	<h2>{subtitle}</h2>
+	<h3>Buy now</h3>
 </section>
-<style></style>
+<style>
+	section {
+		width: 100vw;
+		height: 100vh;
+		background: #fff;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	h1 {
+		font-size: 2rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+	h3 {
+		font-size: 1rem;
+	}
+</style>
