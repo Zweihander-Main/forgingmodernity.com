@@ -1,0 +1,56 @@
+---
+export interface Props {}
+
+const {} = Astro.props;
+---
+
+<section>
+	<p>
+		<li>
+			<a href="https://www.tbwns.com"
+				>TBWNS: The Martin Hutchinson Place</a
+			>
+		</li>
+		<li>
+			<a href="https://www.torystories.stream"
+				>Tory Stories: The Martin Hutchinson Podcast</a
+			>
+		</li>
+		<li>
+			<a href="https://www.lordliverpool.com"
+				>Britain's Greatest Prime Minister: Lord Liverpool</a
+			>
+		</li>
+	</p>
+</section>
+<style>
+	section {
+		background: #333;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 5rem;
+		color: #fff;
+	}
+
+	a,
+	a:visited,
+	a:hover,
+	a:active {
+		color: #fff;
+	}
+
+	h1 {
+		font-size: 2rem;
+	}
+
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	p {
+		font-size: 1rem;
+	}
+</style>
