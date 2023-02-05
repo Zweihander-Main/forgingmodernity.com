@@ -165,5 +165,11 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"cspell": {
+		"useGitIgnore": true,
+		"words": [
+			"astro"
+		]
 	}
 }
