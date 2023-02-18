@@ -5,15 +5,15 @@ import BookOverview from '@components/BookOverview.astro';
 import Reviews from '@components/Reviews.astro';
 import Footer from '@components/Footer.astro';
 import { getEntryBySlug } from 'astro:content';
-
 export type Props = Record<string, never>;
 
-const { frontmatter: site } = await getEntryBySlug('meta', 'site');
+const metaCollection = await getEntryBySlug('meta', 'site');
+const meta = metaCollection.data;
 ---
 
-<Layout title={`${site.shortTitle}: ${site.subTitle}`}>
+<Layout title={`${meta.shortTitle}: ${meta.subTitle}`}>
 	<main>
-		<Hero title={site.shortTitle} subtitle={site.subTitle} />
+		<Hero title={meta.shortTitle} subtitle={meta.subTitle} />
 		<BookOverview />
 		<Reviews />
 		<Footer />

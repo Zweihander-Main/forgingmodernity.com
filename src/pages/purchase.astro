@@ -1,10 +1,13 @@
 ---
 import Layout from '@layouts/Layout.astro';
-
+import { getEntryBySlug } from 'astro:content';
 export type Props = Record<string, never>;
+
+const metaCollection = await getEntryBySlug('meta', 'site');
+const meta = metaCollection.data;
 ---
 
-<Layout title="Purchase Forging Modernity">
+<Layout title={`Purchase ${meta.shortTitle}`}>
 	<main>
 		<p>Buy Now</p>
 	</main>

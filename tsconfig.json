@@ -15,7 +15,8 @@
 			"@components/*": ["components/*"],
 			"@layouts/*": ["layouts/*"],
 			"@pages/*": ["pages/*"],
-			"@styles/*": ["styles/*"]
+			"@styles/*": ["styles/*"],
+			"@util/*": ["util/*"]
 		},
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,
