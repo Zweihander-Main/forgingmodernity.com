@@ -11,10 +11,11 @@
 		"lib": ["dom", "esnext"],
 		"outDir": "public",
 		"paths": {
-			"components": ["src/components"],
-			"layouts": ["src/layouts"],
-			"pages": ["src/pages"],
-			"styles": ["src/styles"]
+			"@content/*": ["content/*"],
+			"@components/*": ["components/*"],
+			"@layouts/*": ["layouts/*"],
+			"@pages/*": ["pages/*"],
+			"@styles/*": ["styles/*"]
 		},
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,

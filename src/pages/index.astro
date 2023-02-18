@@ -1,19 +1,17 @@
 ---
-import Layout from 'layouts/Layout.astro';
-import Hero from 'components/Hero.astro';
-import BookOverview from 'components/BookOverview.astro';
-import Reviews from 'components/Reviews.astro';
-import Footer from 'components/Footer.astro';
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import BookOverview from '@components/BookOverview.astro';
+import Reviews from '@components/Reviews.astro';
+import Footer from '@components/Footer.astro';
+import { getEntryBySlug } from 'astro:content';
+
+const { frontmatter: site } = await getEntryBySlug('meta', 'site');
 ---
 
-<Layout
-	title="Forging Modernity: Why and How Britain Developed the Industrial Revolution"
->
+<Layout title={`${site.shortTitle}: ${site.subTitle}`}>
 	<main>
-		<Hero
-			title="Forging Modernity"
-			subtitle="Why and How Britain Developed the Industrial Revolution"
-		/>
+		<Hero title={site.shortTitle} subtitle={site.subTitle} />
 		<BookOverview />
 		<Reviews />
 		<Footer />
