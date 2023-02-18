@@ -1,0 +1,28 @@
+---
+import 'styles/global.css';
+import Layout from 'layouts/Layout.astro';
+
+export interface Props {
+	frontmatter: {
+		title: string;
+	};
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+	<main>
+		<slot />
+	</main>
+</Layout>
+
+<style>
+	main {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	p {
+		font-size: 1rem;
+	}
+</style>
