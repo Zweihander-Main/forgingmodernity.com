@@ -1,6 +1,5 @@
-// 1. Import utilities from `astro:content`
 import { z, defineCollection } from 'astro:content';
-// 2. Define your collection(s)
+
 const metaCollection = defineCollection({
 	schema: z.object({
 		shortTitle: z.string(),
@@ -8,8 +7,15 @@ const metaCollection = defineCollection({
 		author: z.string(),
 	}),
 });
-// 3. Export a single `collections` object to register your collection(s)
-//    This key should match your collection directory name in "src/content"
+
+const syndicationCollection = defineCollection({
+	schema: z.object({
+		title: z.string(),
+		link: z.string(),
+	}),
+});
+
 export const collections = {
 	meta: metaCollection,
+	syndication: syndicationCollection,
 };

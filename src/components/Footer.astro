@@ -1,26 +1,20 @@
 ---
+import { getCollection } from 'astro:content';
 export type Props = Record<string, never>;
 
+const syndicationCollection = await getCollection('syndication');
 const {} = Astro.props;
 ---
 
 <section>
 	<p>
-		<li>
-			<a href="https://www.tbwns.com"
-				>TBWNS: The Martin Hutchinson Place</a
-			>
-		</li>
-		<li>
-			<a href="https://www.torystories.stream"
-				>Tory Stories: The Martin Hutchinson Podcast</a
-			>
-		</li>
-		<li>
-			<a href="https://www.lordliverpool.com"
-				>Britain's Greatest Prime Minister: Lord Liverpool</a
-			>
-		</li>
+		{
+			syndicationCollection.map(({ data: syndication }) => (
+				<li>
+					<a href={syndication.link}>{syndication.title}</a>
+				</li>
+			))
+		}
 	</p>
 </section>
 <style>
