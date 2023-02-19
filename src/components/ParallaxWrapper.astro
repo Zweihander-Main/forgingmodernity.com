@@ -1,0 +1,35 @@
+---
+export type Props = { children: any };
+---
+
+<div class="parallax">
+	<slot name="hero" />
+	<main class="parallax-cover">
+		<slot />
+	</main>
+	<style>
+		.parallax {
+			perspective: 100px;
+			height: 100vh;
+			overflow-x: hidden;
+			overflow-y: auto;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			right: 0;
+			bottom: 0;
+			transform: translateX(-50%);
+			width: 100%;
+		}
+
+		.parallax-cover {
+			display: block;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			height: 100vh;
+			z-index: 2;
+		}
+	</style>
+</div>

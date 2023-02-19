@@ -4,23 +4,21 @@ import Hero from '@components/Hero.astro';
 import BookOverview from '@components/BookOverview.astro';
 import Reviews from '@components/Reviews.astro';
 import Footer from '@components/Footer.astro';
+import ParallaxWrapper from '@components/ParallaxWrapper.astro';
 import { getEntryBySlug } from 'astro:content';
 export type Props = Record<string, never>;
 
 const metaEntry = await getEntryBySlug('meta', 'site');
-const meta = metaEntry.data;
+const { shortTitle, subTitle } = metaEntry.data;
 ---
 
-<Layout title={`${meta.shortTitle}: ${meta.subTitle}`}>
-	<main>
-		<Hero title={meta.shortTitle} subtitle={meta.subTitle} />
+<Layout title={`${shortTitle}: ${subTitle}`}>
+	<ParallaxWrapper>
+		<Hero slot="hero" title={shortTitle} subTitle={subTitle} />
 		<BookOverview />
 		<Reviews />
 		<Footer />
-	</main>
+	</ParallaxWrapper>
 </Layout>
 
-<style>
-	main {
-	}
-</style>
+<style lang="scss"></style>
