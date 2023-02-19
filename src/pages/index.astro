@@ -7,8 +7,8 @@ import Footer from '@components/Footer.astro';
 import { getEntryBySlug } from 'astro:content';
 export type Props = Record<string, never>;
 
-const metaCollection = await getEntryBySlug('meta', 'site');
-const meta = metaCollection.data;
+const metaEntry = await getEntryBySlug('meta', 'site');
+const meta = metaEntry.data;
 ---
 
 <Layout title={`${meta.shortTitle}: ${meta.subTitle}`}>

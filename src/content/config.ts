@@ -15,7 +15,10 @@ const syndicationCollection = defineCollection({
 	}),
 });
 
+const indexCollection = defineCollection({});
+
 export const collections = {
 	meta: metaCollection,
 	syndication: syndicationCollection,
+	index: indexCollection,
 };
