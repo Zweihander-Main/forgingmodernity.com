@@ -1,0 +1,70 @@
+---
+import cathedral from './canaletto_cathedral.png';
+import city from './canaletto_city.png';
+import river from './canaletto_river.png';
+export interface Props {
+	title: string;
+	subTitle: string;
+}
+
+const { title, subTitle } = Astro.props;
+---
+
+<div class="parallax-layer parallax-layer-0">
+	<img src={cathedral} />
+</div>
+<div class="parallax-layer parallax-layer-1">
+	<h1>{title}</h1>
+	<h2>{subTitle}</h2>
+</div>
+<div class="parallax-layer parallax-layer-2">
+	<img src={city} />
+</div>
+<div class="parallax-layer parallax-layer-3">
+	<img src={river} />
+</div>
+<div class="parallax-layer parallax-layer-bottom">
+	<h3><a href="./purchase">Buy now</a></h3>
+</div>
+
+<style lang="scss">
+	@use 'sass:math';
+	h1 {
+		font-size: 2rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+	h3 {
+		font-size: 1rem;
+	}
+	.parallax-layer {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		img {
+			display: block;
+			position: absolute;
+			bottom: 0;
+			width: 100vw;
+		}
+	}
+
+	.parallax-layer-bottom {
+		display: flex;
+		flex-direction: column;
+		justify-content: end;
+	}
+
+	$parallax-layers: 4;
+
+	@for $i from 0 through $parallax-layers {
+		$x: math.div($parallax-layers - $i, 2);
+		.parallax-layer-#{$i} {
+			transform: translateZ(#{-100 * $x}px) scale($x + 1);
+		}
+	}
+</style>
