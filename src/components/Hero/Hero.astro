@@ -1,5 +1,5 @@
 ---
-import cathedral from './canaletto_cathedral.png';
+import cathedral from './canaletto_cathedralv3.png';
 import city from './canaletto_city.png';
 import river from './canaletto_river.png';
 export interface Props {
@@ -10,7 +10,7 @@ export interface Props {
 const { title, subTitle } = Astro.props;
 ---
 
-<div class="parallax-layer parallax-layer-0">
+<div class="parallax-layer parallax-layer-0 parallax-layer-cathedral">
 	<img src={cathedral} />
 </div>
 <div class="parallax-layer parallax-layer-1">
@@ -56,7 +56,16 @@ const { title, subTitle } = Astro.props;
 	.parallax-layer-bottom {
 		display: flex;
 		flex-direction: column;
-		justify-content: end;
+		justify-content: flex-end;
+		top: auto;
+		bottom: 0;
+	}
+
+	.parallax-layer-cathedral {
+		img {
+			width: 31.4vw;
+			left: 20.5vw;
+		}
 	}
 
 	$parallax-layers: 4;
