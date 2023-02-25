@@ -1,7 +1,8 @@
 ---
-import cathedral from './canaletto_cathedralv3.png';
+import cathedral from './canaletto_cathedral.png';
 import city from './canaletto_city.png';
 import river from './canaletto_river.png';
+import shore from './canaletto_shore.png';
 export interface Props {
 	title: string;
 	subTitle: string;
@@ -22,6 +23,9 @@ const { title, subTitle } = Astro.props;
 </div>
 <div class="parallax-layer parallax-layer-3">
 	<img src={river} />
+</div>
+<div class="parallax-layer parallax-layer-4">
+	<img src={shore} />
 </div>
 <div class="parallax-layer parallax-layer-bottom">
 	<h3><a href="./purchase">Buy now</a></h3>
@@ -63,8 +67,8 @@ const { title, subTitle } = Astro.props;
 
 	.parallax-layer-cathedral {
 		img {
-			width: 31.4vw;
-			left: 20.5vw;
+			width: 31.9vw;
+			left: 31.5vw;
 		}
 	}
 
@@ -73,7 +77,7 @@ const { title, subTitle } = Astro.props;
 	@for $i from 0 through $parallax-layers {
 		$x: math.div($parallax-layers - $i, 2);
 		.parallax-layer-#{$i} {
-			transform: translateZ(#{-100 * $x}px) scale($x + 1);
+			transform: translateZ(#{(-100 * $x) + 1}px) scale($x + 1);
 		}
 	}
 </style>
