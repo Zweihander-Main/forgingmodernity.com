@@ -46,13 +46,13 @@ const { title, subTitle } = Astro.props;
 		position: absolute;
 		top: 0;
 		right: 0;
-		bottom: 0;
 		left: 0;
+		bottom: 0;
 
 		img {
 			display: block;
 			position: absolute;
-			bottom: 0;
+			bottom: min(0px, 100vh - 85vw); /** TODO var */
 			width: 100vw;
 		}
 	}
@@ -62,7 +62,7 @@ const { title, subTitle } = Astro.props;
 		flex-direction: column;
 		justify-content: flex-end;
 		top: auto;
-		bottom: 0;
+		bottom: min(0px, 100vh - 85vw); /** TODO var */
 	}
 
 	.parallax-layer-cathedral {
