@@ -10,7 +10,7 @@ export type Props = { children: any };
 	<style>
 		.parallax {
 			perspective: 100px;
-			height: 100vh;
+			height: clamp(85vw, 100vh, 100vmax);
 			overflow-x: hidden;
 			overflow-y: auto;
 			overscroll-behavior: auto none; /* Stop the bounce on mobile safari */
