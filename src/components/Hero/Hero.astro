@@ -15,11 +15,13 @@ const { title, subTitle } = Astro.props;
 	<img src={cathedral} />
 </div>
 <div class="parallax-layer parallax-layer-1">
-	<h1>{title}</h1>
-	<h2>{subTitle}</h2>
-</div>
-<div class="parallax-layer parallax-layer-2">
 	<img src={city} />
+</div>
+<div class="parallax-layer parallax-layer-2 parallax-layer-text">
+	<div class="text-container">
+		<h1>{title}</h1>
+		<h2>{subTitle}</h2>
+	</div>
 </div>
 <div class="parallax-layer parallax-layer-3">
 	<img src={river} />
@@ -33,11 +35,14 @@ const { title, subTitle } = Astro.props;
 
 <style lang="scss">
 	@use 'sass:math';
+
 	h1 {
-		font-size: 2rem;
+		font-size: 8.5vw;
+		margin-bottom: 0;
 	}
 	h2 {
-		font-size: 1.5rem;
+		font-size: 2.2vw;
+		line-height: 0;
 	}
 	h3 {
 		font-size: 1rem;
@@ -52,8 +57,9 @@ const { title, subTitle } = Astro.props;
 		img {
 			display: block;
 			position: absolute;
-			bottom: min(0px, 100vh - 85vw); /** TODO var */
+			bottom: min(0px, 100vh - 80vw); /** TODO var */
 			width: 100vw;
+			outline: none !important; /** Avoid extensions messing around */
 		}
 	}
 
@@ -62,7 +68,7 @@ const { title, subTitle } = Astro.props;
 		flex-direction: column;
 		justify-content: flex-end;
 		top: auto;
-		bottom: min(0px, 100vh - 85vw); /** TODO var */
+		bottom: min(0px, 100vh - 80vw); /** TODO var */
 	}
 
 	.parallax-layer-cathedral {
@@ -70,6 +76,21 @@ const { title, subTitle } = Astro.props;
 			width: 31.9vw;
 			left: 31.5vw;
 		}
+	}
+
+	.parallax-layer-text {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		justify-content: center;
+		align-content: center;
+	}
+
+	.text-container {
+		position: relative;
+		bottom: 100px;
+		text-align: center;
+		font-family: 'Marcellus SC', serif; //TODO backup fonts
 	}
 
 	$parallax-layers: 4;
