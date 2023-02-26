@@ -32,7 +32,7 @@ const { Content } = await bookEntry.render();
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
 		grid-gap: 10rem;
-		margin: 5rem 10rem;
+		margin: 5rem 12rem;
 	}
 
 	%emboss-text {
@@ -50,16 +50,14 @@ const { Content } = await bookEntry.render();
 
 		:global(h1) {
 			@extend %emboss-text;
-			font-size: 3.5rem;
-			font-family: 'Marcellus SC', serif; /** TODO fallback */
+			font-size: 3rem;
 			opacity: 0.6;
 			margin-bottom: 0;
 		}
 
 		:global(h2) {
 			@extend %emboss-text;
-			font-size: 1.7rem;
-			font-family: 'Marcellus SC', serif; /** TODO fallback */
+			font-size: 1.4rem;
 			opacity: 0.6;
 			margin-top: 0;
 			margin-bottom: 0;
@@ -68,8 +66,7 @@ const { Content } = await bookEntry.render();
 		}
 
 		:global(h3) {
-			font-size: 1.17rem;
-			font-family: 'Marcellus SC', serif; /** TODO fallback */
+			font-size: 1rem;
 			opacity: 0.6;
 			letter-spacing: 0.06em;
 
@@ -84,16 +81,16 @@ const { Content } = await bookEntry.render();
 		}
 
 		:global(p) {
-			font-size: 1.15rem;
-			font-family: 'Vollkorn', serif; /** TODO fallback */
+			font-size: 1rem;
 			opacity: 0.6;
 			line-height: 1.5;
 			text-align: justify;
+			/** TODO tiny text shadow effect */
 
 			:global(.lead-in) {
 				font-weight: 600;
 				font-family: 'Vollkorn SC';
-				font-size: 1.05em;
+				font-size: 1.03em;
 			}
 		}
 	}
