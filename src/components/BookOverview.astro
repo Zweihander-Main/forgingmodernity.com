@@ -12,12 +12,12 @@ const { Content } = await bookEntry.render();
 <section>
 	<div class="grid-container">
 		<div>Image here</div>
-		<div>
+		<div class="overview-text">
 			<Content />
 		</div>
 	</div>
 </section>
-<style>
+<style lang="scss">
 	section {
 		width: 100%;
 		text-align: center;
@@ -35,13 +35,53 @@ const { Content } = await bookEntry.render();
 		margin: 5rem;
 	}
 
-	h1 {
-		font-size: 2rem;
+	%emboss-text {
+		background-color: black;
+		color: transparent;
+		text-shadow: 0 2px 3px rgb(255, 255, 255, 10%);
+		-webkit-background-clip: text;
+		-moz-background-clip: text;
+		background-clip: text;
+		filter: brightness(5);
 	}
-	h2 {
-		font-size: 1.5rem;
-	}
-	p {
-		font-size: 1rem;
+
+	.overview-text {
+		text-align: left;
+
+		:global(h1) {
+			@extend %emboss-text;
+			font-size: 3.5rem;
+			font-family: 'Marcellus SC', serif; /** TODO fallback */
+			opacity: 0.6;
+			margin-bottom: 0;
+		}
+
+		:global(h2) {
+			@extend %emboss-text;
+			font-size: 1.7rem;
+			font-family: 'Marcellus SC', serif; /** TODO fallback */
+			opacity: 0.6;
+			margin-top: 0;
+		}
+
+		:global(h3) {
+			font-size: 1.17rem;
+			font-family: 'Marcellus', serif; /** TODO fallback */
+			opacity: 0.6;
+
+			:global(a) {
+				color: black;
+
+				&:hover {
+					opacity: 1;
+				}
+			}
+		}
+
+		:global(p) {
+			font-size: 1rem;
+			font-family: serif;
+			opacity: 0.6;
+		}
 	}
 </style>
