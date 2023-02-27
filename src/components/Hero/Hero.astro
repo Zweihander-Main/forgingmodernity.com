@@ -1,21 +1,37 @@
 ---
-import cathedral from './canaletto_cathedral.png';
-import city from './canaletto_city.png';
-import river from './canaletto_river.png';
-import shore from './canaletto_shore.png';
+import { getImage } from '@astrojs/image';
+
+const cathedral = await getImage({
+	src: import('./canaletto_cathedral.png'),
+	alt: "St. Paul's Cathedral",
+});
+const city = await getImage({
+	src: import('./canaletto_city.png'),
+	alt: 'London',
+});
+const river = await getImage({
+	src: import('./canaletto_river.png'),
+	alt: 'Thames River',
+});
+const shore = await getImage({
+	src: import('./canaletto_shore.png'),
+	alt: 'London Shore',
+});
+
 export interface Props {
 	title: string;
 	subTitle: string;
 }
 
 const { title, subTitle } = Astro.props;
+// TODO: Change images to jpg, optimize to 1500/3000/half width, do manual picture element, move to public
 ---
 
 <div class="parallax-layer parallax-layer-0 parallax-layer-cathedral">
-	<img src={cathedral} />
+	<img src={cathedral.src} alt={cathedral.alt} />
 </div>
 <div class="parallax-layer parallax-layer-1">
-	<img src={city} />
+	<img src={city.src} alt={city.alt} />
 </div>
 <div class="parallax-layer parallax-layer-2 parallax-layer-text">
 	<div class="text-container">
@@ -24,10 +40,10 @@ const { title, subTitle } = Astro.props;
 	</div>
 </div>
 <div class="parallax-layer parallax-layer-3">
-	<img src={river} />
+	<img src={river.src} alt={river.alt} />
 </div>
 <div class="parallax-layer parallax-layer-4">
-	<img src={shore} />
+	<img src={shore.src} alt={shore.alt} />
 </div>
 <div class="parallax-layer parallax-layer-bottom">
 	<h3><a href="./purchase">Buy now</a></h3>

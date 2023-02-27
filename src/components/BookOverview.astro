@@ -1,5 +1,7 @@
 ---
 import { getEntryBySlug } from 'astro:content';
+import { Image } from '@astrojs/image/components';
+import cover from './forging_modernity_cover.jpg';
 export type Props = Record<string, never>;
 
 const bookEntry = await getEntryBySlug('index', 'bookoverview');
@@ -11,7 +13,9 @@ const { Content } = await bookEntry.render();
 
 <section>
 	<div class="grid-container">
-		<div>Image here</div>
+		<div>
+			<Image src={cover} alt="TODO" width={400} />
+		</div>
 		<div class="overview-text">
 			<Content />
 		</div>
