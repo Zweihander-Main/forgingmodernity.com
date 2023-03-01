@@ -1,23 +1,36 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero/Hero.astro';
 import BookOverview from '@components/BookOverview.astro';
-import Reviews from '@components/Reviews.astro';
-import Footer from '@components/Footer.astro';
 import ParallaxWrapper from '@components/ParallaxWrapper.astro';
 import { getEntryBySlug } from 'astro:content';
 export type Props = Record<string, never>;
 
 const metaEntry = await getEntryBySlug('meta', 'site');
 const { shortTitle, subTitle } = metaEntry.data;
+
+const bookInfo = await getEntryBySlug('index', 'bookoverview');
+if (!bookInfo) {
+	throw new Error('No book overview item found');
+}
+
+const reviewsInfo = await getEntryBySlug('index', 'reviews');
+if (!reviewsInfo) {
+	throw new Error('No reviews item found');
+}
+
+const footerItems = await getCollection('syndication');
 ---
 
 <Layout title={`${shortTitle}: ${subTitle}`}>
 	<ParallaxWrapper>
 		<Hero slot="hero" title={shortTitle} subTitle={subTitle} />
-		<BookOverview />
-		<Reviews />
-		<Footer />
+		<BookOverview
+			bookInfo={bookInfo}
+			reviewsInfo={reviewsInfo}
+			footerItems={footerItems}
+		/>
 	</ParallaxWrapper>
 </Layout>
 

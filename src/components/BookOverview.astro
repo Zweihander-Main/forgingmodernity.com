@@ -1,14 +1,18 @@
 ---
-import { getEntryBySlug } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { Image } from '@astrojs/image/components';
 import cover from './forging_modernity_cover.jpg';
-export type Props = Record<string, never>;
-
-const bookEntry = await getEntryBySlug('index', 'bookoverview');
-if (!bookEntry) {
-	throw new Error('No book overview item found');
+export interface Props {
+	bookInfo: CollectionEntry<'index'>;
+	reviewsInfo: CollectionEntry<'index'>;
+	footerItems: Array<CollectionEntry<'syndication'>>;
 }
-const { Content } = await bookEntry.render();
+
+const { bookInfo, reviewsInfo, footerItems } = Astro.props;
+
+const { Content: BookInfo } = await bookInfo.render();
+
+const { Content: ReviewsInfo } = await reviewsInfo.render();
 ---
 
 <section>
@@ -17,9 +21,23 @@ const { Content } = await bookEntry.render();
 			<Image src={cover} alt="TODO" width={400} />
 		</div>
 		<div class="overview-text">
-			<Content />
+			<BookInfo />
 		</div>
 	</div>
+</section>
+<section>
+	<ReviewsInfo />
+</section>
+<section>
+	<p>
+		{
+			footerItems.map(({ data: item }) => (
+				<li>
+					<a href={item.link}>{item.title}</a>
+				</li>
+			))
+		}
+	</p>
 </section>
 <style lang="scss">
 	section {
