@@ -4,7 +4,7 @@ import Global from '@layouts/Global.astro';
 import Parallax from '@layouts/partial/Parallax.astro';
 import Parchment from '@layouts/partial/Parchment.astro';
 import Hero from '@components/Hero/index.astro';
-import BookOverview from '@components/BookOverview/index.astro';
+import Overview from '@components/Overview/index.astro';
 import { getEntryBySlug } from 'astro:content';
 export type Props = Record<string, never>;
 
@@ -16,10 +16,7 @@ if (!bookInfo) {
 	throw new Error('No book overview item found');
 }
 
-const reviewsInfo = await getEntryBySlug('pages', 'reviews');
-if (!reviewsInfo) {
-	throw new Error('No reviews item found');
-}
+const reviewItems = await getCollection('reviews');
 
 const footerItems = await getCollection('syndication');
 ---
@@ -28,9 +25,9 @@ const footerItems = await getCollection('syndication');
 	<Parallax>
 		<Hero slot="hero" title={shortTitle} subTitle={subTitle} />
 		<Parchment slot="cover">
-			<BookOverview
+			<Overview
 				bookInfo={bookInfo}
-				reviewsInfo={reviewsInfo}
+				reviewItems={reviewItems}
 				footerItems={footerItems}
 			/>
 		</Parchment>

@@ -15,10 +15,18 @@ const syndicationCollection = defineCollection({
 	}),
 });
 
+const reviewsCollection = defineCollection({
+	schema: z.object({
+		type: z.union([z.literal('endorsement'), z.literal('review')]),
+		name: z.string(),
+	}),
+});
+
 const pagesCollection = defineCollection({});
 
 export const collections = {
 	meta: metaCollection,
 	syndication: syndicationCollection,
+	reviews: reviewsCollection,
 	index: pagesCollection,
 };

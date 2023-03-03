@@ -4,16 +4,15 @@ import { Image } from '@astrojs/image/components';
 import cover from './forging_modernity_cover.jpg';
 
 export interface Props {
-	bookInfo: CollectionEntry<'index'>;
-	reviewsInfo: CollectionEntry<'index'>;
+	bookInfo: CollectionEntry<'pages'>;
+	reviewItems: Array<CollectionEntry<'reviews'>>;
 	footerItems: Array<CollectionEntry<'syndication'>>;
 }
 
-const { bookInfo, reviewsInfo, footerItems } = Astro.props;
+const { bookInfo, reviewItems, footerItems } = Astro.props;
 
 const { Content: BookInfo } = await bookInfo.render();
-
-const { Content: ReviewsInfo } = await reviewsInfo.render();
+console.log(reviewItems[0]);
 ---
 
 <div class="overview">
@@ -29,11 +28,21 @@ const { Content: ReviewsInfo } = await reviewsInfo.render();
 	</section>
 	<section>
 		<div class="reviews-container">
-			<ReviewsInfo />
+			<h1>Reviews & Endorsements</h1>
+			{
+				reviewItems.map(({ data: item, body: review }) => (
+					<>
+						<p>{review}</p>
+						<p class="reviewer">
+							<strong>{item.name}</strong>
+						</p>
+					</>
+				))
+			}
 		</div>
 	</section>
 	<section>
-		<p>
+		<p class="footer-container">
 			{
 				footerItems.map(({ data: item }) => (
 					<li>
@@ -62,10 +71,8 @@ const { Content: ReviewsInfo } = await reviewsInfo.render();
 	}
 
 	.reviews-container {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr;
-		grid-gap: 10rem;
+		display: flex;
+		flex-direction: column;
 		margin: 5rem 12rem;
 	}
 
@@ -133,5 +140,11 @@ const { Content: ReviewsInfo } = await reviewsInfo.render();
 		:global(p) {
 			text-align: justify;
 		}
+	}
+
+	.reviewer {
+		font-weight: 600;
+		font-family: 'Vollkorn SC';
+		font-size: 1.03em;
 	}
 </style>
