@@ -19,9 +19,9 @@ const { Content: BookInfo } = await bookInfo.render();
 		<div>
 			<Image src={cover} alt="Forging Modernity Cover" width={400} />
 		</div>
-		<div class="bookinfo-text">
+		<article class="bookinfo-text">
 			<BookInfo />
-		</div>
+		</article>
 	</div>
 </section>
 <section>
@@ -30,7 +30,7 @@ const { Content: BookInfo } = await bookInfo.render();
 		{
 			reviewItems.map(({ data: item, body: review }) => (
 				<>
-					<p>{review}</p>
+					<p class="review">{review}</p>
 					<p class="reviewer">
 						<strong>{item.name}</strong>
 					</p>
@@ -40,15 +40,17 @@ const { Content: BookInfo } = await bookInfo.render();
 	</div>
 </section>
 <section>
-	<p class="footer-container">
-		{
-			footerItems.map(({ data: item }) => (
-				<li>
-					<a href={item.link}>{item.title}</a>
-				</li>
-			))
-		}
-	</p>
+	<div class="footer-container">
+		<ul class="para-text">
+			{
+				footerItems.map(({ data: item }) => (
+					<li>
+						<a href={item.link}>{item.title}</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
 </section>
 <style lang="scss">
 	section {
@@ -73,6 +75,13 @@ const { Content: BookInfo } = await bookInfo.render();
 		margin: 5rem 12rem;
 	}
 
+	.footer-container {
+		margin: 5rem 12rem;
+		li {
+			list-style: none;
+		}
+	}
+
 	.bookinfo-text {
 		:global(h1) {
 			font-size: 3rem;
@@ -92,11 +101,7 @@ const { Content: BookInfo } = await bookInfo.render();
 			letter-spacing: 0.06em;
 
 			:global(a) {
-				color: black;
 				text-underline-offset: 0.2em;
-
-				&:hover {
-				}
 			}
 		}
 		:global(p) {
@@ -106,5 +111,9 @@ const { Content: BookInfo } = await bookInfo.render();
 
 	.reviewer {
 		@include m.parchment-emphasis;
+	}
+
+	.review {
+		text-align: justify;
 	}
 </style>
