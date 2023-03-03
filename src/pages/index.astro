@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '@layouts/Layout.astro';
+import Global from '@layouts/Global.astro';
 import Hero from '@components/Hero/Hero.astro';
 import BookOverview from '@components/BookOverview.astro';
 import ParallaxWrapper from '@components/ParallaxWrapper.astro';
@@ -23,7 +23,7 @@ if (!reviewsInfo) {
 const footerItems = await getCollection('syndication');
 ---
 
-<Layout title={`${shortTitle}: ${subTitle}`}>
+<Global title={`${shortTitle}: ${subTitle}`}>
 	<ParallaxWrapper>
 		<Hero slot="hero" title={shortTitle} subTitle={subTitle} />
 		<BookOverview
@@ -32,6 +32,6 @@ const footerItems = await getCollection('syndication');
 			footerItems={footerItems}
 		/>
 	</ParallaxWrapper>
-</Layout>
+</Global>
 
 <style lang="scss"></style>

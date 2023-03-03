@@ -1,6 +1,6 @@
 ---
 import '@styles/global.css';
-import Layout from '@layouts/Layout.astro';
+import Global from '@layouts/Global.astro';
 
 export interface Props {
 	frontmatter: {
@@ -11,11 +11,11 @@ export interface Props {
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title}>
+<Global title={frontmatter.title}>
 	<main>
 		<slot />
 	</main>
-</Layout>
+</Global>
 
 <style>
 	main {
