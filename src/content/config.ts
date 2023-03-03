@@ -28,5 +28,5 @@ export const collections = {
 	meta: metaCollection,
 	syndication: syndicationCollection,
 	reviews: reviewsCollection,
-	index: pagesCollection,
+	pages: pagesCollection,
 };
