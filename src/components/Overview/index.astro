@@ -12,47 +12,44 @@ export interface Props {
 const { bookInfo, reviewItems, footerItems } = Astro.props;
 
 const { Content: BookInfo } = await bookInfo.render();
-console.log(reviewItems[0]);
 ---
 
-<div class="overview">
-	<section>
-		<div class="bookinfo-container">
-			<div>
-				<Image src={cover} alt="TODO" width={400} />
-			</div>
-			<div class="bookinfo-text">
-				<BookInfo />
-			</div>
+<section>
+	<div class="bookinfo-container">
+		<div>
+			<Image src={cover} alt="TODO" width={400} />
 		</div>
-	</section>
-	<section>
-		<div class="reviews-container">
-			<h1>Reviews & Endorsements</h1>
-			{
-				reviewItems.map(({ data: item, body: review }) => (
-					<>
-						<p>{review}</p>
-						<p class="reviewer">
-							<strong>{item.name}</strong>
-						</p>
-					</>
-				))
-			}
+		<div class="bookinfo-text">
+			<BookInfo />
 		</div>
-	</section>
-	<section>
-		<p class="footer-container">
-			{
-				footerItems.map(({ data: item }) => (
-					<li>
-						<a href={item.link}>{item.title}</a>
-					</li>
-				))
-			}
-		</p>
-	</section>
-</div>
+	</div>
+</section>
+<section>
+	<div class="reviews-container">
+		<h1>Reviews & Endorsements</h1>
+		{
+			reviewItems.map(({ data: item, body: review }) => (
+				<>
+					<p>{review}</p>
+					<p class="reviewer">
+						<strong>{item.name}</strong>
+					</p>
+				</>
+			))
+		}
+	</div>
+</section>
+<section>
+	<p class="footer-container">
+		{
+			footerItems.map(({ data: item }) => (
+				<li>
+					<a href={item.link}>{item.title}</a>
+				</li>
+			))
+		}
+	</p>
+</section>
 <style lang="scss">
 	section {
 		width: 100%;
@@ -74,41 +71,6 @@ console.log(reviewItems[0]);
 		display: flex;
 		flex-direction: column;
 		margin: 5rem 12rem;
-	}
-
-	.overview {
-		text-align: left;
-		:global(p) {
-			font-size: 1rem;
-			opacity: 0.6;
-			line-height: 1.5;
-
-			:global(.lead-in) {
-				font-weight: 600;
-				font-family: 'Vollkorn SC';
-				font-size: 1.03em;
-			}
-		}
-
-		:global(h1),
-		:global(h2) {
-			background-color: black;
-			color: transparent;
-			text-shadow: 0 2px 3px rgb(255, 255, 255, 10%);
-			-webkit-background-clip: text;
-			-moz-background-clip: text;
-			background-clip: text;
-			filter: brightness(5);
-		}
-
-		:global(h1),
-		:global(h2),
-		:global(h3),
-		:global(h4),
-		:global(h5),
-		:global(h6) {
-			opacity: 0.6;
-		}
 	}
 
 	.bookinfo-text {
@@ -143,8 +105,6 @@ console.log(reviewItems[0]);
 	}
 
 	.reviewer {
-		font-weight: 600;
-		font-family: 'Vollkorn SC';
-		font-size: 1.03em;
+		@include m.parchment-emphasis;
 	}
 </style>

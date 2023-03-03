@@ -1,0 +1,10 @@
+@mixin parchment-text {
+	font-size: 1rem;
+	opacity: 0.6;
+}
+
+@mixin parchment-emphasis {
+	font-family: 'Vollkorn SC', serif; /* TODO: Add fallback */
+	font-size: 1.03em;
+	font-weight: 600;
+}

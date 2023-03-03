@@ -7,4 +7,14 @@ export default defineConfig({
 			serviceEntryPoint: '@astrojs/image/sharp',
 		}),
 	],
+	vite: {
+		css: {
+			preprocessorOptions: {
+				scss: {
+					additionalData: `@use "./src/styles/mixins" as m;
+@use "./src/styles/variables" as v;`,
+				},
+			},
+		},
+	},
 });

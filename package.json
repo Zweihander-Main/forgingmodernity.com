@@ -16,23 +16,23 @@
 		"@fontsource/marcellus-sc": "^4.5.11",
 		"@fontsource/vollkorn": "^4.5.14",
 		"@fontsource/vollkorn-sc": "^4.5.11",
-		"astro": "^2.0.16",
+		"astro": "^2.0.17",
 		"sharp": "^0.31.3"
 	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^5.50.0",
-		"@typescript-eslint/parser": "^5.50.0",
+		"@types/node": "^18.14.4",
+		"@typescript-eslint/eslint-plugin": "^5.54.0",
+		"@typescript-eslint/parser": "^5.54.0",
 		"autoprefixer": "^10.4.13",
-		"eslint": "^8.33.0",
+		"eslint": "^8.35.0",
 		"eslint-plugin-astro": "^0.23.0",
 		"eslint-plugin-jsx-a11y": "^6.7.1",
 		"eslint-plugin-prettier": "^4.2.1",
-		"prettier": "^2.8.3",
+		"prettier": "^2.8.4",
 		"prettier-plugin-astro": "^0.8.0",
 		"sass": "^1.58.3",
-		"stylelint": "^14.16.1",
-		"stylelint-config-prettier": "^9.0.4",
-		"stylelint-config-standard": "^29.0.0",
+		"stylelint": "^15.2.0",
+		"stylelint-config-standard-scss": "^7.0.1",
 		"tslib": "^2.5.0"
 	},
 	"repository": {
@@ -127,28 +127,11 @@
 	},
 	"stylelint": {
 		"extends": [
-			"stylelint-config-standard",
-			"stylelint-config-prettier"
+			"stylelint-config-standard-scss"
 		],
 		"rules": {
-			"indentation": "tab",
-			"at-rule-no-unknown": [
-				true,
-				{
-					"ignoreAtRules": [
-						"tailwind",
-						"apply",
-						"layer",
-						"variants",
-						"responsive",
-						"screen"
-					]
-				}
-			],
-			"max-empty-lines": 2,
 			"comment-whitespace-inside": null,
 			"declaration-block-no-shorthand-property-overrides": true,
-			"declaration-colon-newline-after": null,
 			"no-descending-specificity": null,
 			"value-keyword-case": null,
 			"selector-pseudo-class-no-unknown": [
