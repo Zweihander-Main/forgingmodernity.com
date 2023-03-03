@@ -9,7 +9,7 @@ export type Props = { children: any };
 	</div>
 </div>
 
-<style>
+<style lang="scss">
 	.parallax {
 		perspective: 100px;
 		height: 100vh;
@@ -28,7 +28,7 @@ export type Props = { children: any };
 	.parallax-cover {
 		display: block;
 		position: absolute;
-		top: max(100vh, 80vw); /** TODO var **/
+		top: v.$parallax-cover-top;
 		left: 0;
 		right: 0;
 		z-index: 2;

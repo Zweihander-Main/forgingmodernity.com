@@ -71,7 +71,7 @@ const { title, subTitle } = Astro.props;
 		img {
 			display: block;
 			position: absolute;
-			bottom: min(0px, 100vh - 80vw); /** TODO var */
+			bottom: v.$parallax-bottom;
 			width: 100vw;
 			outline: none !important; /** Avoid extensions messing around */
 		}
@@ -82,7 +82,7 @@ const { title, subTitle } = Astro.props;
 		flex-direction: column;
 		justify-content: flex-end;
 		top: auto;
-		bottom: min(0px, 100vh - 80vw); /** TODO var */
+		bottom: v.$parallax-bottom;
 	}
 
 	.parallax-layer-cathedral {
