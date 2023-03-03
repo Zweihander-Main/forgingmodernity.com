@@ -1,9 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import Global from '@layouts/Global.astro';
-import Hero from '@components/Hero/Hero.astro';
-import BookOverview from '@components/BookOverview.astro';
-import ParallaxWrapper from '@components/ParallaxWrapper.astro';
+import Parallax from '@layouts/partial/Parallax.astro';
+import Parchment from '@layouts/partial/Parchment.astro';
+import Hero from '@components/Hero/index.astro';
+import BookOverview from '@components/BookOverview/index.astro';
 import { getEntryBySlug } from 'astro:content';
 export type Props = Record<string, never>;
 
@@ -24,14 +25,16 @@ const footerItems = await getCollection('syndication');
 ---
 
 <Global title={`${shortTitle}: ${subTitle}`}>
-	<ParallaxWrapper>
+	<Parallax>
 		<Hero slot="hero" title={shortTitle} subTitle={subTitle} />
-		<BookOverview
-			bookInfo={bookInfo}
-			reviewsInfo={reviewsInfo}
-			footerItems={footerItems}
-		/>
-	</ParallaxWrapper>
+		<Parchment slot="cover">
+			<BookOverview
+				bookInfo={bookInfo}
+				reviewsInfo={reviewsInfo}
+				footerItems={footerItems}
+			/>
+		</Parchment>
+	</Parallax>
 </Global>
 
 <style lang="scss"></style>

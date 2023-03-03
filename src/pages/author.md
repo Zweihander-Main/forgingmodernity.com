@@ -1,5 +1,5 @@
 ---
-layout: '@layouts/MarkdownPageLayout.astro'
+layout: '@layouts/Markdown.astro'
 title: 'About the Author, Martin Hutchinson'
 ---
 
