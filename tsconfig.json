@@ -15,6 +15,7 @@
 			"@components/*": ["components/*"],
 			"@layouts/*": ["layouts/*"],
 			"@pages/*": ["pages/*"],
+			"@scripts/*": ["scripts/*"],
 			"@styles/*": ["styles/*"],
 			"@util/*": ["util/*"]
 		},

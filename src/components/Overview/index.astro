@@ -20,7 +20,7 @@ const { Content: BookInfo } = await bookInfo.render();
 			<Picture
 				src={cover}
 				alt="Forging Modernity Cover"
-				sizes="calc(50vw - 17rem)"
+				sizes="calc(44vw - 17rem)"
 				widths={[400, 800, 1200]}
 				format="jpg"
 				quality={90}
@@ -73,7 +73,7 @@ const { Content: BookInfo } = await bookInfo.render();
 
 	.bookinfo-container {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 10fr 13fr;
 		grid-template-rows: 1fr;
 		grid-gap: 10rem;
 		margin: 5rem 12rem;
@@ -123,6 +123,10 @@ const { Content: BookInfo } = await bookInfo.render();
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	.bookinfo-cover {
+		width: 100%;
 	}
 
 	.reviewer {

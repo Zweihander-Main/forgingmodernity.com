@@ -2,12 +2,38 @@
 export type Props = { children: any };
 ---
 
-<div class="parallax">
+<parallax-container class="parallax">
 	<slot name="hero" />
 	<div class="parallax-cover">
 		<slot name="cover" />
 	</div>
-</div>
+</parallax-container>
+
+<script>
+	class Parallax extends HTMLElement {
+		constructor() {
+			super();
+			const storageItemName = 'scrollPos_' + document.location.pathname;
+			const parallax = this;
+			window.addEventListener('DOMContentLoaded', () => {
+				const scrollPos = sessionStorage.getItem(storageItemName);
+				if (scrollPos) {
+					parallax.scrollTo(0, parseInt(scrollPos, 10));
+					sessionStorage.removeItem(storageItemName);
+				}
+			});
+
+			window.addEventListener('beforeunload', () => {
+				sessionStorage.setItem(
+					storageItemName,
+					parallax.scrollTop.toString()
+				);
+			});
+		}
+	}
+
+	customElements.define('parallax-container', Parallax);
+</script>
 
 <style lang="scss">
 	.parallax {
