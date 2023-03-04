@@ -19,6 +19,7 @@ const reviewsCollection = defineCollection({
 	schema: z.object({
 		type: z.union([z.literal('endorsement'), z.literal('review')]),
 		name: z.string(),
+		link: z.optional(z.string()),
 	}),
 });
 

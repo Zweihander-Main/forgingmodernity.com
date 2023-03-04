@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Image } from '@astrojs/image/components';
+import { Picture } from '@astrojs/image/components';
 import cover from './forging_modernity_cover.jpg';
 
 export interface Props {
@@ -16,8 +16,18 @@ const { Content: BookInfo } = await bookInfo.render();
 
 <section>
 	<div class="bookinfo-container">
-		<div>
-			<Image src={cover} alt="Forging Modernity Cover" width={400} />
+		<div class="bookinfo-cover-container">
+			<Picture
+				src={cover}
+				alt="Forging Modernity Cover"
+				sizes="calc(50vw - 17rem)"
+				widths={[400, 800, 1200]}
+				format="jpg"
+				quality={90}
+				fit="cover"
+				position="center"
+				class="bookinfo-cover"
+			/>
 		</div>
 		<article class="bookinfo-text">
 			<BookInfo />
@@ -107,6 +117,12 @@ const { Content: BookInfo } = await bookInfo.render();
 		:global(p) {
 			text-align: justify;
 		}
+	}
+
+	.bookinfo-cover-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.reviewer {
