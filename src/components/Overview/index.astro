@@ -12,6 +12,15 @@ export interface Props {
 const { bookInfo, reviewItems, footerItems } = Astro.props;
 
 const { Content: BookInfo } = await bookInfo.render();
+
+const infoColumnWidth = 13;
+const coverColumnWidth = 10;
+const overviewSideMargin = 12;
+const overviewGridGap = 10;
+
+const coverSize = `calc(${
+	(coverColumnWidth / (infoColumnWidth + coverColumnWidth)) * 100
+}vw - ${overviewGridGap / 2 + overviewSideMargin})`;
 ---
 
 <section>
@@ -20,7 +29,7 @@ const { Content: BookInfo } = await bookInfo.render();
 			<Picture
 				src={cover}
 				alt="Forging Modernity Cover"
-				sizes="calc(44vw - 17rem)"
+				sizes={coverSize}
 				widths={[400, 800, 1200]}
 				format="jpg"
 				quality={90}
@@ -62,7 +71,15 @@ const { Content: BookInfo } = await bookInfo.render();
 		</ul>
 	</div>
 </section>
-<style lang="scss">
+<style
+	lang="scss"
+	define:vars={{
+		infoColumnWidth: `${infoColumnWidth}fr`,
+		coverColumnWidth: `${coverColumnWidth}fr`,
+		overviewSideMargin: `${overviewSideMargin}rem`,
+		overviewGridGap: `${overviewGridGap}rem`,
+	}}
+>
 	section {
 		width: 100%;
 		display: flex;
@@ -73,20 +90,20 @@ const { Content: BookInfo } = await bookInfo.render();
 
 	.bookinfo-container {
 		display: grid;
-		grid-template-columns: 10fr 13fr;
+		grid-template-columns: var(--coverColumnWidth) var(--infoColumnWidth);
 		grid-template-rows: 1fr;
-		grid-gap: 10rem;
-		margin: 5rem 12rem;
+		grid-gap: var(--overviewGridGap);
+		margin: 5rem var(--overviewSideMargin);
 	}
 
 	.reviews-container {
 		display: flex;
 		flex-direction: column;
-		margin: 5rem 12rem;
+		margin: 5rem var(--overviewSideMargin);
 	}
 
 	.footer-container {
-		margin: 5rem 12rem;
+		margin: 5rem var(--overviewSideMargin);
 		li {
 			list-style: none;
 		}
