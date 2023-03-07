@@ -1,8 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Picture } from '@astrojs/image/components';
-import cover from './forging_modernity_cover.jpg';
-
+import Cover from '@components/Cover/index.astro';
 export interface Props {
 	bookInfo: CollectionEntry<'pages'>;
 	reviewItems: Array<CollectionEntry<'reviews'>>;
@@ -18,26 +16,14 @@ const coverColumnWidth = 10;
 const overviewSideMargin = 12;
 const overviewGridGap = 10;
 
-const coverSize = `calc(${
+const coverSizes = `calc(${
 	(coverColumnWidth / (infoColumnWidth + coverColumnWidth)) * 100
-}vw - ${overviewGridGap / 2 + overviewSideMargin})`;
+}vw - ${overviewGridGap / 2 + overviewSideMargin}rem)`;
 ---
 
 <section>
 	<div class="bookinfo-container">
-		<div class="bookinfo-cover-container">
-			<Picture
-				src={cover}
-				alt="Forging Modernity Cover"
-				sizes={coverSize}
-				widths={[400, 800, 1200]}
-				format="jpg"
-				quality={90}
-				fit="cover"
-				position="center"
-				class="bookinfo-cover"
-			/>
-		</div>
+		<Cover sizes={coverSizes} />
 		<article class="bookinfo-text">
 			<BookInfo />
 		</article>
@@ -93,17 +79,17 @@ const coverSize = `calc(${
 		grid-template-columns: var(--coverColumnWidth) var(--infoColumnWidth);
 		grid-template-rows: 1fr;
 		grid-gap: var(--overviewGridGap);
-		margin: 5rem var(--overviewSideMargin);
+		margin: 6rem var(--overviewSideMargin);
 	}
 
 	.reviews-container {
 		display: flex;
 		flex-direction: column;
-		margin: 5rem var(--overviewSideMargin);
+		margin: 4rem var(--overviewSideMargin);
 	}
 
 	.footer-container {
-		margin: 5rem var(--overviewSideMargin);
+		margin: 6rem var(--overviewSideMargin);
 		li {
 			list-style: none;
 		}
@@ -134,16 +120,6 @@ const coverSize = `calc(${
 		:global(p) {
 			text-align: justify;
 		}
-	}
-
-	.bookinfo-cover-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.bookinfo-cover {
-		width: 100%;
 	}
 
 	.reviewer {
