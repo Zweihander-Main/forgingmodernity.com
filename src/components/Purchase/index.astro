@@ -42,7 +42,7 @@ export type Props = Record<string, never>;
 		font-size: 1.3rem;
 		font-weight: bold;
 
-		background: #333;
+		background: #666;
 		padding: 0.5rem 1rem;
 
 		display: flex;
@@ -66,7 +66,7 @@ export type Props = Record<string, never>;
 	.container-border {
 		@extend %octagon;
 
-		background: #333;
+		background: #666;
 		width: fit-content;
 		padding: 3px;
 		cursor: pointer;
@@ -76,12 +76,12 @@ export type Props = Record<string, never>;
 		width: fit-content;
 		transition: filter 0.15s ease-in-out, opacity 0.07s linear;
 		opacity: 0.6;
-		filter: drop-shadow(0 1px 1px #333);
+		filter: drop-shadow(0 1px 1px #666);
 		&:hover {
-			filter: drop-shadow(0 1px 4px #333);
+			filter: drop-shadow(0 1px 4px #666);
 		}
 		&:active {
-			opacity: 0.7;
+			opacity: 0.8;
 		}
 	}
 
