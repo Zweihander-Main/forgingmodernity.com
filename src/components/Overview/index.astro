@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Cover from '@components/Cover/index.astro';
+import Purchase from '@components/Purchase/index.astro';
 export interface Props {
 	bookInfo: CollectionEntry<'pages'>;
 	reviewItems: Array<CollectionEntry<'reviews'>>;
@@ -14,7 +15,7 @@ const { Content: BookInfo } = await bookInfo.render();
 const infoColumnWidth = 13;
 const coverColumnWidth = 10;
 const overviewSideMargin = 12;
-const overviewGridGap = 10;
+const overviewGridGap = 8;
 
 const coverSizes = `calc(${
 	(coverColumnWidth / (infoColumnWidth + coverColumnWidth)) * 100
@@ -26,6 +27,9 @@ const coverSizes = `calc(${
 		<Cover sizes={coverSizes} />
 		<article class="bookinfo-text">
 			<BookInfo />
+			<div class="purchase-container">
+				<Purchase />
+			</div>
 		</article>
 	</div>
 </section>
@@ -120,6 +124,13 @@ const coverSizes = `calc(${
 		:global(p) {
 			text-align: justify;
 		}
+	}
+
+	.purchase-container {
+		display: flex;
+		justify-content: right;
+		align-items: center;
+		margin: 3rem 0;
 	}
 
 	.reviewer {

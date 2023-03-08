@@ -1,0 +1,92 @@
+---
+import { Icon } from 'astro-icon';
+export type Props = Record<string, never>;
+---
+
+<div class="container-hover">
+	<div class="container-border">
+		<div class="container-transparent">
+			<button class="button"
+				><Icon pack="mdi" name="cart" /> Available for pre-order</button
+			>
+		</div>
+	</div>
+</div>
+<style lang="scss">
+	%octagon {
+		clip-path: polygon(
+			0 10%,
+			5% 0,
+			95% 0,
+			100% 10%,
+			100% 90%,
+			90% 110%,
+			10% 110%,
+			0% 90%,
+			0% 10%
+		);
+	}
+
+	.button {
+		@extend %octagon;
+
+		appearance: none;
+		color: white;
+		padding: 0;
+		border: 0px;
+		background: none;
+
+		text-align: center;
+		position: relative;
+		z-index: 10;
+		font-size: 1.3rem;
+		font-weight: bold;
+
+		background: black;
+		padding: 0.5rem 1rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		cursor: pointer;
+	}
+
+	/** Try the notched thing */
+	.container-transparent {
+		@extend %octagon;
+
+		background: v.$color-parchment;
+		background-image: v.$parchment-background;
+		width: fit-content;
+		padding: 2px;
+		cursor: pointer;
+	}
+
+	.container-border {
+		@extend %octagon;
+
+		background: black;
+		width: fit-content;
+		padding: 3px;
+		cursor: pointer;
+	}
+
+	.container-hover {
+		width: fit-content;
+		transition: filter 0.15s ease-in-out, opacity 0.07s linear;
+		opacity: 0.6;
+		filter: drop-shadow(0 1px 2px black);
+		&:hover {
+			filter: drop-shadow(0 1px 5px black);
+		}
+		&:active {
+			opacity: 0.8;
+		}
+	}
+
+	[astro-icon='mdi:cart'] {
+		height: 1.3rem;
+		padding: 0 0.4rem 0 0;
+	}
+</style>
