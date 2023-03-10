@@ -15,6 +15,37 @@ const {
 
 <figure>
 	<blockquote>{body}</blockquote>
-	<figcaption>{name}</figcaption>
-	<cite>{source}</cite>
+	<figcaption>
+		{name}<br />
+		<cite>{source}</cite>
+	</figcaption>
 </figure>
+
+<style lang="scss">
+	figure {
+		position: relative;
+	}
+
+	figure::before {
+		content: '“';
+		font-size: 34rem;
+		position: absolute;
+		top: 0;
+		line-height: 0;
+		font-style: italic;
+		opacity: 0.165;
+		top: 12rem;
+		left: -9rem;
+	}
+	blockquote {
+		font-size: 2rem;
+		font-style: italic;
+	}
+	figcaption {
+		@include m.parchment-emphasis;
+		text-align: right;
+	}
+	cite {
+		font-style: normal;
+	}
+</style>
