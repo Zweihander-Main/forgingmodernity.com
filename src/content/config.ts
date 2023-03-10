@@ -17,9 +17,16 @@ const syndicationCollection = defineCollection({
 
 const reviewsCollection = defineCollection({
 	schema: z.object({
-		type: z.union([z.literal('endorsement'), z.literal('review')]),
 		name: z.string(),
-		link: z.optional(z.string()),
+		source: z.string(),
+		link: z.optional(z.string().url()),
+	}),
+});
+
+const endorsementsCollection = defineCollection({
+	schema: z.object({
+		name: z.string(),
+		profession: z.string(),
 	}),
 });
 
@@ -29,5 +36,6 @@ export const collections = {
 	meta: metaCollection,
 	syndication: syndicationCollection,
 	reviews: reviewsCollection,
+	endorsements: endorsementsCollection,
 	pages: pagesCollection,
 };

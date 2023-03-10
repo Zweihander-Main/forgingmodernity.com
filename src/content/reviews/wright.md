@@ -1,6 +1,6 @@
 ---
-type: review
-name: Robert E. Wright, American Institute for Economic Research
+name: Robert E. Wright
+source: American Institute for Economic Research
 link: https://www.aier.org/article/forging-modernity-or-freedom/
 ---
 

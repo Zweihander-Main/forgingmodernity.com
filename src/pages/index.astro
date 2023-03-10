@@ -17,7 +17,7 @@ if (!bookInfo) {
 }
 
 const reviewItems = await getCollection('reviews');
-
+const endorsementItems = await getCollection('endorsements');
 const footerItems = await getCollection('syndication');
 ---
 
@@ -28,6 +28,7 @@ const footerItems = await getCollection('syndication');
 			<Overview
 				bookInfo={bookInfo}
 				reviewItems={reviewItems}
+				endorsementItems={endorsementItems}
 				footerItems={footerItems}
 			/>
 		</Parchment>
