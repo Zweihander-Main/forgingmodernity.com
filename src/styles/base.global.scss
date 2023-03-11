@@ -15,3 +15,7 @@ h6,
 button {
 	font-family: 'Marcellus SC', serif; /** TODO fallbacks **/
 }
+
+::selection {
+	background: v.$color-parchment-shadow;
+}
