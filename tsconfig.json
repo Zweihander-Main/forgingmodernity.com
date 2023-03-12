@@ -11,13 +11,7 @@
 		"lib": ["dom", "esnext"],
 		"outDir": "public",
 		"paths": {
-			"@content/*": ["content/*"],
-			"@components/*": ["components/*"],
-			"@layouts/*": ["layouts/*"],
-			"@pages/*": ["pages/*"],
-			"@scripts/*": ["scripts/*"],
-			"@styles/*": ["styles/*"],
-			"@util/*": ["util/*"]
+			"@*": ["*"]
 		},
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,
