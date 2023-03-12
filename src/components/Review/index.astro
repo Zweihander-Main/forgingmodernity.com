@@ -17,7 +17,7 @@ const {
 	<blockquote>{body}</blockquote>
 	<figcaption>
 		{name}<br />
-		<cite>{source}</cite>
+		<cite><a href={link}>{source}</a></cite>
 	</figcaption>
 </figure>
 
@@ -50,5 +50,6 @@ const {
 	}
 	cite {
 		font-style: normal;
+		text-underline-offset: 0.2rem;
 	}
 </style>
