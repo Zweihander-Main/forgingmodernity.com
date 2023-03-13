@@ -1,0 +1,14 @@
+---
+import Map from '@components/Map/index.svelte';
+export type Props = Record<string, never>;
+
+const location = { latitude: 51.51089, longitude: -0.17563 };
+---
+
+<link
+	rel="stylesheet"
+	href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+	integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+	crossorigin=""
+/>
+<Map client:load {location} zoom={14} markerMarkup="<p>We are here!</p>" />

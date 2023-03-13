@@ -4,3 +4,5 @@
 -   Typescript
 -   Zod
 -   Sass
+-   Svelte
+-   Leaflet
