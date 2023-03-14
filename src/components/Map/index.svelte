@@ -5,7 +5,7 @@
 		latitude: number;
 		longitude: number;
 	};
-	export let zoom: number = 19;
+	export let zoom: number = 1;
 
 	const { latitude, longitude } = location;
 </script>
@@ -14,9 +14,14 @@
 
 <style>
 	@import 'leaflet/dist/leaflet.css';
+
 	figure {
-		width: 38rem;
-		height: 21rem;
-		box-shadow: var(--shadow-elevation-low);
+		width: 100vw;
+		height: 100vh;
+		margin: 0;
+	}
+
+	:global(.leaflet-container) {
+		background: black;
 	}
 </style>
