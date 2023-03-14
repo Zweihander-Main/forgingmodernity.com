@@ -33,6 +33,7 @@ export default function setMap(
 		];
 
 		const map = L.map(mapElement, {
+			attributionControl: false,
 			crs: L.CRS.Simple,
 			maxZoom,
 			minZoom,
