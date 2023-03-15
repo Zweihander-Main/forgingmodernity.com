@@ -1,7 +1,7 @@
 <script lang="ts">
 	import setMap from '@scripts/setMap';
 
-	export let zoom: number = 1;
+	export let zoom: number = 13;
 
 </script>
 

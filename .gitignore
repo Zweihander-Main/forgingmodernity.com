@@ -152,7 +152,6 @@ bower_components
 
 # gatsby files
 .cache/
-public
 
 # Yarn Integrity file
 .yarn-integrity
