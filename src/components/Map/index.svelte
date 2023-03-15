@@ -1,16 +1,11 @@
 <script lang="ts">
 	import setMap from '@scripts/setMap';
 
-	export let location: {
-		latitude: number;
-		longitude: number;
-	};
 	export let zoom: number = 1;
 
-	const { latitude, longitude } = location;
 </script>
 
-<figure use:setMap={{ latitude, longitude, zoom }} />
+<figure use:setMap={{ zoom }} />
 
 <style>
 	@import 'leaflet/dist/leaflet.css';
