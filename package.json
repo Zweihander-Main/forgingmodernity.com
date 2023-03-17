@@ -19,7 +19,6 @@
 		"@fontsource/vollkorn-sc": "^4.5.11",
 		"astro": "^2.1.3",
 		"astro-icon": "^0.8.0",
-		"leaflet.motion": "^0.3.2",
 		"sharp": "^0.31.3",
 		"svelte": "^3.56.0"
 	},

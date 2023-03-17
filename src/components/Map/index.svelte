@@ -22,7 +22,7 @@
 	}
 
 	:global(.cloud) {
-		position: relative;
+		position: absolute;
 		will-change: transform;
 		z-index: 999;
 		outline: none !important;

@@ -1,4 +1,4 @@
-import type { Map, Icon, IconOptions, LatLngBoundsExpression } from 'leaflet';
+import type { LatLngBoundsExpression, ImageOverlay } from 'leaflet';
 
 export interface args {
 	zoom: number;
@@ -7,7 +7,6 @@ export interface args {
 export default function setMap(mapElement: HTMLElement, { zoom }: args) {
 	(async () => {
 		const L = await import('leaflet');
-		await import('leaflet.motion/dist/leaflet.motion');
 
 		const bounds: LatLngBoundsExpression = [
 			[0, 0],
@@ -29,7 +28,7 @@ export default function setMap(mapElement: HTMLElement, { zoom }: args) {
 
 		const avifSupport = await isFormatSupported('avif', AVIF_BASE64);
 
-		const clouds = [];
+		const clouds: Array<Cloud> = [];
 
 		for (let i = 0; i < TOTAL_CLOUDS; i++) {
 			const cloudSrc = `${
@@ -48,10 +47,10 @@ export default function setMap(mapElement: HTMLElement, { zoom }: args) {
 					width,
 					height,
 					L,
-					map,
 				});
-
 				clouds.push(cloud);
+				cloud.overlay.addTo(map);
+				console.log(cloud.overlay.getBounds().getSouthWest());
 			};
 		}
 	})();
@@ -65,21 +64,19 @@ interface CloudArgs {
 	height: number;
 	src: string;
 	L: typeof import('leaflet');
-	map: Map;
 }
 
 class Cloud {
-	x: number;
-	y: number;
-	speed: number;
-	width: number;
-	height: number;
-	src: string;
-	L: typeof import('leaflet');
-	map: Map;
-	icon: Icon<IconOptions>;
+	public x: number;
+	public y: number;
+	public speed: number;
+	public width: number;
+	public height: number;
+	public src: string;
+	public L: typeof import('leaflet');
+	public overlay: ImageOverlay;
 
-	constructor({ x, y, speed, width, height, src, L, map }: CloudArgs) {
+	constructor({ x, y, speed, width, height, src, L }: CloudArgs) {
 		this.x = x;
 		this.y = y;
 		this.speed = speed;
@@ -87,40 +84,23 @@ class Cloud {
 		this.height = height;
 		this.src = src;
 		this.L = L;
-		this.map = map;
 
-		this.icon = this.L.icon({
-			iconUrl: this.src,
-			iconSize: this.L.point(this.width, this.height),
-			className: 'cloud',
-		});
-
-		this.animate();
+		this.overlay = this.L.imageOverlay(
+			this.src,
+			[
+				[this.y, this.x],
+				[this.y + this.height, this.x + this.width],
+			],
+			{
+				interactive: false,
+				opacity: 1,
+				alt: 'Cloud',
+				className: 'cloud',
+			}
+		);
 	}
 
-	protected animate() {
-		this.L.motion
-			.polyline(
-				[
-					[this.y, this.x],
-					[this.y, MAP_WIDTH],
-				],
-				{
-					weight: 0,
-				},
-				{
-					auto: true,
-					duration: this.speed,
-					easing: L.Motion.Ease.linear,
-				},
-				{
-					removeOnEnd: false,
-					showMarker: false,
-					icon: this.icon,
-				}
-			)
-			.addTo(this.map);
-	}
+	protected animate() {}
 }
 
 const MAP_WIDTH = 6609;
@@ -151,7 +131,7 @@ const IMAGES: Array<string> = [
 	'img/clouds/cloud7',
 ];
 
-const TOTAL_CLOUDS = 20;
+const TOTAL_CLOUDS = 5;
 
 // const map = document.querySelector('.leaflet-map-pane');
 
