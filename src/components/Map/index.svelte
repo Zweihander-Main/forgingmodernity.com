@@ -18,7 +18,7 @@
 	}
 
 	:global(.leaflet-container) {
-		background: black;
+		background: #eee0c8;
 	}
 
 	:global(.cloud) {

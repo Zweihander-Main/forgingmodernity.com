@@ -1,8 +1,4 @@
-import type {
-	LatLngBoundsExpression,
-	ImageOverlay,
-	LatLngBounds,
-} from 'leaflet';
+import type { LatLngBoundsExpression, ImageOverlay } from 'leaflet';
 
 export interface args {
 	zoom: number;
@@ -24,7 +20,13 @@ export default function setMap(mapElement: HTMLElement, { zoom }: args) {
 			minZoom: -3,
 			zoomSnap: 1,
 			maxBounds: bounds,
-		}).setView([0, 1], zoom);
+		}).setView(
+			[
+				MAP_HEIGHT - MAP_V_GUTTER - window.innerHeight,
+				MAP_WIDTH - MAP_H_GUTTER - window.innerWidth,
+			],
+			zoom
+		);
 
 		L.imageOverlay('/img/map.webp', bounds)
 			.addTo(map)
@@ -134,6 +136,8 @@ class Cloud {
 
 const MAP_WIDTH = 6609;
 const MAP_HEIGHT = 8356;
+const MAP_V_GUTTER = 586;
+const MAP_H_GUTTER = 340;
 
 const AVIF_BASE64 =
 	'AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=';
