@@ -26,5 +26,6 @@
 		will-change: transform;
 		z-index: 999;
 		outline: none !important;
+		transition: opacity 3s;
 	}
 </style>
