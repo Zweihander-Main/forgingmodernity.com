@@ -1,4 +1,8 @@
-import type { LatLngBoundsExpression, ImageOverlay } from 'leaflet';
+import type {
+	LatLngBoundsExpression,
+	ImageOverlay,
+	LatLngBounds,
+} from 'leaflet';
 
 export interface args {
 	zoom: number;
@@ -42,7 +46,7 @@ export default function setMap(mapElement: HTMLElement, { zoom }: args) {
 				const cloud = new Cloud({
 					x: Math.floor(Math.random() * MAP_WIDTH),
 					y: Math.floor(Math.random() * MAP_HEIGHT),
-					speed: Math.floor(Math.random() * 50000) + 50000,
+					speed: Math.floor(Math.random() * 1.7) + 0.3,
 					src: cloudSrc,
 					width,
 					height,
@@ -50,7 +54,7 @@ export default function setMap(mapElement: HTMLElement, { zoom }: args) {
 				});
 				clouds.push(cloud);
 				cloud.overlay.addTo(map);
-				console.log(cloud.overlay.getBounds().getSouthWest());
+				cloud.raq();
 			};
 		}
 	})();
@@ -67,14 +71,17 @@ interface CloudArgs {
 }
 
 class Cloud {
-	public x: number;
-	public y: number;
-	public speed: number;
-	public width: number;
-	public height: number;
-	public src: string;
-	public L: typeof import('leaflet');
+	private x: number;
+	private y: number;
+	private speed: number;
+	private width: number;
+	private height: number;
+	private src: string;
+	private L: typeof import('leaflet');
 	public overlay: ImageOverlay;
+	private start: number | false = false;
+	private previousTimeStamp = 0;
+	private done = false;
 
 	constructor({ x, y, speed, width, height, src, L }: CloudArgs) {
 		this.x = x;
@@ -100,7 +107,29 @@ class Cloud {
 		);
 	}
 
-	protected animate() {}
+	public raq() {
+		window.requestAnimationFrame(this.animate.bind(this));
+	}
+
+	public animate(timestamp: number) {
+		if (!this.start) {
+			this.start = timestamp;
+		}
+		const elapsed = timestamp - this.start;
+		if (this.previousTimeStamp !== timestamp) {
+			this.x = this.x + this.speed;
+			this.overlay.setBounds([
+				[this.y, this.x],
+				[this.y + this.height, this.x + this.width],
+			]);
+		}
+		if (elapsed < 100000) {
+			this.previousTimeStamp = timestamp;
+			if (!this.done) {
+				this.raq();
+			}
+		}
+	}
 }
 
 const MAP_WIDTH = 6609;
@@ -131,7 +160,7 @@ const IMAGES: Array<string> = [
 	'img/clouds/cloud7',
 ];
 
-const TOTAL_CLOUDS = 5;
+const TOTAL_CLOUDS = 25;
 
 // const map = document.querySelector('.leaflet-map-pane');
 
