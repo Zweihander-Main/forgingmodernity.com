@@ -25,5 +25,6 @@
 		position: relative;
 		will-change: transform;
 		z-index: 999;
+		outline: none !important;
 	}
 </style>
