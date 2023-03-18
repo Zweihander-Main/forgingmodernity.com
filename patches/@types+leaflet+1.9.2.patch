@@ -1,0 +1,13 @@
+diff --git a/node_modules/@types/leaflet/index.d.ts b/node_modules/@types/leaflet/index.d.ts
+index fe86b60..392d746 100755
+--- a/node_modules/@types/leaflet/index.d.ts
++++ b/node_modules/@types/leaflet/index.d.ts
+@@ -1396,7 +1396,7 @@ export class ImageOverlay extends Layer {
+     setUrl(url: string): this;
+ 
+     /** Update the bounds that this ImageOverlay covers */
+-    setBounds(bounds: LatLngBounds): this;
++    setBounds(bounds: LatLngBoundsExpression): this;
+ 
+     /** Changes the zIndex of the image overlay */
+     setZIndex(value: number): this;

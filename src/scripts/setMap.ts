@@ -113,10 +113,6 @@ class Cloud {
 		);
 	}
 
-	private isBeyondMap() {
-		return this.x > MAP_WIDTH;
-	}
-
 	public raq() {
 		window.requestAnimationFrame(this.animate.bind(this));
 	}

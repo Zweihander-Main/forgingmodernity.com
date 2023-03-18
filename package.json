@@ -8,7 +8,8 @@
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"postinstall": "patch-package"
 	},
 	"dependencies": {
 		"@astrojs/image": "^0.16.1",
@@ -33,6 +34,7 @@
 		"eslint-plugin-jsx-a11y": "^6.7.1",
 		"eslint-plugin-prettier": "^4.2.1",
 		"leaflet": "^1.9.3",
+		"patch-package": "^6.5.1",
 		"prettier": "^2.8.4",
 		"prettier-plugin-astro": "^0.8.0",
 		"sass": "^1.59.2",
