@@ -28,4 +28,32 @@
 		outline: none !important;
 		transition: opacity 3s;
 	}
+
+	:global(.canal-visible) {
+		stroke: #ff0000;
+	}
+
+	:global(.canal-group) {
+		pointer-events: all;
+	}
+
+	:global(.canal-group:hover) {
+		cursor: pointer;
+	}
+
+	:global(.canal-group:hover > .canal-visible) {
+		stroke: #00ff00;
+	}
+
+	:global(.leaflet-interactive) {
+		cursor: unset;
+	}
+
+	:global(
+			.leaflet-pane svg path,
+			.leaflet-pane > svg path.leaflet-interactive,
+			svg.leaflet-image-layer.leaflet-interactive path
+		) {
+		pointer-events: all;
+	}
 </style>
