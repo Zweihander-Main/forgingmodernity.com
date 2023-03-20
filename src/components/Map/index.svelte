@@ -48,10 +48,11 @@
 	}
 
 	:global(
-			.leaflet-pane svg path,
+			.leaflet-marker-icon.leaflet-interactive,
+			.leaflet-image-layer.leaflet-interactive,
 			.leaflet-pane > svg path.leaflet-interactive,
 			svg.leaflet-image-layer.leaflet-interactive path
 		) {
-		pointer-events: all;
+		pointer-events: unset !important;
 	}
 </style>
