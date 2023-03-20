@@ -7,9 +7,7 @@
 
 <figure id="map" use:setMap={{ zoom }} />
 
-<style>
-	@import 'leaflet/dist/leaflet.css';
-
+<style lang="scss">
 	figure {
 		width: 100vw;
 		height: 100vh;

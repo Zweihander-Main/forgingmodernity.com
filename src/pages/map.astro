@@ -13,7 +13,9 @@ const pageTitle = 'Map';
 	<Map client:load />
 </Global>
 
-<style>
+<style lang="scss">
+	// Get around Astro-Svelte-SCSS bug
+	@import 'leaflet/dist/leaflet';
 	body {
 	}
 </style>
