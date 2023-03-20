@@ -8,15 +8,29 @@
 <figure id="map" use:setMap={{ zoom }} />
 
 <style lang="scss">
+	// Leaflet CSS located in Astro file
+	// Overrides for leaflet CSS
+	:global(.leaflet-container) {
+		background: #eee0c8 !important;
+	}
+	:global(.leaflet-interactive) {
+		cursor: unset !important;
+	}
+
+	:global(
+			.leaflet-marker-icon.leaflet-interactive,
+			.leaflet-image-layer.leaflet-interactive,
+			.leaflet-pane > svg path.leaflet-interactive,
+			svg.leaflet-image-layer.leaflet-interactive path
+		) {
+		pointer-events: unset !important;
+	}
+	// End overrides
 	figure {
 		width: 100vw;
 		height: 100vh;
 		margin: 0;
 		position: absolute;
-	}
-
-	:global(.leaflet-container) {
-		background: #eee0c8;
 	}
 
 	:global(.cloud) {
@@ -33,26 +47,10 @@
 
 	:global(.canal-group) {
 		pointer-events: all;
-	}
-
-	:global(.canal-group:hover) {
 		cursor: pointer;
-	}
 
-	:global(.canal-group:hover > .canal-visible) {
-		stroke: #00ff00;
-	}
-
-	:global(.leaflet-interactive) {
-		cursor: unset;
-	}
-
-	:global(
-			.leaflet-marker-icon.leaflet-interactive,
-			.leaflet-image-layer.leaflet-interactive,
-			.leaflet-pane > svg path.leaflet-interactive,
-			svg.leaflet-image-layer.leaflet-interactive path
-		) {
-		pointer-events: unset !important;
+		&:hover > :global(.canal-visible) {
+			stroke: #00ff00;
+		}
 	}
 </style>
