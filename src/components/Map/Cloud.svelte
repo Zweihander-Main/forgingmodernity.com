@@ -5,12 +5,12 @@
 		MAP_HEIGHT,
 		MAP_H_GUTTER,
 		MAP_V_GUTTER,
-		TOTAL_CLOUDS,
 		CLOUD_IMAGES,
 	} from './vars';
 
 	export let L: typeof import('leaflet');
 	export let map: L.Map;
+	export let avifSupported: boolean;
 
 	interface CloudArgs {
 		x: number;
@@ -97,24 +97,6 @@
 		}
 	}
 
-	const AVIF_BASE64 =
-		'AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=';
-
-	const isFormatSupported = (
-		format: string,
-		dataUri: string
-	): Promise<boolean> =>
-		new Promise<boolean>((resolve, reject) => {
-			const image = new Image();
-			image.src = `data:image/${format};base64,${dataUri}`;
-			image.onload = () => {
-				resolve(true);
-			};
-			image.onerror = () => {
-				reject(false);
-			};
-		}).catch(() => false);
-
 	function getCloudXStart(width: number) {
 		return Math.floor(Math.random() * MAP_WIDTH - width - MAP_H_GUTTER);
 	}
@@ -126,39 +108,28 @@
 		);
 	}
 
-	(async () => {
-		const avifSupport = await isFormatSupported('avif', AVIF_BASE64);
-
-		const clouds: Array<Cloud> = [];
-
-		for (let i = 0; i < TOTAL_CLOUDS; i++) {
-			const cloudSrc = `${
-				CLOUD_IMAGES[
-					Math.floor(Math.random() * CLOUD_IMAGES.length)
-				] as string
-			}.${avifSupport ? 'avif' : 'png'}`;
-			const cloudImage = new Image();
-			cloudImage.src = cloudSrc;
-			cloudImage.onload = () => {
-				const randomSizeScale = Math.random() * 0.7 + 1;
-				const width = cloudImage.naturalWidth * randomSizeScale;
-				const height = cloudImage.naturalHeight * randomSizeScale;
-				const cloud = new Cloud({
-					x: getCloudXStart(width),
-					y: getCLoudYStart(height),
-					opacity: Math.random() * 0.5 + 0.5,
-					speed: Math.floor(Math.random() * 1.7) + 0.3,
-					src: cloudSrc,
-					width,
-					height,
-					L,
-				});
-				clouds.push(cloud);
-				cloud.overlay.addTo(map);
-				cloud.raq();
-			};
-		}
-	})();
+	const cloudSrc = `${
+		CLOUD_IMAGES[Math.floor(Math.random() * CLOUD_IMAGES.length)] as string
+	}.${avifSupported ? 'avif' : 'png'}`;
+	const cloudImage = new Image();
+	cloudImage.src = cloudSrc;
+	cloudImage.onload = () => {
+		const randomSizeScale = Math.random() * 0.7 + 1;
+		const width = cloudImage.naturalWidth * randomSizeScale;
+		const height = cloudImage.naturalHeight * randomSizeScale;
+		const cloud = new Cloud({
+			x: getCloudXStart(width),
+			y: getCLoudYStart(height),
+			opacity: Math.random() * 0.5 + 0.5,
+			speed: Math.floor(Math.random() * 1.7) + 0.3,
+			src: cloudSrc,
+			width,
+			height,
+			L,
+		});
+		cloud.overlay.addTo(map);
+		cloud.raq();
+	};
 </script>
 
 <style lang="scss">
