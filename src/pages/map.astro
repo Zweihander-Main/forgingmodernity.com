@@ -18,4 +18,8 @@ const canals = await getCollection('canals');
 <style lang="scss">
 	// Get around Astro-Svelte-SCSS bug
 	@import 'leaflet/dist/leaflet';
+
+	body {
+		background: v.$color-mapbg;
+	}
 </style>

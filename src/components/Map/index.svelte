@@ -42,7 +42,7 @@
 	// Leaflet CSS located in Astro file
 	// Overrides for leaflet CSS
 	:global(.leaflet-container) {
-		background: #eee0c8 !important;
+		background: v.$color-mapbg !important;
 	}
 	:global(.leaflet-interactive) {
 		cursor: unset !important;
