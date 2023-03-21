@@ -12,3 +12,9 @@ export const isFormatSupported = (
 			reject(false);
 		};
 	}).catch(() => false);
+
+export const camelCaseString = (str: string) => {
+	return str
+		.toLowerCase()
+		.replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+};
