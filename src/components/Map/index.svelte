@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import Map from './Map.svelte';
 	import Cloud from './Cloud.svelte';
 	import Canals from './Canal.svelte';
@@ -8,9 +7,9 @@
 
 	let avifSupported: boolean;
 
-	onMount(async () => {
+	(async () => {
 		avifSupported = await isFormatSupported('avif', AVIF_BASE64);
-	});
+	})();
 </script>
 
 <Map let:map let:L>
