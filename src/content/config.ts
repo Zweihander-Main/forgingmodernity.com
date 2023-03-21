@@ -32,10 +32,23 @@ const endorsementsCollection = defineCollection({
 
 const pagesCollection = defineCollection({});
 
+const canalsCollection = defineCollection({
+	schema: z.object({
+		name: z.string(),
+		x: z.number(),
+		y: z.number(),
+		width: z.number(),
+		height: z.number(),
+		scale: z.number(),
+		path: z.string(),
+	}),
+});
+
 export const collections = {
 	meta: metaCollection,
 	syndication: syndicationCollection,
 	reviews: reviewsCollection,
 	endorsements: endorsementsCollection,
 	pages: pagesCollection,
+	canals: canalsCollection,
 };

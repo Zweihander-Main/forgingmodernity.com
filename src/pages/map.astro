@@ -1,16 +1,18 @@
 ---
 import Global from '@layouts/Global.astro';
 import Map from '@components/Map/index.svelte';
-import { getEntryBySlug } from 'astro:content';
+import { getCollection, getEntryBySlug } from 'astro:content';
 export type Props = Record<string, never>;
 
 const metaEntry = await getEntryBySlug('meta', 'site');
 const { shortTitle } = metaEntry.data;
 const pageTitle = 'Map';
+
+const canals = await getCollection('canals');
 ---
 
 <Global title={`${shortTitle} | ${pageTitle}`}>
-	<Map client:load />
+	<Map canals={canals} client:load />
 </Global>
 
 <style lang="scss">
