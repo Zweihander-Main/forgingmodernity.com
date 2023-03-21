@@ -1,6 +1,13 @@
 <script lang="ts">
 	import type { ImageOverlay } from 'leaflet';
-	import { MAP_WIDTH, MAP_HEIGHT, MAP_H_GUTTER, MAP_V_GUTTER } from './vars';
+	import {
+		MAP_WIDTH,
+		MAP_HEIGHT,
+		MAP_H_GUTTER,
+		MAP_V_GUTTER,
+		TOTAL_CLOUDS,
+		CLOUD_IMAGES,
+	} from './vars';
 
 	export let L: typeof import('leaflet');
 	export let map: L.Map;
@@ -108,18 +115,6 @@
 			};
 		}).catch(() => false);
 
-	const IMAGES: Array<string> = [
-		'img/clouds/cloud1',
-		'img/clouds/cloud2',
-		'img/clouds/cloud3',
-		'img/clouds/cloud4',
-		'img/clouds/cloud5',
-		'img/clouds/cloud6',
-		'img/clouds/cloud7',
-	];
-
-	const TOTAL_CLOUDS = 25;
-
 	function getCloudXStart(width: number) {
 		return Math.floor(Math.random() * MAP_WIDTH - width - MAP_H_GUTTER);
 	}
@@ -138,7 +133,9 @@
 
 		for (let i = 0; i < TOTAL_CLOUDS; i++) {
 			const cloudSrc = `${
-				IMAGES[Math.floor(Math.random() * IMAGES.length)] as string
+				CLOUD_IMAGES[
+					Math.floor(Math.random() * CLOUD_IMAGES.length)
+				] as string
 			}.${avifSupport ? 'avif' : 'png'}`;
 			const cloudImage = new Image();
 			cloudImage.src = cloudSrc;
