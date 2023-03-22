@@ -40,6 +40,8 @@ const canalsCollection = defineCollection({
 		width: z.number(),
 		height: z.number(),
 		scale: z.number(),
+		stroke: z.number(),
+		pathYAdjust: z.number(),
 		path: z.string(),
 	}),
 });

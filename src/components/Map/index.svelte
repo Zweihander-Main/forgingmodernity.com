@@ -23,17 +23,19 @@
 			<Cloud {map} {L} {avifSupported} />
 		{/each}
 	{/if}
-	{#each canals as { data: { x, y, width, height, scale, path, name } }}
+	{#each canals as { data: { x, y, width, height, scale, stroke, path, name, pathYAdjust } }}
 		<Canal
 			{map}
 			{L}
 			{x}
 			{y}
-			width={width + 200}
-			height={height + 80}
+			{width}
+			{height}
 			{scale}
+			{stroke}
 			{path}
 			{name}
+			{pathYAdjust}
 		/>
 	{/each}
 </Map>
