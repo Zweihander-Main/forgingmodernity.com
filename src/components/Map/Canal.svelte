@@ -59,7 +59,7 @@
 	}
 
 	:global(.canal-visible) {
-		stroke: #eeeefe;
+		stroke: #feeeee;
 		filter: drop-shadow(0px 0px 5px rgb(0 0 0 / 0.6));
 		transition: all 0.09s ease-in;
 	}
@@ -69,7 +69,7 @@
 		cursor: pointer;
 
 		&:hover > :global(.canal-visible) {
-			stroke: #fafaff;
+			stroke: #fffafa;
 			filter: drop-shadow(0px 0px 5px rgb(0 0 0/ 0.6))
 				drop-shadow(0px 0px 8px rgb(0 0 0 / 0.4));
 		}
