@@ -43,9 +43,12 @@
     <use class="canal-hover" xlink:href="#${camelCaseName}SVGPath" style="stroke-width:${hoverStrokeWidth}" pointer-events="stroke"/>
     <use class="canal-visible" xlink:href="#${camelCaseName}SVGPath" style="stroke-width:${visibleStrokeWidth}" />
 </g>`;
-	L.svgOverlay(canalSVG, canalBounds, {
+	const svgLayer = L.svgOverlay(canalSVG, canalBounds, {
 		interactive: true,
-	}).addTo(map);
+		zIndex: 100,
+	});
+	svgLayer.bindTooltip(name);
+	svgLayer.addTo(map);
 </script>
 
 <style lang="scss">
@@ -56,7 +59,7 @@
 	}
 
 	:global(.canal-visible) {
-		stroke: #ff0000;
+		stroke: #fff;
 	}
 
 	:global(.canal-group) {
@@ -64,7 +67,7 @@
 		cursor: pointer;
 
 		&:hover > :global(.canal-visible) {
-			stroke: #00ff00;
+			stroke: #ccc;
 		}
 	}
 </style>
