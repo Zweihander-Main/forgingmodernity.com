@@ -3,7 +3,7 @@ name: Trent and Mersey
 x: 2780
 y: 3580
 # 188.10725 137.65312
-width: 388.10725
+width: 215.10725
 height: 217.65312
 scale: 5.1
 stroke: 4
