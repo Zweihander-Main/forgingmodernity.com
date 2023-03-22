@@ -52,6 +52,10 @@
 </script>
 
 <style lang="scss">
+	:global(.canal:focus) {
+		outline: none;
+	}
+
 	:global(.canal-path) {
 		fill: none;
 		stroke-linecap: round;
@@ -59,7 +63,7 @@
 	}
 
 	:global(.canal-visible) {
-		stroke: #feeeee;
+		stroke: #fee5e5;
 		filter: drop-shadow(0px 0px 5px rgb(0 0 0 / 0.6));
 		transition: all 0.09s ease-in;
 	}

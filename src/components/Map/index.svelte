@@ -46,6 +46,23 @@
 	:global(.leaflet-container) {
 		background: v.$color-mapbg !important;
 	}
+
+	:global(.leaflet-tooltip) {
+		background-color: rgba(0, 0, 0, 0.4) !important;
+		color: #fffafa !important;
+		text-shadow: 2px 2px 5px black !important;
+		border: 0px !important;
+		font-size: 1.6rem;
+		font-family: 'Vollkorn SC', serif;
+		font-weight: 600;
+		-webkit-text-stroke: 0.5px #222;
+		padding: 0px 1rem !important;
+
+		&::before {
+			border: 0px !important;
+		}
+	}
+
 	:global(.leaflet-interactive) {
 		cursor: unset !important;
 	}
