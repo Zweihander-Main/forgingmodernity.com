@@ -59,7 +59,9 @@
 	}
 
 	:global(.canal-visible) {
-		stroke: #fff;
+		stroke: #eeeefe;
+		filter: drop-shadow(0px 0px 5px rgb(0 0 0 / 0.6));
+		transition: all 0.09s ease-in;
 	}
 
 	:global(.canal-group) {
@@ -67,7 +69,9 @@
 		cursor: pointer;
 
 		&:hover > :global(.canal-visible) {
-			stroke: #ccc;
+			stroke: #fafaff;
+			filter: drop-shadow(0px 0px 5px rgb(0 0 0/ 0.6))
+				drop-shadow(0px 0px 8px rgb(0 0 0 / 0.4));
 		}
 	}
 </style>
