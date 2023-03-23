@@ -85,11 +85,30 @@
 	:global(.leaflet-bar a) {
 		background-color: #fffafa !important;
 		border-color: #999 !important;
+		transition: all 0.09s ease-in;
+
+		&:hover {
+			box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.6);
+		}
 	}
 
 	:global(.leaflet-bar a.leaflet-disabled) {
 		color: #c5b2b2 !important;
-		background-color: #e9dbdb !important;
+		background-color: #eee9e9 !important;
+
+		&:hover {
+			box-shadow: none;
+		}
+	}
+
+	:global(
+			.leaflet-touch .leaflet-control-layers,
+			.leaflet-touch .leaflet-bar
+		) {
+		border: 0px !important;
+		box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.6) !important;
+		position: relative;
+		left: 3px;
 	}
 	:global(.leaflet-interactive) {
 		cursor: unset !important;
@@ -121,6 +140,7 @@
 		filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.5));
 		transition: all 0.09s ease-in;
 		&:hover {
+			color: #fff;
 			filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.7));
 		}
 	}
