@@ -11,9 +11,11 @@
 			console.log(grabIcon);
 			grabIcon.classList.add('grab-hide');
 			map.off('dragstart', hideGrab);
+			map.off('zoomstart', hideGrab);
 		};
 
 		map.on('dragstart', hideGrab);
+		map.on('zoomstart', hideGrab);
 	});
 </script>
 
