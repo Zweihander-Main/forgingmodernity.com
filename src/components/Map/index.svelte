@@ -2,6 +2,7 @@
 	import Map from './Map.svelte';
 	import Cloud from './Cloud.svelte';
 	import Canal from './Canal.svelte';
+	import GrabIndicator from './GrabIndicator.svelte';
 	import { TOTAL_CLOUDS, AVIF_BASE64 } from './vars';
 	import { isFormatSupported } from './util';
 	import Icon from '@iconify/svelte';
@@ -45,6 +46,7 @@
 			{pathYAdjust}
 		/>
 	{/each}
+	<GrabIndicator {map} {L} />
 </Map>
 
 <style lang="scss">
