@@ -77,9 +77,9 @@
 	}
 
 	:global(.canal-visible) {
-		stroke: #fee5e5;
-		filter: drop-shadow(0px 0px 5px rgb(0 0 0 / 0.6));
-		transition: all 0.06s ease-in;
+		stroke: v.$color-map-peach;
+		filter: drop-shadow(0px 0px 5px v.$color-shadow);
+		transition: all v.$transition-speed-instant v.$transition-timing-instant;
 	}
 
 	:global(.canal-group) {
@@ -87,9 +87,9 @@
 		cursor: pointer;
 
 		&:hover > :global(.canal-visible) {
-			stroke: #fffafa;
-			filter: drop-shadow(0px 0px 5px rgb(0 0 0/ 0.6))
-				drop-shadow(0px 0px 8px rgb(0 0 0 / 0.4));
+			stroke: v.$color-map-white;
+			filter: drop-shadow(0px 0px 5px v.$color-shadow),
+				drop-shadow(0px 0px 8px v.$color-shadow-light);
 		}
 	}
 </style>

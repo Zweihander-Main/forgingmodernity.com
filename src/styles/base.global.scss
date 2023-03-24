@@ -1,8 +1,8 @@
 html {
-	background-color: #f6f6f6;
-	font-family: Vollkorn, serif; /** TODO fallbacks **/
+	background-color: v.$color-default;
+	font-family: v.$font-family-body;
 	font-feature-settings: 'tnum';
-	font-size: 19px;
+	font-size: v.$font-size-base;
 	scroll-behavior: smooth;
 }
 
@@ -13,7 +13,7 @@ h4,
 h5,
 h6,
 button {
-	font-family: 'Marcellus SC', serif; /** TODO fallbacks **/
+	font-family: v.$font-family-headings;
 }
 
 ::selection {

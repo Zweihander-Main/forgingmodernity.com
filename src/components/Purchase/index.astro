@@ -41,7 +41,7 @@ export type Props = Record<string, never>;
 		z-index: 10;
 		font-size: 1.3rem;
 		font-weight: bold;
-		background: #666;
+		background: v.$color-button;
 		padding: 0.5rem 1rem;
 		display: flex;
 		align-items: center;
@@ -64,7 +64,7 @@ export type Props = Record<string, never>;
 	.container-border {
 		@extend %octagon;
 
-		background: #666;
+		background: v.$color-button;
 		width: fit-content;
 		padding: 3px;
 		cursor: pointer;
@@ -72,14 +72,15 @@ export type Props = Record<string, never>;
 
 	.container-hover {
 		width: fit-content;
-		transition: filter 0.1s ease-in-out, opacity 0.07s linear;
-		opacity: 0.6;
-		filter: drop-shadow(0 1px 1px #666);
+		transition: filter v.$transition-speed-normal v.$transition-timing,
+			opacity v.$transition-speed-fast linear;
+		opacity: v.$opacity-parchment;
+		filter: drop-shadow(0 1px 1px v.$color-button);
 		&:hover {
-			filter: drop-shadow(0 1px 4px #666);
+			filter: drop-shadow(0 1px 4px v.$color-button);
 		}
 		&:active {
-			opacity: 0.8;
+			opacity: v.$opacity-parchment + 0.2;
 		}
 	}
 

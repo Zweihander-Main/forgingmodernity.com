@@ -25,13 +25,7 @@ export type Props = { children: any };
 
 		:global(h1),
 		:global(h2) {
-			background-color: black;
-			color: transparent;
-			text-shadow: 0 2px 3px rgb(255, 255, 255, 10%);
-			-webkit-background-clip: text;
-			-moz-background-clip: text;
-			background-clip: text;
-			filter: brightness(5);
+			@include m.parchment-deboss;
 		}
 
 		:global(h1),
@@ -41,7 +35,7 @@ export type Props = { children: any };
 		:global(h5),
 		:global(h6),
 		:global(figure) {
-			opacity: 0.6;
+			opacity: v.$opacity-parchment;
 		}
 
 		:global(a) {

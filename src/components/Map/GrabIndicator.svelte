@@ -8,7 +8,6 @@
 	let grabIcon: HTMLElement;
 	onMount(() => {
 		const hideGrab = () => {
-			console.log(grabIcon);
 			grabIcon.classList.add('grab-hide');
 			map.off('dragstart', hideGrab);
 			map.off('zoomstart', hideGrab);
@@ -34,20 +33,22 @@
 		z-index: 1100;
 		bottom: 30%;
 		left: 30%;
-		animation: 1.5s ease-in 0s infinite forwards drag-gesture;
+		animation: 1.5s ease-in-out 0s infinite forwards drag-gesture;
 		will-change: transform opacity;
-		filter: drop-shadow(0 0 1px black)
-			drop-shadow(0 0 0.4rem rgba(0, 0, 0, 0.8));
+		filter: drop-shadow(0 0 1px black) drop-shadow(0 0 0.4rem black);
 	}
 
 	:global(.grab-icon g) {
-		stroke: #fffafa;
+		stroke: v.$color-map-white;
 		padding: 1rem;
 	}
 
 	@keyframes -global-drag-gesture {
 		0% {
 			transform: translate(0rem, 3rem);
+			opacity: 0;
+		}
+		10% {
 			opacity: 0.9;
 		}
 		60% {

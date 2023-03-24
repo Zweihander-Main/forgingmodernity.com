@@ -1,9 +1,24 @@
+@use 'variables' as v;
+
 @mixin parchment-text {
-	opacity: 0.6;
+	opacity: v.$opacity-parchment;
+}
+
+@mixin smallcaps {
+	font-family: v.$font-family-sc;
+	font-weight: 600;
 }
 
 @mixin parchment-emphasis {
-	font-family: 'Vollkorn SC', serif; /* TODO: Add fallback */
+	@include smallcaps;
+
 	font-size: 1.03em;
-	font-weight: 600;
+}
+
+@mixin parchment-deboss {
+	background-color: black;
+	color: transparent;
+	text-shadow: 0 2px 3px rgb(255 255 255 / 10%);
+	background-clip: text;
+	filter: brightness(5);
 }
