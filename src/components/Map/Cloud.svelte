@@ -6,7 +6,7 @@
 		MAP_H_GUTTER,
 		MAP_V_GUTTER,
 		CLOUD_IMAGES,
-	} from './vars';
+	} from '@util/vars';
 
 	export let L: typeof import('leaflet');
 	export let map: L.Map;

@@ -1,7 +1,10 @@
 ---
 import Global from '@layouts/Global.astro';
 import Map from '@components/Map/index.svelte';
-import { getCollection, getEntryBySlug } from 'astro:content';
+import { CollectionEntry, getCollection, getEntryBySlug } from 'astro:content';
+import { camelCaseString } from '@util/funcs';
+import type { AstroComponentFactory } from 'astro/dist/runtime/server';
+import type { slimmedCanals } from '@util/types';
 export type Props = Record<string, never>;
 
 const metaEntry = await getEntryBySlug('meta', 'site');
@@ -9,10 +12,42 @@ const { shortTitle } = metaEntry.data;
 const pageTitle = 'Map';
 
 const canals = await getCollection('canals');
+
+const slimmedCanals: slimmedCanals = canals.map((canal) => {
+	return {
+		x: canal.data.x,
+		y: canal.data.y,
+		width: canal.data.width,
+		height: canal.data.height,
+		scale: canal.data.scale,
+		stroke: canal.data.stroke,
+		path: canal.data.path,
+		name: canal.data.name,
+		pathYAdjust: canal.data.pathYAdjust,
+	};
+});
+const canalEntries: Array<{ Content: AstroComponentFactory; name: string }> =
+	[];
+
+for (let i = 0; i < canals.length; i++) {
+	const canal = canals[i] as CollectionEntry<'canals'>;
+	const { Content } = await canal.render();
+	canalEntries.push({
+		Content,
+		name: camelCaseString(canal.data.name),
+	});
+}
 ---
 
 <Global title={`${shortTitle} | ${pageTitle}`}>
-	<Map canals={canals} client:load />
+	<Map canals={slimmedCanals} client:load />
+	{
+		canalEntries.map(({ Content, name }) => (
+			<div id={`canal_${name}`} class="canal-content">
+				<Content />
+			</div>
+		))
+	}
 </Global>
 
 <style lang="scss">
@@ -21,5 +56,8 @@ const canals = await getCollection('canals');
 
 	body {
 		background: v.$color-mapbg;
+	}
+	.canal-content {
+		display: none;
 	}
 </style>

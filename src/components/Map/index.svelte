@@ -3,12 +3,12 @@
 	import Cloud from './Cloud.svelte';
 	import Canal from './Canal.svelte';
 	import GrabIndicator from './GrabIndicator.svelte';
-	import { TOTAL_CLOUDS, AVIF_BASE64 } from './vars';
-	import { isFormatSupported } from './util';
+	import { TOTAL_CLOUDS, AVIF_BASE64 } from '@util/vars';
+	import { isFormatSupported } from '@util/funcs';
 	import Icon from '@iconify/svelte';
-	import type { CollectionEntry } from 'astro:content';
+	import type { slimmedCanals } from '@util/types';
 
-	export let canals: Array<CollectionEntry<'canals'>>;
+	export let canals: slimmedCanals;
 
 	let avifSupported: boolean;
 
@@ -25,13 +25,14 @@
 		<span class="home-text">Home</span>
 	</a>
 </div>
+<slot name="canal-entry" />
 <Map let:map let:L>
 	{#if typeof avifSupported !== 'undefined'}
 		{#each Array(TOTAL_CLOUDS) as _}
 			<Cloud {map} {L} {avifSupported} />
 		{/each}
 	{/if}
-	{#each canals as { data: { x, y, width, height, scale, stroke, path, name, pathYAdjust } }}
+	{#each canals as { x, y, width, height, scale, stroke, path, name, pathYAdjust }}
 		<Canal
 			{map}
 			{L}
@@ -85,7 +86,7 @@
 	:global(.leaflet-bar a) {
 		background-color: #fffafa !important;
 		border-color: #999 !important;
-		transition: all 0.09s ease-in;
+		transition: all 0.06s ease-in;
 
 		&:hover {
 			box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.6);
@@ -138,7 +139,7 @@
 		justify-content: center;
 		align-items: center;
 		filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.5));
-		transition: all 0.09s ease-in;
+		transition: all 0.06s ease-in;
 		&:hover {
 			color: #fff;
 			filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.7));

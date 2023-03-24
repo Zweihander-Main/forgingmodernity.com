@@ -1,6 +1,7 @@
 <script lang="ts">
+	import CanalModal from './CanalModal.svelte';
+	import { camelCaseString } from '@util/funcs';
 	import type { LatLngBoundsExpression } from 'leaflet';
-	import { camelCaseString } from './util';
 
 	export let L: typeof import('leaflet');
 	export let map: L.Map;
@@ -48,8 +49,21 @@
 		zIndex: 100,
 	});
 	svgLayer.bindTooltip(name);
+
+	let showModal = false;
+	svgLayer.on('click', () => {
+		showModal = true;
+	});
 	svgLayer.addTo(map);
+
+	const bodyContent = (
+		document.getElementById(`canal_${camelCaseName}`) as HTMLElement
+	).innerHTML;
 </script>
+
+<CanalModal bind:showModal>
+	{@html bodyContent}
+</CanalModal>
 
 <style lang="scss">
 	:global(.canal:focus) {
@@ -65,7 +79,7 @@
 	:global(.canal-visible) {
 		stroke: #fee5e5;
 		filter: drop-shadow(0px 0px 5px rgb(0 0 0 / 0.6));
-		transition: all 0.09s ease-in;
+		transition: all 0.06s ease-in;
 	}
 
 	:global(.canal-group) {

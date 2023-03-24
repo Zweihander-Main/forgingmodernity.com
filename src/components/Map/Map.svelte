@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import L from 'leaflet';
-	import { MAP_WIDTH, MAP_HEIGHT, MAP_H_GUTTER, MAP_V_GUTTER } from './vars';
+	import {
+		MAP_WIDTH,
+		MAP_HEIGHT,
+		MAP_H_GUTTER,
+		MAP_V_GUTTER,
+	} from '@util/vars';
 	import type { LatLngBoundsExpression } from 'leaflet';
 
 	const bounds: LatLngBoundsExpression = [
