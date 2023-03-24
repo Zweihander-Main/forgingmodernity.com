@@ -11,5 +11,6 @@
 	},
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode"
-	}
+	},
+	"svelte.plugin.svelte.diagnostics.enable": false
 }
