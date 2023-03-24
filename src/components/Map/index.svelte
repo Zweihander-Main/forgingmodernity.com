@@ -59,7 +59,7 @@
 	}
 
 	:global(.leaflet-tooltip) {
-		background-color: rgba(0, 0, 0, 0.5) !important;
+		background-color: rgba(0, 0, 0, 0.6) !important;
 		color: #fffafa !important;
 		text-shadow: 2px 2px 5px black !important;
 		border: 0px !important;
@@ -67,7 +67,10 @@
 		font-family: 'Vollkorn SC', serif;
 		font-weight: 600;
 		-webkit-text-stroke: 0.5px #222;
-		padding: 0px 1rem !important;
+		padding: 5px 1rem 0 !important;
+		box-shadow: none !important;
+		height: fit-content;
+		border-radius: 8px !important;
 
 		&::before {
 			border: 0px !important;
