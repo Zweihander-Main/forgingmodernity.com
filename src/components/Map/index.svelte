@@ -58,6 +58,9 @@
 	// Overrides for leaflet CSS
 	:global(.leaflet-container) {
 		background: v.$color-map-bg !important;
+		font-family: unset !important;
+		font-size: unset !important;
+		line-height: unset !important;
 	}
 
 	:global(.leaflet-tooltip) {

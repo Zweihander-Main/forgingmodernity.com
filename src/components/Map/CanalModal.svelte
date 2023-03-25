@@ -34,11 +34,11 @@
 <style lang="scss">
 	dialog {
 		padding: 0;
-		box-shadow: 0 20px 50px -12px rgb(0 0 0 / 40%);
+		box-shadow: 0 10px 50px -12px v.$color-shadow-dark;
 	}
 
 	dialog::backdrop {
-		background: rgb(0 0 0 / 50%);
+		background: v.$color-shadow;
 	}
 
 	.modal {
@@ -56,6 +56,22 @@
 		grid-area: image;
 	}
 
+	.image-container::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			to right,
+			transparent 0%,
+			transparent 95%,
+			v.$color-shadow-light 100%
+		);
+		z-index: 1202;
+	}
+
 	.name {
 		position: absolute;
 		bottom: 0;
@@ -63,10 +79,15 @@
 		width: 100%;
 		color: white;
 		text-align: left;
-		margin: 0;
-		font-size: 3rem;
+		font-size: 3.5rem;
 		z-index: 1201;
-		line-height: 1;
+		line-height: 0.9;
+		text-shadow: 0 0 0.4rem black;
+		-webkit-text-stroke: 1px black;
+		letter-spacing: 0.03em;
+		margin-left: 0.7rem;
+		margin-bottom: 0.3rem;
+		color: v.$color-map-white;
 	}
 
 	.image {
@@ -74,13 +95,16 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		object-position: center center;
 		z-index: 1200;
 	}
 
 	.text {
+		background: v.$color-map-peach;
 		grid-area: text;
 		padding: 1rem;
 		text-align: justify;
 		overflow-y: auto;
+		padding: 1rem 2.5rem;
 	}
 </style>
