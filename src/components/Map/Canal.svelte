@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CanalModal from './CanalModal.svelte';
+	import Modal from './Modal.svelte';
 	import { camelCaseString } from '@util/funcs';
 	import type { LatLngBoundsExpression } from 'leaflet';
 
@@ -62,11 +62,11 @@
 	).innerHTML;
 </script>
 
-<CanalModal {imageSrc} {name} {L} bind:showModal>
+<Modal {imageSrc} {name} {L} bind:showModal>
 	<svelte:fragment slot="text">
 		{@html bodyContent}
 	</svelte:fragment>
-</CanalModal>
+</Modal>
 
 <style lang="scss">
 	:global(.canal:focus) {

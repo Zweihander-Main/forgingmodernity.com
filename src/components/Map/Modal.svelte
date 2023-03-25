@@ -32,6 +32,8 @@
 </dialog>
 
 <style lang="scss">
+	// TODO animation
+	// TODO close button
 	dialog {
 		padding: 0;
 		box-shadow: 0 10px 50px -12px v.$color-shadow-dark;
@@ -100,6 +102,8 @@
 	}
 
 	.text {
+		@include m.custom-scrollbar(transparent, v.$color-button);
+
 		background: v.$color-map-peach;
 		grid-area: text;
 		padding: 1rem;

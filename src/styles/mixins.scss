@@ -22,3 +22,22 @@
 	background-clip: text;
 	filter: brightness(5);
 }
+
+@mixin custom-scrollbar($scroll-bg, $thumb-bg) {
+	scrollbar-color: $thumb-bg $scroll-bg;
+	scrollbar-width: thin;
+
+	&::-webkit-scrollbar {
+		width: 11px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $scroll-bg;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $thumb-bg;
+		border: 3px solid $scroll-bg;
+		border-radius: 6px;
+	}
+}
