@@ -11,6 +11,7 @@
 		dialog.showModal();
 		console.log(L.DomEvent.disableScrollPropagation);
 		L.DomEvent.disableScrollPropagation(dialog);
+		L.DomEvent.disableClickPropagation(dialog);
 	}
 </script>
 
@@ -53,6 +54,7 @@
 		animation: modal-fly-up v.$transition-speed-slow
 			v.$transition-speed-normal forwards;
 		will-change: transform, opacity;
+		cursor: default;
 	}
 
 	dialog::backdrop {
@@ -144,7 +146,7 @@
 		top: -0.5rem;
 		position: relative;
 		font-size: 2rem;
-		color: black;
+		color: v.$color-text-stroke;
 		cursor: pointer;
 		z-index: 1205;
 		filter: drop-shadow(0 0 0.4rem v.$color-shadow);
