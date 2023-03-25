@@ -43,6 +43,7 @@ const canalsCollection = defineCollection({
 		stroke: z.number(),
 		pathYAdjust: z.number(),
 		path: z.string(),
+		image: z.string(),
 	}),
 });
 

@@ -14,6 +14,7 @@
 	export let stroke: number;
 	export let pathYAdjust: number;
 	export let path: string;
+	export let image: string;
 
 	const visibleStrokeWidth = stroke;
 	const hoverStrokeWidth = visibleStrokeWidth * 5;
@@ -63,6 +64,7 @@
 
 <CanalModal bind:showModal>
 	{@html bodyContent}
+	<img src={image} alt={name} />
 </CanalModal>
 
 <style lang="scss">
