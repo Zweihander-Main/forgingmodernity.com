@@ -8,7 +8,7 @@ export interface slimmedCanal {
 	path: string;
 	name: string;
 	pathYAdjust: number;
-	image: string;
+	imageSrc: string;
 }
 
 export type slimmedCanals = Array<slimmedCanal>;

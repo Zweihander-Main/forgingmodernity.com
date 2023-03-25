@@ -14,7 +14,7 @@
 	export let stroke: number;
 	export let pathYAdjust: number;
 	export let path: string;
-	export let image: string;
+	export let imageSrc: string;
 
 	const visibleStrokeWidth = stroke;
 	const hoverStrokeWidth = visibleStrokeWidth * 5;
@@ -62,9 +62,10 @@
 	).innerHTML;
 </script>
 
-<CanalModal bind:showModal>
-	{@html bodyContent}
-	<img src={image} alt={name} />
+<CanalModal {imageSrc} {name} {L} bind:showModal>
+	<svelte:fragment slot="text">
+		{@html bodyContent}
+	</svelte:fragment>
 </CanalModal>
 
 <style lang="scss">
