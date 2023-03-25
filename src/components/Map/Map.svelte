@@ -35,7 +35,9 @@
 			zoom
 		);
 
-		L.imageOverlay('/img/map.webp', bounds).addTo(map);
+		L.imageOverlay('/img/map.webp', bounds, {
+			className: 'map-image',
+		}).addTo(map);
 	});
 </script>
 
@@ -51,5 +53,9 @@
 		height: 100vh;
 		margin: 0;
 		position: absolute;
+	}
+
+	:global(.map-image) {
+		box-shadow: 0 0 2rem v.$color-shadow-light;
 	}
 </style>
