@@ -32,11 +32,22 @@
 </dialog>
 
 <style lang="scss">
-	// TODO animation
 	// TODO close button
+	@keyframes modal-fly-up {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
 	dialog {
+		opacity: 0;
+		transform: translateY(10vh);
 		padding: 0;
 		box-shadow: 0 10px 50px -12px v.$color-shadow-dark;
+		animation: modal-fly-up v.$transition-speed-slow
+			v.$transition-speed-normal forwards;
+		will-change: transform opacity;
 	}
 
 	dialog::backdrop {
