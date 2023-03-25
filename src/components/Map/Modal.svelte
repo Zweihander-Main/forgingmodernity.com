@@ -3,6 +3,7 @@
 	export let imageSrc: string;
 	export let name: string;
 	export let L: typeof import('leaflet');
+	import Icon from '@iconify/svelte';
 
 	let dialog: HTMLDialogElement;
 
@@ -29,6 +30,9 @@
 			<slot name="text" />
 		</div>
 	</div>
+	<span class="close-button" title="Close" on:click={() => dialog.close()}>
+		<Icon icon="mdi:close-octagon" class="close-icon" />
+	</span>
 </dialog>
 
 <style lang="scss">
@@ -45,9 +49,10 @@
 		transform: translateY(10vh);
 		padding: 0;
 		box-shadow: 0 10px 50px -12px v.$color-shadow-dark;
+		overflow: visible;
 		animation: modal-fly-up v.$transition-speed-slow
 			v.$transition-speed-normal forwards;
-		will-change: transform opacity;
+		will-change: transform, opacity;
 	}
 
 	dialog::backdrop {
@@ -121,5 +126,27 @@
 		text-align: justify;
 		overflow-y: auto;
 		padding: 1rem 2.5rem;
+	}
+
+	.close-button {
+		display: block;
+		background: white;
+		height: 1rem;
+		width: 1rem;
+		position: absolute;
+		top: -0.5rem;
+		right: -0.5rem;
+		z-index: 1204;
+	}
+
+	:global(.close-icon) {
+		right: 0.5rem;
+		top: -0.5rem;
+		position: relative;
+		font-size: 2rem;
+		color: black;
+		cursor: pointer;
+		z-index: 1205;
+		filter: drop-shadow(0 0 0.4rem v.$color-shadow);
 	}
 </style>
