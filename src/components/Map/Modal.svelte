@@ -9,7 +9,6 @@
 
 	$: if (dialog && showModal) {
 		dialog.showModal();
-		console.log(L.DomEvent.disableScrollPropagation);
 		L.DomEvent.disableScrollPropagation(dialog);
 		L.DomEvent.disableClickPropagation(dialog);
 	}

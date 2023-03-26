@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import L from 'leaflet';
 	import {
 		MAP_WIDTH,
 		MAP_HEIGHT,
@@ -8,6 +7,8 @@
 		MAP_V_GUTTER,
 	} from '@util/vars';
 	import type { LatLngBoundsExpression } from 'leaflet';
+
+	export let L: typeof import('leaflet');
 
 	const bounds: LatLngBoundsExpression = [
 		[0, 0],
@@ -18,6 +19,7 @@
 
 	let mapElement: HTMLElement;
 	let map: L.Map;
+	let mapLoaded = false;
 
 	onMount(() => {
 		map = L.map(mapElement, {
@@ -35,15 +37,21 @@
 			zoom
 		);
 
-		L.imageOverlay('/img/map.webp', bounds, {
+		const mapOverlay = L.imageOverlay('/img/map.webp', bounds, {
 			className: 'map-image',
-		}).addTo(map);
+		});
+
+		mapOverlay.addTo(map);
+
+		mapOverlay.on('load', () => {
+			mapLoaded = true;
+		});
 	});
 </script>
 
 <figure id="map" bind:this={mapElement}>
-	{#if map}
-		<slot {map} {L} />
+	{#if map && mapLoaded}
+		<slot {map} />
 	{/if}
 </figure>
 
