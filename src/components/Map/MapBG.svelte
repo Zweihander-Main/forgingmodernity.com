@@ -9,6 +9,7 @@
 	import type { LatLngBoundsExpression } from 'leaflet';
 
 	export let L: typeof import('leaflet');
+	export let mapImageElement: HTMLImageElement;
 
 	const bounds: LatLngBoundsExpression = [
 		[0, 0],
@@ -37,7 +38,7 @@
 			zoom
 		);
 
-		const mapOverlay = L.imageOverlay('/img/map.webp', bounds, {
+		const mapOverlay = L.imageOverlay(mapImageElement, bounds, {
 			className: 'map-image',
 		});
 

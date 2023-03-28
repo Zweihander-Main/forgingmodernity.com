@@ -3,6 +3,7 @@
 	import Cloud from './Cloud.svelte';
 	import Canal from './Canal.svelte';
 	import GrabIndicator from './GrabIndicator.svelte';
+	import LoadingScreen from './LoadingScreen.svelte';
 	import { TOTAL_CLOUDS, AVIF_BASE64 } from '@util/vars';
 	import { isFormatSupported } from '@util/funcs';
 	import Icon from '@iconify/svelte';
@@ -13,6 +14,7 @@
 	let avifSupported: boolean;
 	let L: typeof import('leaflet');
 
+	// TODO start loading leaflet parallel with loading screen
 	(async () => {
 		L = await import('leaflet');
 		avifSupported = await isFormatSupported('avif', AVIF_BASE64);
@@ -26,32 +28,34 @@
 	</a>
 </nav>
 <slot name="canal-entry" />
-{#if L}
-	<MapBG {L} let:map>
-		{#if typeof avifSupported !== 'undefined'}
-			{#each Array(TOTAL_CLOUDS) as _}
-				<Cloud {map} {L} {avifSupported} />
+<LoadingScreen let:mapImageElement>
+	{#if L}
+		<MapBG {L} {mapImageElement} let:map>
+			{#if typeof avifSupported !== 'undefined'}
+				{#each Array(TOTAL_CLOUDS) as _}
+					<Cloud {map} {L} {avifSupported} />
+				{/each}
+			{/if}
+			{#each canals as { x, y, width, height, scale, stroke, path, name, pathYAdjust, imageSrc }}
+				<Canal
+					{map}
+					{L}
+					{x}
+					{y}
+					{width}
+					{height}
+					{scale}
+					{stroke}
+					{path}
+					{name}
+					{pathYAdjust}
+					{imageSrc}
+				/>
 			{/each}
-		{/if}
-		{#each canals as { x, y, width, height, scale, stroke, path, name, pathYAdjust, imageSrc }}
-			<Canal
-				{map}
-				{L}
-				{x}
-				{y}
-				{width}
-				{height}
-				{scale}
-				{stroke}
-				{path}
-				{name}
-				{pathYAdjust}
-				{imageSrc}
-			/>
-		{/each}
-		<GrabIndicator {map} {L} />
-	</MapBG>
-{/if}
+			<GrabIndicator {map} {L} />
+		</MapBG>
+	{/if}
+</LoadingScreen>
 
 <style lang="scss">
 	@use 'sass:color';
