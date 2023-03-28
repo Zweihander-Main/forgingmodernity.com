@@ -19,12 +19,12 @@
 	})();
 </script>
 
-<div class="home-button">
+<nav class="home-button">
 	<a href="/" title="Go back to the homepage">
 		<Icon icon="mdi:home" class="home-icon" />
 		<span class="home-text">Home</span>
 	</a>
-</div>
+</nav>
 <slot name="canal-entry" />
 {#if L}
 	<MapBG {L} let:map>
