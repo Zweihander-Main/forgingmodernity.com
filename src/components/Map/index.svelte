@@ -51,7 +51,7 @@
 					{pathYAdjust}
 				/>
 			{/each}
-			<GrabIndicator {map} {L} />
+			<GrabIndicator {map} />
 		</MapBG>
 	{/if}
 </LoadingScreen>

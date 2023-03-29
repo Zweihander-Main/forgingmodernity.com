@@ -2,7 +2,6 @@
 	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
 
-	export let L: typeof import('leaflet');
 	export let map: L.Map;
 
 	let grabIcon: HTMLElement;
