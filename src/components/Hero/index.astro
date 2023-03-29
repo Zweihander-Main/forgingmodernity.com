@@ -1,20 +1,24 @@
 ---
 import { getImage } from '@astrojs/image';
+import cathedralImageFile from '@assets/hero/canaletto_cathedral.png';
+import cityImageFile from '@assets/hero/canaletto_city.png';
+import riverImageFile from '@assets/hero/canaletto_river.png';
+import shoreImageFile from '@assets/hero/canaletto_shore.png';
 
 const cathedral = await getImage({
-	src: import('./canaletto_cathedral.png'),
+	src: cathedralImageFile,
 	alt: "St. Paul's Cathedral",
 });
 const city = await getImage({
-	src: import('./canaletto_city.png'),
+	src: cityImageFile,
 	alt: 'London',
 });
 const river = await getImage({
-	src: import('./canaletto_river.png'),
+	src: riverImageFile,
 	alt: 'Thames River',
 });
 const shore = await getImage({
-	src: import('./canaletto_shore.png'),
+	src: shoreImageFile,
 	alt: 'London Shore',
 });
 
