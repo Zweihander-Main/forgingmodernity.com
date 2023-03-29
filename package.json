@@ -168,7 +168,9 @@
 	"cspell": {
 		"useGitIgnore": true,
 		"words": [
-			"astro"
+			"astro",
+			"Joomla",
+			"stylelint"
 		]
 	}
 }
