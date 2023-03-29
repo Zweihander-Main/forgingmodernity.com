@@ -28,9 +28,9 @@
 	</a>
 </nav>
 <slot name="canal-entry" />
-<LoadingScreen let:mapImageElement>
+<LoadingScreen let:mapImageElement let:setMapLoaded>
 	{#if L}
-		<MapBG {L} {mapImageElement} let:map>
+		<MapBG {L} {mapImageElement} {setMapLoaded} let:map>
 			{#if typeof avifSupported !== 'undefined'}
 				{#each Array(TOTAL_CLOUDS) as _}
 					<Cloud {map} {L} {avifSupported} />

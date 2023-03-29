@@ -10,6 +10,7 @@
 
 	export let L: typeof import('leaflet');
 	export let mapImageElement: HTMLImageElement;
+	export let setMapLoaded: () => void;
 
 	const bounds: LatLngBoundsExpression = [
 		[0, 0],
@@ -46,6 +47,7 @@
 
 		mapOverlay.on('load', () => {
 			mapLoaded = true;
+			setMapLoaded();
 		});
 	});
 </script>

@@ -6,6 +6,11 @@
 	let bgOpacity = 1;
 	let mapImageElement: HTMLImageElement;
 	let loadingScreenClass = 'loading-screen';
+	let mapLoaded = false;
+
+	const setMapLoaded = () => {
+		mapLoaded = true;
+	};
 
 	onMount(() => {
 		loadImage('/img/map.webp', (percentageLoaded: number) => {
@@ -17,7 +22,7 @@
 		});
 	});
 
-	$: if (percentageDone === 100) {
+	$: if (percentageDone === 100 && mapLoaded) {
 		bgOpacity = 0;
 		loadingScreenClass += ' loaded';
 	}
@@ -31,7 +36,7 @@
 	>
 </aside>
 {#if percentageDone === 100 && mapImageElement}
-	<slot {mapImageElement} />
+	<slot {mapImageElement} {setMapLoaded} />
 {/if}
 
 <style lang="scss">
