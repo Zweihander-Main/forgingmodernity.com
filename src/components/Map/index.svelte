@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import './leaflet.scss';
 	import MapBG from './MapBG.svelte';
 	import Cloud from './Cloud.svelte';
 	import Canal from './Canal.svelte';
@@ -61,95 +62,11 @@
 
 <style lang="scss">
 	@use 'sass:color';
-	$control-left-margin: 0.6rem;
-	// Leaflet CSS located in Astro file
-	// Overrides for leaflet CSS
-	:global(.leaflet-container) {
-		background: v.$color-map-bg !important;
-		font-family: unset !important;
-		font-size: unset !important;
-		line-height: unset !important;
-	}
-
-	:global(.leaflet-tooltip) {
-		@include m.smallcaps;
-		background-color: v.$color-shadow !important;
-		color: v.$color-map-white !important;
-		text-shadow: 2px 2px 5px black !important;
-		border: 0px !important;
-		font-size: 1.5rem;
-		-webkit-text-stroke: 0.5px v.$color-text-stroke;
-		padding: 5px 1rem 0 !important;
-		box-shadow: none !important;
-		height: fit-content;
-		border-radius: 8px !important;
-
-		&::before {
-			border: 0px !important;
-		}
-	}
-
-	:global(.leaflet-top .leaflet-control) {
-		margin-top: 2.5rem !important;
-		margin-left: $control-left-margin !important;
-	}
-
-	:global(.leaflet-bar) {
-		border-radius: 0px !important;
-	}
-
-	:global(.leaflet-bar a) {
-		background-color: v.$color-map-white !important;
-		border-color: color.adjust(
-			v.$color-map-white,
-			$blackness: 60%
-		) !important;
-		transition: all v.$transition-speed-instant ease-in;
-
-		&:hover {
-			box-shadow: 0 0 2px 1px v.$color-shadow;
-		}
-	}
-
-	:global(.leaflet-bar a.leaflet-disabled) {
-		color: color.adjust(v.$color-map-white, $blackness: 30%) !important;
-		background-color: color.adjust(
-			v.$color-map-white,
-			$blackness: 10%
-		) !important;
-
-		&:hover {
-			box-shadow: none;
-		}
-	}
-
-	:global(
-			.leaflet-touch .leaflet-control-layers,
-			.leaflet-touch .leaflet-bar
-		) {
-		border: 0px !important;
-		box-shadow: 0 0 3px 1px v.$color-shadow !important;
-		position: relative;
-		left: 3px;
-	}
-	:global(.leaflet-interactive) {
-		cursor: unset !important;
-	}
-
-	:global(
-			.leaflet-marker-icon.leaflet-interactive,
-			.leaflet-image-layer.leaflet-interactive,
-			.leaflet-pane > svg path.leaflet-interactive,
-			svg.leaflet-image-layer.leaflet-interactive path
-		) {
-		pointer-events: unset !important;
-	}
-	// End overrides
 	.home-button {
 		position: absolute;
 		z-index: 1000;
 		top: 0.4rem;
-		left: $control-left-margin;
+		left: v.$margin-map-control-left;
 		font-size: 1.8rem;
 	}
 
