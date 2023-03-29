@@ -29,7 +29,12 @@
 			<slot name="text" />
 		</div>
 	</div>
-	<span class="close-button" title="Close" on:click={() => dialog.close()}>
+	<span
+		class="close-button"
+		title="Close"
+		on:click={() => dialog.close()}
+		on:keypress={() => dialog.close()}
+	>
 		<Icon icon="mdi:close-octagon" class="close-icon" />
 	</span>
 </dialog>
