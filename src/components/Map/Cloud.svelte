@@ -11,6 +11,7 @@
 	export let L: typeof import('leaflet');
 	export let map: L.Map;
 	export let avifSupported: boolean;
+	export let setCloudLoaded: () => void;
 
 	interface CloudArgs {
 		x: number;
@@ -66,8 +67,13 @@
 					opacity: this.opacity,
 					alt: 'Cloud',
 					className: 'cloud',
+					zIndex: 2,
 				}
 			);
+
+			this.overlay.on('load', () => {
+				setCloudLoaded();
+			});
 		}
 
 		public raq() {

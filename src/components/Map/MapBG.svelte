@@ -7,9 +7,10 @@
 		MAP_V_GUTTER,
 	} from '@util/vars';
 	import type { LatLngBoundsExpression } from 'leaflet';
+	import { loadImage } from '@util/funcs';
 
 	export let L: typeof import('leaflet');
-	export let mapImageElement: HTMLImageElement;
+	export let setMapLoadedPercentage: (percentageLoaded: number) => void;
 	export let setMapLoaded: () => void;
 
 	const bounds: LatLngBoundsExpression = [
@@ -21,7 +22,6 @@
 
 	let mapElement: HTMLElement;
 	let map: L.Map;
-	let mapLoaded = false;
 
 	onMount(() => {
 		map = L.map(mapElement, {
@@ -39,21 +39,26 @@
 			zoom
 		);
 
-		const mapOverlay = L.imageOverlay(mapImageElement, bounds, {
-			className: 'map-image',
-		});
+		loadImage('/img/map.webp', (percentageLoaded: number) => {
+			setMapLoadedPercentage(percentageLoaded);
+		}).then((imgSrc) => {
+			const mapImageElement = new Image();
+			mapImageElement.alt = 'Background Map Image';
+			mapImageElement.src = imgSrc;
 
-		mapOverlay.addTo(map);
+			const mapOverlay = L.imageOverlay(mapImageElement, bounds, {
+				className: 'map-image',
+			});
 
-		mapOverlay.on('load', () => {
-			mapLoaded = true;
-			setMapLoaded();
+			mapOverlay.addTo(map);
+
+			mapOverlay.on('load', setMapLoaded);
 		});
 	});
 </script>
 
 <figure id="map" bind:this={mapElement}>
-	{#if map && mapLoaded}
+	{#if map}
 		<slot {map} />
 	{/if}
 </figure>

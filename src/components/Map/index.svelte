@@ -28,12 +28,12 @@
 	</a>
 </nav>
 <slot name="canal-entry" />
-<LoadingScreen let:mapImageElement let:setMapLoaded>
+<LoadingScreen let:setMapLoadedPercentage let:setMapLoaded let:setCloudLoaded>
 	{#if L}
-		<MapBG {L} {mapImageElement} {setMapLoaded} let:map>
+		<MapBG {L} {setMapLoadedPercentage} {setMapLoaded} let:map>
 			{#if typeof avifSupported !== 'undefined'}
 				{#each Array(TOTAL_CLOUDS) as _}
-					<Cloud {map} {L} {avifSupported} />
+					<Cloud {map} {L} {avifSupported} {setCloudLoaded} />
 				{/each}
 			{/if}
 			{#each canals as { x, y, width, height, scale, stroke, path, name, pathYAdjust }}

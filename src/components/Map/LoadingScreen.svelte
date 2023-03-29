@@ -1,28 +1,39 @@
 <script lang="ts">
-	import { loadImage } from '@util/funcs';
-	import { onMount } from 'svelte';
+	import { TOTAL_CLOUDS } from '@util/vars';
 
-	let percentageDone = 0;
-	let bgOpacity = 1;
-	let mapImageElement: HTMLImageElement;
-	let loadingScreenClass = 'loading-screen';
+	const MAP_WEIGHT = 0.8;
+	const CLOUD_WEIGHT = 0.2;
+
+	let visualPercentageDone = 0;
+	let mapPercentaegDone = 0;
+	let cloudsPercentageDone = 0;
 	let mapLoaded = false;
+	let bgOpacity = 1;
+	let loadingScreenClass = 'loading-screen';
+	let cloudsLoaded = 0;
+
+	const setMapLoadedPercentage = (percentage: number) => {
+		mapPercentaegDone = Math.floor(percentage);
+	};
 
 	const setMapLoaded = () => {
 		mapLoaded = true;
 	};
 
-	onMount(() => {
-		loadImage('/img/map.webp', (percentageLoaded: number) => {
-			percentageDone = Math.floor(percentageLoaded);
-		}).then((imgSrc) => {
-			mapImageElement = new Image();
-			mapImageElement.alt = 'Background Map Image';
-			mapImageElement.src = imgSrc;
-		});
-	});
+	const setCloudLoaded = () => {
+		cloudsLoaded++;
+		cloudsPercentageDone = Math.floor((cloudsLoaded / TOTAL_CLOUDS) * 100);
+	};
 
-	$: if (percentageDone === 100 && mapLoaded) {
+	$: visualPercentageDone = Math.floor(
+		mapPercentaegDone * MAP_WEIGHT + cloudsPercentageDone * CLOUD_WEIGHT
+	);
+
+	$: if (
+		visualPercentageDone === 100 &&
+		mapLoaded &&
+		cloudsLoaded === TOTAL_CLOUDS
+	) {
 		bgOpacity = 0;
 		loadingScreenClass += ' loaded';
 	}
@@ -31,13 +42,11 @@
 <aside class={loadingScreenClass} style={`opacity:${bgOpacity}`}>
 	<span
 		class="loading-indicator"
-		style={`opacity:${1 - percentageDone / 100}`}
-		>{`${percentageDone}%`}</span
+		style={`opacity:${1 - visualPercentageDone / 100}`}
+		>{`${visualPercentageDone}%`}</span
 	>
 </aside>
-{#if percentageDone === 100 && mapImageElement}
-	<slot {mapImageElement} {setMapLoaded} />
-{/if}
+<slot {setMapLoadedPercentage} {setMapLoaded} {setCloudLoaded} />
 
 <style lang="scss">
 	.loading-screen {

@@ -67,7 +67,6 @@
 			`canal_${camelCaseName}_image`
 		) as HTMLPictureElement
 	).innerHTML.replace(/loading=.lazy./, 'loading="eager"');
-	console.log(imageContent);
 </script>
 
 <Modal {name} {L} bind:showModal>
