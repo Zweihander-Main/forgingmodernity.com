@@ -51,6 +51,7 @@ for (let i = 0; i < canals.length; i++) {
 		camelCaseName,
 	});
 }
+// TODO sizes on the picture
 ---
 
 <Global title={`${shortTitle} | ${pageTitle}`}>
@@ -64,8 +65,8 @@ for (let i = 0; i < canals.length; i++) {
 				<div id={`canal_${camelCaseName}_image`} class="canal-content">
 					<Picture
 						src={image}
-						widths={[200, 400, 800]}
-						sizes="(max-width: 800px) 100vw, 800px"
+						widths={[300, 600, 900]}
+						sizes="50vw, 40vw"
 						aspectRatio="1:1"
 						quality={75}
 						alt={name}
