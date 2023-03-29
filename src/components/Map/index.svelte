@@ -36,7 +36,7 @@
 					<Cloud {map} {L} {avifSupported} />
 				{/each}
 			{/if}
-			{#each canals as { x, y, width, height, scale, stroke, path, name, pathYAdjust, imageSrc }}
+			{#each canals as { x, y, width, height, scale, stroke, path, name, pathYAdjust }}
 				<Canal
 					{map}
 					{L}
@@ -49,7 +49,6 @@
 					{path}
 					{name}
 					{pathYAdjust}
-					{imageSrc}
 				/>
 			{/each}
 			<GrabIndicator {map} {L} />

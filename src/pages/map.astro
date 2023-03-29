@@ -1,4 +1,5 @@
 ---
+import { Picture } from '@astrojs/image/components';
 import Global from '@layouts/Global.astro';
 import Map from '@components/Map/index.svelte';
 import { CollectionEntry, getCollection, getEntryBySlug } from 'astro:content';
@@ -24,17 +25,23 @@ const slimmedCanals: slimmedCanals = canals.map((canal) => {
 		path: canal.data.path,
 		name: canal.data.name,
 		pathYAdjust: canal.data.pathYAdjust,
-		imageSrc: canal.data.imageSrc,
 	};
 });
-const canalEntries: Array<{ Content: AstroComponentFactory; name: string }> =
-	[];
+const canalEntries: Array<{
+	Content: AstroComponentFactory;
+	image: string;
+	name: string;
+}> = [];
 
 for (let i = 0; i < canals.length; i++) {
 	const canal = canals[i] as CollectionEntry<'canals'>;
 	const { Content } = await canal.render();
+	const picture = await import(
+		'../assets/canals/' + camelCaseString(canal.data.name) + '.jpg'
+	);
 	canalEntries.push({
 		Content,
+		image: picture.default.src,
 		name: camelCaseString(canal.data.name),
 	});
 }
@@ -43,10 +50,24 @@ for (let i = 0; i < canals.length; i++) {
 <Global title={`${shortTitle} | ${pageTitle}`}>
 	<Map canals={slimmedCanals} client:load />
 	{
-		canalEntries.map(({ Content, name }) => (
-			<div id={`canal_${name}`} class="canal-content">
-				<Content />
-			</div>
+		canalEntries.map(({ Content, image, name }) => (
+			<>
+				<div id={`canal_${name}`} class="canal-content">
+					<Content />
+				</div>
+				<div id={`canal_${name}_image`} class="canal-content">
+					<Picture
+						src={image}
+						widths={[200, 400, 800]}
+						sizes="(max-width: 800px) 100vw, 800px"
+						aspectRatio="1:1"
+						quality={75}
+						alt={name}
+						fit="cover"
+						position="center"
+					/>
+				</div>
+			</>
 		))
 	}
 </Global>

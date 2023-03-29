@@ -14,7 +14,6 @@
 	export let stroke: number;
 	export let pathYAdjust: number;
 	export let path: string;
-	export let imageSrc: string;
 
 	const visibleStrokeWidth = stroke;
 	const hoverStrokeWidth = visibleStrokeWidth * 5;
@@ -57,14 +56,23 @@
 	});
 	svgLayer.addTo(map);
 
+	// TODO type strings
 	const bodyContent = (
 		document.getElementById(`canal_${camelCaseName}`) as HTMLElement
 	).innerHTML;
+	const imageContent = (
+		document.getElementById(
+			`canal_${camelCaseName}_image`
+		) as HTMLPictureElement
+	).innerHTML;
 </script>
 
-<Modal {imageSrc} {name} {L} bind:showModal>
+<Modal {name} {L} bind:showModal>
 	<svelte:fragment slot="text">
 		{@html bodyContent}
+	</svelte:fragment>
+	<svelte:fragment slot="image">
+		{@html imageContent}
 	</svelte:fragment>
 </Modal>
 

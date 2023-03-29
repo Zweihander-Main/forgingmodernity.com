@@ -1,6 +1,5 @@
 <script lang="ts">
 	export let showModal: boolean;
-	export let imageSrc: string;
 	export let name: string;
 	export let L: typeof import('leaflet');
 	import Icon from '@iconify/svelte';
@@ -24,7 +23,7 @@
 	<div class="modal" on:click|stopPropagation on:keypress|stopPropagation>
 		<div class="image-container">
 			<h1 class="name">{name}</h1>
-			<img class="image" src={imageSrc} alt={name} />
+			<slot name="image" />
 		</div>
 		<div class="text">
 			<slot name="text" />
@@ -109,7 +108,7 @@
 		color: v.$color-map-white;
 	}
 
-	.image {
+	.image-container :global(img) {
 		position: relative;
 		width: 100%;
 		height: 100%;
