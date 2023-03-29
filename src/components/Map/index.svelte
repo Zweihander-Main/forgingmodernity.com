@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import MapBG from './MapBG.svelte';
 	import Cloud from './Cloud.svelte';
 	import Canal from './Canal.svelte';
@@ -16,8 +17,10 @@
 		avifSupported = result;
 	});
 	let L: typeof import('leaflet');
-	import('leaflet').then((result) => {
-		L = result;
+	onMount(() => {
+		import('leaflet').then((result) => {
+			L = result;
+		});
 	});
 </script>
 
