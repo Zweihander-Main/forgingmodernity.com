@@ -60,11 +60,14 @@
 	const bodyContent = (
 		document.getElementById(`canal_${camelCaseName}`) as HTMLElement
 	).innerHTML;
+
+	// Replace forces image loading when component mounted
 	const imageContent = (
 		document.getElementById(
 			`canal_${camelCaseName}_image`
 		) as HTMLPictureElement
-	).innerHTML;
+	).innerHTML.replace(/loading=.lazy./, 'loading="eager"');
+	console.log(imageContent);
 </script>
 
 <Modal {name} {L} bind:showModal>

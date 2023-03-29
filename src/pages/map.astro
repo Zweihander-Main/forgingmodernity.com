@@ -31,18 +31,24 @@ const canalEntries: Array<{
 	Content: AstroComponentFactory;
 	image: string;
 	name: string;
+	camelCaseName: string;
 }> = [];
+
+const canalImages = await Astro.glob('../assets/canals/*.jpg');
 
 for (let i = 0; i < canals.length; i++) {
 	const canal = canals[i] as CollectionEntry<'canals'>;
 	const { Content } = await canal.render();
-	const picture = await import(
-		'../assets/canals/' + camelCaseString(canal.data.name) + '.jpg'
-	);
+	const camelCaseName = camelCaseString(canal.data.name);
+	const canalImage = canalImages.find((image) => {
+		return image.default.src.includes(camelCaseName);
+	}) as Record<string, any>;
+
 	canalEntries.push({
 		Content,
-		image: picture.default.src,
-		name: camelCaseString(canal.data.name),
+		image: canalImage.default.src,
+		name: canal.data.name,
+		camelCaseName,
 	});
 }
 ---
@@ -50,12 +56,12 @@ for (let i = 0; i < canals.length; i++) {
 <Global title={`${shortTitle} | ${pageTitle}`}>
 	<Map canals={slimmedCanals} client:load />
 	{
-		canalEntries.map(({ Content, image, name }) => (
+		canalEntries.map(({ Content, image, name, camelCaseName }) => (
 			<>
-				<div id={`canal_${name}`} class="canal-content">
+				<div id={`canal_${camelCaseName}`} class="canal-content">
 					<Content />
 				</div>
-				<div id={`canal_${name}_image`} class="canal-content">
+				<div id={`canal_${camelCaseName}_image`} class="canal-content">
 					<Picture
 						src={image}
 						widths={[200, 400, 800]}
