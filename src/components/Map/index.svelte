@@ -12,13 +12,13 @@
 	export let canals: slimmedCanals;
 
 	let avifSupported: boolean;
+	isFormatSupported('avif', AVIF_BASE64).then((result) => {
+		avifSupported = result;
+	});
 	let L: typeof import('leaflet');
-
-	// TODO start loading leaflet parallel with loading screen
-	(async () => {
-		L = await import('leaflet');
-		avifSupported = await isFormatSupported('avif', AVIF_BASE64);
-	})();
+	import('leaflet').then((result) => {
+		L = result;
+	});
 </script>
 
 <nav class="home-button">
