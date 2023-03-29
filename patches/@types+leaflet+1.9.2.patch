@@ -1,5 +1,5 @@
 diff --git a/node_modules/@types/leaflet/index.d.ts b/node_modules/@types/leaflet/index.d.ts
-index fe86b60..392d746 100755
+index fe86b60..9f4a516 100755
 --- a/node_modules/@types/leaflet/index.d.ts
 +++ b/node_modules/@types/leaflet/index.d.ts
 @@ -1396,7 +1396,7 @@ export class ImageOverlay extends Layer {
@@ -11,3 +11,12 @@ index fe86b60..392d746 100755
  
      /** Changes the zIndex of the image overlay */
      setZIndex(value: number): this;
+@@ -1419,7 +1419,7 @@ export class ImageOverlay extends Layer {
+     options: ImageOverlayOptions;
+ }
+ 
+-export function imageOverlay(imageUrl: string, bounds: LatLngBoundsExpression, options?: ImageOverlayOptions): ImageOverlay;
++export function imageOverlay(imageUrl: string | HTMLImageElement, bounds: LatLngBoundsExpression, options?: ImageOverlayOptions): ImageOverlay;
+ 
+ export type SVGOverlayStyleOptions = ImageOverlayStyleOptions;
+ 
