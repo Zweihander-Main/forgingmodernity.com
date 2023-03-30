@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Cover from '@components/Cover/index.astro';
-import Purchase from '@components/Purchase/index.astro';
+import PurchaseButton from '@components/Purchase/Button.astro';
 import Review from '@components/Review/index.astro';
 export interface Props {
 	bookInfo: CollectionEntry<'pages'>;
@@ -30,7 +30,7 @@ const coverSizes = `calc(${
 		<article class="bookinfo-text">
 			<BookInfo />
 			<div class="purchase-container">
-				<Purchase />
+				<PurchaseButton />
 			</div>
 		</article>
 	</div>

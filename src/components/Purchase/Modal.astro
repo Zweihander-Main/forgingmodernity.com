@@ -1,0 +1,97 @@
+---
+import { MODAL_ID } from './common';
+---
+
+<input class="state" id={MODAL_ID} type="checkbox" />
+<section class="modal" tabindex={-1} role="dialog" aria-hidden="true">
+	<label class="outer" for={MODAL_ID}></label>
+	<div class="inner">
+		<label class="close" for={MODAL_ID}></label>
+		<h1>Retailers</h1>
+		<p>Are listed here</p>
+	</div>
+</section>
+<style lang="scss">
+	.modal {
+		opacity: 0;
+		visibility: hidden;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		text-align: left;
+		background: v.$color-shadow-dark;
+		transition: opacity v.$transition-speed-slow v.$transition-timing;
+	}
+
+	.outer {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		cursor: pointer;
+	}
+
+	.state {
+		display: none;
+
+		&:checked + .modal {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		&:checked + .modal .inner {
+			top: 0;
+		}
+	}
+
+	.inner {
+		transition: top v.$transition-speed-slow v.$transition-timing;
+		position: absolute;
+		top: 20%;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 50%;
+		margin: auto;
+		overflow: auto;
+		background: #fff;
+		border-radius: 5px;
+		padding: 1em 2em;
+		height: 50%;
+	}
+
+	.close {
+		position: absolute;
+		right: 1em;
+		top: 1em;
+		width: 1.1em;
+		height: 1.1em;
+		cursor: pointer;
+
+		&::after,
+		&::before {
+			content: '';
+			position: absolute;
+			width: 2px;
+			height: 1.5em;
+			background: #ccc;
+			display: block;
+			transform: rotate(45deg);
+			left: 50%;
+			margin: -3px 0 0 -1px;
+			top: 0;
+		}
+
+		&:hover::before,
+		&:hover::after {
+			background: #aaa;
+		}
+
+		&::before {
+			transform: rotate(-45deg);
+		}
+	}
+</style>

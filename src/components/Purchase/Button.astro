@@ -1,14 +1,20 @@
 ---
 import { Icon } from 'astro-icon';
+import { MODAL_ID } from './common';
 export type Props = Record<string, never>;
 ---
 
 <div class="container-hover">
 	<div class="container-border">
 		<div class="container-transparent">
-			<button class="button"
-				><Icon pack="mdi" name="cart" /> Available for Pre-Order</button
+			<label
+				aria-label="Bring up available retailers."
+				role="button"
+				for={MODAL_ID}
+				class="button"
 			>
+				<Icon pack="mdi" name="cart" /> Available for Pre-Order
+			</label>
 		</div>
 	</div>
 </div>
@@ -34,13 +40,12 @@ export type Props = Record<string, never>;
 		color: white;
 		padding: 0;
 		border: 0px;
-		background: none;
-
 		text-align: center;
 		position: relative;
 		z-index: 10;
 		font-size: 1.3rem;
 		font-weight: bold;
+		font-family: v.$font-family-headings;
 		background: v.$color-button;
 		padding: 0.5rem 1rem;
 		display: flex;
@@ -71,6 +76,8 @@ export type Props = Record<string, never>;
 	}
 
 	.container-hover {
+		display: block;
+		text-decoration: none;
 		width: fit-content;
 		transition: filter v.$transition-speed-normal v.$transition-timing,
 			opacity v.$transition-speed-fast linear;
@@ -87,5 +94,23 @@ export type Props = Record<string, never>;
 	[astro-icon='mdi:cart'] {
 		height: 1.3rem;
 		padding: 0 0.4rem 0 0;
+	}
+	.btn {
+		cursor: pointer;
+		background: #27ae60;
+		display: inline-block;
+		padding: 0.5em 1em;
+		color: #fff;
+		border-radius: 3px;
+	}
+
+	.btn:hover,
+	.btn:focus {
+		background: #2ecc71;
+	}
+
+	.btn:active {
+		background: #27ae60;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
 	}
 </style>
