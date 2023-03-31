@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import Cover from '@components/Cover/index.astro';
 import PurchaseButton from '@components/Purchase/Button.astro';
 import Review from '@components/Review/index.astro';
+import MapLink from '@components/MapLink/index.astro';
 export interface Props {
 	bookInfo: CollectionEntry<'pages'>;
 	reviewItems: Array<CollectionEntry<'reviews'>>;
@@ -49,6 +50,9 @@ const coverSizes = `calc(${
 			)) // TODO endorsements
 		} -->
 	</div>
+</section>
+<section>
+	<MapLink />
 </section>
 <section>
 	<div class="footer-container">

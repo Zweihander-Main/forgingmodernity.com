@@ -1,0 +1,20 @@
+---
+import map from '@assets/cover/forging_modernity_cover.jpg';
+import { Picture } from '@astrojs/image/components';
+---
+
+<a href="/map">
+	<Picture
+		src={map}
+		alt="Map of UK Linking to Canal Map"
+		sizes="100vw"
+		widths={[400, 800, 1200]}
+		format="jpg"
+		quality={90}
+		fit="cover"
+		position="center"
+		class="cover"
+	/>
+</a>
+
+<style lang="scss"></style>
