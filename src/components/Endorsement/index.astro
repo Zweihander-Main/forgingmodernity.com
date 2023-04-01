@@ -10,14 +10,12 @@ const { name, profession } = endorsement.data;
 const { Content } = await endorsement.render();
 ---
 
-<div class="endorsement">
-	<div class="endorsement-content">
-		<Content />
-	</div>
-	<div class="endorsement-meta">
-		<div class="endorsement-name">{name}</div>
-		<div class="endorsement-profession">{profession}</div>
-	</div>
+<div class="endorsement-content">
+	<Content />
+</div>
+<div class="endorsement-meta">
+	<div class="endorsement-name">{name}</div>
+	<div class="endorsement-profession">{profession}</div>
 </div>
 
 <style lang="scss">
@@ -31,7 +29,6 @@ const { Content } = await endorsement.render();
 	.endorsement-meta {
 		@include m.parchment-emphasis;
 		@include m.parchment-text;
-		margin: 5rem 0 0;
 		text-align: center;
 	}
 </style>

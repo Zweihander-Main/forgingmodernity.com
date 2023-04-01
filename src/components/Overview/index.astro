@@ -85,7 +85,7 @@ const coverSizes = `calc(${
 		display: grid;
 		grid-template-columns: var(--coverColumnWidth) var(--infoColumnWidth);
 		grid-template-rows: 1fr;
-		grid-gap: var(--overviewGridGap);
+		gap: var(--overviewGridGap);
 		margin: 6rem var(--overviewSideMargin);
 	}
 
@@ -102,7 +102,10 @@ const coverSizes = `calc(${
 	.endorsement-container {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		grid-gap: 10rem;
+		grid-template-rows: 1fr auto;
+		grid-auto-flow: column;
+		row-gap: 2rem;
+		column-gap: 10rem;
 		align-items: baseline;
 		margin: 11rem calc(var(--overviewSideMargin) + 4rem);
 	}
