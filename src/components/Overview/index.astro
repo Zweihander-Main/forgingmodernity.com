@@ -4,6 +4,7 @@ import Cover from '@components/Cover/index.astro';
 import PurchaseButton from '@components/Purchase/Button.astro';
 import Review from '@components/Review/index.astro';
 import MapLink from '@components/MapLink/index.astro';
+import Endorsement from '@components/Endorsement/index.astro';
 export interface Props {
 	bookInfo: CollectionEntry<'pages'>;
 	reviewItems: Array<CollectionEntry<'reviews'>>;
@@ -39,20 +40,17 @@ const coverSizes = `calc(${
 <section>
 	<div class="reviews-container">
 		{reviewItems.map((review) => <Review review={review} />)}
-		<!-- {
-			reviewItems.map(({ data: item, body: review }) => (
-				<>
-					<p class="review">{review}</p>
-					<p class="reviewer">
-						<strong>{item.name}</strong>
-					</p>
-				</>
-			)) // TODO endorsements
-		} -->
 	</div>
 </section>
-<section>
+<section class="maplink-container">
 	<MapLink />
+</section>
+<section class="endorsement-container">
+	{
+		endorsementItems.map((endorsement) => (
+			<Endorsement endorsement={endorsement} />
+		))
+	}
 </section>
 <section>
 	<div class="footer-container">
@@ -77,7 +75,6 @@ const coverSizes = `calc(${
 	}}
 >
 	section {
-		width: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -96,6 +93,18 @@ const coverSizes = `calc(${
 		display: flex;
 		flex-direction: column;
 		margin: 4rem var(--overviewSideMargin);
+	}
+
+	.maplink-container {
+		margin: 1rem var(--overviewSideMargin);
+	}
+
+	.endorsement-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 10rem;
+		align-items: baseline;
+		margin: 11rem calc(var(--overviewSideMargin) + 4rem);
 	}
 
 	.footer-container {
