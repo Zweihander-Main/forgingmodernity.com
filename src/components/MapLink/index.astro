@@ -1,24 +1,75 @@
 ---
 import map from '@assets/overview/maplink.webp';
 import { Picture } from '@astrojs/image/components';
+import { Icon } from 'astro-icon';
 ---
 
-<a href="/map">
+<a href="/map" class="link">
 	<Picture
 		src={map}
 		alt="Map of UK Linking to Canal Map"
-		sizes="100vw"
+		sizes="32vw"
 		widths={[400, 800, 1200]}
 		format="jpg"
-		quality={90}
+		quality={70}
 		fit="cover"
 		position="center"
-		class="maplink"
+		class="map-picture"
 	/>
+	<Icon pack="lucide" name="pointer" class="maplink-icon" />
+	<h1 class="text">Canals<br />Which<br />Forged<br />Modernity<br /></h1>
 </a>
 
 <style lang="scss">
-	.maplink {
-		width: 40vw;
+	// Not sure why they're stacked -- maybe flex, ask chatgpt
+	.link {
+		text-decoration: none;
+		display: block;
+		width: 50vw;
+		position: relative;
+		left: 4vw;
+
+		&:hover .map-picture {
+			filter: drop-shadow(0 0 6px v.$color-shadow-dark);
+			outline: none !important;
+		}
+
+		&:hover .text {
+			text-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+			filter: brightness(5)
+				drop-shadow(0px 0px 0.5px v.$color-shadow-light);
+		}
+
+		&:hover .maplink-icon {
+			opacity: 0;
+		}
+
+		& > * {
+			transition: all v.$transition-speed-normal v.$transition-timing;
+		}
+	}
+
+	:global(.maplink-icon) {
+		position: absolute;
+		top: 20vw;
+		left: 16vw;
+		width: 6vw;
+		height: 6vw;
+		color: v.$color-default;
+		opacity: 0.4;
+		filter: drop-shadow(0 0 6px v.$color-shadow);
+	}
+
+	.text {
+		font-size: 2.7vw;
+		margin-top: 3.25vw;
+	}
+	.map-picture {
+		width: 32vw;
+		filter: drop-shadow(0 0 6px v.$color-shadow);
+		shape-outside: ellipse(14vw 17vw);
+		float: left;
+		display: inline;
+		margin-right: -4vw;
 	}
 </style>
