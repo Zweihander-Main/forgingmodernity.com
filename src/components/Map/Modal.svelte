@@ -14,7 +14,6 @@
 </script>
 
 <dialog
-	id="test"
 	bind:this={dialog}
 	on:close={() => (showModal = false)}
 	on:click|self={() => dialog.close()}
