@@ -1,7 +1,8 @@
 html {
 	background-color: v.$color-default;
 	font-family: v.$font-family-body;
-	font-feature-settings: 'tnum';
+	font-feature-settings: 'kern', 'liga', 'clig', 'calt', 'tnum';
+	font-kerning: normal;
 	font-size: v.$font-size-base;
 	scroll-behavior: smooth;
 }
