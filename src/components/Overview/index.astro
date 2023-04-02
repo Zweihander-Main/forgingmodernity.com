@@ -94,7 +94,8 @@ const coverSizes = `calc(${
 	.reviews-container {
 		display: flex;
 		flex-direction: column;
-		margin: 4rem var(--overviewSideMargin);
+		margin: 4rem var(--overviewSideMargin) 4rem
+			calc(var(--overviewSideMargin) + 2rem);
 	}
 
 	.maplink-container {
@@ -169,6 +170,7 @@ const coverSizes = `calc(${
 	}
 
 	.syndication-links {
+		margin-bottom: 2rem;
 	}
 
 	.copyright {
