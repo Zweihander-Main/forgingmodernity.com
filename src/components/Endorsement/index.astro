@@ -9,7 +9,9 @@ export interface Props {
 const { endorsement } = Astro.props;
 const { name, profession, image } = endorsement.data;
 const { Content } = await endorsement.render();
-const endorser = await import(`../../assets/overview/endorsers/${image}`);
+const endorser = await import(
+	`../../assets/overview/endorsers/${image.replace(/\.[^/.]+$/, '')}.jpg`
+);
 ---
 
 <div class="endorsement-content">

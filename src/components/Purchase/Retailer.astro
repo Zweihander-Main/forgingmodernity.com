@@ -7,7 +7,9 @@ export interface Props {
 }
 
 const { name, url, image } = Astro.props;
-const retailerImage = await import(`../../assets/retailers/${image}`);
+const retailerImage = await import(
+	`../../assets/retailers/${image.replace(/\.[^/.]+$/, '')}.png`
+);
 ---
 
 <a href={url} class="retailer-link">
