@@ -1,5 +1,16 @@
 ---
+import Retailer from './Retailer.astro';
 import { MODAL_ID } from './common';
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+	retailerItems: Array<CollectionEntry<'retailers'>>;
+}
+
+const { retailerItems } = Astro.props;
+const sortedRetailers = retailerItems.sort(
+	(a, b) => a.data.order - b.data.order
+);
 ---
 
 <input class="state" id={MODAL_ID} type="checkbox" />
@@ -8,7 +19,17 @@ import { MODAL_ID } from './common';
 	<div class="inner">
 		<label class="close" for={MODAL_ID}></label>
 		<h1>Retailers</h1>
-		<p>Are listed here</p>
+		<div class="retailers">
+			{
+				sortedRetailers.map(({ data: item }) => (
+					<Retailer
+						name={item.name}
+						url={item.url}
+						image={item.image}
+					/>
+				))
+			}
+		</div>
 	</div>
 </section>
 <style lang="scss">
@@ -57,8 +78,7 @@ import { MODAL_ID } from './common';
 		width: 50%;
 		margin: auto;
 		overflow: auto;
-		background: #fff;
-		border-radius: 5px;
+		background: v.$color-default;
 		padding: 1em 2em;
 		height: 50%;
 	}
@@ -77,7 +97,7 @@ import { MODAL_ID } from './common';
 			position: absolute;
 			width: 2px;
 			height: 1.5em;
-			background: #ccc;
+			background: v.$color-button;
 			display: block;
 			transform: rotate(45deg);
 			left: 50%;
@@ -87,11 +107,24 @@ import { MODAL_ID } from './common';
 
 		&:hover::before,
 		&:hover::after {
-			background: #aaa;
+			background: v.$color-text-stroke;
 		}
 
 		&::before {
 			transform: rotate(-45deg);
 		}
+	}
+
+	.retailers {
+		gap: 2rem;
+		align-items: center;
+		display: grid;
+		grid-auto-rows: 1fr;
+		grid-template-columns: repeat(
+			auto-fill,
+			minmax(calc(200px + 4rem), 1fr)
+		);
+		justify-items: center;
+		margin-bottom: 2rem;
 	}
 </style>

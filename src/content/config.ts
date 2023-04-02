@@ -48,6 +48,15 @@ const canalsCollection = defineCollection({
 	}),
 });
 
+const retailersCollection = defineCollection({
+	schema: z.object({
+		name: z.string(),
+		image: z.string(),
+		url: z.string(),
+		order: z.number(),
+	}),
+});
+
 export const collections = {
 	meta: metaCollection,
 	syndication: syndicationCollection,
@@ -55,4 +64,5 @@ export const collections = {
 	endorsements: endorsementsCollection,
 	pages: pagesCollection,
 	canals: canalsCollection,
+	retailers: retailersCollection,
 };

@@ -20,6 +20,7 @@ if (!bookInfo) {
 const reviewItems = await getCollection('reviews');
 const endorsementItems = await getCollection('endorsements');
 const footerItems = await getCollection('syndication');
+const retailerItems = await getCollection('retailers');
 ---
 
 <Global title={`${shortTitle}: ${subTitle}`}>
@@ -34,7 +35,7 @@ const footerItems = await getCollection('syndication');
 			/>
 		</Parchment>
 	</Parallax>
-	<PurchaseModal />
+	<PurchaseModal retailerItems={retailerItems} />
 </Global>
 
 <style lang="scss"></style>

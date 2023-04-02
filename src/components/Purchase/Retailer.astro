@@ -1,0 +1,43 @@
+---
+import { Image } from '@astrojs/image/components';
+export interface Props {
+	name: string;
+	url: string;
+	image: string;
+}
+
+const { name, url, image } = Astro.props;
+const retailerImage = await import(`../../assets/retailers/${image}`);
+---
+
+<a href={url} class="retailer-link">
+	<Image
+		src={retailerImage.default}
+		alt={name}
+		width={200}
+		class="retailer-image"
+		fit={'cover'}
+		position="center"
+	/>
+</a>
+<style lang="scss">
+	.retailer-link {
+		display: block;
+		padding: 2rem;
+		border: 1px solid v.$color-button;
+		box-shadow: 0 0 2px 1px v.$color-shadow;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		aspect-ratio: 1/1;
+		transition: box-shadow v.$transition-speed-fast v.$transition-timing;
+		border-radius: v.$border-radius;
+
+		&:hover {
+			box-shadow: 0 0 2px 1px v.$color-shadow, 0 0 5px v.$color-shadow;
+		}
+	}
+	.retailer-image {
+		mix-blend-mode: multiply;
+	}
+</style>
