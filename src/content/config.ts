@@ -27,6 +27,7 @@ const endorsementsCollection = defineCollection({
 	schema: z.object({
 		name: z.string(),
 		profession: z.string(),
+		image: z.string(),
 	}),
 });
 
