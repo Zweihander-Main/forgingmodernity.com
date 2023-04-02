@@ -52,9 +52,9 @@ const coverSizes = `calc(${
 		))
 	}
 </section>
-<section>
+<footer>
 	<div class="footer-container">
-		<ul class="para-text">
+		<ul class="syndication-links">
 			{
 				footerItems.map(({ data: item }) => (
 					<li>
@@ -63,8 +63,9 @@ const coverSizes = `calc(${
 				))
 			}
 		</ul>
+		<p class="copyright">Copyright © 2023 by Martin Hutchinson</p>
 	</div>
-</section>
+</footer>
 <style
 	lang="scss"
 	define:vars={{
@@ -74,7 +75,8 @@ const coverSizes = `calc(${
 		overviewGridGap: `${overviewGridGap}rem`,
 	}}
 >
-	section {
+	section,
+	footer {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -112,7 +114,13 @@ const coverSizes = `calc(${
 	}
 
 	.footer-container {
-		margin: 6rem var(--overviewSideMargin);
+		margin: 0rem var(--overviewSideMargin);
+		text-align: center;
+		opacity: 0.6;
+
+		ul {
+			padding: 0;
+		}
 		li {
 			list-style: none;
 		}
@@ -158,5 +166,11 @@ const coverSizes = `calc(${
 
 	.review {
 		text-align: justify;
+	}
+
+	.syndication-links {
+	}
+
+	.copyright {
 	}
 </style>

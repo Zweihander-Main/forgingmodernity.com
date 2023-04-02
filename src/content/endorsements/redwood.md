@@ -1,5 +1,5 @@
 ---
-name: Rt Hon. Sir John Redwood,
+name: Rt Hon. Sir John Redwood
 profession: MP for Wokingham
 image: 'redwood.jpg'
 ---
