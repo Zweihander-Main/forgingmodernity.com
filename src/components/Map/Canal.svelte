@@ -101,8 +101,8 @@
 
 		&:hover > :global(.canal-visible) {
 			stroke: v.$color-map-white;
-			filter: drop-shadow(0px 0px 5px v.$color-shadow),
-				drop-shadow(0px 0px 8px v.$color-shadow-light);
+			filter: drop-shadow(0px 0px 5px v.$color-shadow)
+				drop-shadow(0px 0px 6px v.$color-shadow-light);
 		}
 	}
 </style>
