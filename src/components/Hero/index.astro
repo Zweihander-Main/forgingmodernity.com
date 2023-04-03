@@ -1,15 +1,19 @@
 ---
 import { getImage } from '@astrojs/image';
-import cloudsImageFile from '@assets/hero/gainsborough_clouds.png';
+import cloudsImageFile from '@assets/hero/gainsborough_clouds.jpg';
 import cathedralImageFile from '@assets/hero/canaletto_cathedral.png';
 import cityImageFile from '@assets/hero/canaletto_city.png';
 import riverImageFile from '@assets/hero/canaletto_river.png';
 import shoreImageFile from '@assets/hero/canaletto_shore.png';
 
+const fullWidthImageDefaults = {
+	width: 1500,
+};
+
 const clouds = await getImage({
 	src: cloudsImageFile,
 	alt: 'Clouds',
-	width: 1500, // TODO remove
+	...fullWidthImageDefaults,
 });
 const cathedral = await getImage({
 	src: cathedralImageFile,
@@ -18,14 +22,17 @@ const cathedral = await getImage({
 const city = await getImage({
 	src: cityImageFile,
 	alt: 'London',
+	...fullWidthImageDefaults,
 });
 const river = await getImage({
 	src: riverImageFile,
 	alt: 'Thames River',
+	...fullWidthImageDefaults,
 });
 const shore = await getImage({
 	src: shoreImageFile,
 	alt: 'London Shore',
+	...fullWidthImageDefaults,
 });
 
 export interface Props {
@@ -75,10 +82,7 @@ const { title, subTitle } = Astro.props;
 	.image-clouds {
 		object-fit: cover;
 		height: 100vmax;
-		// TODO temporary until image tidied
-		left: 19vw;
-		top: -8vh;
-		transform: scale(1.4);
+		top: 0;
 	}
 
 	.parallax-layer {
@@ -92,7 +96,8 @@ const { title, subTitle } = Astro.props;
 			display: block;
 			position: absolute;
 			bottom: v.$parallax-bottom;
-			width: 100vw;
+			width: 101vw;
+			left: -0.5vw;
 			outline: none !important; /** Avoid extensions messing around */
 		}
 	}
