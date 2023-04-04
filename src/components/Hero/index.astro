@@ -129,6 +129,24 @@ const { title, subTitle } = Astro.props;
 		position: relative;
 		bottom: 100px;
 		text-align: center;
+		$shadow-param: 0 4px 6px v.$color-shadow, 0 0px 3px v.$color-shadow;
+
+		h1 {
+			@include m.text-stroke(
+				v.$color-text-stroke-light,
+				3px,
+				$shadow-param
+			);
+		}
+
+		h2 {
+			@include m.text-stroke(
+				v.$color-text-stroke-light,
+				2px,
+				$shadow-param
+			);
+			letter-spacing: 0.02em;
+		}
 	}
 
 	$parallax-layers: 5;
