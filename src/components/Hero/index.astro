@@ -125,12 +125,29 @@ const { title, subTitle } = Astro.props;
 		align-content: center;
 	}
 
+	@keyframes fadeup {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
 	.text-container {
 		position: relative;
 		bottom: 100px;
 		text-align: center;
+
 		$shadow-param: 0 4px 6px v.$color-shadow, 0 0px 3px v.$color-shadow;
 
+		& > * {
+			will-change: opacity, transform;
+			opacity: 0;
+			transform: translateY(20px);
+			animation-duration: 1.5s;
+			animation-timing-function: v.$transition-timing;
+			animation-name: fadeup;
+			animation-fill-mode: forwards;
+		}
 		h1 {
 			@include m.text-stroke(
 				v.$color-text-stroke-light,
@@ -146,6 +163,10 @@ const { title, subTitle } = Astro.props;
 				$shadow-param
 			);
 			letter-spacing: 0.02em;
+			will-change: opacity, transform;
+			opacity: 0;
+			transform: translateY(20px);
+			animation-delay: 0.4s;
 		}
 	}
 
