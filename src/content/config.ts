@@ -5,6 +5,7 @@ const metaCollection = defineCollection({
 		shortTitle: z.string(),
 		subTitle: z.string(),
 		author: z.string(),
+		availableText: z.string(),
 	}),
 });
 

@@ -6,13 +6,15 @@ import Review from '@components/Review/index.astro';
 import MapLink from '@components/MapLink/index.astro';
 import Endorsement from '@components/Endorsement/index.astro';
 export interface Props {
+	availableText: string;
 	bookInfo: CollectionEntry<'pages'>;
 	reviewItems: Array<CollectionEntry<'reviews'>>;
 	endorsementItems: Array<CollectionEntry<'endorsements'>>;
 	footerItems: Array<CollectionEntry<'syndication'>>;
 }
 
-const { bookInfo, reviewItems, endorsementItems, footerItems } = Astro.props;
+const { availableText, bookInfo, reviewItems, endorsementItems, footerItems } =
+	Astro.props;
 
 const { Content: BookInfo } = await bookInfo.render();
 
@@ -32,7 +34,11 @@ const coverSizes = `calc(${
 		<article class="bookinfo-text">
 			<BookInfo />
 			<div class="purchase-container">
-				<PurchaseButton />
+				<PurchaseButton
+					iconPack="mdi"
+					icon="cart"
+					text={availableText}
+				/>
 			</div>
 		</article>
 	</div>

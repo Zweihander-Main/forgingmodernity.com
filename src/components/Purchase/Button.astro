@@ -1,7 +1,12 @@
 ---
 import { Icon } from 'astro-icon';
 import { MODAL_ID } from './common';
-export type Props = Record<string, never>;
+export interface Props {
+	iconPack: string;
+	icon: string;
+	text: string;
+}
+const { text, iconPack, icon } = Astro.props;
 ---
 
 <div class="container-hover">
@@ -13,7 +18,8 @@ export type Props = Record<string, never>;
 				for={MODAL_ID}
 				class="button"
 			>
-				<Icon pack="mdi" name="cart" /> Available Now!
+				<Icon pack={iconPack} name={icon} />
+				{text}
 			</label>
 		</div>
 	</div>
