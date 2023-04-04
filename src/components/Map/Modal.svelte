@@ -95,6 +95,7 @@
 	}
 
 	.name {
+		@include m.text-stroke(black, 1.3px, 0 0 0.4rem black);
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -104,8 +105,6 @@
 		font-size: 3.5rem;
 		z-index: 1201;
 		line-height: 0.9;
-		text-shadow: 0 0 0.4rem black;
-		-webkit-text-stroke: 1px black;
 		letter-spacing: 0.03em;
 		margin-left: 0.7rem;
 		margin-bottom: 0.3rem;

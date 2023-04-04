@@ -95,9 +95,12 @@
 
 	.home-text {
 		@include m.smallcaps;
+		@include m.text-stroke(
+			v.$color-text-stroke,
+			0.5px,
+			1px 1px 2px v.$color-shadow
+		);
 		font-size: 1.4rem;
 		margin: 0;
-		text-shadow: 1px 1px 2px v.$color-shadow;
-		-webkit-text-stroke: 0.3px v.$color-text-stroke;
 	}
 </style>
