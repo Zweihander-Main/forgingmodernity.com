@@ -18,9 +18,9 @@
 @mixin parchment-deboss {
 	background-color: black;
 	color: transparent;
-	text-shadow: 0 2px 3px rgb(255 255 255 / 10%);
+	text-shadow: 0 var(--deboss-depth) 3px rgb(255 255 255 / 10%);
 	background-clip: text;
-	filter: brightness(5);
+	filter: brightness(var(--deboss-brightness));
 }
 
 @mixin custom-scrollbar($scroll-bg, $thumb-bg) {

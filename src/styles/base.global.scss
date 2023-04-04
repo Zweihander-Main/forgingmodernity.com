@@ -20,3 +20,13 @@ button {
 ::selection {
 	background: v.$color-parchment-shadow;
 }
+
+:root {
+	--deboss-brightness: #{v.$brightness-deboss-normal};
+	--deboss-depth: #{v.$depth-deboss-normal};
+
+	@supports (-moz-appearance: none) {
+		--deboss-brightness: #{v.$brightness-deboss-moz};
+		--deboss-depth: #{v.$depth-deboss-moz};
+	}
+}
