@@ -5,34 +5,43 @@ import cathedralImageFile from '@assets/hero/canaletto_cathedral.png';
 import cityImageFile from '@assets/hero/canaletto_city.png';
 import riverImageFile from '@assets/hero/canaletto_river.png';
 import shoreImageFile from '@assets/hero/canaletto_shore.png';
-
-const fullWidthImageDefaults = {
-	width: 1500,
-};
+import manImageFile from '@assets/hero/man.png';
 
 const clouds = await getImage({
 	src: cloudsImageFile,
 	alt: 'Clouds',
-	...fullWidthImageDefaults,
+	width: 1500,
+	format: 'avif', // TODO compat
 });
 const cathedral = await getImage({
 	src: cathedralImageFile,
 	alt: "St. Paul's Cathedral",
+	width: 478.5,
+	format: 'avif',
 });
 const city = await getImage({
 	src: cityImageFile,
 	alt: 'London',
-	...fullWidthImageDefaults,
+	width: 1500,
+	format: 'avif',
 });
 const river = await getImage({
 	src: riverImageFile,
 	alt: 'Thames River',
-	...fullWidthImageDefaults,
+	width: 1500,
+	format: 'avif',
 });
 const shore = await getImage({
 	src: shoreImageFile,
 	alt: 'London Shore',
-	...fullWidthImageDefaults,
+	width: 1500,
+	format: 'avif',
+});
+const man = await getImage({
+	src: manImageFile,
+	alt: 'Man Standing Before London',
+	width: 450,
+	format: 'avif',
 });
 
 export interface Props {
@@ -64,6 +73,9 @@ const { title, subTitle } = Astro.props;
 </div>
 <div class="parallax-layer parallax-layer-5">
 	<img src={shore.src} alt={shore.alt} />
+</div>
+<div class="parallax-layer parallax-layer-6 parallax-layer-man">
+	<img src={man.src} alt={man.alt} />
 </div>
 <div class="parallax-layer parallax-layer-bottom"></div>
 
@@ -114,6 +126,13 @@ const { title, subTitle } = Astro.props;
 		img {
 			width: 31.9vw;
 			left: 31.5vw;
+		}
+	}
+
+	.parallax-layer-man {
+		img {
+			width: 30vw;
+			left: -4vw;
 		}
 	}
 
@@ -170,7 +189,7 @@ const { title, subTitle } = Astro.props;
 		}
 	}
 
-	$parallax-layers: 5;
+	$parallax-layers: 6;
 
 	@for $i from 0 through $parallax-layers {
 		$x: math.div($parallax-layers - $i, 2);
