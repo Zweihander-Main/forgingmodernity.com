@@ -133,6 +133,8 @@ const { title, subTitle } = Astro.props;
 		img {
 			width: 30vw;
 			left: -4vw;
+			// Fix for layers splitting apart at the bottom
+			transform: translateY(0.3vmin);
 		}
 	}
 
