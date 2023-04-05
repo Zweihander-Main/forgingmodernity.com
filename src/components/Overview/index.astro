@@ -91,10 +91,25 @@ const coverSizes = `calc(${
 
 	.bookinfo-container {
 		display: grid;
-		grid-template-columns: var(--coverColumnWidth) var(--infoColumnWidth);
+		grid-template-columns: 1fr;
 		grid-template-rows: 1fr;
-		gap: var(--overviewGridGap);
-		margin: 6rem var(--overviewSideMargin);
+		margin: 6rem 0;
+
+		@include m.media('>phone') {
+			margin: 6rem calc(var(--overviewSideMargin) / 2);
+		}
+
+		@include m.media('>desktop') {
+			grid-template-columns: var(--coverColumnWidth) var(
+					--infoColumnWidth
+				);
+			gap: calc(var(--overviewGridGap) / 2);
+		}
+
+		@include m.media('>xlarge') {
+			gap: var(--overviewGridGap);
+			margin: 6rem var(--overviewSideMargin);
+		}
 	}
 
 	.reviews-container {

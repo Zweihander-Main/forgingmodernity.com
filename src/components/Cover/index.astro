@@ -1,5 +1,5 @@
 ---
-import cover from '@assets/overview/forging_modernity_cover.jpg';
+import cover from '@assets/overview/cover.jpg';
 import { Picture } from '@astrojs/image/components';
 export interface Props {
 	sizes: string;
@@ -22,14 +22,17 @@ const { sizes } = Astro.props;
 </div>
 <style lang="scss">
 	.book {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@include m.media('>desktop') {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 
 	.cover {
 		max-width: 100%;
 		max-height: 100%;
 		box-shadow: 0 5px 20px 2px v.$color-shadow;
+		width: 100%;
 	}
 </style>
