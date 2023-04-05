@@ -1,0 +1,34 @@
+---
+import '@styles/base.global.scss';
+import Parchment from '@layouts/partial/Parchment.astro';
+export type Props = { children: any };
+---
+
+<Parchment>
+	<div class="markdown-container">
+		<p class="return"><a href="/">Return Home</a></p>
+		<slot />
+	</div>
+</Parchment>
+
+<style>
+	.return {
+		place-content: flex-start;
+	}
+
+	.markdown-container {
+		max-width: 800px;
+		margin: 0 auto;
+		min-height: calc(100vh - 6rem);
+		padding: 2rem 0 4rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	:global(p:first-of-type) {
+		margin-top: 0;
+		margin-bottom: 2rem;
+	}
+</style>

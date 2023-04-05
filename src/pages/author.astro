@@ -1,0 +1,45 @@
+---
+import Global from '@layouts/Global.astro';
+import Markdown from '@layouts/partial/Markdown.astro';
+import { getEntryBySlug } from 'astro:content';
+import authorPic from '@assets/author/author.jpg';
+import { Picture } from '@astrojs/image/components';
+
+export type Props = Record<string, never>;
+
+const metaEntry = await getEntryBySlug('meta', 'site');
+const { shortTitle, subTitle, author } = metaEntry.data;
+
+const bookInfo = await getEntryBySlug('pages', 'author');
+if (!bookInfo) {
+	throw new Error('No author item found');
+}
+const { Content } = await bookInfo.render();
+---
+
+<Global title={`${shortTitle}: ${subTitle}`}>
+	<Markdown>
+		<Picture
+			src={authorPic}
+			alt={author}
+			sizes={'50vw'}
+			widths={[400, 800, 1200]}
+			quality={90}
+			fit="cover"
+			position="center"
+			class="author"
+		/>
+		<Content />
+	</Markdown>
+</Global>
+
+<style lang="scss">
+	.author {
+		width: 50%;
+		margin: 0 auto 2rem;
+		display: block;
+		mix-blend-mode: luminosity;
+		opacity: 0.8;
+		clip-path: circle(55% at 50% 50%);
+	}
+</style>

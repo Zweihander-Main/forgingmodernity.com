@@ -1,12 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
 import Global from '@layouts/Global.astro';
 import Parallax from '@layouts/partial/Parallax.astro';
 import Parchment from '@layouts/partial/Parchment.astro';
 import Hero from '@components/Hero/index.astro';
 import Overview from '@components/Overview/index.astro';
 import PurchaseModal from '@components/Purchase/Modal.astro';
-import { getEntryBySlug } from 'astro:content';
+import { getEntryBySlug, getCollection } from 'astro:content';
 export type Props = Record<string, never>;
 
 const metaEntry = await getEntryBySlug('meta', 'site');
