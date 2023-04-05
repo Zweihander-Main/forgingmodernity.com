@@ -53,7 +53,7 @@ const { title, subTitle } = Astro.props;
 // TODO: Change images to jpg, optimize to 1500/3000/half width, do manual picture element, move to public
 ---
 
-<div class="parallax-layer parallax-layer-0">
+<div class="parallax-layer parallax-layer-0 parallax-layer-clouds">
 	<img src={clouds.src} alt={clouds.alt} class="image-clouds" />
 </div>
 <div class="parallax-layer parallax-layer-1 parallax-layer-cathedral">
@@ -91,12 +91,6 @@ const { title, subTitle } = Astro.props;
 		line-height: 0;
 	}
 
-	.image-clouds {
-		object-fit: cover;
-		height: 100vmax;
-		top: 0;
-	}
-
 	.parallax-layer {
 		position: absolute;
 		top: 0;
@@ -120,6 +114,21 @@ const { title, subTitle } = Astro.props;
 		justify-content: flex-end;
 		top: auto;
 		bottom: v.$parallax-bottom;
+	}
+
+	@keyframes huerotate {
+		to {
+			filter: hue-rotate(360deg);
+		}
+	}
+
+	.parallax-layer-clouds {
+		img {
+			object-fit: cover;
+			height: 100vmax;
+			top: 0;
+			animation: huerotate 10s infinite linear;
+		}
 	}
 
 	.parallax-layer-cathedral {
@@ -158,7 +167,8 @@ const { title, subTitle } = Astro.props;
 		bottom: 100px;
 		text-align: center;
 
-		$shadow-param: 0 4px 6px v.$color-shadow, 0 0px 4px v.$color-shadow-dark;
+		$shadow-param: 0 4px 7px v.$color-shadow-dark,
+			0 0px 5px v.$color-shadow-dark;
 
 		& > * {
 			will-change: opacity, transform;
