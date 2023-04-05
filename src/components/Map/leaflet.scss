@@ -301,7 +301,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	display: block;
 	text-align: center;
 	text-decoration: none;
-	color: black;
+	color: v.$color-black;
 	transition: all v.$transition-speed-instant ease-in;
 }
 
@@ -617,7 +617,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
 /* Base styles for the element that has a tooltip */
 .leaflet-tooltip {
 	@include m.smallcaps;
-	@include m.text-stroke(v.$color-text-stroke, 0.5px, 2px 2px 5px black);
+	@include m.text-stroke(
+		v.$color-text-stroke,
+		0.5px,
+		2px 2px 5px v.$color-black
+	);
 
 	background-color: v.$color-shadow;
 	color: v.$color-map-white;

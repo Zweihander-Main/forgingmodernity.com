@@ -95,7 +95,11 @@
 	}
 
 	.name {
-		@include m.text-stroke(black, 1.3px, 0 0 0.4rem black);
+		@include m.text-stroke(
+			v.$color-black,
+			1.3px,
+			0 0 0.4rem v.$color-black
+		);
 		position: absolute;
 		bottom: 0;
 		left: 0;

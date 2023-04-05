@@ -34,7 +34,8 @@
 		left: 30%;
 		animation: 1.5s ease-in-out 0s infinite forwards drag-gesture;
 		will-change: transform opacity;
-		filter: drop-shadow(0 0 1px black) drop-shadow(0 0 0.4rem black);
+		filter: drop-shadow(0 0 1px v.$color-black)
+			drop-shadow(0 0 0.4rem v.$color-black);
 	}
 
 	:global(.grab-icon g) {
