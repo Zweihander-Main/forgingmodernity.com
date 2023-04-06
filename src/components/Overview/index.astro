@@ -99,9 +99,10 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-template-rows: 1fr;
-		margin: 6rem 0;
+		margin: 3rem 0;
 
 		@include m.media('>desktop') {
+			margin: 6rem 0;
 			grid-template-columns: var(--coverColumnWidth) var(
 					--infoColumnWidth
 				);
@@ -116,7 +117,6 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 	.reviews-container {
 		display: flex;
 		flex-direction: column;
-		margin-left: 2rem;
 	}
 
 	.maplink-container {
