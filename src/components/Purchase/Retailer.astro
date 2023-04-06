@@ -25,7 +25,7 @@ const retailerImage = await import(
 <style lang="scss">
 	.retailer-link {
 		display: block;
-		padding: 2rem;
+		padding: 1rem;
 		border: 1px solid v.$color-button;
 		box-shadow: 0 0 2px 1px v.$color-shadow;
 		display: flex;
@@ -35,11 +35,20 @@ const retailerImage = await import(
 		transition: box-shadow v.$transition-speed-fast v.$transition-timing;
 		border-radius: v.$border-radius;
 
+		@include m.media('>phone') {
+			padding: 1.5rem;
+		}
+		@include m.media('>tablet') {
+			padding: 2rem;
+		}
+
 		&:hover {
 			box-shadow: 0 0 2px 1px v.$color-shadow, 0 0 5px v.$color-shadow;
 		}
 	}
 	.retailer-image {
 		mix-blend-mode: multiply;
+		max-width: 100%;
+		height: auto;
 	}
 </style>

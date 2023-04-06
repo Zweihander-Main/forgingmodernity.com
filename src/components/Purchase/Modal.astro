@@ -71,16 +71,22 @@ const sortedRetailers = retailerItems.sort(
 	.inner {
 		transition: top v.$transition-speed-slow v.$transition-timing;
 		position: absolute;
-		top: 20%;
 		right: 0;
 		bottom: 0;
 		left: 0;
-		width: 50%;
+		top: 10%;
+		width: 70%;
+		height: 80%;
 		margin: auto;
 		overflow: auto;
 		background: v.$color-default;
 		padding: 1em 2em;
-		height: 65%;
+
+		@include m.media('>tablet') {
+			top: 20%;
+			width: 50%;
+			height: 65%;
+		}
 	}
 
 	.close {
@@ -116,15 +122,31 @@ const sortedRetailers = retailerItems.sort(
 	}
 
 	.retailers {
-		gap: 2rem;
+		gap: 1rem;
 		align-items: center;
 		display: grid;
 		grid-auto-rows: 1fr;
 		grid-template-columns: repeat(
 			auto-fill,
-			minmax(calc(200px + 4rem), 1fr)
+			minmax(calc(100px + 2rem), 1fr)
 		);
 		justify-items: center;
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
+		@include m.media('>phone') {
+			margin-bottom: 1.5rem;
+			gap: 1.5rem;
+			grid-template-columns: repeat(
+				auto-fill,
+				minmax(calc(150px + 4rem), 1fr)
+			);
+		}
+		@include m.media('>tablet') {
+			margin-bottom: 2rem;
+			gap: 2rem;
+			grid-template-columns: repeat(
+				auto-fill,
+				minmax(calc(200px + 4rem), 1fr)
+			);
+		}
 	}
 </style>
