@@ -1,7 +1,8 @@
 @use 'variables' as v;
+@use './breakpoints.module.scss' as b;
 @import 'node_modules/include-media/dist/include-media';
 
-$breakpoints: v.$breakpoints;
+$breakpoints: b.$breakpoints;
 
 @mixin parchment-text {
 	opacity: v.$opacity-parchment;

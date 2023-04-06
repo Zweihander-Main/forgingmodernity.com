@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 html {
 	background-color: v.$color-default;
 	font-family: v.$font-family-body;

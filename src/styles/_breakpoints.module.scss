@@ -1,0 +1,33 @@
+$media-ultratiny: 320px;
+$media-tiny: 380px;
+$media-phone: 480px;
+$media-tablet: 768px;
+$media-desktop: 1024px;
+$media-large: 1280px;
+$media-xlarge: 1440px;
+$media-xxlarge: 1920px;
+$media-xxxlarge: 2560px;
+$breakpoints: (
+	'ultratiny': $media-ultratiny,
+	'tiny': $media-tiny,
+	'phone': $media-phone,
+	'tablet': $media-tablet,
+	'desktop': $media-desktop,
+	'large': $media-large,
+	'xlarge': $media-xlarge,
+	'xxlarge': $media-xxlarge,
+	'xxxlarge': $media-xxxlarge,
+) !default;
+
+/*stylelint-disable */
+:export {
+	mediaUltratiny: $media-ultratiny;
+	mediaTiny: $media-tiny;
+	mediaPhone: $media-phone;
+	mediaTablet: $media-tablet;
+	mediaDesktop: $media-desktop;
+	mediaLarge: $media-large;
+	mediaXlarge: $media-xlarge;
+	mediaXxlarge: $media-xxlarge;
+	mediaXxxlarge: $media-xxxlarge;
+}

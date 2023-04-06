@@ -5,6 +5,8 @@ import PurchaseButton from '@components/Purchase/Button.astro';
 import Review from '@components/Review/index.astro';
 import MapLink from '@components/MapLink/index.astro';
 import Endorsement from '@components/Endorsement/index.astro';
+import breakpoints from '@styles/_breakpoints.alias.module.scss';
+
 export interface Props {
 	availableText: string;
 	bookInfo: CollectionEntry<'pages'>;
@@ -23,9 +25,14 @@ const coverColumnWidth = 10;
 const overviewSideMargin = 12;
 const overviewGridGap = 8;
 
-const coverSizes = `calc(${
-	(coverColumnWidth / (infoColumnWidth + coverColumnWidth)) * 100
-}vw - ${overviewGridGap / 2 + overviewSideMargin}rem)`;
+const mediaDesktopMinWidth = parseInt(breakpoints.mediaDesktop, 10) + 1;
+const mediaDesktopCoverSize = (
+	(coverColumnWidth / (infoColumnWidth + coverColumnWidth)) *
+	100
+).toPrecision(4);
+const mediaDesktopGutter = overviewGridGap / 2 + overviewSideMargin;
+
+const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCoverSize}vw - ${mediaDesktopGutter}rem), 100vw`;
 ---
 
 <section>

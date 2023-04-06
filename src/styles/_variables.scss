@@ -32,16 +32,3 @@ $transition-speed-slow: 0.2s;
 $transition-speed-page-change: 0.5s;
 $transition-timing: ease-in-out;
 $transition-timing-instant: ease-in;
-
-// include-media breakpoints
-$breakpoints: (
-	'ultratiny': 320px,
-	'tiny': 380px,
-	'phone': 480px,
-	'tablet': 768px,
-	'desktop': 1024px,
-	'large': 1280px,
-	'xlarge': 1440px,
-	'xxwide': 1920px,
-	'xxxxlarge': 2560px,
-) !default;
