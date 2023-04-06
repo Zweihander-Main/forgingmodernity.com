@@ -12,6 +12,19 @@ export type Props = { children: any };
 			0 0 125px v.$color-parchment-shadow inset;
 		background: v.$color-parchment;
 		background-image: v.$parchment-background;
+		padding: 0 calc(v.$padding-width-overview-sides / 8);
+
+		@include m.media('>phone') {
+			padding: 0 calc(v.$padding-width-overview-sides / 4);
+		}
+
+		@include m.media('>desktop') {
+			padding: 0 calc(v.$padding-width-overview-sides / 2);
+		}
+
+		@include m.media('>xlarge') {
+			padding: 0 v.$padding-width-overview-sides;
+		}
 
 		:global(p),
 		:global(.para-text) {

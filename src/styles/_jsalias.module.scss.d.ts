@@ -7,3 +7,4 @@ export const mediaLarge: string;
 export const mediaXlarge: string;
 export const mediaXxlarge: string;
 export const mediaXxxlarge: string;
+export const paddingWidthOverviewSides: string;

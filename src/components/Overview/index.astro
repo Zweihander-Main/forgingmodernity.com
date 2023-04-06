@@ -5,7 +5,7 @@ import PurchaseButton from '@components/Purchase/Button.astro';
 import Review from '@components/Review/index.astro';
 import MapLink from '@components/MapLink/index.astro';
 import Endorsement from '@components/Endorsement/index.astro';
-import breakpoints from '@styles/_breakpoints.alias.module.scss';
+import cssVars from '@styles/_jsalias.module.scss';
 
 export interface Props {
 	availableText: string;
@@ -20,17 +20,17 @@ const { availableText, bookInfo, reviewItems, endorsementItems, footerItems } =
 
 const { Content: BookInfo } = await bookInfo.render();
 
-const infoColumnWidth = 13;
-const coverColumnWidth = 10;
-const overviewSideMargin = 12;
-const overviewGridGap = 8;
+const bookInfoColumnWidth = 13;
+const bookCoverColumnWidth = 10;
+const bookInfoGridGap = 8;
+const overviewSideMargin = parseInt(cssVars.paddingWidthOverviewSides, 10);
 
-const mediaDesktopMinWidth = parseInt(breakpoints.mediaDesktop, 10) + 1;
+const mediaDesktopMinWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
 const mediaDesktopCoverSize = (
-	(coverColumnWidth / (infoColumnWidth + coverColumnWidth)) *
+	(bookCoverColumnWidth / (bookInfoColumnWidth + bookCoverColumnWidth)) *
 	100
 ).toPrecision(4);
-const mediaDesktopGutter = overviewGridGap / 2 + overviewSideMargin;
+const mediaDesktopGutter = bookInfoGridGap / 2 + overviewSideMargin;
 
 const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCoverSize}vw - ${mediaDesktopGutter}rem), 100vw`;
 ---
@@ -82,10 +82,9 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 <style
 	lang="scss"
 	define:vars={{
-		infoColumnWidth: `${infoColumnWidth}fr`,
-		coverColumnWidth: `${coverColumnWidth}fr`,
-		overviewSideMargin: `${overviewSideMargin}rem`,
-		overviewGridGap: `${overviewGridGap}rem`,
+		bookInfoColumnWidth: `${bookInfoColumnWidth}fr`,
+		bookCoverColumnWidth: `${bookCoverColumnWidth}fr`,
+		bookInfoGridGap: `${bookInfoGridGap}rem`,
 	}}
 >
 	section,
@@ -102,10 +101,6 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 		grid-template-rows: 1fr;
 		margin: 6rem 0;
 
-		@include m.media('>phone') {
-			margin: 6rem calc(var(--overviewSideMargin) / 2);
-		}
-
 		@include m.media('>desktop') {
 			grid-template-columns: var(--coverColumnWidth) var(
 					--infoColumnWidth
@@ -115,19 +110,16 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 
 		@include m.media('>xlarge') {
 			gap: var(--overviewGridGap);
-			margin: 6rem var(--overviewSideMargin);
 		}
 	}
 
 	.reviews-container {
 		display: flex;
 		flex-direction: column;
-		margin: 4rem var(--overviewSideMargin) 4rem
-			calc(var(--overviewSideMargin) + 2rem);
+		margin-left: 2rem;
 	}
 
 	.maplink-container {
-		margin: 1rem var(--overviewSideMargin);
 	}
 
 	.endorsement-container {
@@ -139,11 +131,9 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 		column-gap: 10rem;
 		align-items: baseline;
 		justify-items: center;
-		margin: 11rem calc(var(--overviewSideMargin) + 4rem);
 	}
 
 	.footer-container {
-		margin: 0rem var(--overviewSideMargin);
 		text-align: center;
 		opacity: 0.6;
 
@@ -157,8 +147,18 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 
 	.bookinfo-text {
 		:global(h1) {
-			font-size: 3rem;
-			margin-bottom: 0;
+			font-size: 2.3rem;
+			margin-bottom: 0.5rem;
+			line-height: 1;
+
+			@include m.media('>phone') {
+				font-size: 3rem;
+			}
+
+			@include m.media('>tablet') {
+				line-height: normal;
+				margin-bottom: 0rem;
+			}
 		}
 
 		:global(h2) {
