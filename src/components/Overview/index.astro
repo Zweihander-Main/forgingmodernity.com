@@ -142,9 +142,10 @@ const coverSizes =
 	}
 
 	.endorsement-container {
+		margin-bottom: 6rem;
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr auto auto;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(6, auto);
 		grid-auto-flow: column;
 		row-gap: 2.5rem;
 		align-items: baseline;
@@ -155,6 +156,8 @@ const coverSizes =
 
 		@include m.media('>desktop') {
 			column-gap: calc(v.$padding-width-overview-sides / 2);
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr auto auto;
 		}
 
 		@include m.media('>xxlarge') {

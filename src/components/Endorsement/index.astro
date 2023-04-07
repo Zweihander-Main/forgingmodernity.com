@@ -34,15 +34,22 @@ const endorser = await import(
 
 <style lang="scss">
 	.endorser {
-		width: 17rem;
+		width: 100%;
 		text-align: center;
 		clip-path: circle();
 		mix-blend-mode: luminosity;
 		opacity: 0.9;
+		@include m.media('>phone') {
+			width: 17rem;
+		}
 	}
 
 	.endorsement-content {
 		text-align: justify;
+		margin-top: 6rem;
+		@include m.media('>desktop') {
+			margin-top: 0;
+		}
 	}
 
 	.endorsement-meta {
