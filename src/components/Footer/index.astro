@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+	footerItems: Array<CollectionEntry<'syndication'>>;
+	authorName: string;
+}
+
+const { footerItems, authorName } = Astro.props;
+---
+
+<footer>
+	<div class="footer-container">
+		<ul class="syndication-links">
+			{
+				footerItems.map(({ data: item }) => (
+					<li>
+						<a href={item.link}>{item.title}</a>
+					</li>
+				))
+			}
+		</ul>
+		<p class="copyright">
+			Copyright © {new Date().getFullYear()} by {authorName}
+		</p>
+	</div>
+</footer>
+<style lang="scss">
+	footer {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 2rem;
+	}
+
+	.footer-container {
+		text-align: center;
+		opacity: 0.6;
+
+		ul {
+			padding: 0;
+		}
+		li {
+			list-style: none;
+		}
+	}
+
+	.syndication-links {
+		margin-bottom: 2rem;
+		line-height: 1.5;
+	}
+</style>

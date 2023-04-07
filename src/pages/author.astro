@@ -1,8 +1,10 @@
 ---
 import Global from '@layouts/Global.astro';
 import Markdown from '@layouts/partial/Markdown.astro';
-import { getEntryBySlug } from 'astro:content';
+import Footer from '@components/Footer/index.astro';
 import authorPic from '@assets/author/author.jpg';
+import cssVars from '@styles/_jsalias.module.scss';
+import { getCollection, getEntryBySlug } from 'astro:content';
 import { Picture } from '@astrojs/image/components';
 
 export type Props = Record<string, never>;
@@ -14,7 +16,13 @@ const bookInfo = await getEntryBySlug('pages', 'author');
 if (!bookInfo) {
 	throw new Error('No author item found');
 }
+
 const { Content } = await bookInfo.render();
+
+const footerItems = await getCollection('syndication');
+
+const overviewSideMargin = parseInt(cssVars.paddingWidthOverviewSides, 10);
+const pictureSizes = `calc(50vw - ${overviewSideMargin}rem})`;
 ---
 
 <Global title={`${shortTitle}: ${subTitle}`}>
@@ -22,7 +30,7 @@ const { Content } = await bookInfo.render();
 		<Picture
 			src={authorPic}
 			alt={author}
-			sizes={'50vw'}
+			sizes={pictureSizes}
 			widths={[400, 800, 1200]}
 			quality={90}
 			fit="cover"
@@ -30,6 +38,7 @@ const { Content } = await bookInfo.render();
 			class="author"
 		/>
 		<Content />
+		<Footer footerItems={footerItems} authorName={author} />
 	</Markdown>
 </Global>
 

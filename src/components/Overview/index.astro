@@ -1,13 +1,15 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import Cover from '@components/Cover/index.astro';
 import PurchaseButton from '@components/Purchase/Button.astro';
 import Review from '@components/Review/index.astro';
 import MapLink from '@components/MapLink/index.astro';
 import Endorsement from '@components/Endorsement/index.astro';
+import Footer from '@components/Footer/index.astro';
 import cssVars from '@styles/_jsalias.module.scss';
+import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
+	authorName: string;
 	availableText: string;
 	bookInfo: CollectionEntry<'pages'>;
 	reviewItems: Array<CollectionEntry<'reviews'>>;
@@ -15,8 +17,14 @@ export interface Props {
 	footerItems: Array<CollectionEntry<'syndication'>>;
 }
 
-const { availableText, bookInfo, reviewItems, endorsementItems, footerItems } =
-	Astro.props;
+const {
+	availableText,
+	authorName,
+	bookInfo,
+	reviewItems,
+	endorsementItems,
+	footerItems,
+} = Astro.props;
 
 const { Content: BookInfo } = await bookInfo.render();
 
@@ -80,20 +88,7 @@ const coverSizes =
 		))
 	}
 </section>
-<footer>
-	<div class="footer-container">
-		<ul class="syndication-links">
-			{
-				footerItems.map(({ data: item }) => (
-					<li>
-						<a href={item.link}>{item.title}</a>
-					</li>
-				))
-			}
-		</ul>
-		<p class="copyright">Copyright © 2023 by Martin Hutchinson</p>
-	</div>
-</footer>
+<Footer footerItems={footerItems} authorName={authorName} />
 <style
 	lang="scss"
 	define:vars={{
@@ -102,8 +97,7 @@ const coverSizes =
 		bookInfoGridGap: `${bookInfoGridGap}rem`,
 	}}
 >
-	section,
-	footer {
+	section {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -165,18 +159,6 @@ const coverSizes =
 		}
 	}
 
-	.footer-container {
-		text-align: center;
-		opacity: 0.6;
-
-		ul {
-			padding: 0;
-		}
-		li {
-			list-style: none;
-		}
-	}
-
 	.bookinfo-text {
 		:global(h1) {
 			font-size: 2.3rem;
@@ -226,13 +208,5 @@ const coverSizes =
 
 	.review {
 		text-align: justify;
-	}
-
-	.syndication-links {
-		margin-bottom: 2rem;
-		line-height: 1.5;
-	}
-
-	.copyright {
 	}
 </style>
