@@ -24,10 +24,19 @@ import { Icon } from 'astro-icon';
 	// Not sure why they're stacked -- maybe flex, ask chatgpt
 	.link {
 		text-decoration: none;
-		display: block;
-		width: 50vw;
+		width: 100%;
 		position: relative;
-		left: 5vw;
+		left: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column-reverse;
+
+		@include m.media('>desktop') {
+			display: block;
+			width: 50vw;
+			left: 5vw;
+		}
 
 		&:hover .map-picture {
 			filter: drop-shadow(0 0 6px v.$color-shadow-dark);
@@ -65,12 +74,19 @@ import { Icon } from 'astro-icon';
 		margin-top: 3.25vw;
 	}
 	.map-picture {
-		width: 32vw;
 		filter: drop-shadow(0 0 6px v.$color-shadow);
 		shape-outside: ellipse(14vw 17vw);
 		float: left;
 		display: inline;
 		margin-right: -4vw;
 		mix-blend-mode: luminosity;
+		width: calc(100vw - (v.$padding-width-overview-sides * 2));
+		max-width: 100%;
+		height: auto;
+		@include m.media('>desktop') {
+			width: 32vw;
+			height: unset;
+			max-width: unset;
+		}
 	}
 </style>
