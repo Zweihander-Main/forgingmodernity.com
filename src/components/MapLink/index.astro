@@ -2,13 +2,17 @@
 import map from '@assets/overview/maplink.webp';
 import { Picture } from '@astrojs/image/components';
 import { Icon } from 'astro-icon';
+import cssVars from '@styles/_jsalias.module.scss';
+
+const mediaDesktopMinWidth = parseInt(cssVars.mediaLarge, 10) + 1;
+const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 ---
 
 <a href="/map" class="link">
 	<Picture
 		src={map}
 		alt="Map of UK Linking to Canal Map"
-		sizes="32vw"
+		sizes={pictureSizes}
 		widths={[400, 800, 1200]}
 		format="jpg"
 		quality={70}
@@ -17,7 +21,7 @@ import { Icon } from 'astro-icon';
 		class="map-picture"
 	/>
 	<Icon pack="lucide" name="pointer" class="maplink-icon" />
-	<h1 class="text">Canals<br />Which<br />Forged<br />Modernity<br /></h1>
+	<h1 class="text">Canals Which Forged Modernity</h1>
 </a>
 
 <style lang="scss">
@@ -31,8 +35,14 @@ import { Icon } from 'astro-icon';
 		align-items: center;
 		justify-content: center;
 		flex-direction: column-reverse;
+		margin: 2vw 0 8vw;
 
 		@include m.media('>desktop') {
+			display: block;
+			width: 60vw;
+			left: 5vw;
+		}
+		@include m.media('>large') {
 			display: block;
 			width: 50vw;
 			left: 5vw;
@@ -60,33 +70,85 @@ import { Icon } from 'astro-icon';
 
 	:global(.maplink-icon) {
 		position: absolute;
-		top: 20vw;
-		left: 17vw;
-		width: 6vw;
-		height: 6vw;
 		color: v.$color-default;
 		opacity: 0.4;
 		filter: drop-shadow(0 0 6px v.$color-shadow);
+		top: 60%;
+		left: 43%;
+		width: 20vw;
+		height: 20vw;
+		@include m.media('>phone') {
+			width: 15vw;
+			height: 15vw;
+		}
+		@include m.media('>tablet') {
+			top: 55%;
+		}
+		@include m.media('>desktop') {
+			top: 29vw;
+			left: 22vw;
+			width: 8vw;
+			height: 8vw;
+		}
+		@include m.media('>large') {
+			top: 20vw;
+			left: 16.5vw;
+			width: 6vw;
+			height: 6vw;
+		}
 	}
 
 	.text {
-		font-size: 2.7vw;
-		margin-top: 3.25vw;
+		line-height: 1;
+		margin-bottom: 0;
+		font-size: 1.7rem;
+		text-align: center;
+		margin-left: 1rem;
+		@include m.media('>phone') {
+			font-size: 2rem;
+		}
+		@include m.media('>desktop') {
+			margin-left: 0;
+			line-height: 1.25;
+			margin-bottom: initial;
+			text-align: unset;
+			font-size: 3.5vw;
+			margin-top: 8vw;
+			word-spacing: 9999rem;
+		}
+		@include m.media('>large') {
+			line-height: 1.25;
+			margin-bottom: initial;
+			text-align: unset;
+			font-size: 2.7vw;
+			margin-top: 3.25vw;
+		}
 	}
 	.map-picture {
 		filter: drop-shadow(0 0 6px v.$color-shadow);
-		shape-outside: ellipse(14vw 17vw);
 		float: left;
 		display: inline;
 		margin-right: -4vw;
 		mix-blend-mode: luminosity;
-		width: calc(100vw - (v.$padding-width-overview-sides * 2));
+		width: 80vw;
 		max-width: 100%;
 		height: auto;
+		position: relative;
+		left: -1vw;
+		@include m.media('>phone') {
+			width: 60vw;
+			left: -2.5vw;
+		}
 		@include m.media('>desktop') {
-			width: 32vw;
+			left: 0;
 			height: unset;
 			max-width: unset;
+			width: 45vw;
+			shape-outside: ellipse(18vw 19vw);
+		}
+		@include m.media('>large') {
+			width: 32vw;
+			shape-outside: ellipse(14vw 17vw);
 		}
 	}
 </style>
