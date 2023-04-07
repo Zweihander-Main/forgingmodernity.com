@@ -103,14 +103,14 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 
 		@include m.media('>desktop') {
 			margin: 6rem 0;
-			grid-template-columns: var(--coverColumnWidth) var(
-					--infoColumnWidth
+			grid-template-columns: var(--bookCoverColumnWidth) var(
+					--bookInfoColumnWidth
 				);
-			gap: calc(var(--overviewGridGap) / 2);
+			gap: calc(var(--bookInfoGridGap) / 2);
 		}
 
 		@include m.media('>xlarge') {
-			gap: var(--overviewGridGap);
+			gap: var(--bookInfoGridGap);
 		}
 	}
 
@@ -156,8 +156,7 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 			}
 
 			@include m.media('>tablet') {
-				line-height: normal;
-				margin-bottom: 0rem;
+				margin-bottom: 0.5rem;
 			}
 		}
 
