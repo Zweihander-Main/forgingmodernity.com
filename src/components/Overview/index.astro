@@ -25,14 +25,29 @@ const bookCoverColumnWidth = 10;
 const bookInfoGridGap = 8;
 const overviewSideMargin = parseInt(cssVars.paddingWidthOverviewSides, 10);
 
+const mediaXxlargeMinWidth = parseInt(cssVars.mediaXxlarge, 10) + 1;
+const mediaXxlargeGutter = bookInfoGridGap / 2 + overviewSideMargin;
+const mediaXlargeMinWidth = parseInt(cssVars.mediaXlarge, 10) + 1;
+const mediaXlargeGutter = bookInfoGridGap * 0.7 + overviewSideMargin / 2;
+const mediaLargeMinWidth = parseInt(cssVars.mediaLarge, 10) + 1;
+const mediaLargeGutter = bookInfoGridGap / 2 + overviewSideMargin / 2;
 const mediaDesktopMinWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
 const mediaDesktopCoverSize = (
 	(bookCoverColumnWidth / (bookInfoColumnWidth + bookCoverColumnWidth)) *
 	100
 ).toPrecision(4);
-const mediaDesktopGutter = bookInfoGridGap / 2 + overviewSideMargin;
+const mediaDesktopGutter = bookInfoGridGap / 4 + overviewSideMargin / 2;
 
-const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCoverSize}vw - ${mediaDesktopGutter}rem), 100vw`;
+const coverSizes =
+	`(min-width: ${mediaXxlargeMinWidth}px) ` +
+	`calc(${mediaDesktopCoverSize}vw - ${mediaXxlargeGutter}rem), ` +
+	`(min-width: ${mediaXlargeMinWidth}px) ` +
+	`calc(${mediaDesktopCoverSize}vw - ${mediaXlargeGutter}rem), ` +
+	`(min-width: ${mediaLargeMinWidth}px) ` +
+	`calc(${mediaDesktopCoverSize}vw - ${mediaLargeGutter}rem), ` +
+	`(min-width: ${mediaDesktopMinWidth}px) ` +
+	`calc(${mediaDesktopCoverSize}vw - ${mediaDesktopGutter}rem), ` +
+	`100vw`;
 ---
 
 <section>
@@ -109,6 +124,10 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 			gap: calc(var(--bookInfoGridGap) / 2);
 		}
 
+		@include m.media('>large') {
+			gap: calc(var(--bookInfoGridGap) * 0.7);
+		}
+
 		@include m.media('>xlarge') {
 			gap: var(--bookInfoGridGap);
 		}
@@ -128,9 +147,19 @@ const coverSizes = `(min-width: ${mediaDesktopMinWidth}px) calc(${mediaDesktopCo
 		grid-template-rows: 1fr auto auto;
 		grid-auto-flow: column;
 		row-gap: 2.5rem;
-		column-gap: 10rem;
 		align-items: baseline;
 		justify-items: center;
+		@include m.media('>phone') {
+			column-gap: calc(v.$padding-width-overview-sides / 4);
+		}
+
+		@include m.media('>desktop') {
+			column-gap: calc(v.$padding-width-overview-sides / 2);
+		}
+
+		@include m.media('>xxlarge') {
+			column-gap: v.$padding-width-overview-sides - 2rem;
+		}
 	}
 
 	.footer-container {
