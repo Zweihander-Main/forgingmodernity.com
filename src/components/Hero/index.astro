@@ -82,15 +82,6 @@ const { title, subTitle } = Astro.props;
 <style lang="scss">
 	@use 'sass:math';
 
-	h1 {
-		font-size: 8.5vw;
-		margin-bottom: 0;
-	}
-	h2 {
-		font-size: 2.2vw;
-		line-height: 0;
-	}
-
 	.parallax-layer {
 		position: absolute;
 		top: 0;
@@ -180,24 +171,59 @@ const { title, subTitle } = Astro.props;
 			animation-fill-mode: forwards;
 		}
 		h1 {
-			@include m.text-stroke(
-				v.$color-text-stroke-light,
-				3px,
-				$shadow-param
-			);
-		}
-
-		h2 {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+			line-height: 1;
 			@include m.text-stroke(
 				v.$color-text-stroke-light,
 				2px,
 				$shadow-param
 			);
+			@include m.media('>phone') {
+				font-size: 10vw;
+				margin-bottom: 0;
+			}
+			@include m.media('>desktop') {
+				font-size: 8.5vw;
+				@include m.text-stroke(
+					v.$color-text-stroke-light,
+					3px,
+					$shadow-param
+				);
+			}
+		}
+
+		h2 {
 			letter-spacing: 0.02em;
 			will-change: opacity, transform;
 			opacity: 0;
 			transform: translateY(20px);
 			animation-delay: 0.4s;
+			font-size: 1rem;
+			margin: auto;
+			max-width: 80vw;
+			line-height: 1;
+			@include m.text-stroke(
+				v.$color-text-stroke-light,
+				1px,
+				$shadow-param
+			);
+			@include m.media('>phone') {
+				font-size: 1.15rem;
+			}
+			@include m.media('>tablet') {
+				font-size: 1.3rem;
+			}
+			@include m.media('>desktop') {
+				margin: revert;
+				font-size: 2.2vw;
+				line-height: 0;
+				@include m.text-stroke(
+					v.$color-text-stroke-light,
+					2px,
+					$shadow-param
+				);
+			}
 		}
 	}
 
