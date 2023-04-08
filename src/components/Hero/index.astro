@@ -1,18 +1,20 @@
 ---
 import { getImage } from '@astrojs/image';
+import HeroImage from './HeroImage.astro';
 import cloudsImageFile from '@assets/hero/gainsborough_clouds.jpg';
 import cathedralImageFile from '@assets/hero/canaletto_cathedral.png';
 import cityImageFile from '@assets/hero/canaletto_city.png';
 import riverImageFile from '@assets/hero/canaletto_river.png';
 import shoreImageFile from '@assets/hero/canaletto_shore.png';
 import manImageFile from '@assets/hero/man.png';
+// TODO compat for firefox, 2x, half width mobile
 
-const clouds = await getImage({
-	src: cloudsImageFile,
-	alt: 'Clouds',
-	width: 1500,
-	format: 'avif', // TODO compat
-});
+// const clouds = await getImage({
+// 	src: cloudsImageFile,
+// 	alt: 'Clouds in the style of Thomas Gainsborough',
+// 	width: 1500,
+// 	format: 'avif',
+// });
 const cathedral = await getImage({
 	src: cathedralImageFile,
 	alt: "St. Paul's Cathedral",
@@ -54,7 +56,13 @@ const { title, subTitle } = Astro.props;
 ---
 
 <div class="parallax-layer parallax-layer-0 parallax-layer-clouds">
-	<img src={clouds.src} alt={clouds.alt} class="image-clouds" />
+	<!-- <img src={clouds.src} alt={clouds.alt} class="image-clouds" /> -->
+	<HeroImage
+		alt="Clouds in the style of Thomas Gainsborough"
+		src={cloudsImageFile}
+		type="jpeg"
+		class="image-clouds"
+	/>
 </div>
 <div class="parallax-layer parallax-layer-1 parallax-layer-cathedral">
 	<img src={cathedral.src} alt={cathedral.alt} />

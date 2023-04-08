@@ -1,0 +1,50 @@
+---
+import { getImage } from '@astrojs/image';
+export interface Props {
+	src: Parameters<typeof getImage>[0]['src'];
+	type: 'png' | 'jpeg';
+	alt: string;
+	class?: string;
+}
+
+const { src, type, alt, class: className = '' } = Astro.props;
+
+const FORMATS = ['avif', 'webp', type] as const;
+const SIZES = [800, 1500, 3000] as const;
+
+interface ImageObject extends Awaited<ReturnType<typeof getImage>> {
+	type: `image/${(typeof FORMATS)[number]}`;
+}
+const images: Array<ImageObject> = [];
+for (const format of FORMATS) {
+	for (const width of SIZES) {
+		const gottenImage = await getImage({
+			src,
+			alt,
+			width,
+			format,
+		});
+		images.push({
+			type: `image/${format}` as const,
+			...gottenImage,
+		});
+	}
+}
+console.log(images[0]);
+---
+
+{
+	images && images[0] && (
+		<picture>
+			{images.map((image) => (
+				// TODO - add support for <source> tags
+				<source
+					srcset={image.srcset}
+					sizes={image.sizes}
+					type={image.type}
+				/>
+			))}
+			<img src={images[0].src} alt={images[0].alt} class={className} />
+		</picture>
+	)
+}
