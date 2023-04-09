@@ -6,7 +6,6 @@ import cityImageFile from '@assets/hero/canaletto_city.png';
 import riverImageFile from '@assets/hero/canaletto_river.png';
 import shoreImageFile from '@assets/hero/canaletto_shore.png';
 import manImageFile from '@assets/hero/man.png';
-// TODO half width mobile
 
 const cathedralWidth = 31.9;
 const manWidth = 30;
@@ -37,7 +36,7 @@ const { title, subTitle } = Astro.props;
 		type="png"
 	/>
 </div>
-<div class="parallax-layer parallax-layer-2">
+<div class="parallax-layer parallax-layer-2 parallax-layer-city">
 	<HeroImage
 		src={cityImageFile}
 		alt="Slice of London by Canaletto"
@@ -52,7 +51,7 @@ const { title, subTitle } = Astro.props;
 		<h2>{subTitle}</h2>
 	</div>
 </div>
-<div class="parallax-layer parallax-layer-4">
+<div class="parallax-layer parallax-layer-4 parallax-layer-river">
 	<HeroImage
 		src={riverImageFile}
 		alt="Thames River by Canaletto"
@@ -61,7 +60,7 @@ const { title, subTitle } = Astro.props;
 		type="png"
 	/>
 </div>
-<div class="parallax-layer parallax-layer-5">
+<div class="parallax-layer parallax-layer-5 parallax-layer-shore">
 	<HeroImage
 		src={shoreImageFile}
 		alt="Thames Shore by Canaletto"
@@ -121,27 +120,77 @@ const { title, subTitle } = Astro.props;
 		}
 	}
 
-	.parallax-layer-clouds {
-		img {
-			object-fit: cover;
-			height: 100vmax;
-			top: 0;
-			animation: huerotate 10s infinite linear;
+	$scale-parallax-mobile: 2;
+	$scale-parallax-tablet: 1.5;
+
+	.parallax-layer-clouds img {
+		object-fit: cover;
+		height: 100vmax;
+		top: 0;
+		animation: huerotate 10s infinite linear;
+	}
+
+	.parallax-layer-cathedral img {
+		width: var(--cathedralWidth);
+		left: 31.5vw;
+		transform-origin: bottom;
+		transform: scale($scale-parallax-mobile);
+
+		@include m.media('>phone') {
+			transform: scale($scale-parallax-tablet);
+		}
+		@include m.media('>tablet') {
+			transform: none;
 		}
 	}
 
-	.parallax-layer-cathedral {
-		img {
-			width: var(--cathedralWidth);
-			left: 31.5vw;
+	.parallax-layer-city img {
+		transform-origin: bottom;
+		transform: scale($scale-parallax-mobile);
+
+		@include m.media('>phone') {
+			transform: scale($scale-parallax-tablet);
+		}
+		@include m.media('>tablet') {
+			transform: none;
 		}
 	}
 
-	.parallax-layer-man {
-		img {
-			width: var(--manWidth);
-			left: -4vw;
-			// Fix for layers splitting apart at the bottom
+	.parallax-layer-river img {
+		transform-origin: bottom;
+		transform: scale($scale-parallax-mobile);
+
+		@include m.media('>phone') {
+			transform: scale($scale-parallax-tablet);
+		}
+		@include m.media('>tablet') {
+			transform: none;
+		}
+	}
+
+	.parallax-layer-shore img {
+		transform-origin: bottom right;
+		transform: scale($scale-parallax-mobile);
+
+		@include m.media('>phone') {
+			transform: scale($scale-parallax-tablet - 0.2);
+		}
+		@include m.media('>tablet') {
+			transform: none;
+		}
+	}
+
+	.parallax-layer-man img {
+		width: var(--manWidth);
+		left: -4vw;
+		transform-origin: bottom;
+		transform: scale($scale-parallax-mobile) translateY(0.3vmin);
+
+		@include m.media('>phone') {
+			transform: scale($scale-parallax-tablet) translateY(0.3vmin);
+		}
+		@include m.media('>tablet') {
+			/* Fix for layers splitting apart at the bottom */
 			transform: translateY(0.3vmin);
 		}
 	}
