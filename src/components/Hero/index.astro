@@ -1,5 +1,4 @@
 ---
-import { getImage } from '@astrojs/image';
 import HeroImage from './HeroImage.astro';
 import cloudsImageFile from '@assets/hero/gainsborough_clouds.jpg';
 import cathedralImageFile from '@assets/hero/canaletto_cathedral.png';
@@ -7,44 +6,10 @@ import cityImageFile from '@assets/hero/canaletto_city.png';
 import riverImageFile from '@assets/hero/canaletto_river.png';
 import shoreImageFile from '@assets/hero/canaletto_shore.png';
 import manImageFile from '@assets/hero/man.png';
-// TODO compat for firefox, 2x, half width mobile
+// TODO half width mobile
 
-// const clouds = await getImage({
-// 	src: cloudsImageFile,
-// 	alt: 'Clouds in the style of Thomas Gainsborough',
-// 	width: 1500,
-// 	format: 'avif',
-// });
-const cathedral = await getImage({
-	src: cathedralImageFile,
-	alt: "St. Paul's Cathedral",
-	width: 478.5,
-	format: 'avif',
-});
-const city = await getImage({
-	src: cityImageFile,
-	alt: 'London',
-	width: 1500,
-	format: 'avif',
-});
-const river = await getImage({
-	src: riverImageFile,
-	alt: 'Thames River',
-	width: 1500,
-	format: 'avif',
-});
-const shore = await getImage({
-	src: shoreImageFile,
-	alt: 'London Shore',
-	width: 1500,
-	format: 'avif',
-});
-const man = await getImage({
-	src: manImageFile,
-	alt: 'Man Standing Before London',
-	width: 450,
-	format: 'avif',
-});
+const cathedralWidth = 31.9;
+const manWidth = 30;
 
 export interface Props {
 	title: string;
@@ -52,23 +17,34 @@ export interface Props {
 }
 
 const { title, subTitle } = Astro.props;
-// TODO: Change images to jpg, optimize to 1500/3000/half width, do manual picture element, move to public
 ---
 
 <div class="parallax-layer parallax-layer-0 parallax-layer-clouds">
-	<!-- <img src={clouds.src} alt={clouds.alt} class="image-clouds" /> -->
 	<HeroImage
-		alt="Clouds in the style of Thomas Gainsborough"
 		src={cloudsImageFile}
+		alt="Clouds in the style of Thomas Gainsborough"
+		sizes="100vw"
+		widths={[1500, 768, 480]}
 		type="jpeg"
-		class="image-clouds"
 	/>
 </div>
 <div class="parallax-layer parallax-layer-1 parallax-layer-cathedral">
-	<img src={cathedral.src} alt={cathedral.alt} />
+	<HeroImage
+		src={cathedralImageFile}
+		alt="St. Peter's Cathedral by Canaletto"
+		sizes=`${cathedralWidth}vw`
+		widths={[957, 479, 319, 239, 160]}
+		type="png"
+	/>
 </div>
 <div class="parallax-layer parallax-layer-2">
-	<img src={city.src} alt={city.alt} />
+	<HeroImage
+		src={cityImageFile}
+		alt="Slice of London by Canaletto"
+		sizes="100vw"
+		widths={[3000, 1920, 1440, 768, 480]}
+		type="png"
+	/>
 </div>
 <div class="parallax-layer parallax-layer-3 parallax-layer-text">
 	<div class="text-container">
@@ -77,17 +53,41 @@ const { title, subTitle } = Astro.props;
 	</div>
 </div>
 <div class="parallax-layer parallax-layer-4">
-	<img src={river.src} alt={river.alt} />
+	<HeroImage
+		src={riverImageFile}
+		alt="Thames River by Canaletto"
+		sizes="100vw"
+		widths={[3000, 1920, 1440, 768, 480]}
+		type="png"
+	/>
 </div>
 <div class="parallax-layer parallax-layer-5">
-	<img src={shore.src} alt={shore.alt} />
+	<HeroImage
+		src={shoreImageFile}
+		alt="Thames Shore by Canaletto"
+		sizes="100vw"
+		widths={[3000, 1920, 1440, 768, 480]}
+		type="png"
+	/>
 </div>
 <div class="parallax-layer parallax-layer-6 parallax-layer-man">
-	<img src={man.src} alt={man.alt} />
+	<HeroImage
+		src={manImageFile}
+		alt="Man in top hat standing watching London"
+		sizes=`${manWidth}vw`
+		widths={[1317, 659, 439, 329, 219]}
+		type="png"
+	/>
 </div>
 <div class="parallax-layer parallax-layer-bottom"></div>
 
-<style lang="scss">
+<style
+	lang="scss"
+	define:vars={{
+		cathedralWidth: `${cathedralWidth}vw`,
+		manWidth: `${manWidth}vw`,
+	}}
+>
 	@use 'sass:math';
 
 	.parallax-layer {
@@ -132,14 +132,14 @@ const { title, subTitle } = Astro.props;
 
 	.parallax-layer-cathedral {
 		img {
-			width: 31.9vw;
+			width: var(--cathedralWidth);
 			left: 31.5vw;
 		}
 	}
 
 	.parallax-layer-man {
 		img {
-			width: 30vw;
+			width: var(--manWidth);
 			left: -4vw;
 			// Fix for layers splitting apart at the bottom
 			transform: translateY(0.3vmin);
