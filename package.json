@@ -22,6 +22,7 @@
 		"astro": "^2.2.1",
 		"astro-icon": "^0.8.0",
 		"include-media": "^2.0.0",
+		"plaiceholder": "^2.5.0",
 		"sharp": "^0.32.0",
 		"svelte": "^3.58.0"
 	},
@@ -124,12 +125,21 @@
 		"useTabs": true,
 		"arrowParens": "always",
 		"editorconfig": true,
+		"plugins": [
+			"prettier-plugin-astro"
+		],
 		"overrides": [
 			{
 				"files": "*.yml",
 				"options": {
 					"tabWidth": 2,
 					"useTabs": false
+				}
+			},
+			{
+				"files": "**/*.astro",
+				"options": {
+					"parser": "astro"
 				}
 			}
 		]
