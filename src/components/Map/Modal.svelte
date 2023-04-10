@@ -20,12 +20,14 @@
 	on:keypress|self={() => dialog.close()}
 >
 	<div class="modal" on:click|stopPropagation on:keypress|stopPropagation>
-		<div class="image-container">
-			<h1 class="name">{name}</h1>
-			<slot name="image" />
-		</div>
-		<div class="text">
-			<slot name="text" />
+		<div class="modal-grid">
+			<div class="image-container">
+				<h1 class="name">{name}</h1>
+				<slot name="image" />
+			</div>
+			<div class="text-container">
+				<slot name="text" />
+			</div>
 		</div>
 	</div>
 	<span
@@ -64,18 +66,48 @@
 	}
 
 	.modal {
+		@include m.custom-scrollbar(v.$color-map-peach, v.$color-button);
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-width: 95vw;
+		max-height: 95vh;
+
+		@include m.media('>tablet') {
+			max-width: 90vw;
+			max-height: 90vh;
+		}
+
+		@include m.media('>desktop') {
+			overflow-y: hidden;
+		}
+
+		@include m.media('>large') {
+			max-width: 80vw;
+			max-height: 85vh;
+		}
+	}
+
+	.modal-grid {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 		grid-template-rows: 1fr;
-		grid-template-areas: 'image text';
-		max-width: 80vw;
-		max-height: 85vh;
-		overflow: hidden;
+		grid-template-areas: 'image' 'text';
+
+		@include m.media('>desktop') {
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr;
+			grid-template-areas: 'image text';
+			max-height: inherit;
+		}
 	}
 
 	.image-container {
 		position: relative;
 		grid-area: image;
+		max-height: 80vh;
+		@include m.media('>desktop') {
+			max-height: unset;
+		}
 	}
 
 	.image-container::after {
@@ -103,16 +135,23 @@
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		width: 100%;
+		max-width: 100%;
 		color: white;
 		text-align: left;
-		font-size: 3.5rem;
 		z-index: 1201;
 		line-height: 0.9;
 		letter-spacing: 0.03em;
 		margin-left: 0.7rem;
+		margin-right: 0.7rem;
 		margin-bottom: 0.3rem;
 		color: v.$color-map-white;
+		font-size: 10vw;
+		@include m.media('>tablet') {
+			font-size: 3.5rem;
+		}
+		@include m.media('>desktop') {
+			font-size: min(3.5rem, 5vw);
+		}
 	}
 
 	.image-container :global(img) {
@@ -124,15 +163,23 @@
 		z-index: 1200;
 	}
 
-	.text {
+	.text-container {
 		@include m.custom-scrollbar(transparent, v.$color-button);
 
 		background: v.$color-map-peach;
 		grid-area: text;
-		padding: 1rem;
 		text-align: justify;
-		overflow-y: auto;
-		padding: 1rem 2.5rem;
+		overflow-y: hidden;
+		padding: 0rem 1rem;
+
+		@include m.media('>phone') {
+			padding: 0.5rem 2rem;
+		}
+
+		@include m.media('>desktop') {
+			overflow-y: auto;
+			padding: 1rem 2.5rem;
+		}
 	}
 
 	.close-button {
