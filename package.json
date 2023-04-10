@@ -8,8 +8,7 @@
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"astro": "astro",
-		"postinstall": "patch-package"
+		"astro": "astro"
 	},
 	"dependencies": {
 		"@astrojs/image": "^0.16.5",
@@ -37,7 +36,6 @@
 		"eslint-plugin-jsx-a11y": "^6.7.1",
 		"eslint-plugin-prettier": "^4.2.1",
 		"leaflet": "^1.9.3",
-		"patch-package": "^6.5.1",
 		"prettier": "^2.8.7",
 		"prettier-plugin-astro": "^0.8.0",
 		"sass": "^1.61.0",
@@ -183,5 +181,11 @@
 			"Joomla",
 			"stylelint"
 		]
+	},
+	"pnpm": {
+		"patchedDependencies": {
+			"@types/leaflet@1.9.3": "patches/@types__leaflet@1.9.3.patch",
+			"@iconify/svelte@3.1.1": "patches/@iconify__svelte@3.1.1.patch"
+		}
 	}
 }

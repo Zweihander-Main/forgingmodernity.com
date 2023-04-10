@@ -1,0 +1,13 @@
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+index 469dc04826c523bbd877503aa16e98815762453d..294cf7b3552bedc333551c69cf78370975346ce6 100644
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -315,7 +315,7 @@ export declare interface IconifyStorageFunctions {
+ /**
+  * Mix of icon properties and HTMLElement properties
+  */
+-export declare type IconProps = IconifyElementProps & IconifyIconProps;
++export declare type IconProps = IconifyElementProps & IconifyIconProps & {class: string;};
+ 
+ /**
+  * List available icons

@@ -1,7 +1,7 @@
-diff --git a/node_modules/@types/leaflet/index.d.ts b/node_modules/@types/leaflet/index.d.ts
-index 610123d..7de2b3e 100755
---- a/node_modules/@types/leaflet/index.d.ts
-+++ b/node_modules/@types/leaflet/index.d.ts
+diff --git a/index.d.ts b/index.d.ts
+index 610123da3dc418267b4b5fe0636bb0d9314e1312..7de2b3e3e39e9090292ab2e1074f4ced6c00e498 100755
+--- a/index.d.ts
++++ b/index.d.ts
 @@ -1396,7 +1396,7 @@ export class ImageOverlay extends Layer {
      setUrl(url: string): this;
  
