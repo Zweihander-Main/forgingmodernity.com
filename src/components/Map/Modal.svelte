@@ -70,7 +70,7 @@
 		overflow-y: auto;
 		overflow-x: hidden;
 		max-width: 95vw;
-		max-height: 95vh;
+		max-height: 90vh;
 
 		@include m.media('>tablet') {
 			max-width: 90vw;
