@@ -69,12 +69,11 @@
 		@include m.custom-scrollbar(v.$color-map-peach, v.$color-button);
 		overflow-y: auto;
 		overflow-x: hidden;
+		max-height: 85vh;
 		max-width: 95vw;
-		max-height: 90vh;
 
 		@include m.media('>tablet') {
 			max-width: 90vw;
-			max-height: 90vh;
 		}
 
 		@include m.media('>desktop') {
@@ -83,7 +82,6 @@
 
 		@include m.media('>large') {
 			max-width: 80vw;
-			max-height: 85vh;
 		}
 	}
 
