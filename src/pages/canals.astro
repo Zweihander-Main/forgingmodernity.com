@@ -14,7 +14,7 @@ import type {
 export type Props = Record<string, never>;
 
 const metaEntry = await getEntryBySlug('meta', 'site');
-const { shortTitle, canalsMapTitle } = metaEntry.data;
+const { shortTitle, canalsMapTitle, mapDescription } = metaEntry.data;
 
 const canals = await getCollection('canals');
 
@@ -66,7 +66,10 @@ const canalImageSizes =
 	`95vw`;
 ---
 
-<Global title={`${shortTitle} | ${canalsMapTitle}`}>
+<Global
+	title={`${shortTitle} | ${canalsMapTitle}`}
+	description={mapDescription}
+>
 	<Map canals={slimmedCanals} client:load />
 	{
 		canalEntries.map(({ Content, image, name, camelCaseName }) => (

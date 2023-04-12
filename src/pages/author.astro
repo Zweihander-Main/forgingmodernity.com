@@ -10,7 +10,7 @@ import { Picture } from '@astrojs/image/components';
 export type Props = Record<string, never>;
 
 const metaEntry = await getEntryBySlug('meta', 'site');
-const { shortTitle, subTitle, author } = metaEntry.data;
+const { shortTitle, subTitle, author, authorDescription } = metaEntry.data;
 
 const bookInfo = await getEntryBySlug('pages', 'author');
 if (!bookInfo) {
@@ -25,7 +25,7 @@ const overviewSideMargin = parseInt(cssVars.paddingWidthOverviewSides, 10);
 const pictureSizes = `calc(50vw - ${overviewSideMargin}rem})`;
 ---
 
-<Global title={`${shortTitle}: ${subTitle}`}>
+<Global title={`${shortTitle}: ${subTitle}`} description={authorDescription}>
 	<Markdown>
 		<Picture
 			src={authorPic}

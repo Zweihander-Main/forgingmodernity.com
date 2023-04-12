@@ -9,8 +9,14 @@ import { getEntryBySlug, getCollection } from 'astro:content';
 export type Props = Record<string, never>;
 
 const metaEntry = await getEntryBySlug('meta', 'site');
-const { shortTitle, subTitle, availableText, author, canalsMapTitle } =
-	metaEntry.data;
+const {
+	shortTitle,
+	subTitle,
+	availableText,
+	author,
+	canalsMapTitle,
+	indexDescription,
+} = metaEntry.data;
 
 const bookInfo = await getEntryBySlug('pages', 'bookoverview');
 if (!bookInfo) {
@@ -23,7 +29,7 @@ const footerItems = await getCollection('syndication');
 const retailerItems = await getCollection('retailers');
 ---
 
-<Global title={`${shortTitle}: ${subTitle}`}>
+<Global title={`${shortTitle}: ${subTitle}`} description={indexDescription}>
 	<Parallax>
 		<Hero slot="hero" title={shortTitle} subTitle={subTitle} />
 		<Parchment slot="cover">
