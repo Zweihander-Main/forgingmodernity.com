@@ -1,0 +1,136 @@
+---
+import { getPicture } from '@astrojs/image';
+import type { OutputFormat } from '@astrojs/image/dist/loaders';
+import { getPlaiceholder } from 'plaiceholder';
+
+export interface Props {
+	src: ImageMetadata;
+	alt: string;
+	sizes?: string;
+	widths: number[];
+	quality?: number | undefined;
+	class?: string;
+	type?: 'jpeg' | 'png';
+	publicSrc?: string | undefined;
+	placeholderSize?: number;
+}
+
+const {
+	src,
+	alt,
+	sizes = '100vw',
+	widths,
+	class: className = '',
+	quality,
+	type,
+	publicSrc,
+	placeholderSize = 10,
+} = Astro.props;
+
+const formats = ['avif', 'webp'] as OutputFormat[];
+if (type) formats.push(type);
+
+const renderedPicObject = await getPicture({
+	src,
+	widths,
+	alt,
+	formats,
+	...(quality && { quality }),
+});
+
+const { svg } = await getPlaiceholder(publicSrc as string, {
+	size: placeholderSize,
+});
+const [Svg, svgProps, svgChildren] = svg;
+---
+
+<div class="placeholder-container">
+	<Svg
+		{...svgProps}
+		style={{
+			position: 'absolute',
+			float: 'none',
+			filter: 'blur(14px)',
+			transform: 'scale(1.02)',
+		}}
+		class={`placeholder ${className}`}
+	>
+		{
+			svgChildren.map((child) => {
+				const [Path, pathProps] = child;
+
+				return <Path {...pathProps} />;
+			})
+		}
+	</Svg>
+	<picture>
+		{
+			renderedPicObject.sources.map((source) => (
+				<source
+					srcset={source.srcset}
+					sizes={sizes}
+					type={source.type}
+				/>
+			))
+		}
+		<img
+			src={renderedPicObject.image.src}
+			loading="lazy"
+			decoding="async"
+			class={`${className} original-image`}
+			alt={alt}
+			width={src.width}
+			height={src.height}
+			data-lazy-loaded
+		/>
+	</picture>
+</div>
+
+<script>
+	const lazyLoadedImages =
+		document.querySelectorAll<HTMLImageElement>('[data-lazy-loaded]');
+
+	const loaded = (e: HTMLImageElement | Event) => {
+		let target: HTMLImageElement;
+		if (e instanceof Event) {
+			target = e.target as HTMLImageElement;
+		} else {
+			target = e;
+		}
+		const picture = target.parentElement as HTMLElement;
+		const placeholder = picture.previousElementSibling as HTMLElement;
+		console.log(placeholder);
+		placeholder.style.visibility = 'hidden';
+		target.removeEventListener('load', loaded);
+	};
+
+	lazyLoadedImages.forEach((image) => {
+		if (image?.complete) {
+			loaded(image);
+		} else {
+			image.addEventListener('load', loaded);
+		}
+	});
+</script>
+
+<style lang="scss">
+	.placeholder-container {
+		position: relative;
+		display: block;
+		aspect-ratio: auto;
+	}
+
+	.placeholder {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: v.$z-index-images - 1;
+		float: none;
+		transition: all v.$transition-speed-instant v.$transition-timing-instant;
+	}
+
+	.original-image {
+		position: relative;
+		z-index: v.$z-index-images;
+	}
+</style>

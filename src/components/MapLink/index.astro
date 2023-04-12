@@ -1,6 +1,6 @@
 ---
-import map from '@assets/overview/maplink.webp';
-import { Picture } from '@astrojs/image/components';
+import map from '@assets/overview/maplink.png';
+import PlaceholderImage from '@components/PlaceholderImage/index.astro';
 import { Icon } from 'astro-icon';
 import cssVars from '@styles/_jsalias.module.scss';
 
@@ -9,15 +9,13 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 ---
 
 <a href="/map" class="link">
-	<Picture
+	<PlaceholderImage
+		publicSrc={'/img/overview/maplink.png'}
 		src={map}
 		alt="Map of UK Linking to Canal Map"
 		sizes={pictureSizes}
 		widths={[400, 800, 1200]}
-		format="jpg"
 		quality={70}
-		fit="cover"
-		position="center"
 		class="map-picture"
 	/>
 	<Icon pack="lucide" name="pointer" class="maplink-icon" />
@@ -25,7 +23,6 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 </a>
 
 <style lang="scss">
-	// Not sure why they're stacked -- maybe flex, ask chatgpt
 	.link {
 		text-decoration: none;
 		width: 100%;
@@ -73,6 +70,7 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 		color: v.$color-default;
 		opacity: 0.4;
 		filter: drop-shadow(0 0 6px v.$color-shadow);
+		z-index: v.$z-index-images + 1;
 		top: 60%;
 		left: 43%;
 		width: 20vw;
@@ -101,6 +99,8 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 	.text {
 		line-height: 1;
 		margin-bottom: 0;
+		z-index: v.$z-index-images + 2;
+		position: relative;
 		font-size: 1.7rem;
 		text-align: center;
 		margin-left: 1rem;

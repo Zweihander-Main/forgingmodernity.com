@@ -33,6 +33,7 @@ $transition-speed-slow: 0.2s;
 $transition-speed-page-change: 0.5s;
 $transition-timing: ease-in-out;
 $transition-timing-instant: ease-in;
+$z-index-images: 500;
 /*stylelint-disable */
 :export {
 	paddingWidthOverviewSides: $padding-width-overview-sides;
