@@ -11,7 +11,10 @@ export interface Props {
 	quality?: number | undefined;
 	class?: string;
 	type?: 'jpeg' | 'png';
-	publicSrc?: string | undefined;
+	aspectRatio?: number;
+	fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside';
+	position?: string;
+	publicSrc: string | undefined;
 	placeholderSize?: number;
 }
 
@@ -23,6 +26,8 @@ const {
 	class: className = '',
 	quality,
 	type,
+	aspectRatio,
+	fit,
 	publicSrc,
 	placeholderSize = 10,
 } = Astro.props;
@@ -36,6 +41,8 @@ const renderedPicObject = await getPicture({
 	alt,
 	formats,
 	...(quality && { quality }),
+	...(aspectRatio && { aspectRatio }),
+	...(fit && { fit }),
 });
 
 const { svg } = await getPlaiceholder(publicSrc as string, {

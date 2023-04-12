@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import PlaceholderImage from '@components/PlaceholderImage/index.astro';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
@@ -17,15 +17,16 @@ const endorser = await import(
 <div class="endorsement-content">
 	<Content />
 </div>
-<Picture
+<PlaceholderImage
+	publicSrc={`/img/overview/endorsers/${image.replace(/\.[^/.]+$/, '')}.jpg`}
 	src={endorser.default}
 	alt={name}
 	sizes="17rem"
 	aspectRatio={1}
 	widths={[400, 800, 1200]}
-	fit="cover"
-	position="center"
 	class="endorser"
+	fit="cover"
+	placeholderSize={4}
 />
 <div class="endorsement-meta">
 	<div class="endorsement-name">{name}</div>
@@ -35,6 +36,7 @@ const endorser = await import(
 <style lang="scss">
 	.endorser {
 		width: 100%;
+		height: auto;
 		text-align: center;
 		clip-path: circle();
 		mix-blend-mode: luminosity;
