@@ -58,6 +58,14 @@ const sortedRetailers = retailerItems.sort(
 	.state {
 		display: none;
 
+		&:not(:checked) + .modal :global(img) {
+			display: none;
+		}
+
+		&:checked + .modal :global(img) {
+			display: unset;
+		}
+
 		&:checked + .modal {
 			opacity: 1;
 			visibility: visible;
