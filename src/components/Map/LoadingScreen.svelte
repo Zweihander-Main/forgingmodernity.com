@@ -40,6 +40,9 @@
 </script>
 
 <aside class={loadingScreenClass} style={`opacity:${bgOpacity}`}>
+	<noscript>
+		<p>Map requires JavaScript to work!</p>
+	</noscript>
 	<span
 		class="loading-indicator"
 		style={`opacity:${1 - visualPercentageDone / 100}`}
