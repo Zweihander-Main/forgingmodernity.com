@@ -33,3 +33,16 @@ button {
 		--deboss-depth: #{v.$depth-deboss-moz};
 	}
 }
+
+@media print {
+	* {
+		background: white !important;
+		box-shadow: none !important;
+		grid-template-columns: auto !important;
+	}
+
+	img,
+	svg {
+		display: none !important;
+	}
+}
