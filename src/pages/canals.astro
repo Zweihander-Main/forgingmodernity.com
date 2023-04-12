@@ -4,6 +4,7 @@ import Global from '@layouts/Global.astro';
 import Map from '@components/Map/index.svelte';
 import { CollectionEntry, getCollection, getEntryBySlug } from 'astro:content';
 import { camelCaseString } from '@util/funcs';
+import cssVars from '@styles/_jsalias.module.scss';
 import type { AstroComponentFactory } from 'astro/dist/runtime/server';
 import type { slimmedCanals } from '@util/types';
 export type Props = Record<string, never>;
@@ -50,7 +51,15 @@ for (let i = 0; i < canals.length; i++) {
 		camelCaseName,
 	});
 }
-// TODO sizes on the picture
+
+const mediaLargeWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
+const mediaDesktopWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
+const mediaTabletWidth = parseInt(cssVars.mediaTablet, 10) + 1;
+const canalImageSizes =
+	`(min-width: ${mediaLargeWidth}) 40vw, ` +
+	`(min-width: ${mediaDesktopWidth}) 45vw, ` +
+	`(min-width: ${mediaTabletWidth}) 90vw, ` +
+	`95vw`;
 ---
 
 <Global title={`${shortTitle} | ${canalsMapTitle}`}>
@@ -65,7 +74,7 @@ for (let i = 0; i < canals.length; i++) {
 					<Picture
 						src={image}
 						widths={[300, 600, 900]}
-						sizes="50vw, 40vw"
+						sizes={canalImageSizes}
 						aspectRatio="1:1"
 						quality={75}
 						alt={name}

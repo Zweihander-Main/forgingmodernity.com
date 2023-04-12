@@ -42,7 +42,6 @@
 </dialog>
 
 <style lang="scss">
-	// TODO close button
 	@keyframes modal-fly-up {
 		to {
 			opacity: 1;
