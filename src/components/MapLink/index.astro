@@ -4,11 +4,17 @@ import PlaceholderImage from '@components/PlaceholderImage/index.astro';
 import { Icon } from 'astro-icon';
 import cssVars from '@styles/_jsalias.module.scss';
 
+export interface Props {
+	canalsMapTitle: string;
+}
+
+const { canalsMapTitle } = Astro.props;
+
 const mediaDesktopMinWidth = parseInt(cssVars.mediaLarge, 10) + 1;
 const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 ---
 
-<a href="/map" class="link">
+<a href="/canals" class="link">
 	<PlaceholderImage
 		publicSrc={'/img/overview/maplink.png'}
 		src={map}
@@ -21,7 +27,7 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 		type={'png'}
 	/>
 	<Icon pack="lucide" name="pointer" class="maplink-icon" />
-	<h1 class="text">Canals Which Forged Modernity</h1>
+	<h1 class="text">{canalsMapTitle}</h1>
 </a>
 
 <style lang="scss">

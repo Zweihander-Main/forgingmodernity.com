@@ -6,6 +6,7 @@ const metaCollection = defineCollection({
 		subTitle: z.string(),
 		author: z.string(),
 		availableText: z.string(),
+		canalsMapTitle: z.string(),
 	}),
 });
 

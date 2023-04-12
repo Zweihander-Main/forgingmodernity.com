@@ -9,7 +9,8 @@ import { getEntryBySlug, getCollection } from 'astro:content';
 export type Props = Record<string, never>;
 
 const metaEntry = await getEntryBySlug('meta', 'site');
-const { shortTitle, subTitle, availableText, author } = metaEntry.data;
+const { shortTitle, subTitle, availableText, author, canalsMapTitle } =
+	metaEntry.data;
 
 const bookInfo = await getEntryBySlug('pages', 'bookoverview');
 if (!bookInfo) {
@@ -29,6 +30,7 @@ const retailerItems = await getCollection('retailers');
 			<Overview
 				authorName={author}
 				availableText={availableText}
+				canalsMapTitle={canalsMapTitle}
 				bookInfo={bookInfo}
 				reviewItems={reviewItems}
 				endorsementItems={endorsementItems}
