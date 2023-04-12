@@ -3,8 +3,11 @@ import image from '@astrojs/image';
 import svelte from '@astrojs/svelte';
 import purgecss from 'astro-purgecss';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://www.forgingmodernity.com/',
 	integrations: [
 		image({
 			serviceEntryPoint: '@astrojs/image/sharp',
@@ -15,6 +18,7 @@ export default defineConfig({
 			variables: true,
 			safelist: [/leaflet-pane/, /leaflet-map/],
 		}),
+		sitemap(),
 	],
 	vite: {
 		css: {

@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@astrojs/image": "^0.16.5",
+		"@astrojs/sitemap": "^1.2.2",
 		"@astrojs/svelte": "^2.1.0",
 		"@fontsource/marcellus": "^4.5.10",
 		"@fontsource/marcellus-sc": "^4.5.11",
