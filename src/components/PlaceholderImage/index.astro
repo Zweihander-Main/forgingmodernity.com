@@ -13,7 +13,6 @@ export interface Props {
 	type?: 'jpeg' | 'png';
 	aspectRatio?: number;
 	fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside';
-	position?: string;
 	publicSrc: string | undefined;
 	placeholderSize?: number;
 }
@@ -107,7 +106,7 @@ const [Svg, svgProps, svgChildren] = svg;
 		const picture = target.parentElement as HTMLElement;
 		const placeholder = picture.previousElementSibling as HTMLElement;
 		console.log(placeholder);
-		placeholder.style.visibility = 'hidden';
+		placeholder.style.opacity = '0';
 		target.removeEventListener('load', loaded);
 	};
 
