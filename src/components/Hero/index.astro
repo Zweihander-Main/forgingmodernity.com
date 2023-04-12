@@ -1,5 +1,6 @@
 ---
 import HeroImage from './HeroImage.astro';
+import PlaceholderImage from '@components/PlaceholderImage/index.astro';
 import cloudsImageFile from '@assets/hero/gainsborough_clouds.jpg';
 import cathedralImageFile from '@assets/hero/canaletto_cathedral.png';
 import cityImageFile from '@assets/hero/canaletto_city.png';
@@ -19,12 +20,14 @@ const { title, subTitle } = Astro.props;
 ---
 
 <div class="parallax-layer parallax-layer-0 parallax-layer-clouds">
-	<HeroImage
+	<PlaceholderImage
+		publicSrc="/img/hero/gainsborough_clouds.jpg"
 		src={cloudsImageFile}
 		alt="Clouds in the style of Thomas Gainsborough"
 		sizes="100vw"
 		widths={[1500, 768, 480]}
 		type="jpeg"
+		placeholderSize={14}
 	/>
 </div>
 <div class="parallax-layer parallax-layer-1 parallax-layer-cathedral">
@@ -128,6 +131,13 @@ const { title, subTitle } = Astro.props;
 		height: 100vmax;
 		top: 0;
 		animation: huerotate 10s infinite linear;
+	}
+
+	.parallax-layer-clouds svg {
+		object-fit: cover;
+		height: 100vmax;
+		top: 0;
+		transform: scale(1.1) !important;
 	}
 
 	.parallax-layer-cathedral img {
