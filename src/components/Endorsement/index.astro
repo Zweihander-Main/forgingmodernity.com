@@ -47,10 +47,12 @@ const endorser = await import(
 	}
 
 	.endorsement-content {
-		text-align: justify;
 		margin-top: 6rem;
 		@include m.media('>desktop') {
 			margin-top: 0;
+		}
+		@include m.media('>justify') {
+			text-align: justify;
 		}
 	}
 

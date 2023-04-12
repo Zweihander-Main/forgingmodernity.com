@@ -166,7 +166,6 @@
 
 		background: v.$color-map-peach;
 		grid-area: text;
-		text-align: justify;
 		overflow-y: hidden;
 		padding: 0rem 1rem;
 
@@ -177,6 +176,10 @@
 		@include m.media('>desktop') {
 			overflow-y: auto;
 			padding: 1rem 2.5rem;
+		}
+
+		@include m.media('>justify') {
+			text-align: justify;
 		}
 	}
 

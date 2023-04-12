@@ -7,6 +7,7 @@ $media-large: 1280px;
 $media-xlarge: 1440px;
 $media-xxlarge: 1680px;
 $media-xxxlarge: 1920px;
+$media-justify: 27em;
 $breakpoints: (
 	'ultratiny': $media-ultratiny,
 	'tiny': $media-tiny,
@@ -17,6 +18,7 @@ $breakpoints: (
 	'xlarge': $media-xlarge,
 	'xxlarge': $media-xxlarge,
 	'xxxlarge': $media-xxxlarge,
+	'justify': $media-justify,
 ) !default;
 
 /*stylelint-disable */
@@ -30,4 +32,5 @@ $breakpoints: (
 	mediaXlarge: $media-xlarge;
 	mediaXxlarge: $media-xxlarge;
 	mediaXxxlarge: $media-xxxlarge;
+	mediaJustify: $media-justify;
 }

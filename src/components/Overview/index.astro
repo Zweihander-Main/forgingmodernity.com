@@ -191,7 +191,9 @@ const coverSizes =
 			}
 		}
 		:global(p) {
-			text-align: justify;
+			@include m.media('>justify') {
+				text-align: justify;
+			}
 		}
 	}
 
@@ -207,6 +209,8 @@ const coverSizes =
 	}
 
 	.review {
-		text-align: justify;
+		@include m.media('>justify') {
+			text-align: justify;
+		}
 	}
 </style>
