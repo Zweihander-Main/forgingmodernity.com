@@ -1,22 +1,24 @@
 ---
-import { Image } from '@astrojs/image/components';
+import { Picture } from '@astrojs/image/components';
 export interface Props {
 	name: string;
 	url: string;
 	image: string;
+	sizes: string;
 }
 
-const { name, url, image } = Astro.props;
+const { name, url, image, sizes } = Astro.props;
 const retailerImage = await import(
 	`../../assets/retailers/${image.replace(/\.[^/.]+$/, '')}.png`
 );
 ---
 
 <a href={url} class="retailer-link">
-	<Image
+	<Picture
 		src={retailerImage.default}
 		alt={name}
-		width={200}
+		sizes={sizes}
+		widths={[100, 150, 200]}
 		class="retailer-image"
 		fit={'cover'}
 		position="center"

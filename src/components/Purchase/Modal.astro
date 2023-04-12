@@ -1,6 +1,7 @@
 ---
 import Retailer from './Retailer.astro';
 import { MODAL_ID } from './common';
+import cssVars from '@styles/_jsalias.module.scss';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
@@ -11,6 +12,22 @@ const { retailerItems } = Astro.props;
 const sortedRetailers = retailerItems.sort(
 	(a, b) => a.data.order - b.data.order
 );
+
+const mediaTabletWidth = parseInt(cssVars.mediaTablet, 10) + 1;
+const mediaTabletPixels = 150;
+const mediaTabletRems = 4;
+const mediaphoneWidth = parseInt(cssVars.mediaPhone, 10) + 1;
+const mediaPhonePixels = 150;
+const mediaPhoneRems = 3;
+const normalPixels = 100;
+const normalRems = 2;
+
+const retailerSizes =
+	`(min-width: ${mediaTabletWidth}px) ` +
+	`calc(${mediaTabletPixels}px + ${mediaTabletRems}rem), ` +
+	`(min-width: ${mediaphoneWidth}px) ` +
+	`calc(${mediaPhonePixels}px + ${mediaPhoneRems}rem), ` +
+	`calc(${normalPixels}px + ${normalRems}rem)})`;
 ---
 
 <input class="state" id={MODAL_ID} type="checkbox" />
@@ -26,13 +43,21 @@ const sortedRetailers = retailerItems.sort(
 						name={item.name}
 						url={item.url}
 						image={item.image}
+						sizes={retailerSizes}
 					/>
 				))
 			}
 		</div>
 	</div>
 </section>
-<style lang="scss">
+<style
+	lang="scss"
+	define:vars={{
+		retailerTabletMin: `calc(${mediaTabletPixels}px + ${mediaTabletRems}rem)`,
+		retailerPhoneMin: `calc(${mediaPhonePixels}px + ${mediaPhoneRems}rem)`,
+		retailerMin: `calc(${normalPixels}px + ${normalRems}rem)`,
+	}}
+>
 	.modal {
 		opacity: 0;
 		visibility: hidden;
@@ -136,7 +161,7 @@ const sortedRetailers = retailerItems.sort(
 		grid-auto-rows: 1fr;
 		grid-template-columns: repeat(
 			auto-fill,
-			minmax(calc(100px + 2rem), 1fr)
+			minmax(var(--retailerMin), 1fr)
 		);
 		justify-items: center;
 		margin-bottom: 1rem;
@@ -145,7 +170,7 @@ const sortedRetailers = retailerItems.sort(
 			gap: 1.5rem;
 			grid-template-columns: repeat(
 				auto-fill,
-				minmax(calc(150px + 3rem), 1fr)
+				minmax(var(--retailerPhoneMin), 1fr)
 			);
 		}
 		@include m.media('>tablet') {
@@ -153,7 +178,7 @@ const sortedRetailers = retailerItems.sort(
 			gap: 2rem;
 			grid-template-columns: repeat(
 				auto-fill,
-				minmax(calc(150px + 4rem), 1fr)
+				minmax(var(--retailerTabletMin), 1fr)
 			);
 		}
 	}
