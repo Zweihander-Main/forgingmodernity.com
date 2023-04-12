@@ -17,6 +17,8 @@
 		"@fontsource/marcellus-sc": "^4.5.11",
 		"@fontsource/vollkorn": "^4.5.14",
 		"@fontsource/vollkorn-sc": "^4.5.11",
+		"@iconify-icons/icon-park": "^1.2.10",
+		"@iconify-icons/mdi": "^1.2.44",
 		"@iconify/svelte": "^3.1.1",
 		"astro": "^2.2.1",
 		"astro-icon": "^0.8.0",

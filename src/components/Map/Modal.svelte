@@ -2,7 +2,8 @@
 	export let showModal: boolean;
 	export let name: string;
 	export let L: typeof import('leaflet');
-	import Icon from '@iconify/svelte';
+	import Icon from '@iconify/svelte/dist/OfflineIcon.svelte';
+	import mdiCloseOctagon from '@iconify-icons/mdi/close-octagon';
 
 	let dialog: HTMLDialogElement;
 
@@ -36,7 +37,7 @@
 		on:click={() => dialog.close()}
 		on:keypress={() => dialog.close()}
 	>
-		<Icon icon="mdi:close-octagon" class="close-icon" />
+		<Icon icon={mdiCloseOctagon} class="close-icon" />
 	</span>
 </dialog>
 

@@ -2,7 +2,7 @@ lockfileVersion: '6.0'
 
 patchedDependencies:
   '@iconify/svelte@3.1.1':
-    hash: fvyearrf4rztdcx5ipzfpaedcm
+    hash: 5cptvfr7hft73di636sef5eyeq
     path: patches/@iconify__svelte@3.1.1.patch
   '@types/leaflet@1.9.3':
     hash: mgyid7lpxmpmwuucazwsuk6c3u
@@ -27,9 +27,15 @@ dependencies:
   '@fontsource/vollkorn-sc':
     specifier: ^4.5.11
     version: 4.5.11
+  '@iconify-icons/icon-park':
+    specifier: ^1.2.10
+    version: 1.2.10
+  '@iconify-icons/mdi':
+    specifier: ^1.2.44
+    version: 1.2.44
   '@iconify/svelte':
     specifier: ^3.1.1
-    version: 3.1.1(patch_hash=fvyearrf4rztdcx5ipzfpaedcm)(svelte@3.58.0)
+    version: 3.1.1(patch_hash=5cptvfr7hft73di636sef5eyeq)(svelte@3.58.0)
   astro:
     specifier: ^2.2.1
     version: 2.2.1(@types/node@18.15.11)(sass@1.61.0)(sharp@0.32.0)
@@ -782,7 +788,19 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify/svelte@3.1.1(patch_hash=fvyearrf4rztdcx5ipzfpaedcm)(svelte@3.58.0):
+  /@iconify-icons/icon-park@1.2.10:
+    resolution: {integrity: sha512-f8yeuuIAG7TFSInx9owZkPgS7IXtAoYO/NvN+yeZizuFt8tK9/Ir81rOBvjld5v6QNwFstRCYEzsrAR5ABDxew==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify-icons/mdi@1.2.44:
+    resolution: {integrity: sha512-pV3TEkOEm295p09CftJQYSS86CucVBupkcA7KgLK5BIbHeqLAvqhVRZ6CC81lY94l7ZxnI88x72jzJ1iEAx0QQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify/svelte@3.1.1(patch_hash=5cptvfr7hft73di636sef5eyeq)(svelte@3.58.0):
     resolution: {integrity: sha512-z9w/Z2ei+nxByWgbGYKDmMxY0TKJtrK/6eZS9N2/eMkzQFQnOwbdcaSJDP4kpAFImY7s/WmE49GLH0zHvs9yPw==}
     peerDependencies:
       svelte: '>=3'
