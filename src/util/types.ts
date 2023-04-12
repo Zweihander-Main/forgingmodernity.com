@@ -11,3 +11,6 @@ export interface slimmedCanal {
 }
 
 export type slimmedCanals = Array<slimmedCanal>;
+
+export type canalContentDOMId = `canal_${string}`;
+export type canalPictureDOMId = `canal_${string}_image`;

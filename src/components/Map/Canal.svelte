@@ -2,6 +2,7 @@
 	import Modal from './Modal.svelte';
 	import { camelCaseString } from '@util/funcs';
 	import type { LatLngBoundsExpression } from 'leaflet';
+	import type { canalContentDOMId, canalPictureDOMId } from '@util/types';
 
 	export let L: typeof import('leaflet');
 	export let map: L.Map;
@@ -56,15 +57,16 @@
 	});
 	svgLayer.addTo(map);
 
-	// TODO type strings
 	const bodyContent = (
-		document.getElementById(`canal_${camelCaseName}`) as HTMLElement
+		document.getElementById(
+			`canal_${camelCaseName}` as canalContentDOMId
+		) as HTMLElement
 	).innerHTML;
 
 	// Replace forces image loading when component mounted
 	const imageContent = (
 		document.getElementById(
-			`canal_${camelCaseName}_image`
+			`canal_${camelCaseName}_image` as canalPictureDOMId
 		) as HTMLPictureElement
 	).innerHTML.replace(/loading=.lazy./, 'loading="eager"');
 </script>

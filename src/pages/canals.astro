@@ -6,7 +6,11 @@ import { CollectionEntry, getCollection, getEntryBySlug } from 'astro:content';
 import { camelCaseString } from '@util/funcs';
 import cssVars from '@styles/_jsalias.module.scss';
 import type { AstroComponentFactory } from 'astro/dist/runtime/server';
-import type { slimmedCanals } from '@util/types';
+import type {
+	slimmedCanals,
+	canalContentDOMId,
+	canalPictureDOMId,
+} from '@util/types';
 export type Props = Record<string, never>;
 
 const metaEntry = await getEntryBySlug('meta', 'site');
@@ -67,10 +71,16 @@ const canalImageSizes =
 	{
 		canalEntries.map(({ Content, image, name, camelCaseName }) => (
 			<>
-				<div id={`canal_${camelCaseName}`} class="canal-content">
+				<div
+					id={`canal_${camelCaseName}` as canalContentDOMId}
+					class="canal-content"
+				>
 					<Content />
 				</div>
-				<div id={`canal_${camelCaseName}_image`} class="canal-content">
+				<div
+					id={`canal_${camelCaseName}_image` as canalPictureDOMId}
+					class="canal-content"
+				>
 					<Picture
 						src={image}
 						widths={[300, 600, 900]}
