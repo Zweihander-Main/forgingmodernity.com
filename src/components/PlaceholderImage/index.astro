@@ -105,7 +105,6 @@ const [Svg, svgProps, svgChildren] = svg;
 		}
 		const picture = target.parentElement as HTMLElement;
 		const placeholder = picture.previousElementSibling as HTMLElement;
-		console.log(placeholder);
 		placeholder.style.opacity = '0';
 		target.removeEventListener('load', loaded);
 	};
