@@ -52,6 +52,7 @@
 <slot {setMapLoadedPercentage} {setMapLoaded} {setCloudLoaded} />
 
 <style lang="scss">
+	@use 'sass:color';
 	@use '../../styles/_variables.scss' as v;
 
 	.loading-screen {
@@ -60,7 +61,10 @@
 		left: 0;
 		width: 100vw;
 		height: 100vh;
-		background-color: v.$color-map-bg;
+		background: radial-gradient(
+			v.$color-map-bg,
+			color.adjust(v.$color-map-bg, $lightness: -20%)
+		);
 		display: flex;
 		align-items: center;
 		justify-content: center;

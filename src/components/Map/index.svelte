@@ -68,7 +68,7 @@
 
 	.home-button {
 		position: absolute;
-		z-index: 1000;
+		z-index: 10001;
 		top: 0.4rem;
 		left: v.$margin-map-control-left;
 		font-size: 1.8rem;

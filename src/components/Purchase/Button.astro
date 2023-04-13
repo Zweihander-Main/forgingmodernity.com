@@ -12,12 +12,7 @@ const { text, iconPack, icon } = Astro.props;
 <div class="container-hover">
 	<div class="container-border">
 		<div class="container-transparent">
-			<label
-				aria-label="Bring up available retailers."
-				role="button"
-				for={MODAL_ID}
-				class="button"
-			>
+			<label for={MODAL_ID} class="button">
 				<Icon pack={iconPack} name={icon} />
 				{text}
 			</label>

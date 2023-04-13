@@ -19,69 +19,71 @@ export interface Props {
 const { title, subTitle } = Astro.props;
 ---
 
-<div class="parallax-layer parallax-layer-0 parallax-layer-clouds">
-	<PlaceholderImage
-		publicSrc="/img/hero/gainsborough_clouds.jpg"
-		src={cloudsImageFile}
-		alt="Clouds in the style of Thomas Gainsborough"
-		sizes="100vw"
-		widths={[1500, 1024, 768, 480]}
-		type="jpeg"
-		placeholderSize={14}
-	/>
-</div>
-<div class="parallax-layer parallax-layer-1 parallax-layer-cathedral">
-	<HeroImage
-		src={cathedralImageFile}
-		alt="St. Peter's Cathedral by Canaletto"
-		sizes=`${cathedralWidth}vw`
-		widths={[957, 479, 319, 239, 160]}
-		type="png"
-	/>
-</div>
-<div class="parallax-layer parallax-layer-2 parallax-layer-city">
-	<HeroImage
-		src={cityImageFile}
-		alt="Slice of London by Canaletto"
-		sizes="100vw"
-		widths={[1500, 1024, 768, 480]}
-		type="png"
-	/>
-</div>
-<div class="parallax-layer parallax-layer-3 parallax-layer-text">
-	<div class="text-container">
-		<h1>{title}</h1>
-		<h2>{subTitle}</h2>
+<header>
+	<div class="parallax-layer parallax-layer-0 parallax-layer-clouds">
+		<PlaceholderImage
+			publicSrc="/img/hero/gainsborough_clouds.jpg"
+			src={cloudsImageFile}
+			alt="Clouds in the style of Thomas Gainsborough"
+			sizes="100vw"
+			widths={[1500, 1024, 768, 480]}
+			type="jpeg"
+			placeholderSize={14}
+		/>
 	</div>
-</div>
-<div class="parallax-layer parallax-layer-4 parallax-layer-river">
-	<HeroImage
-		src={riverImageFile}
-		alt="Thames River by Canaletto"
-		sizes="100vw"
-		widths={[3000, 1920, 1440, 768, 480]}
-		type="png"
-	/>
-</div>
-<div class="parallax-layer parallax-layer-5 parallax-layer-shore">
-	<HeroImage
-		src={shoreImageFile}
-		alt="Thames Shore by Canaletto"
-		sizes="100vw"
-		widths={[3000, 1920, 1440, 768, 480]}
-		type="png"
-	/>
-</div>
-<div class="parallax-layer parallax-layer-6 parallax-layer-man">
-	<HeroImage
-		src={manImageFile}
-		alt="Man in top hat standing watching London"
-		sizes=`${manWidth}vw`
-		widths={[1317, 659, 439, 329, 219]}
-		type="png"
-	/>
-</div>
-<div class="parallax-layer parallax-layer-bottom"></div>
+	<div class="parallax-layer parallax-layer-1 parallax-layer-cathedral">
+		<HeroImage
+			src={cathedralImageFile}
+			alt="St. Peter's Cathedral by Canaletto"
+			sizes=`${cathedralWidth}vw`
+			widths={[957, 479, 319, 239, 160]}
+			type="png"
+		/>
+	</div>
+	<div class="parallax-layer parallax-layer-2 parallax-layer-city">
+		<HeroImage
+			src={cityImageFile}
+			alt="Slice of London by Canaletto"
+			sizes="100vw"
+			widths={[1500, 1024, 768, 480]}
+			type="png"
+		/>
+	</div>
+	<div class="parallax-layer parallax-layer-3 parallax-layer-text">
+		<div class="text-container">
+			<h1>{title}</h1>
+			<h2>{subTitle}</h2>
+		</div>
+	</div>
+	<div class="parallax-layer parallax-layer-4 parallax-layer-river">
+		<HeroImage
+			src={riverImageFile}
+			alt="Thames River by Canaletto"
+			sizes="100vw"
+			widths={[3000, 1920, 1440, 768, 480]}
+			type="png"
+		/>
+	</div>
+	<div class="parallax-layer parallax-layer-5 parallax-layer-shore">
+		<HeroImage
+			src={shoreImageFile}
+			alt="Thames Shore by Canaletto"
+			sizes="100vw"
+			widths={[3000, 1920, 1440, 768, 480]}
+			type="png"
+		/>
+	</div>
+	<div class="parallax-layer parallax-layer-6 parallax-layer-man">
+		<HeroImage
+			src={manImageFile}
+			alt="Man in top hat standing watching London"
+			sizes=`${manWidth}vw`
+			widths={[1317, 659, 439, 329, 219]}
+			type="png"
+		/>
+	</div>
+	<div class="parallax-layer parallax-layer-bottom"></div>
+</header>
 
 <style
 	lang="scss"
@@ -93,6 +95,10 @@ const { title, subTitle } = Astro.props;
 	@use 'sass:math';
 	@use '~styles/_variables.scss' as v;
 	@use '~styles/_mixins.scss' as m;
+
+	header {
+		display: contents;
+	}
 
 	.parallax-layer {
 		position: absolute;
