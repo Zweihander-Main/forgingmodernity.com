@@ -24,24 +24,28 @@ const {
 <style lang="scss">
 	figure {
 		position: relative;
-		margin: 5rem 0vw;
+		margin: 5rem 0;
+
 		@include m.media('>tablet') {
 			margin: 5rem 2vw 5rem calc(2vw + 2rem);
 		}
+
 		@include m.media('>desktop') {
 			margin: 10rem 2vw 10rem calc(2vw + 2rem);
 		}
+
 		@include m.media('>large') {
 			margin: 10rem 6vw 10rem calc(6vw + 2rem);
 		}
+
 		@include m.media('>xlarge') {
 			margin: 10rem 8vw 10rem calc(8vw + 2rem);
 		}
 	}
+
 	figure::before {
 		content: '“';
 		position: absolute;
-		top: 0;
 		line-height: 0;
 		font-style: italic;
 		opacity: 0.165;
@@ -54,30 +58,37 @@ const {
 			top: 7rem;
 			left: -3.5rem;
 		}
+
 		@include m.media('>tablet') {
 			font-size: 34rem;
 			top: 12rem;
 			left: -9rem;
 		}
 	}
+
 	blockquote {
 		margin: 0;
 		font-size: 1.5rem;
 		font-style: italic;
 		text-align: center;
+
 		@include m.media('>phone') {
 			font-size: 1.7rem;
 			margin: revert;
 		}
+
 		@include m.media('>tablet') {
 			font-size: 2rem;
 		}
+
 		@include m.media('>justify') {
 			text-align: justify;
 		}
 	}
+
 	figcaption {
 		@include m.parchment-emphasis;
+
 		text-align: right;
 		margin: 1rem 0;
 
@@ -85,6 +96,7 @@ const {
 			margin: 1rem 40px;
 		}
 	}
+
 	cite {
 		font-style: normal;
 		text-underline-offset: 0.2rem;

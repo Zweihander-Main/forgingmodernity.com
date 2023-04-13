@@ -28,7 +28,6 @@ const retailerImage = (await import(
 </a>
 <style lang="scss">
 	.retailer-link {
-		display: block;
 		padding: 1rem;
 		border: 1px solid v.$color-button;
 		box-shadow: 0 0 2px 1px v.$color-shadow;
@@ -42,6 +41,7 @@ const retailerImage = (await import(
 		@include m.media('>phone') {
 			padding: 1.5rem;
 		}
+
 		@include m.media('>tablet') {
 			padding: 2rem;
 		}
@@ -50,6 +50,7 @@ const retailerImage = (await import(
 			box-shadow: 0 0 2px 1px v.$color-shadow, 0 0 5px v.$color-shadow;
 		}
 	}
+
 	.retailer-image {
 		mix-blend-mode: multiply;
 		max-width: 100%;

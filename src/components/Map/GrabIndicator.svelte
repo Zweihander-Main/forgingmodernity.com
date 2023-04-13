@@ -46,20 +46,24 @@
 		padding: 1rem;
 	}
 
+	/* stylelint-disable-next-line keyframes-name-pattern */
 	@keyframes -global-drag-gesture {
 		0% {
-			transform: translate(0rem, 3rem);
+			transform: translate(0, 3rem);
 			opacity: 0;
 		}
+
 		10% {
 			opacity: 0.9;
 		}
+
 		60% {
 			opacity: 0.9;
 		}
+
 		100% {
 			opacity: 0;
-			transform: translate(3rem, 0rem);
+			transform: translate(3rem, 0);
 		}
 	}
 </style>

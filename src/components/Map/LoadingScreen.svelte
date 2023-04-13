@@ -5,7 +5,7 @@
 	const CLOUD_WEIGHT = 0.2;
 
 	let visualPercentageDone = 0;
-	let mapPercentaegDone = 0;
+	let mapPercentageDone = 0;
 	let cloudsPercentageDone = 0;
 	let mapLoaded = false;
 	let bgOpacity = 1;
@@ -13,7 +13,7 @@
 	let cloudsLoaded = 0;
 
 	const setMapLoadedPercentage = (percentage: number) => {
-		mapPercentaegDone = Math.floor(percentage);
+		mapPercentageDone = Math.floor(percentage);
 	};
 
 	const setMapLoaded = () => {
@@ -26,7 +26,7 @@
 	};
 
 	$: visualPercentageDone = Math.floor(
-		mapPercentaegDone * MAP_WEIGHT + cloudsPercentageDone * CLOUD_WEIGHT
+		mapPercentageDone * MAP_WEIGHT + cloudsPercentageDone * CLOUD_WEIGHT
 	);
 
 	$: if (
@@ -75,7 +75,7 @@
 		font-size: 5vw;
 		font-family: v.$font-family-headings;
 		color: v.$color-text-stroke;
-		text-shadow: 0px 2px 4px v.$color-shadow-light;
+		text-shadow: 0 2px 4px v.$color-shadow-light;
 		will-change: opacity;
 	}
 </style>

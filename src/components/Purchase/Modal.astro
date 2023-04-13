@@ -16,7 +16,7 @@ const sortedRetailers = retailerItems.sort(
 const mediaTabletWidth = parseInt(cssVars.mediaTablet, 10) + 1;
 const mediaTabletPixels = 150;
 const mediaTabletRems = 4;
-const mediaphoneWidth = parseInt(cssVars.mediaPhone, 10) + 1;
+const mediaPhoneWidth = parseInt(cssVars.mediaPhone, 10) + 1;
 const mediaPhonePixels = 150;
 const mediaPhoneRems = 3;
 const normalPixels = 100;
@@ -25,7 +25,7 @@ const normalRems = 2;
 const retailerSizes =
 	`(min-width: ${mediaTabletWidth}px) ` +
 	`calc(${mediaTabletPixels}px + ${mediaTabletRems}rem), ` +
-	`(min-width: ${mediaphoneWidth}px) ` +
+	`(min-width: ${mediaPhoneWidth}px) ` +
 	`calc(${mediaPhonePixels}px + ${mediaPhoneRems}rem), ` +
 	`calc(${normalPixels}px + ${normalRems}rem)})`;
 ---
@@ -56,19 +56,16 @@ const retailerSizes =
 <style
 	lang="scss"
 	define:vars={{
-		retailerTabletMin: `calc(${mediaTabletPixels}px + ${mediaTabletRems}rem)`,
-		retailerPhoneMin: `calc(${mediaPhonePixels}px + ${mediaPhoneRems}rem)`,
-		retailerMin: `calc(${normalPixels}px + ${normalRems}rem)`,
+		'retailer-tablet-min': `calc(${mediaTabletPixels}px + ${mediaTabletRems}rem)`,
+		'retailer-phone-min': `calc(${mediaPhonePixels}px + ${mediaPhoneRems}rem)`,
+		'retailer-min': `calc(${normalPixels}px + ${normalRems}rem)`,
 	}}
 >
 	.modal {
 		opacity: 0;
 		visibility: hidden;
 		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		inset: 0;
 		text-align: left;
 		background: v.$color-shadow-dark;
 		transition: opacity v.$transition-speed-slow v.$transition-timing;
@@ -76,10 +73,7 @@ const retailerSizes =
 
 	.outer {
 		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		inset: 0;
 		cursor: pointer;
 	}
 
@@ -107,10 +101,7 @@ const retailerSizes =
 	.inner {
 		transition: top v.$transition-speed-slow v.$transition-timing;
 		position: absolute;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		top: 10%;
+		inset: 10% 0 0;
 		width: 70%;
 		height: 80%;
 		margin: auto;
@@ -164,24 +155,26 @@ const retailerSizes =
 		grid-auto-rows: 1fr;
 		grid-template-columns: repeat(
 			auto-fill,
-			minmax(var(--retailerMin), 1fr)
+			minmax(var(--retailer-min), 1fr)
 		);
 		justify-items: center;
 		margin-bottom: 1rem;
+
 		@include m.media('>phone') {
 			margin-bottom: 1.5rem;
 			gap: 1.5rem;
 			grid-template-columns: repeat(
 				auto-fill,
-				minmax(var(--retailerPhoneMin), 1fr)
+				minmax(var(--retailer-phone-min), 1fr)
 			);
 		}
+
 		@include m.media('>tablet') {
 			margin-bottom: 2rem;
 			gap: 2rem;
 			grid-template-columns: repeat(
 				auto-fill,
-				minmax(var(--retailerTabletMin), 1fr)
+				minmax(var(--retailer-tablet-min), 1fr)
 			);
 		}
 	}

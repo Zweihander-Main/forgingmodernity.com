@@ -99,9 +99,9 @@ const coverSizes =
 <style
 	lang="scss"
 	define:vars={{
-		bookInfoColumnWidth: `${bookInfoColumnWidth}fr`,
-		bookCoverColumnWidth: `${bookCoverColumnWidth}fr`,
-		bookInfoGridGap: `${bookInfoGridGap}rem`,
+		'book-info-column-width': `${bookInfoColumnWidth}fr`,
+		'book-cover-column-width': `${bookCoverColumnWidth}fr`,
+		'book-info-grid-gap': `${bookInfoGridGap}rem`,
 	}}
 >
 	section {
@@ -119,27 +119,24 @@ const coverSizes =
 
 		@include m.media('>desktop') {
 			margin: 6rem 0;
-			grid-template-columns: var(--bookCoverColumnWidth) var(
-					--bookInfoColumnWidth
+			grid-template-columns: var(--book-cover-column-width) var(
+					--book-info-column-width
 				);
-			gap: calc(var(--bookInfoGridGap) / 2);
+			gap: calc(var(--book-info-grid-gap) / 2);
 		}
 
 		@include m.media('>large') {
-			gap: calc(var(--bookInfoGridGap) * 0.7);
+			gap: calc(var(--book-info-grid-gap) * 0.7);
 		}
 
 		@include m.media('>xlarge') {
-			gap: var(--bookInfoGridGap);
+			gap: var(--book-info-grid-gap);
 		}
 	}
 
 	.reviews-container {
 		display: flex;
 		flex-direction: column;
-	}
-
-	.maplink-container {
 	}
 
 	.endorsement-container {
@@ -151,6 +148,7 @@ const coverSizes =
 		row-gap: 2.5rem;
 		align-items: baseline;
 		justify-items: center;
+
 		@include m.media('>phone') {
 			column-gap: calc(v.$padding-width-overview-sides / 4);
 		}
@@ -197,6 +195,7 @@ const coverSizes =
 				text-underline-offset: 0.2em;
 			}
 		}
+
 		:global(p) {
 			@include m.media('>justify') {
 				text-align: justify;

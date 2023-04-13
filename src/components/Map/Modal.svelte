@@ -67,6 +67,7 @@
 
 	.modal {
 		@include m.custom-scrollbar(v.$color-map-peach, v.$color-button);
+
 		overflow-y: auto;
 		overflow-x: hidden;
 		max-height: 85vh;
@@ -87,14 +88,12 @@
 
 	.modal-grid {
 		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-		grid-template-areas: 'image' 'text';
+		grid-template:
+			'image' 1fr
+			'text' 1fr;
 
 		@include m.media('>desktop') {
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: 1fr;
-			grid-template-areas: 'image text';
+			grid-template: 'image text' 1fr / 1fr 1fr;
 			max-height: inherit;
 		}
 	}
@@ -103,6 +102,7 @@
 		position: relative;
 		grid-area: image;
 		max-height: 80vh;
+
 		@include m.media('>desktop') {
 			max-height: unset;
 		}
@@ -130,11 +130,11 @@
 			1.3px,
 			0 0 0.4rem v.$color-black
 		);
+
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		max-width: 100%;
-		color: white;
 		text-align: left;
 		z-index: 1201;
 		line-height: 0.9;
@@ -144,9 +144,11 @@
 		margin-bottom: 0.3rem;
 		color: v.$color-map-white;
 		font-size: 10vw;
+
 		@include m.media('>tablet') {
 			font-size: 3.5rem;
 		}
+
 		@include m.media('>desktop') {
 			font-size: min(3.5rem, 5vw);
 		}
@@ -167,7 +169,7 @@
 		background: v.$color-map-peach;
 		grid-area: text;
 		overflow-y: hidden;
-		padding: 0rem 1rem;
+		padding: 0 1rem;
 
 		@include m.media('>phone') {
 			padding: 0.5rem 2rem;

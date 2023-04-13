@@ -41,6 +41,7 @@ const endorser = (await import(
 		clip-path: circle();
 		mix-blend-mode: luminosity;
 		opacity: 0.9;
+
 		@include m.media('>phone') {
 			width: 17rem;
 		}
@@ -48,9 +49,11 @@ const endorser = (await import(
 
 	.endorsement-content {
 		margin-top: 6rem;
+
 		@include m.media('>desktop') {
 			margin-top: 0;
 		}
+
 		@include m.media('>justify') {
 			text-align: justify;
 		}
@@ -59,6 +62,7 @@ const endorser = (await import(
 	.endorsement-meta {
 		@include m.parchment-emphasis;
 		@include m.parchment-text;
+
 		text-align: center;
 	}
 </style>

@@ -26,6 +26,19 @@
 	],
 	"eslint.validate": [
 		"astro",
-		"svelte"
+		"svelte",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+	],
+	"stylelint.validate": [
+		"css",
+		"less",
+		"postcss",
+		"scss",
+		"html",
+		"svelte",
+		"astro"
 	]
 }

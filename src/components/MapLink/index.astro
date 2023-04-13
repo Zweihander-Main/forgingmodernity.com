@@ -47,6 +47,7 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 			width: 60vw;
 			left: 5vw;
 		}
+
 		@include m.media('>large') {
 			display: block;
 			width: 50vw;
@@ -59,9 +60,9 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 		}
 
 		&:hover .text {
-			text-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+			text-shadow: 0 2px 4px rgba(255 255 255 / 10%);
 			filter: brightness(var(--deboss-brightness))
-				drop-shadow(0px 0px 0.5px v.$color-shadow-light);
+				drop-shadow(0 0 0.5px v.$color-shadow-light);
 		}
 
 		&:hover .maplink-icon {
@@ -83,19 +84,23 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 		left: 43%;
 		width: 20vw;
 		height: 20vw;
+
 		@include m.media('>phone') {
 			width: 15vw;
 			height: 15vw;
 		}
+
 		@include m.media('>tablet') {
 			top: 55%;
 		}
+
 		@include m.media('>desktop') {
 			top: 29vw;
 			left: 22vw;
 			width: 8vw;
 			height: 8vw;
 		}
+
 		@include m.media('>large') {
 			top: 20vw;
 			left: 16.5vw;
@@ -112,9 +117,11 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 		font-size: 1.7rem;
 		text-align: center;
 		margin-left: 1rem;
+
 		@include m.media('>phone') {
 			font-size: 2rem;
 		}
+
 		@include m.media('>desktop') {
 			margin-left: 0;
 			line-height: 1.25;
@@ -124,6 +131,7 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 			margin-top: 8vw;
 			word-spacing: 9999rem;
 		}
+
 		@include m.media('>large') {
 			line-height: 1.25;
 			margin-bottom: initial;
@@ -132,6 +140,7 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 			margin-top: 3.25vw;
 		}
 	}
+
 	.map-picture {
 		filter: drop-shadow(0 0 6px v.$color-shadow);
 		float: left;
@@ -143,10 +152,12 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 		height: auto;
 		position: relative;
 		left: -1vw;
+
 		@include m.media('>phone') {
 			width: 60vw;
 			left: -2.5vw;
 		}
+
 		@include m.media('>desktop') {
 			left: 0;
 			height: unset;
@@ -154,6 +165,7 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 			width: 45vw;
 			shape-outside: ellipse(18vw 19vw);
 		}
+
 		@include m.media('>large') {
 			width: 32vw;
 			shape-outside: ellipse(14vw 17vw);

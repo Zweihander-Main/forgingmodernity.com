@@ -63,6 +63,7 @@
 
 <style lang="scss">
 	@use 'sass:color';
+
 	.home-button {
 		position: absolute;
 		z-index: 1000;
@@ -77,11 +78,12 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		filter: drop-shadow(0px 0px 1px v.$color-shadow);
+		filter: drop-shadow(0 0 1px v.$color-shadow);
 		transition: all v.$transition-speed-instant ease-in;
+
 		&:hover {
 			color: #fff;
-			filter: drop-shadow(0px 0px 2px v.$color-shadow-dark);
+			filter: drop-shadow(0 0 2px v.$color-shadow-dark);
 		}
 	}
 
@@ -101,6 +103,7 @@
 			0.5px,
 			1px 1px 2px v.$color-shadow
 		);
+
 		font-size: 1.4rem;
 		margin: 0;
 	}
