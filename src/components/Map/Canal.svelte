@@ -31,6 +31,7 @@
 		'svg'
 	);
 	canalSVG.classList.add('canal');
+	canalSVG.setAttribute('data-testid', camelCaseName);
 	canalSVG.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 	canalSVG.setAttribute('viewBox', `0 0 ${width} ${height}`);
 	canalSVG.style.cssText = 'pointer-events: none !important';

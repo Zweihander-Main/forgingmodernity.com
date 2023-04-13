@@ -15,7 +15,7 @@ const retailerImage = (await import(
 )) as ImageImport;
 ---
 
-<a href={url} class="retailer-link">
+<a href={url} class="retailer-link" title={name}>
 	<Picture
 		src={retailerImage.default}
 		alt={name}

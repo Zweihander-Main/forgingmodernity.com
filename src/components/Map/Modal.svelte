@@ -4,6 +4,7 @@
 	export let L: typeof import('leaflet');
 	import Icon from '@iconify/svelte/dist/OfflineIcon.svelte';
 	import mdiCloseOctagon from '@iconify-icons/mdi/close-octagon';
+	import { camelCaseString } from '@util/funcs';
 
 	let dialog: HTMLDialogElement;
 
@@ -34,6 +35,7 @@
 	<span
 		class="close-button"
 		title="Close"
+		data-testid={`close-${camelCaseString(name)}`}
 		on:click={() => dialog.close()}
 		on:keypress={() => dialog.close()}
 	>
