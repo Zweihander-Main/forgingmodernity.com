@@ -1,8 +1,18 @@
 ---
-export type Props = { children: unknown };
+export type Props = {
+	class?: string;
+	children: unknown;
+};
+
+const { class: className } = Astro.props;
+
+let mainClass = 'parchment';
+if (className) {
+	mainClass += ` ${className}`;
+}
 ---
 
-<main class="parchment">
+<main class={mainClass}>
 	<slot />
 </main>
 

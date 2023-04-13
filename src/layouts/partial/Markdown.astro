@@ -4,7 +4,7 @@ import Parchment from '@layouts/partial/Parchment.astro';
 export type Props = { children: unknown };
 ---
 
-<Parchment>
+<Parchment class="full-page-parchment">
 	<div class="markdown-container">
 		<p class="return"><a href="/">Return Home</a></p>
 		<slot />
@@ -12,6 +12,10 @@ export type Props = { children: unknown };
 </Parchment>
 
 <style>
+	.full-page-parchment {
+		min-height: 100vh;
+	}
+
 	.return {
 		place-content: flex-start;
 	}
