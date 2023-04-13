@@ -12,5 +12,20 @@
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode"
 	},
-	"svelte.plugin.svelte.diagnostics.enable": false
+	"svelte.plugin.svelte.diagnostics.enable": false,
+	"eslint.probe": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html",
+		"vue",
+		"markdown",
+		"astro",
+		"svelte"
+	],
+	"eslint.validate": [
+		"astro",
+		"svelte"
+	]
 }

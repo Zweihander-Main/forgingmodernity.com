@@ -10,17 +10,17 @@
 	import { isFormatSupported } from '@util/funcs';
 	import Icon from '@iconify/svelte/dist/OfflineIcon.svelte';
 	import mdiHome from '@iconify-icons/mdi/home';
-	import type { slimmedCanals } from '@util/types';
+	import type { slimCanals } from '@util/types';
 
-	export let canals: slimmedCanals;
+	export let canals: slimCanals;
 
 	let avifSupported: boolean;
-	isFormatSupported('avif', AVIF_BASE64).then((result) => {
+	void isFormatSupported('avif', AVIF_BASE64).then((result) => {
 		avifSupported = result;
 	});
 	let L: typeof import('leaflet');
 	onMount(() => {
-		import('leaflet').then((result) => {
+		void import('leaflet').then((result) => {
 			L = result;
 		});
 	});

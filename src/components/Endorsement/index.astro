@@ -1,7 +1,7 @@
 ---
 import PlaceholderImage from '@components/PlaceholderImage/index.astro';
 import type { CollectionEntry } from 'astro:content';
-
+import type { ImageImport } from '@util/types';
 export interface Props {
 	endorsement: CollectionEntry<'endorsements'>;
 }
@@ -9,9 +9,9 @@ export interface Props {
 const { endorsement } = Astro.props;
 const { name, profession, image } = endorsement.data;
 const { Content } = await endorsement.render();
-const endorser = await import(
+const endorser = (await import(
 	`../../assets/overview/endorsers/${image.replace(/\.[^/.]+$/, '')}.jpg`
-);
+)) as ImageImport;
 ---
 
 <div class="endorsement-content">

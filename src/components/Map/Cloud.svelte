@@ -1,15 +1,16 @@
 <script lang="ts">
-	import type { ImageOverlay } from 'leaflet';
+	import type { ImageOverlay, Map } from 'leaflet';
+	// prettier-ignore
 	import {
 		MAP_WIDTH,
 		MAP_HEIGHT,
 		MAP_H_GUTTER,
 		MAP_V_GUTTER,
-		CLOUD_IMAGES,
+		CLOUD_IMAGES
 	} from '@util/vars';
 
 	export let L: typeof import('leaflet');
-	export let map: L.Map;
+	export let map: Map;
 	export let avifSupported: boolean;
 	export let setCloudLoaded: () => void;
 

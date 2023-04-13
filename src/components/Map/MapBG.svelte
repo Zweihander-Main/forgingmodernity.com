@@ -6,7 +6,7 @@
 		MAP_H_GUTTER,
 		MAP_V_GUTTER,
 	} from '@util/vars';
-	import type { LatLngBoundsExpression } from 'leaflet';
+	import type { LatLngBoundsExpression, Map } from 'leaflet';
 	import { loadImage } from '@util/funcs';
 
 	export let L: typeof import('leaflet');
@@ -21,7 +21,7 @@
 	const zoom = 13;
 
 	let mapElement: HTMLElement;
-	let map: L.Map;
+	let map: Map;
 
 	onMount(() => {
 		map = L.map(mapElement, {
@@ -39,7 +39,7 @@
 			zoom
 		);
 
-		loadImage('/img/map.webp', (percentageLoaded: number) => {
+		void loadImage('/img/map.webp', (percentageLoaded: number) => {
 			setMapLoadedPercentage(percentageLoaded);
 		}).then((imgSrc) => {
 			const mapImageElement = new Image();

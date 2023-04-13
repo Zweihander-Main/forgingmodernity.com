@@ -38,14 +38,17 @@ const retailerSizes =
 		<h1>Retailers</h1>
 		<div class="retailers">
 			{
-				sortedRetailers.map(({ data: item }) => (
-					<Retailer
-						name={item.name}
-						url={item.url}
-						image={item.image}
-						sizes={retailerSizes}
-					/>
-				))
+				sortedRetailers.map(
+					({ data: item }) =>
+						(
+							<Retailer
+								name={item.name}
+								url={item.url}
+								image={item.image}
+								sizes={retailerSizes}
+							/>
+						) as HTMLElement
+				)
 			}
 		</div>
 	</div>

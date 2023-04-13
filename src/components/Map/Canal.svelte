@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Modal from './Modal.svelte';
 	import { camelCaseString } from '@util/funcs';
-	import type { LatLngBoundsExpression } from 'leaflet';
+	import type { LatLngBoundsExpression, Map } from 'leaflet';
 	import type { canalContentDOMId, canalPictureDOMId } from '@util/types';
 
 	export let L: typeof import('leaflet');
-	export let map: L.Map;
+	export let map: Map;
 	export let name: string;
 	export let x: number;
 	export let y: number;
@@ -45,6 +45,7 @@
     <use class="canal-hover" xlink:href="#${camelCaseName}SVGPath" style="stroke-width:${hoverStrokeWidth}" pointer-events="stroke"/>
     <use class="canal-visible" xlink:href="#${camelCaseName}SVGPath" style="stroke-width:${visibleStrokeWidth}" />
 </g>`;
+
 	const svgLayer = L.svgOverlay(canalSVG, canalBounds, {
 		interactive: true,
 		zIndex: 100,
@@ -57,17 +58,15 @@
 	});
 	svgLayer.addTo(map);
 
-	const bodyContent = (
-		document.getElementById(
-			`canal_${camelCaseName}` as canalContentDOMId
-		) as HTMLElement
-	).innerHTML;
+	const contentID: canalContentDOMId = `canal_${camelCaseName}`;
+	const imageID: canalPictureDOMId = `canal_${camelCaseName}_image`;
+
+	const bodyContent = (document.getElementById(contentID) as HTMLElement)
+		.innerHTML;
 
 	// Replace forces image loading when component mounted
 	const imageContent = (
-		document.getElementById(
-			`canal_${camelCaseName}_image` as canalPictureDOMId
-		) as HTMLPictureElement
+		document.getElementById(imageID) as HTMLPictureElement
 	).innerHTML.replace(/loading=.lazy./, 'loading="eager"');
 </script>
 

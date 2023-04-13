@@ -42,7 +42,7 @@
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-astro": "^0.26.1",
 		"eslint-plugin-prettier": "^4.2.1",
-		"eslint-plugin-svelte": "^2.26.0",
+		"eslint-plugin-svelte3": "^4.0.0",
 		"leaflet": "^1.9.3",
 		"prettier": "^2.8.7",
 		"prettier-plugin-astro": "^0.8.0",
@@ -66,17 +66,12 @@
 			],
 			"ecmaVersion": 2023
 		},
+		"env": {
+			"browser": true,
+			"node": true
+		},
 		"plugins": [
 			"@typescript-eslint"
-		],
-		"extends": [
-			"eslint:recommended",
-			"plugin:@typescript-eslint/eslint-recommended",
-			"plugin:@typescript-eslint/recommended",
-			"plugin:@typescript-eslint/recommended-requiring-type-checking",
-			"plugin:astro/recommended",
-			"plugin:svelte/recommended",
-			"plugin:prettier/recommended"
 		],
 		"rules": {
 			"quotes": [
@@ -112,6 +107,21 @@
 		"overrides": [
 			{
 				"files": [
+					"*.js",
+					"*.jsx",
+					"*.ts",
+					"*.tsx"
+				],
+				"extends": [
+					"eslint:recommended",
+					"plugin:@typescript-eslint/eslint-recommended",
+					"plugin:@typescript-eslint/recommended",
+					"plugin:@typescript-eslint/recommended-requiring-type-checking",
+					"plugin:prettier/recommended"
+				]
+			},
+			{
+				"files": [
 					"*.astro"
 				],
 				"parser": "astro-eslint-parser",
@@ -120,21 +130,36 @@
 					"extraFileExtensions": [
 						".astro"
 					]
-				}
+				},
+				"extends": [
+					"eslint:recommended",
+					"plugin:@typescript-eslint/eslint-recommended",
+					"plugin:@typescript-eslint/recommended",
+					"plugin:@typescript-eslint/recommended-requiring-type-checking",
+					"plugin:astro/recommended",
+					"plugin:prettier/recommended"
+				]
 			},
 			{
 				"files": [
 					"*.svelte"
 				],
-				"parser": "svelte-eslint-parser",
-				"parserOptions": {
-					"parser": "@typescript-eslint/parser"
+				"processor": "svelte3/svelte3",
+				"plugins": [
+					"svelte3",
+					"@typescript-eslint"
+				],
+				"extends": [
+					"eslint:recommended",
+					"plugin:@typescript-eslint/eslint-recommended",
+					"plugin:@typescript-eslint/recommended",
+					"plugin:@typescript-eslint/recommended-requiring-type-checking"
+				],
+				"settings": {
+					"svelte3/typescript": true
 				}
 			}
-		],
-		"settings": {
-			"svelte3/typescript": true
-		}
+		]
 	},
 	"eslintIgnore": [
 		"/*.js",
@@ -203,6 +228,7 @@
 		"useGitIgnore": true,
 		"words": [
 			"astro",
+			"astrojs",
 			"Joomla",
 			"stylelint"
 		]

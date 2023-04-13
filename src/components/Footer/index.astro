@@ -13,11 +13,14 @@ const { footerItems, authorName } = Astro.props;
 	<div class="footer-container">
 		<ul class="syndication-links">
 			{
-				footerItems.map(({ data: item }) => (
-					<li>
-						<a href={item.link}>{item.title}</a>
-					</li>
-				))
+				footerItems.map(
+					({ data: item }) =>
+						(
+							<li>
+								<a href={item.link}>{item.title}</a>
+							</li>
+						) as HTMLLIElement
+				)
 			}
 		</ul>
 		<p class="copyright">

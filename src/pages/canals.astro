@@ -7,9 +7,10 @@ import { camelCaseString } from '@util/funcs';
 import cssVars from '@styles/_jsalias.module.scss';
 import type { AstroComponentFactory } from 'astro/dist/runtime/server';
 import type {
-	slimmedCanals,
+	slimCanals,
 	canalContentDOMId,
 	canalPictureDOMId,
+	ImageImport,
 } from '@util/types';
 export type Props = Record<string, never>;
 
@@ -18,7 +19,7 @@ const { shortTitle, canalsMapTitle, mapDescription } = metaEntry.data;
 
 const canals = await getCollection('canals');
 
-const slimmedCanals: slimmedCanals = canals.map((canal) => {
+const slimmedCanals: slimCanals = canals.map((canal) => {
 	return {
 		x: canal.data.x,
 		y: canal.data.y,
@@ -38,7 +39,9 @@ const canalEntries: Array<{
 	camelCaseName: string;
 }> = [];
 
-const canalImages = await Astro.glob('../assets/canals/*.jpg');
+const canalImages: Array<ImageImport> = await Astro.glob(
+	'../assets/canals/*.jpg'
+);
 
 for (let i = 0; i < canals.length; i++) {
 	const canal = canals[i] as CollectionEntry<'canals'>;
@@ -46,14 +49,16 @@ for (let i = 0; i < canals.length; i++) {
 	const camelCaseName = camelCaseString(canal.data.name);
 	const canalImage = canalImages.find((image) => {
 		return image.default.src.includes(camelCaseName);
-	}) as Record<string, any>;
-
-	canalEntries.push({
-		Content,
-		image: canalImage.default.src,
-		name: canal.data.name,
-		camelCaseName,
 	});
+
+	if (canalImage) {
+		canalEntries.push({
+			Content,
+			image: canalImage.default.src,
+			name: canal.data.name,
+			camelCaseName,
+		});
+	}
 }
 
 const mediaLargeWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
@@ -63,7 +68,7 @@ const canalImageSizes =
 	`(min-width: ${mediaLargeWidth}) 40vw, ` +
 	`(min-width: ${mediaDesktopWidth}) 45vw, ` +
 	`(min-width: ${mediaTabletWidth}) 90vw, ` +
-	`95vw`;
+	'95vw';
 ---
 
 <Global
@@ -72,31 +77,29 @@ const canalImageSizes =
 >
 	<Map canals={slimmedCanals} client:load />
 	{
-		canalEntries.map(({ Content, image, name, camelCaseName }) => (
-			<>
-				<div
-					id={`canal_${camelCaseName}` as canalContentDOMId}
-					class="canal-content"
-				>
-					<Content />
-				</div>
-				<div
-					id={`canal_${camelCaseName}_image` as canalPictureDOMId}
-					class="canal-content"
-				>
-					<Picture
-						src={image}
-						widths={[300, 600, 900]}
-						sizes={canalImageSizes}
-						aspectRatio="1:1"
-						quality={75}
-						alt={name}
-						fit="cover"
-						position="center"
-					/>
-				</div>
-			</>
-		))
+		canalEntries.map(({ Content, image, name, camelCaseName }) => {
+			const contentID: canalContentDOMId = `canal_${camelCaseName}`;
+			const pictureID: canalPictureDOMId = `canal_${camelCaseName}_image`;
+			return (
+				<>
+					<div id={contentID} class="canal-content">
+						<Content />
+					</div>
+					<div id={pictureID} class="canal-content">
+						<Picture
+							src={image}
+							widths={[300, 600, 900]}
+							sizes={canalImageSizes}
+							aspectRatio="1:1"
+							quality={75}
+							alt={name}
+							fit="cover"
+							position="center"
+						/>
+					</div>
+				</>
+			) as HTMLElement;
+		})
 	}
 </Global>
 

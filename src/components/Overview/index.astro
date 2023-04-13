@@ -57,7 +57,7 @@ const coverSizes =
 	`calc(${mediaDesktopCoverSize}vw - ${mediaLargeGutter}rem), ` +
 	`(min-width: ${mediaDesktopMinWidth}px) ` +
 	`calc(${mediaDesktopCoverSize}vw - ${mediaDesktopGutter}rem), ` +
-	`100vw`;
+	'100vw';
 ---
 
 <section>
@@ -77,7 +77,11 @@ const coverSizes =
 </section>
 <section>
 	<div class="reviews-container">
-		{reviewItems.map((review) => <Review review={review} />)}
+		{
+			reviewItems.map(
+				(review) => (<Review review={review} />) as HTMLElement
+			)
+		}
 	</div>
 </section>
 <section class="maplink-container">
@@ -85,9 +89,10 @@ const coverSizes =
 </section>
 <section class="endorsement-container">
 	{
-		endorsementItems.map((endorsement) => (
-			<Endorsement endorsement={endorsement} />
-		))
+		endorsementItems.map(
+			(endorsement) =>
+				(<Endorsement endorsement={endorsement} />) as HTMLElement
+		)
 	}
 </section>
 <Footer footerItems={footerItems} authorName={authorName} />

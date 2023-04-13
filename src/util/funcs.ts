@@ -16,15 +16,16 @@ export const isFormatSupported = (
 export const camelCaseString = (str: string) => {
 	return str
 		.toLowerCase()
-		.replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+		.replace(/[^a-zA-Z0-9]+(.)/g, (_, chr: string) => chr.toUpperCase());
 };
+
 export const loadImage = (
 	imageUrl: string,
 	onprogress: (percentageLoaded: number) => void
 ) => {
 	return new Promise<string>((resolve, reject) => {
-		var xhr = new XMLHttpRequest();
-		var notifiedNotComputable = false;
+		const xhr = new XMLHttpRequest();
+		let notifiedNotComputable = false;
 
 		xhr.open('GET', imageUrl, true);
 		xhr.responseType = 'arraybuffer';
@@ -48,15 +49,15 @@ export const loadImage = (
 					onprogress(100);
 				}
 
-				var options: BlobPropertyBag = {};
-				var headers = xhr.getAllResponseHeaders();
-				var m = headers.match(/^Content-Type\:\s*(.*?)$/im);
+				const options: BlobPropertyBag = {};
+				const headers = xhr.getAllResponseHeaders();
+				const m = headers.match(/^Content-Type:\s*(.*?)$/im);
 
 				if (m && m[1]) {
 					options.type = m[1];
 				}
 
-				var blob = new Blob([this.response], options);
+				const blob = new Blob([this.response], options);
 
 				resolve(window.URL.createObjectURL(blob));
 			}

@@ -1,5 +1,6 @@
 ---
 import { getPicture } from '@astrojs/image';
+import type { ImageMetadata } from '@util/types';
 export interface Props {
 	src: ImageMetadata;
 	alt: string;
@@ -28,9 +29,16 @@ const renderedPicObject = await getPicture({
 
 <picture>
 	{
-		renderedPicObject.sources.map((source) => (
-			<source srcset={source.srcset} sizes={sizes} type={source.type} />
-		))
+		renderedPicObject.sources.map(
+			(source) =>
+				(
+					<source
+						srcset={source.srcset}
+						sizes={sizes}
+						type={source.type}
+					/>
+				) as HTMLSourceElement
+		)
 	}
 	<img
 		src={renderedPicObject.image.src}

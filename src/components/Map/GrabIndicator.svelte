@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte/dist/OfflineIcon.svelte';
 	import handDrag from '@iconify-icons/icon-park/hand-drag';
+	import type { Map } from 'leaflet';
 
 	import { onMount } from 'svelte';
 
-	export let map: L.Map;
+	export let map: Map;
 
 	let grabIcon: HTMLElement;
 	onMount(() => {

@@ -1,5 +1,7 @@
 ---
 import { Picture } from '@astrojs/image/components';
+import type { ImageImport } from '@util/types';
+
 export interface Props {
 	name: string;
 	url: string;
@@ -8,9 +10,9 @@ export interface Props {
 }
 
 const { name, url, image, sizes } = Astro.props;
-const retailerImage = await import(
+const retailerImage = (await import(
 	`../../assets/retailers/${image.replace(/\.[^/.]+$/, '')}.png`
-);
+)) as ImageImport;
 ---
 
 <a href={url} class="retailer-link">

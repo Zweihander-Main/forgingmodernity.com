@@ -1,6 +1,7 @@
 ---
 import { getPicture } from '@astrojs/image';
 import type { OutputFormat } from '@astrojs/image/dist/loaders';
+import type { ImageMetadata } from '@util/types';
 import { getPlaiceholder } from 'plaiceholder';
 
 export interface Props {
@@ -65,19 +66,22 @@ const [Svg, svgProps, svgChildren] = svg;
 			svgChildren.map((child) => {
 				const [Path, pathProps] = child;
 
-				return <Path {...pathProps} />;
+				return (<Path {...pathProps} />) as HTMLElement;
 			})
 		}
 	</Svg>
 	<picture>
 		{
-			renderedPicObject.sources.map((source) => (
-				<source
-					srcset={source.srcset}
-					sizes={sizes}
-					type={source.type}
-				/>
-			))
+			renderedPicObject.sources.map(
+				(source) =>
+					(
+						<source
+							srcset={source.srcset}
+							sizes={sizes}
+							type={source.type}
+						/>
+					) as HTMLSourceElement
+			)
 		}
 		<img
 			src={renderedPicObject.image.src}

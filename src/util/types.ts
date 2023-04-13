@@ -1,4 +1,5 @@
-export interface slimmedCanal {
+import type { ImageMetadata } from '../env';
+export interface slimCanal {
 	x: number;
 	y: number;
 	width: number;
@@ -10,7 +11,13 @@ export interface slimmedCanal {
 	pathYAdjust: number;
 }
 
-export type slimmedCanals = Array<slimmedCanal>;
+export type slimCanals = Array<slimCanal>;
 
 export type canalContentDOMId = `canal_${string}`;
 export type canalPictureDOMId = `canal_${string}_image`;
+
+export interface ImageImport {
+	default: ImageMetadata;
+}
+
+export { ImageMetadata };
