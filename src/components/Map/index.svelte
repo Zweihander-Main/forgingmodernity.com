@@ -63,6 +63,8 @@
 
 <style lang="scss">
 	@use 'sass:color';
+	@use '../../styles/_variables.scss' as v;
+	@use '../../styles/_mixins.scss' as m;
 
 	.home-button {
 		position: absolute;

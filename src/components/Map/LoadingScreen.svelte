@@ -52,6 +52,8 @@
 <slot {setMapLoadedPercentage} {setMapLoaded} {setCloudLoaded} />
 
 <style lang="scss">
+	@use '../../styles/_variables.scss' as v;
+
 	.loading-screen {
 		position: fixed;
 		top: 0;

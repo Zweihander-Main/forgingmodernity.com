@@ -11,6 +11,9 @@
 			"tab.hoverBackground": "#161616",
 			"tab.border": "#303030"
 		},
-		"prettier.documentSelectors": ["**/*.astro"]
+		"prettier.documentSelectors": ["**/*.astro"],
+		"svelte.plugin.svelte.compilerWarnings": {
+			"css-unused-selector": "ignore"
+		}
 	}
 }

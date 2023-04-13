@@ -20,6 +20,9 @@ const { sizes } = Astro.props;
 	/>
 </div>
 <style lang="scss">
+	@use '~styles/_variables.scss' as v;
+	@use '~styles/_mixins.scss' as m;
+
 	.book {
 		@include m.media('>desktop') {
 			display: flex;

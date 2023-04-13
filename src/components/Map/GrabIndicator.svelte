@@ -25,6 +25,8 @@
 </div>
 
 <style lang="scss">
+	@use '../../styles/_variables.scss' as v;
+
 	:global(.grab-hide) {
 		display: none;
 	}

@@ -27,6 +27,9 @@ const retailerImage = (await import(
 	/>
 </a>
 <style lang="scss">
+	@use '~styles/_variables.scss' as v;
+	@use '~styles/_mixins.scss' as m;
+
 	.retailer-link {
 		padding: 1rem;
 		border: 1px solid v.$color-button;

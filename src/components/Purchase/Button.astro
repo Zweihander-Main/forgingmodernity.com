@@ -25,6 +25,8 @@ const { text, iconPack, icon } = Astro.props;
 	</div>
 </div>
 <style lang="scss">
+	@use '~styles/_variables.scss' as v;
+	@use '~styles/_mixins.scss' as m;
 	%octagon {
 		clip-path: polygon(
 			0 10%,

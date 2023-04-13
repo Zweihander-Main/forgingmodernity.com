@@ -1,5 +1,7 @@
 // Adapted from leaflet.css dist file
 @use 'sass:color';
+@use '~styles/_variables.scss' as v;
+@use '~styles/_mixins.scss' as m;
 
 /* required styles */
 

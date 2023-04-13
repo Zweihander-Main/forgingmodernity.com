@@ -64,6 +64,8 @@
 </figure>
 
 <style lang="scss">
+	@use '../../styles/_variables.scss' as v;
+
 	figure {
 		width: 100vw;
 		height: 100vh;

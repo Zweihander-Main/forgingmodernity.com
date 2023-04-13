@@ -7,6 +7,9 @@ export type Props = { children: unknown };
 </main>
 
 <style lang="scss">
+	@use '~styles/_variables.scss' as v;
+	@use '~styles/_mixins.scss' as m;
+
 	.parchment {
 		box-shadow: 2px 3px 20px v.$color-black,
 			0 0 125px v.$color-parchment-shadow inset;

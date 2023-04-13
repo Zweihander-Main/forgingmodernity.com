@@ -42,6 +42,9 @@
 </dialog>
 
 <style lang="scss">
+	@use '../../styles/_variables.scss' as v;
+	@use '../../styles/_mixins.scss' as m;
+
 	@keyframes modal-fly-up {
 		to {
 			opacity: 1;
@@ -90,7 +93,7 @@
 		display: grid;
 		grid-template:
 			'image' 1fr
-			'text' 1fr;
+			'text' / 1fr;
 
 		@include m.media('>desktop') {
 			grid-template: 'image text' 1fr / 1fr 1fr;

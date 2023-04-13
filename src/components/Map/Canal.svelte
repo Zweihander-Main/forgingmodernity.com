@@ -80,6 +80,8 @@
 </Modal>
 
 <style lang="scss">
+	@use '../../styles/_variables.scss' as v;
+
 	:global(.canal:focus) {
 		outline: none;
 	}

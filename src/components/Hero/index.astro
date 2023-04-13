@@ -91,6 +91,8 @@ const { title, subTitle } = Astro.props;
 	}}
 >
 	@use 'sass:math';
+	@use '~styles/_variables.scss' as v;
+	@use '~styles/_mixins.scss' as m;
 
 	.parallax-layer {
 		position: absolute;
