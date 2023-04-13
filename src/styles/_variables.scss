@@ -16,9 +16,10 @@ $color-map-white: #fffafa;
 $color-black: #0a0a0a;
 $depth-deboss-normal: 2px;
 $depth-deboss-moz: 5px;
-$font-family-headings: 'Marcellus SC', serif;
-$font-family-body: Vollkorn, serif;
-$font-family-sc: 'Vollkorn SC', serif;
+$font-family-headings: 'Marcellus SC', Arial, Verdana, sans-serif;
+$font-family-body: Vollkorn, 'Georgia Pro', georgia, 'Times New Roman', serif;
+$font-family-sc: 'Vollkorn SC', Vollkorn, 'Georgia Pro', georgia,
+	'Times New Roman', serif;
 $font-size-base: 19px;
 $opacity-parchment: 0.6;
 $margin-map-control-left: 0.6rem;
