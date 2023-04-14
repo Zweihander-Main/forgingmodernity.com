@@ -1,11 +1,11 @@
 ---
 import Global from '@layouts/Global.astro';
 import Markdown from '@layouts/partial/Markdown.astro';
+import PlaceholderImage from '@components/PlaceholderImage/index.astro';
 import Footer from '@components/Footer/index.astro';
 import authorPic from '@assets/author/author.jpg';
 import cssVars from '@styles/_jsalias.module.scss';
 import { getCollection, getEntryBySlug } from 'astro:content';
-import { Picture } from '@astrojs/image/components';
 
 export type Props = Record<string, never>;
 
@@ -21,20 +21,22 @@ const { Content } = await bookInfo.render();
 
 const footerItems = await getCollection('syndication');
 
-const overviewSideMargin = parseInt(cssVars.paddingWidthOverviewSides, 10);
-const pictureSizes = `calc(50vw - ${overviewSideMargin}rem})`;
+const mediaDesktopMinWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
+const mediaTabletMinWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
+const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px)` + `25vw`;
+`(min-width: ${mediaTabletMinWidth}px)` + `60vw,` + `70vw`;
 ---
 
 <Global title={`${shortTitle}: ${subTitle}`} description={authorDescription}>
 	<Markdown>
-		<Picture
+		<PlaceholderImage
+			publicSrc={'/img/author/author.jpg'}
 			src={authorPic}
 			alt={author}
 			sizes={pictureSizes}
-			widths={[400, 800, 1200]}
+			widths={[400, 600, 997]}
 			quality={90}
 			fit="cover"
-			position="center"
 			class="author"
 		/>
 		<Content />
@@ -43,12 +45,24 @@ const pictureSizes = `calc(50vw - ${overviewSideMargin}rem})`;
 </Global>
 
 <style lang="scss">
+	@use '~styles/_mixins.scss' as m;
+
 	.author {
-		width: 50%;
+		width: 70vw;
+		height: auto;
 		margin: 0 auto 2rem;
 		display: block;
 		mix-blend-mode: luminosity;
 		opacity: 0.8;
 		clip-path: circle(55% at 50% 50%);
+		inset: 0;
+
+		@include m.media('>tablet') {
+			width: 60vw;
+		}
+
+		@include m.media('>desktop') {
+			width: 25vw;
+		}
 	}
 </style>
