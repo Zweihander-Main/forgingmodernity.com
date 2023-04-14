@@ -18,7 +18,7 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           browser: chrome
-          start: pnpm serve
+          start: npm run serve
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 360
 
