@@ -63,7 +63,7 @@
 		height: 100vh;
 		background: radial-gradient(
 			v.$color-map-bg,
-			color.adjust(v.$color-map-bg, $lightness: -20%)
+			color.adjust(v.$color-map-bg, $lightness: -30%)
 		);
 		display: flex;
 		align-items: center;
