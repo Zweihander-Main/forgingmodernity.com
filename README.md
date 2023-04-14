@@ -1,4 +1,4 @@
-# ForgingModernity.com
+# [ForgingModernity.com](https://www.forgingmodernity.com/)
 
 [![Netlify Status](https://img.shields.io/netlify/28709173-5f5f-4a9f-91c4-f8c8550b3d34?logo=netlify&style=flat-square)](https://app.netlify.com/sites/forgingmodernitycom/deploys)
 [![Build-badge](https://img.shields.io/github/actions/workflow/status/Zweihander-Main/forgingmodernity.com/test.yml?branch=master&logo=github&style=flat-square)](https://github.com/Zweihander-Main/forgingmodernity.com/actions?query=workflow%3A%22Run+E2E+tests+on+new+code+in+master%22)
