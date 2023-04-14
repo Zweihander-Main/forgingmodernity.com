@@ -1,0 +1,33 @@
+---
+name: Run E2E tests on new code in master
+'on':
+  push:
+    branches:
+      - master
+jobs:
+  cypress-run:
+    runs-on: ubuntu-20.04
+    container:
+      image: cypress/browsers:node18.12.0-chrome107
+      options: --user 1001 --shm-size=2g
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          start: npm run serve
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 360
+
+      - name: Upload E2E run data as artifacts
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: e2e-run-data
+          path: |
+            /home/runner/work/forgingmodernity.com/forgingmodernity.com/cypress/screenshots/*
+            /home/runner/work/forgingmodernity.com/forgingmodernity.com/cypress/videos/*
+          retention-days: 14
