@@ -62,8 +62,9 @@
 		width: 100vw;
 		height: 100vh;
 		background: radial-gradient(
-			v.$color-map-bg,
-			color.adjust(v.$color-map-bg, $lightness: -30%)
+			circle at center,
+			v.$color-map-bg 50%,
+			color.adjust(v.$color-map-bg, $lightness: -30%) 100%
 		);
 		display: flex;
 		align-items: center;
