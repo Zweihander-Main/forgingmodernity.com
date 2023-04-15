@@ -10,6 +10,8 @@ const metaCollection = defineCollection({
 		authorDescription: z.string(),
 		availableText: z.string(),
 		canalsMapTitle: z.string(),
+		twitterHandle: z.string(),
+		url: z.string(),
 	}),
 });
 

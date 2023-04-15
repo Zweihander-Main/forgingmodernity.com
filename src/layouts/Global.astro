@@ -4,19 +4,50 @@ import '@fontsource/marcellus-sc/latin-400.css';
 import '@fontsource/vollkorn/latin-400.css';
 import '@fontsource/vollkorn/latin-400-italic.css';
 import '@fontsource/vollkorn-sc/latin-600.css';
+import { SEO } from 'astro-seo';
+import { getEntryBySlug } from 'astro:content';
 export interface Props {
 	title: string;
 	description: string;
 }
+const metaEntry = await getEntryBySlug('meta', 'site');
+const { twitterHandle, url } = metaEntry.data;
 
 const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<SEO
+			title={title}
+			description={description}
+			charset="UTF-8"
+			openGraph={{
+				basic: {
+					title: title,
+					type: 'website',
+					image: `${url}img/forgingmodernity.jpg`,
+				},
+				optional: {
+					description: description,
+					locale: 'en_US',
+					localeAlternate: ['en_US', 'en_GB'],
+				},
+			}}
+			twitter={{
+				card: 'summary_large_image',
+				creator: twitterHandle,
+				title: title,
+				image: `${url}img/forgingmodernity.jpg`,
+				imageAlt: title,
+				description: description,
+			}}
+		/>
 		<link
 			rel="apple-touch-icon"
 			sizes="180x180"
@@ -37,16 +68,13 @@ const { title, description } = Astro.props;
 		<link rel="manifest" href="/site.webmanifest" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
+		<style lang="scss">
+			body {
+				margin: 0;
+			}
+		</style>
 	</body>
 </html>
-
-<style>
-	body {
-		margin: 0;
-	}
-</style>
