@@ -29,7 +29,7 @@ const endorser = (await import(
 	placeholderSize={4}
 />
 <div class="endorsement-meta">
-	<div class="endorsement-name">{name}</div>
+	<h6 class="endorsement-name">{name}</h6>
 	<div class="endorsement-profession">{profession}</div>
 </div>
 
@@ -62,10 +62,16 @@ const endorser = (await import(
 		}
 	}
 
-	.endorsement-meta {
+	.endorsement-meta,
+	h6 {
 		@include m.parchment-emphasis;
 		@include m.parchment-text;
 
 		text-align: center;
+		margin: 0;
+
+		h6 {
+			opacity: 1;
+		}
 	}
 </style>
