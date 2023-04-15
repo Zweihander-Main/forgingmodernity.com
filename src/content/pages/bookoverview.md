@@ -1,11 +1,11 @@
 ---
 ---
 
-# Forging Modernity
+## Forging Modernity
 
-## Why and How Britain Developed the Industrial Revolution
+### Why and How Britain Developed the Industrial Revolution
 
-### By [Martin Hutchinson](./author 'About the author')
+#### By [Martin Hutchinson](./author 'About the author')
 
 <span class="lead-in">The Industrial Revolution</span> provided the greatest increase in living standards the world has ever known while propelling Britain to dominance on the global stage. In Forging Modernity, Martin Hutchinson looks at how and why Britain gained this prize ahead of its European competitors. After comparing their endowments and political structures as far back as 1600, he then traces how Britain, through better policies primarily from the political Tory party, diverged from other European countries. Hutchinson’s Harvard MBA allows a unique perspective on the early industrial enterprises – many successes resulted from marketing, control systems and logistics rather than from production technology alone, while on a national scale the scientific method and commercial competition were as important as physical infrastructure.
 
