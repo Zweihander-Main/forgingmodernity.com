@@ -12,6 +12,10 @@ export default defineConfig({
 					console.log(message);
 					return null;
 				},
+				table(message) {
+					console.table(message);
+					return null;
+				},
 			});
 		},
 	},
