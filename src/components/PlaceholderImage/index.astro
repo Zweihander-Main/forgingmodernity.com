@@ -3,6 +3,8 @@ import { getPicture } from '@astrojs/image';
 import type { OutputFormat } from '@astrojs/image/dist/loaders';
 import type { ImageMetadata } from '@util/types';
 import { getPlaiceholder } from 'plaiceholder';
+import path from 'node:path';
+import fs from 'node:fs/promises';
 
 export interface Props {
 	src: ImageMetadata;
@@ -45,7 +47,8 @@ const renderedPicObject = await getPicture({
 	...(fit && { fit }),
 });
 
-const { svg } = await getPlaiceholder(publicSrc as string, {
+const buffer = await fs.readFile(path.join('./public', publicSrc as string));
+const { svg } = await getPlaiceholder(buffer, {
 	size: placeholderSize,
 });
 const [Svg, svgProps, svgChildren] = svg;
