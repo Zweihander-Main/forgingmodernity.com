@@ -6,5 +6,13 @@ export default defineConfig({
 		specPattern: 'cypress/e2e',
 		viewportWidth: 1200,
 		viewportHeight: 600,
+		setupNodeEvents(on, config) {
+			on('task', {
+				log(message) {
+					console.log(message);
+					return null;
+				},
+			});
+		},
 	},
 });
