@@ -36,6 +36,17 @@ $transition-timing: ease-in-out;
 $transition-timing-instant: ease-in;
 $z-index-images: 500;
 /*stylelint-disable */
+
+:global(:root) {
+	--deboss-brightness: #{$brightness-deboss-normal};
+	--deboss-depth: #{$depth-deboss-normal};
+
+	@supports (-moz-appearance: none) {
+		--deboss-brightness: #{$brightness-deboss-moz};
+		--deboss-depth: #{$depth-deboss-moz};
+	}
+}
+
 :export {
 	paddingWidthOverviewSides: $padding-width-overview-sides;
 }
