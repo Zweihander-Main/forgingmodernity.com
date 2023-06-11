@@ -18,6 +18,7 @@ export interface Props {
 	fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside';
 	publicSrc: string | undefined;
 	placeholderSize?: number;
+	id?: string;
 }
 
 const {
@@ -32,6 +33,7 @@ const {
 	fit,
 	publicSrc,
 	placeholderSize = 10,
+	id,
 } = Astro.props;
 
 const formats = ['avif', 'webp'] as OutputFormat[];
@@ -95,6 +97,7 @@ const [Svg, svgProps, svgChildren] = svg;
 			width={src.width}
 			height={src.height}
 			data-lazy-loaded
+			id={id}
 		/>
 	</picture>
 </div>

@@ -19,6 +19,52 @@ export interface Props {
 const { title, subTitle } = Astro.props;
 ---
 
+<script>
+	const element: HTMLElement | null = document.getElementById(
+		'clouds-for-hue-animation'
+	);
+
+	const FRAMES_TO_SKIP = 3;
+	const TIME_TO_SKIP = 16 * FRAMES_TO_SKIP;
+	let start: number, previousTimeStamp: number;
+	let hue = 0;
+
+	function step(timeStamp: number) {
+		if (start === undefined) {
+			start = timeStamp;
+		}
+
+		if (previousTimeStamp !== timeStamp) {
+			if (hue > 360) {
+				hue = 0;
+			} else {
+				hue += FRAMES_TO_SKIP;
+			}
+			(element as HTMLElement).style.filter = `hue-rotate(${hue}deg)`;
+		}
+
+		previousTimeStamp = timeStamp;
+		setTimeout(() => {
+			window.requestAnimationFrame(step);
+		}, TIME_TO_SKIP);
+	}
+
+	function imgLoaded() {
+		setTimeout(() => {
+			if (element) {
+				window.requestAnimationFrame(step);
+			}
+		}, 1500);
+	}
+
+	if (element) {
+		if ((element as HTMLImageElement).complete) {
+			imgLoaded();
+		} else {
+			element.addEventListener('load', imgLoaded);
+		}
+	}
+</script>
 <header>
 	<div class="parallax-layer parallax-layer-0 parallax-layer-clouds">
 		<PlaceholderImage
@@ -28,7 +74,8 @@ const { title, subTitle } = Astro.props;
 			sizes="100vw"
 			widths={[1500, 1024, 768, 480]}
 			type="jpeg"
-			placeholderSize={14}
+			placeholderSize={10}
+			id="clouds-for-hue-animation"
 		/>
 	</div>
 	<div class="parallax-layer parallax-layer-1 parallax-layer-cathedral">
@@ -123,12 +170,6 @@ const { title, subTitle } = Astro.props;
 		bottom: v.$parallax-bottom;
 	}
 
-	@keyframes hue-rotate {
-		to {
-			filter: hue-rotate(360deg);
-		}
-	}
-
 	$scale-parallax-mobile: 1.7;
 	$scale-parallax-tablet: 1.5;
 
@@ -136,7 +177,9 @@ const { title, subTitle } = Astro.props;
 		object-fit: cover;
 		height: 100vmax;
 		top: 0;
-		animation: hue-rotate 10s infinite linear;
+		will-change: filter;
+		transform: translateZ(0);
+		backface-visibility: hidden;
 	}
 
 	.parallax-layer-clouds svg {
@@ -144,6 +187,7 @@ const { title, subTitle } = Astro.props;
 		height: 100vmax;
 		top: 0;
 		transform: scale(1.1) !important;
+		will-change: opacity;
 	}
 
 	.parallax-layer-cathedral img {
@@ -247,6 +291,7 @@ const { title, subTitle } = Astro.props;
 			animation-timing-function: v.$transition-timing;
 			animation-name: fade-up;
 			animation-fill-mode: forwards;
+			animation-delay: 0.1s;
 		}
 
 		h1 {
