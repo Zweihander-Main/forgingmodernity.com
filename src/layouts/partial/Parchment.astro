@@ -40,6 +40,7 @@ if (className) {
 		}
 
 		:global(p),
+		:global(ul),
 		:global(.para-text) {
 			@include m.parchment-text;
 
@@ -48,6 +49,20 @@ if (className) {
 			:global(.lead-in) {
 				@include m.parchment-emphasis;
 			}
+		}
+
+		:global(ul) {
+			margin-top: 0;
+			list-style: decimal-leading-zero;
+			padding: 0 6rem;
+		}
+
+		:global(li) {
+			padding: 0 1rem;
+		}
+
+		:global(::marker) {
+			font-size: 1.35rem;
 		}
 
 		:global(h1),
