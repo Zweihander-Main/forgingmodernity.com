@@ -12,7 +12,7 @@ patchedDependencies:
 dependencies:
   '@astrojs/image':
     specifier: ^0.17.0
-    version: 0.17.0(astro@2.6.2)(sharp@0.32.1)
+    version: 0.17.0(astro@2.6.2)(sharp@0.32.6)
   '@astrojs/sitemap':
     specifier: ^1.3.3
     version: 1.3.3
@@ -42,7 +42,7 @@ dependencies:
     version: 3.1.4(svelte@3.59.1)
   astro:
     specifier: ^2.6.2
-    version: 2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.1)
+    version: 2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.6)
   astro-icon:
     specifier: ^0.8.1
     version: 0.8.1
@@ -57,10 +57,10 @@ dependencies:
     version: 2.0.0
   plaiceholder:
     specifier: ^3.0.0
-    version: 3.0.0(sharp@0.32.1)
+    version: 3.0.0(sharp@0.32.6)
   sharp:
-    specifier: ^0.32.1
-    version: 0.32.1
+    specifier: ^0.32.6
+    version: 0.32.6
   svelte:
     specifier: ^3.59.1
     version: 3.59.1
@@ -188,7 +188,7 @@ packages:
   /@astrojs/compiler@1.5.1:
     resolution: {integrity: sha512-iIGKu/uzB8sJ5VveQf0eHrVPPFEcrvSlp4qShYMOuY2aMmK2RVXQlX9dUjtmBQ+NAokfIOb7fwCutvH+p13l+g==}
 
-  /@astrojs/image@0.17.0(astro@2.6.2)(sharp@0.32.1):
+  /@astrojs/image@0.17.0(astro@2.6.2)(sharp@0.32.6):
     resolution: {integrity: sha512-YSolAMFtABhmgLH5BCeGX5e7QKApgSI1XcxO+HLqHFayQKVQ9r6fwslodTjzQkqxgcWEcQKF4nFR4Sq3hAq6YQ==}
     peerDependencies:
       astro: ^2.6.0
@@ -198,13 +198,13 @@ packages:
         optional: true
     dependencies:
       '@altano/tiny-async-pool': 1.0.2
-      astro: 2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.1)
+      astro: 2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.6)
       http-cache-semantics: 4.1.1
       image-size: 1.0.2
       kleur: 4.1.5
       magic-string: 0.27.0
       mime: 3.0.0
-      sharp: 0.32.1
+      sharp: 0.32.6
     dev: false
 
   /@astrojs/internal-helpers@0.1.0:
@@ -236,7 +236,7 @@ packages:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.1)
+      astro: 2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.6)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -275,7 +275,7 @@ packages:
       svelte: ^3.55.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.4.1(svelte@3.59.1)(vite@4.3.9)
-      astro: 2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.1)
+      astro: 2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.6)
       svelte: 3.59.1
       svelte2tsx: 0.6.15(svelte@3.59.1)(typescript@5.1.3)
     transitivePeerDependencies:
@@ -1603,7 +1603,7 @@ packages:
     peerDependencies:
       astro: ^2.0.0
     dependencies:
-      astro: 2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.1)
+      astro: 2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.6)
       purgecss: 5.0.0
     dev: false
 
@@ -1611,7 +1611,7 @@ packages:
     resolution: {integrity: sha512-E+wJmxOnvBRjgzVctdGk/VdwoEqeQ6Q/KgVW2wRBXZWJVDgOweB32Da/UiH0/FpGncPzo2daOrc08DNn5wTanw==}
     dev: false
 
-  /astro@2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.1):
+  /astro@2.6.2(@types/node@20.2.5)(sass@1.63.3)(sharp@0.32.6):
     resolution: {integrity: sha512-yscuSbZAtlg3jlHxsGWrzEfbBHz+l5iwl1tfUKVOE4FijepRpwJgFDSCaVI5Z2+af2nXKZpst5H9qAUx+uZ6zg==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
@@ -1665,7 +1665,7 @@ packages:
       rehype: 12.0.1
       semver: 7.5.1
       server-destroy: 1.0.1
-      sharp: 0.32.1
+      sharp: 0.32.6
       shiki: 0.14.2
       slash: 4.0.0
       string-width: 5.1.2
@@ -1754,6 +1754,10 @@ packages:
     transitivePeerDependencies:
       - debug
     dev: true
+
+  /b4a@1.6.4:
+    resolution: {integrity: sha512-fpWrvyVHEKyeEvbKZTVOeZF3VSKKWtJxFIxX/jaVPf+cLbGUSitjb49pHLqPV2BUNNZ0LcoeEGfE/YCpyDYHIw==}
+    dev: false
 
   /bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
@@ -2605,8 +2609,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /detect-libc@2.0.1:
-    resolution: {integrity: sha512-463v3ZeIrcWtdgIg6vI6XUncguvr2TnGl4SzDXinkt9mSLpBJKXT3mW6xT3VQdDN11+WVs29pgvivTc4Lp8v+w==}
+  /detect-libc@2.0.2:
+    resolution: {integrity: sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==}
     engines: {node: '>=8'}
     dev: false
 
@@ -3176,6 +3180,10 @@ packages:
   /fast-diff@1.3.0:
     resolution: {integrity: sha512-VxPP4NqbUjj6MaAOafWeUn2cXWLcCtljklUtZf0Ind4XQ+QPtmA0b18zZy0jIQx+ExRVCR/ZQpBmik5lXshNsw==}
     dev: true
+
+  /fast-fifo@1.3.2:
+    resolution: {integrity: sha512-/d9sfos4yxzpwkDkuN7k2SqFKtYNmCTzgfEpz82x34IM9/zc8KGxQoXg1liNC/izpRM/MBdt44Nmx41ZWqk+FQ==}
+    dev: false
 
   /fast-glob@3.2.12:
     resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
@@ -5072,7 +5080,7 @@ packages:
     resolution: {integrity: sha512-iwXuFrMAcFVi/ZoZiqq8BzAdsLw9kxDfTC0HMyjXfSL/6CSDAGD5UmR7azrAgWV1zKYq7dUUMj4owusBWKLsiQ==}
     engines: {node: '>=10'}
     dependencies:
-      semver: 7.5.1
+      semver: 7.5.4
     dev: false
 
   /node-addon-api@6.1.0:
@@ -5438,12 +5446,12 @@ packages:
       pathe: 1.1.1
     dev: true
 
-  /plaiceholder@3.0.0(sharp@0.32.1):
+  /plaiceholder@3.0.0(sharp@0.32.6):
     resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
     peerDependencies:
       sharp: '>= 0.30.6'
     dependencies:
-      sharp: 0.32.1
+      sharp: 0.32.6
     dev: false
 
   /postcss-calc@9.0.1(postcss@8.4.24):
@@ -5788,7 +5796,7 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      detect-libc: 2.0.1
+      detect-libc: 2.0.2
       expand-template: 2.0.3
       github-from-package: 0.0.0
       minimist: 1.2.8
@@ -5935,6 +5943,10 @@ packages:
 
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+
+  /queue-tick@1.0.1:
+    resolution: {integrity: sha512-kJt5qhMxoszgU/62PLP1CJytzd2NKetjSRnyuj31fDd3Rlcz3fzlFdFLD1SItunPwyqEOkca6GbV612BWfaBag==}
+    dev: false
 
   /queue@6.0.2:
     resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
@@ -6305,22 +6317,30 @@ packages:
     dependencies:
       lru-cache: 6.0.0
 
+  /semver@7.5.4:
+    resolution: {integrity: sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      lru-cache: 6.0.0
+    dev: false
+
   /server-destroy@1.0.1:
     resolution: {integrity: sha512-rb+9B5YBIEzYcD6x2VKidaa+cqYBJQKnU4oe4E3ANwRRN56yk/ua1YCJT1n21NTS8w6CcOclAKNP3PhdCXKYtQ==}
     dev: false
 
-  /sharp@0.32.1:
-    resolution: {integrity: sha512-kQTFtj7ldpUqSe8kDxoGLZc1rnMFU0AO2pqbX6pLy3b7Oj8ivJIdoKNwxHVQG2HN6XpHPJqCSM2nsma2gOXvOg==}
+  /sharp@0.32.6:
+    resolution: {integrity: sha512-KyLTWwgcR9Oe4d9HwCwNM2l7+J0dUQwn/yf7S0EnTtb0eVS4RxO0eUSvxPtzT4F3SY+C4K6fqdv/DO27sJ/v/w==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:
       color: 4.2.3
-      detect-libc: 2.0.1
+      detect-libc: 2.0.2
       node-addon-api: 6.1.0
       prebuild-install: 7.1.1
-      semver: 7.5.1
+      semver: 7.5.4
       simple-get: 4.0.1
-      tar-fs: 2.1.1
+      tar-fs: 3.0.4
       tunnel-agent: 0.6.0
     dev: false
 
@@ -6571,6 +6591,13 @@ packages:
   /streamsearch@1.1.0:
     resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}
     engines: {node: '>=10.0.0'}
+    dev: false
+
+  /streamx@2.15.5:
+    resolution: {integrity: sha512-9thPGMkKC2GctCzyCUjME3yR03x2xNo0GPKGkRw2UMYN+gqWa9uqpyNWhmsNCutU5zHmkUum0LsCRQTXUgUCAg==}
+    dependencies:
+      fast-fifo: 1.3.2
+      queue-tick: 1.0.1
     dev: false
 
   /string-argv@0.3.2:
@@ -7036,6 +7063,14 @@ packages:
       tar-stream: 2.2.0
     dev: false
 
+  /tar-fs@3.0.4:
+    resolution: {integrity: sha512-5AFQU8b9qLfZCX9zp2duONhPmZv0hGYiBPJsyUdqMjzq/mqVpy/rEUSeHk1+YitmxugaptgBh5oDGU3VsAJq4w==}
+    dependencies:
+      mkdirp-classic: 0.5.3
+      pump: 3.0.0
+      tar-stream: 3.1.6
+    dev: false
+
   /tar-stream@2.2.0:
     resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
     engines: {node: '>=6'}
@@ -7045,6 +7080,14 @@ packages:
       fs-constants: 1.0.0
       inherits: 2.0.4
       readable-stream: 3.6.2
+    dev: false
+
+  /tar-stream@3.1.6:
+    resolution: {integrity: sha512-B/UyjYwPpMBv+PaFSWAmtYjwdrlEaZQEhMIBFNC5oEG8lpiW8XjcSdmEaClj28ArfKScKHs2nshz3k2le6crsg==}
+    dependencies:
+      b4a: 1.6.4
+      fast-fifo: 1.3.2
+      streamx: 2.15.5
     dev: false
 
   /test-exclude@6.0.0:

@@ -45,7 +45,7 @@
 		"astro-seo": "^0.7.4",
 		"include-media": "^2.0.0",
 		"plaiceholder": "^3.0.0",
-		"sharp": "^0.32.1",
+		"sharp": "^0.32.6",
 		"svelte": "^3.59.1"
 	},
 	"devDependencies": {
