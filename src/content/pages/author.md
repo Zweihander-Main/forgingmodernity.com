@@ -10,7 +10,7 @@ More information about Martin is available on his [True Blue Will Never Stain](h
 Martin has appeared on the following podcasts related to Forging Modernity:
 
 -   [Jim Grant’s Interest Rate Observer -- ABSOLUTLEY INADMISSIBLE IDEAS](https://www.youtube.com/watch?v=zAvqAiO_v9E)
--   [Douglas Carswell with The Mississippi Center for Public Policy -- Forging Identity](https://www.youtube.com/watch?v=XkpZ5sRQabI)
+-   [Douglas Carswell with The Mississippi Center for Public Policy -- Forging Identity](https://www.youtube.com/watch?v=8oIv9_kmS7o)
 
 <br />
 
