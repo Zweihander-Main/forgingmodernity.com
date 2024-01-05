@@ -26,3 +26,4 @@ jobs:
         with:
           github_token: ${{ secrets.REPO_GITHUB_TOKEN }}
           branch: netlify
+          force: true
