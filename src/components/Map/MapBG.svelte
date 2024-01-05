@@ -57,16 +57,16 @@
 	});
 </script>
 
-<figure id="map" bind:this={mapElement}>
+<header id="map" bind:this={mapElement}>
 	{#if map}
 		<slot {map} />
 	{/if}
-</figure>
+</header>
 
 <style lang="scss">
 	@use '../../styles/_variables.scss' as v;
 
-	figure {
+	header {
 		width: 100vw;
 		height: 100vh;
 		margin: 0;

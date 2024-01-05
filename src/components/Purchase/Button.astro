@@ -1,19 +1,18 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 import { MODAL_ID } from './common';
 export interface Props {
-	iconPack: string;
 	icon: string;
 	text: string;
 }
-const { text, iconPack, icon } = Astro.props;
+const { text, icon } = Astro.props;
 ---
 
 <div class="container-hover">
 	<div class="container-border">
 		<div class="container-transparent">
 			<label for={MODAL_ID} class="button" title="Where to buy">
-				<Icon pack={iconPack} name={icon} />
+				<Icon name={icon} />
 				{text}
 			</label>
 		</div>
@@ -81,7 +80,8 @@ const { text, iconPack, icon } = Astro.props;
 		display: block;
 		text-decoration: none;
 		width: fit-content;
-		transition: filter v.$transition-speed-normal v.$transition-timing,
+		transition:
+			filter v.$transition-speed-normal v.$transition-timing,
 			opacity v.$transition-speed-fast linear;
 		opacity: v.$opacity-parchment;
 		filter: drop-shadow(0 1px 1px v.$color-button);
@@ -95,7 +95,7 @@ const { text, iconPack, icon } = Astro.props;
 		}
 	}
 
-	[astro-icon='mdi:cart'] {
+	[data-icon='mdi:cart'] {
 		height: 1.3rem;
 		padding: 0 0.4rem 0 0;
 	}

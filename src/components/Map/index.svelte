@@ -8,8 +8,7 @@
 	import LoadingScreen from './LoadingScreen.svelte';
 	import { TOTAL_CLOUDS, AVIF_BASE64 } from '@util/vars';
 	import { isFormatSupported } from '@util/funcs';
-	import Icon from '@iconify/svelte/dist/OfflineIcon.svelte';
-	import mdiHome from '@iconify-icons/mdi/home';
+	import Icon from '@iconify/svelte';
 	import type { slimCanals } from '@util/types';
 
 	export let canals: slimCanals;
@@ -28,7 +27,7 @@
 
 <nav class="home-button">
 	<a href="/" title="Go back to the homepage">
-		<Icon icon={mdiHome} class="home-icon" />
+		<Icon icon="mdi:home" class="home-icon" />
 		<span class="home-text">Home</span>
 	</a>
 </nav>

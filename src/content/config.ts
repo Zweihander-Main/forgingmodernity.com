@@ -41,18 +41,19 @@ const endorsementsCollection = defineCollection({
 const pagesCollection = defineCollection({});
 
 const canalsCollection = defineCollection({
-	schema: z.object({
-		name: z.string(),
-		x: z.number(),
-		y: z.number(),
-		width: z.number(),
-		height: z.number(),
-		scale: z.number(),
-		stroke: z.number(),
-		pathYAdjust: z.number(),
-		path: z.string(),
-		imageSrc: z.string(),
-	}),
+	schema: ({ image }) =>
+		z.object({
+			name: z.string(),
+			x: z.number(),
+			y: z.number(),
+			width: z.number(),
+			height: z.number(),
+			scale: z.number(),
+			stroke: z.number(),
+			pathYAdjust: z.number(),
+			path: z.string(),
+			image: image(),
+		}),
 });
 
 const retailersCollection = defineCollection({

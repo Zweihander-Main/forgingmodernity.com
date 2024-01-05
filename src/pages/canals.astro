@@ -1,20 +1,20 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { Picture } from 'astro:assets';
 import Global from '@layouts/Global.astro';
 import Map from '@components/Map/index.svelte';
-import { CollectionEntry, getCollection, getEntryBySlug } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { camelCaseString } from '@util/funcs';
 import cssVars from '@styles/_jsalias.module.scss';
-import type { AstroComponentFactory } from 'astro/dist/runtime/server';
 import type {
 	slimCanals,
 	canalContentDOMId,
 	canalPictureDOMId,
-	ImageImport,
 } from '@util/types';
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 export type Props = Record<string, never>;
 
-const metaEntry = await getEntryBySlug('meta', 'site');
+const metaEntry = await getEntry('meta', 'site');
 const { shortTitle, canalsMapTitle, mapDescription } = metaEntry.data;
 
 const canals = await getCollection('canals');
@@ -32,33 +32,24 @@ const slimmedCanals: slimCanals = canals.map((canal) => {
 		pathYAdjust: canal.data.pathYAdjust,
 	};
 });
+
 const canalEntries: Array<{
 	Content: AstroComponentFactory;
-	image: string;
+	image: CollectionEntry<'canals'>['data']['image'];
 	name: string;
 	camelCaseName: string;
 }> = [];
-
-const canalImages: Array<ImageImport> = await Astro.glob(
-	'../assets/canals/*.jpg'
-);
 
 for (let i = 0; i < canals.length; i++) {
 	const canal = canals[i] as CollectionEntry<'canals'>;
 	const { Content } = await canal.render();
 	const camelCaseName = camelCaseString(canal.data.name);
-	const canalImage = canalImages.find((image) => {
-		return image.default.src.includes(camelCaseName);
+	canalEntries.push({
+		Content,
+		image: canal.data.image,
+		name: canal.data.name,
+		camelCaseName,
 	});
-
-	if (canalImage) {
-		canalEntries.push({
-			Content,
-			image: canalImage.default.src,
-			name: canal.data.name,
-			camelCaseName,
-		});
-	}
 }
 
 const mediaLargeWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
@@ -80,6 +71,8 @@ const canalImageSizes =
 		canalEntries.map(({ Content, image, name, camelCaseName }) => {
 			const contentID: canalContentDOMId = `canal_${camelCaseName}`;
 			const pictureID: canalPictureDOMId = `canal_${camelCaseName}_image`;
+			const fit = 'cover';
+			const position = 'center';
 			return (
 				<>
 					<div id={contentID} class="canal-content">
@@ -90,11 +83,10 @@ const canalImageSizes =
 							src={image}
 							widths={[300, 600, 900]}
 							sizes={canalImageSizes}
-							aspectRatio="1:1"
 							quality={75}
 							alt={name}
-							fit="cover"
-							position="center"
+							{...(fit && { fit })}
+							{...(position && { position })}
 						/>
 					</div>
 				</>
@@ -102,7 +94,8 @@ const canalImageSizes =
 		})
 	}
 </Global>
-
+<!-- TODO aspectRatio, fit, position -->
+<!-- Switch whatever the Images in Content Collections says -- this is an image filepath -->
 <style lang="scss">
 	@use '~styles/_variables.scss' as v;
 

@@ -1,7 +1,7 @@
 ---
 import map from '@assets/overview/maplink.png';
 import PlaceholderImage from '@components/PlaceholderImage/index.astro';
-import { Icon } from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 import cssVars from '@styles/_jsalias.module.scss';
 
 export interface Props {
@@ -30,7 +30,7 @@ const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
 		placeholderSize={8}
 		type={'png'}
 	/>
-	<Icon pack="lucide" name="pointer" class="maplink-icon" />
+	<Icon name="lucide:pointer" class="maplink-icon" />
 	<h2 class="text">{canalsMapTitle}</h2>
 </a>
 

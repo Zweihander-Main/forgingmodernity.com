@@ -66,11 +66,7 @@ const coverSizes =
 		<article class="bookinfo-text">
 			<BookInfo />
 			<div class="purchase-container">
-				<PurchaseButton
-					iconPack="mdi"
-					icon="cart"
-					text={availableText}
-				/>
+				<PurchaseButton icon="mdi:cart" text={availableText} />
 			</div>
 		</article>
 	</div>
@@ -149,8 +145,7 @@ const coverSizes =
 		grid-template-rows: repeat(6, auto);
 		grid-auto-flow: column;
 		row-gap: 2.5rem;
-		align-items: baseline;
-		justify-items: center;
+		place-items: baseline center;
 
 		@include m.media('>phone') {
 			column-gap: calc(v.$padding-width-overview-sides / 4);

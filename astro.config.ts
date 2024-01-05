@@ -1,15 +1,18 @@
 import { defineConfig } from 'astro/config';
-import image from '@astrojs/image';
 import svelte from '@astrojs/svelte';
 import purgecss from 'astro-purgecss';
 import sitemap from '@astrojs/sitemap';
+import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.forgingmodernity.com/',
 	integrations: [
-		image({
-			serviceEntryPoint: '@astrojs/image/sharp',
+		icon({
+			include: {
+				mdi: ['cart'],
+				lucide: ['pointer'],
+			},
 		}),
 		svelte(),
 		purgecss({

@@ -1,6 +1,5 @@
 ---
-import { getPicture } from '@astrojs/image';
-import type { OutputFormat } from '@astrojs/image/dist/loaders';
+import { Picture } from 'astro:assets';
 import type { ImageMetadata } from '@util/types';
 import { getPlaiceholder } from 'plaiceholder';
 import path from 'node:path';
@@ -14,7 +13,6 @@ export interface Props {
 	quality?: number | undefined;
 	class?: string;
 	type?: 'jpeg' | 'png';
-	aspectRatio?: number;
 	fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside';
 	publicSrc: string | undefined;
 	placeholderSize?: number;
@@ -29,25 +27,25 @@ const {
 	class: className = '',
 	quality,
 	type,
-	aspectRatio,
 	fit,
 	publicSrc,
 	placeholderSize = 10,
 	id,
+	...rest
 } = Astro.props;
 
-const formats = ['avif', 'webp'] as OutputFormat[];
+const formats = ['avif', 'webp'];
 if (type) formats.push(type);
 
-const renderedPicObject = await getPicture({
-	src,
-	widths,
-	alt,
-	formats,
-	...(quality && { quality }),
-	...(aspectRatio && { aspectRatio }),
-	...(fit && { fit }),
-});
+// const renderedPicObject = await getPicture({
+// 	src,
+// 	widths,
+// 	alt,
+// 	formats,
+// 	...(quality && { quality }),
+// 	...(aspectRatio && { aspectRatio }),
+// 	...(fit && { fit }),
+// });
 
 const buffer = await fs.readFile(path.join('./public', publicSrc as string));
 const { svg } = await getPlaiceholder(buffer, {
@@ -75,7 +73,22 @@ const [Svg, svgProps, svgChildren] = svg;
 			})
 		}
 	</Svg>
-	<picture>
+	<Picture
+		src={src}
+		alt={alt}
+		sizes={sizes}
+		widths={widths}
+		formats={formats}
+		loading="lazy"
+		decoding="async"
+		class={`${className} original-image`}
+		data-lazy-loaded
+		id={id}
+		{...fit && { fit }}
+		{...quality && { quality }}
+		{...rest}
+	/>
+	<!-- <picture>
 		{
 			renderedPicObject.sources.map(
 				(source) =>
@@ -99,7 +112,7 @@ const [Svg, svgProps, svgChildren] = svg;
 			data-lazy-loaded
 			id={id}
 		/>
-	</picture>
+	</picture> -->
 </div>
 
 <script>

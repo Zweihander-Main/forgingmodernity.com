@@ -2,8 +2,7 @@
 	export let showModal: boolean;
 	export let name: string;
 	export let L: typeof import('leaflet');
-	import Icon from '@iconify/svelte/dist/OfflineIcon.svelte';
-	import mdiCloseOctagon from '@iconify-icons/mdi/close-octagon';
+	import Icon from '@iconify/svelte';
 	import { camelCaseString } from '@util/funcs';
 
 	let dialog: HTMLDialogElement;
@@ -15,13 +14,20 @@
 	}
 </script>
 
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <dialog
 	bind:this={dialog}
 	on:close={() => (showModal = false)}
 	on:click|self={() => dialog.close()}
 	on:keypress|self={() => dialog.close()}
 >
-	<div class="modal" on:click|stopPropagation on:keypress|stopPropagation>
+	<div
+		class="modal"
+		on:click|stopPropagation
+		on:keypress|stopPropagation
+		role="button"
+		tabindex="0"
+	>
 		<div class="modal-grid">
 			<div class="image-container">
 				<h1 class="name">{name}</h1>
@@ -38,8 +44,10 @@
 		data-testid={`close-${camelCaseString(name)}`}
 		on:click={() => dialog.close()}
 		on:keypress={() => dialog.close()}
+		role="button"
+		tabindex="0"
 	>
-		<Icon icon={mdiCloseOctagon} class="close-icon" />
+		<Icon icon="mdi:close-octagon" class="close-icon" />
 	</span>
 </dialog>
 
@@ -73,8 +81,7 @@
 	.modal {
 		@include m.custom-scrollbar(v.$color-map-peach, v.$color-button);
 
-		overflow-y: auto;
-		overflow-x: hidden;
+		overflow: hidden auto;
 		max-height: 85vh;
 		max-width: 95vw;
 

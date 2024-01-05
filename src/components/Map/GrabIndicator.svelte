@@ -1,6 +1,5 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte/dist/OfflineIcon.svelte';
-	import handDrag from '@iconify-icons/icon-park/hand-drag';
+	import Icon from '@iconify/svelte';
 	import type { Map } from 'leaflet';
 
 	import { onMount } from 'svelte';
@@ -21,7 +20,7 @@
 </script>
 
 <div bind:this={grabIcon}>
-	<Icon icon={handDrag} class="grab-icon" />
+	<Icon icon="icon-park:hand-drag" class="grab-icon" />
 </div>
 
 <style lang="scss">

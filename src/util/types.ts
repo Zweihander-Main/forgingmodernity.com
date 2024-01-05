@@ -20,4 +20,4 @@ export interface ImageImport {
 	default: ImageMetadata;
 }
 
-export { ImageMetadata };
+export type { ImageMetadata };

@@ -160,14 +160,13 @@ const retailerSizes =
 
 	.retailers {
 		gap: 1rem;
-		align-items: center;
 		display: grid;
 		grid-auto-rows: 1fr;
 		grid-template-columns: repeat(
 			auto-fill,
 			minmax(var(--retailer-min), 1fr)
 		);
-		justify-items: center;
+		place-items: center center;
 		margin-bottom: 1rem;
 
 		@include m.media('>phone') {

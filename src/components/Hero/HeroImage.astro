@@ -1,5 +1,5 @@
 ---
-import { getPicture } from '@astrojs/image';
+import { Picture } from 'astro:assets';
 import type { ImageMetadata } from '@util/types';
 export interface Props {
 	src: ImageMetadata;
@@ -15,19 +15,32 @@ const {
 	alt,
 	sizes = '100vw',
 	widths,
-	class: className = '',
+	class: className,
 	type,
+	...rest
 } = Astro.props;
 
-const renderedPicObject = await getPicture({
-	src,
-	widths,
-	alt,
-	formats: ['avif', 'webp', type],
-});
+// const renderedPicObject = await getImage({
+// 	src,
+// 	widths,
+// 	alt,
+// 	formats: ['avif', 'webp', type],
+// });
 ---
 
-<picture>
+<Picture
+	src={src}
+	formats={['avif', 'webp', type]}
+	alt={alt}
+	loading="eager"
+	decoding="sync"
+	fetchpriority="high"
+	class={className}
+	sizes={sizes}
+	widths={widths}
+	{...rest}
+/>
+<!-- <picture>
 	{
 		renderedPicObject.sources.map(
 			(source) =>
@@ -50,4 +63,4 @@ const renderedPicObject = await getPicture({
 		width={src.width}
 		height={src.height}
 	/>
-</picture>
+</picture> -->

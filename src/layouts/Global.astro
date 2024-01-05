@@ -5,18 +5,18 @@ import '@fontsource/vollkorn/latin-400.css';
 import '@fontsource/vollkorn/latin-400-italic.css';
 import '@fontsource/vollkorn-sc/latin-600.css';
 import { SEO } from 'astro-seo';
-import { getEntryBySlug } from 'astro:content';
+import { getEntry } from 'astro:content';
 export interface Props {
 	title: string;
 	description: string;
 }
-const metaEntry = await getEntryBySlug('meta', 'site');
+const metaEntry = await getEntry('meta', 'site');
 const { twitterHandle, url } = metaEntry.data;
 
 const { title, description } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" prefix="og: https://ogp.me/ns#">
 	<head>
 		<meta

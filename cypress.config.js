@@ -6,7 +6,7 @@ export default defineConfig({
 			runMode: 3,
 			openMode: 0,
 		},
-		baseUrl: 'http://localhost:3000/',
+		baseUrl: 'http://localhost:4321/',
 		specPattern: 'cypress/e2e',
 		viewportWidth: 1200,
 		viewportHeight: 600,

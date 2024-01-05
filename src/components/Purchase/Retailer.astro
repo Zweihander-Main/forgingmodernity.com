@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { Picture } from 'astro:assets';
 import type { ImageImport } from '@util/types';
 
 export interface Props {
@@ -22,9 +22,8 @@ const retailerImage = (await import(
 		sizes={sizes}
 		widths={[100, 150, 200]}
 		class="retailer-image"
-		fit={'cover'}
-		position="center"
 	/>
+	<!-- TODO fit, position -->
 </a>
 <style lang="scss">
 	@use '~styles/_variables.scss' as v;
@@ -51,7 +50,9 @@ const retailerImage = (await import(
 		}
 
 		&:hover {
-			box-shadow: 0 0 2px 1px v.$color-shadow, 0 0 5px v.$color-shadow;
+			box-shadow:
+				0 0 2px 1px v.$color-shadow,
+				0 0 5px v.$color-shadow;
 		}
 	}
 
