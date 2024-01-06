@@ -9,7 +9,7 @@
 
 ## Technologies used:
 
--   Astro
+-   Astro (v4)
 -   Svelte
 -   Leaflet
 -   Typescript + Zod
