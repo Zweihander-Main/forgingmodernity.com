@@ -74,9 +74,9 @@ const coverSizes =
 <section>
 	<div class="reviews-container">
 		{
-			reviewItems.map(
-				(review) => (<Review review={review} />) as HTMLElement
-			)
+			reviewItems
+				.sort((a, b) => a.data.order - b.data.order)
+				.map((review) => (<Review review={review} />) as HTMLElement)
 		}
 	</div>
 </section>

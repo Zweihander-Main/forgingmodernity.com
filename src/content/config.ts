@@ -27,6 +27,7 @@ const reviewsCollection = defineCollection({
 		name: z.string(),
 		source: z.string(),
 		link: z.optional(z.string().url()),
+		order: z.number(),
 	}),
 });
 
