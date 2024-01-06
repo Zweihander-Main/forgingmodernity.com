@@ -19,13 +19,6 @@ const {
 	type,
 	...rest
 } = Astro.props;
-
-// const renderedPicObject = await getImage({
-// 	src,
-// 	widths,
-// 	alt,
-// 	formats: ['avif', 'webp', type],
-// });
 ---
 
 <Picture
@@ -40,27 +33,3 @@ const {
 	widths={widths}
 	{...rest}
 />
-<!-- <picture>
-	{
-		renderedPicObject.sources.map(
-			(source) =>
-				(
-					<source
-						srcset={source.srcset}
-						sizes={sizes}
-						type={source.type}
-					/>
-				) as HTMLSourceElement
-		)
-	}
-	<img
-		src={renderedPicObject.image.src}
-		loading="eager"
-		decoding="sync"
-		fetchpriority="high"
-		class={className}
-		alt={alt}
-		width={src.width}
-		height={src.height}
-	/>
-</picture> -->
