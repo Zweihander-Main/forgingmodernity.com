@@ -36,13 +36,12 @@ export type Props = { children: unknown };
 </script>
 
 <style lang="scss">
-	@use '~styles/_variables.scss' as v;
+	@use 'src/styles/_variables.scss' as v;
 
 	.parallax {
 		perspective: 100px;
 		height: 100vh;
-		overflow-x: hidden;
-		overflow-y: auto;
+		overflow: hidden auto;
 		overscroll-behavior: auto none; /* Stop the bounce on mobile safari */
 		position: absolute;
 		inset: 0 0 0 50%;
