@@ -72,8 +72,4 @@
 		margin: 0;
 		position: absolute;
 	}
-
-	:global(.map-image) {
-		box-shadow: 0 0 2rem v.$color-shadow-light;
-	}
 </style>

@@ -207,15 +207,4 @@
 		right: -0.5rem;
 		z-index: 1204;
 	}
-
-	:global(.close-icon) {
-		right: 0.5rem;
-		top: -0.5rem;
-		position: relative;
-		font-size: 2rem;
-		color: v.$color-text-stroke;
-		cursor: pointer;
-		z-index: 1205;
-		filter: drop-shadow(0 0 0.4rem v.$color-shadow);
-	}
 </style>

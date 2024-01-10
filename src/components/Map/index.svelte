@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import './leaflet.scss';
+	import './globals.scss';
 	import MapBG from './MapBG.svelte';
 	import Cloud from './Cloud.svelte';
 	import Canal from './Canal.svelte';
@@ -86,15 +87,6 @@
 			color: #fff;
 			filter: drop-shadow(0 0 2px v.$color-shadow-dark);
 		}
-	}
-
-	:global(.home-icon) {
-		position: relative;
-		bottom: 0.2rem;
-		margin-right: 0.3rem;
-		filter: drop-shadow(1px 1px 2px v.$color-shadow);
-		stroke: v.$color-text-stroke;
-		stroke-width: 0.3px;
 	}
 
 	.home-text {

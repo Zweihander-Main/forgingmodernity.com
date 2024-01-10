@@ -1,0 +1,107 @@
+@use '../../styles/_variables.scss' as v;
+
+/* From index */
+.home-icon {
+	position: relative;
+	bottom: 0.2rem;
+	margin-right: 0.3rem;
+	filter: drop-shadow(1px 1px 2px v.$color-shadow);
+	stroke: v.$color-text-stroke;
+	stroke-width: 0.3px;
+}
+
+/* From Modal */
+.close-icon {
+	right: 0.5rem;
+	top: -0.5rem;
+	position: relative;
+	font-size: 2rem;
+	color: v.$color-text-stroke;
+	cursor: pointer;
+	z-index: 1205;
+	filter: drop-shadow(0 0 0.4rem v.$color-shadow);
+}
+
+/* From Canal */
+.canal:focus {
+	outline: none;
+}
+
+.canal-path {
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: miter;
+}
+
+.canal-visible {
+	stroke: v.$color-map-peach;
+	filter: drop-shadow(0 0 5px v.$color-shadow);
+	transition: all v.$transition-speed-instant v.$transition-timing-instant;
+}
+
+.canal-group {
+	pointer-events: all;
+	cursor: pointer;
+
+	&:hover > .canal-visible {
+		stroke: v.$color-map-white;
+		filter: drop-shadow(0 0 5px v.$color-shadow)
+			drop-shadow(0 0 6px v.$color-shadow-light);
+	}
+}
+
+/* From Cloud */
+.cloud {
+	position: absolute;
+	will-change: transform;
+	z-index: 999;
+	outline: none !important;
+	transition: opacity 3s;
+}
+
+/* From MapBG */
+.map-image {
+	box-shadow: 0 0 2rem v.$color-shadow-light;
+}
+
+/* From GrabIndicator */
+.grab-hide {
+	display: none;
+}
+
+.grab-icon {
+	font-size: 3rem;
+	position: fixed;
+	z-index: 1100;
+	bottom: 30%;
+	left: 30%;
+	animation: 1.5s ease-in-out 0s infinite forwards drag-gesture;
+	will-change: transform opacity;
+	filter: drop-shadow(0 0 1px v.$color-black)
+		drop-shadow(0 0 0.4rem v.$color-black);
+}
+
+.grab-icon g {
+	stroke: v.$color-map-white;
+	padding: 1rem;
+}
+
+@keyframes drag-gesture {
+	0% {
+		transform: translate(0, 3rem);
+		opacity: 0;
+	}
+
+	10% {
+		opacity: 0.9;
+	}
+
+	60% {
+		opacity: 0.9;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translate(3rem, 0);
+	}
+}

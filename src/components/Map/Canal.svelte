@@ -79,34 +79,3 @@
 		{@html imageContent}
 	</svelte:fragment>
 </Modal>
-
-<style lang="scss">
-	@use '../../styles/_variables.scss' as v;
-
-	:global(.canal:focus) {
-		outline: none;
-	}
-
-	:global(.canal-path) {
-		fill: none;
-		stroke-linecap: round;
-		stroke-linejoin: miter;
-	}
-
-	:global(.canal-visible) {
-		stroke: v.$color-map-peach;
-		filter: drop-shadow(0 0 5px v.$color-shadow);
-		transition: all v.$transition-speed-instant v.$transition-timing-instant;
-	}
-
-	:global(.canal-group) {
-		pointer-events: all;
-		cursor: pointer;
-
-		&:hover > :global(.canal-visible) {
-			stroke: v.$color-map-white;
-			filter: drop-shadow(0 0 5px v.$color-shadow)
-				drop-shadow(0 0 6px v.$color-shadow-light);
-		}
-	}
-</style>
