@@ -5,14 +5,14 @@ import PlaceholderImage from '@components/PlaceholderImage/index.astro';
 import Footer from '@components/Footer/index.astro';
 import authorPic from '@assets/author/author.jpg';
 import cssVars from '@styles/_jsalias.module.scss';
-import { getCollection, getEntryBySlug } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 export type Props = Record<string, never>;
 
-const metaEntry = await getEntryBySlug('meta', 'site');
+const metaEntry = await getEntry('meta', 'site');
 const { shortTitle, subTitle, author, authorDescription } = metaEntry.data;
 
-const bookInfo = await getEntryBySlug('pages', 'author');
+const bookInfo = await getEntry('pages', 'author');
 if (!bookInfo) {
 	throw new Error('No author item found');
 }
