@@ -77,4 +77,5 @@ hi [a+] zweisolutions {●} com
 ## License
 
 Code (outside the `/src/content`, `/src/assets`, and `/public` folders) is licensed under [MIT](./LICENSE)
-Content underneath the `/src/content`, `/src/assets` and `/public` folders is Copyright 2023 of the author Martin Hutchinson unless otherwise stated, All Rights Reserved.
+
+Content underneath the `/src/content`, `/src/assets` and `/public` folders is Copyright 2023-2024 of the author Martin Hutchinson unless otherwise stated, All Rights Reserved.
