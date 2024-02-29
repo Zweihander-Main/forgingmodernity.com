@@ -1,6 +1,5 @@
 # [ForgingModernity.com](https://www.forgingmodernity.com/)
 
-[![Netlify Status](https://img.shields.io/netlify/28709173-5f5f-4a9f-91c4-f8c8550b3d34?logo=netlify&style=flat-square)](https://app.netlify.com/sites/forgingmodernitycom/deploys)
 [![Build-badge](https://img.shields.io/github/actions/workflow/status/Zweihander-Main/forgingmodernity.com/test.yml?branch=master&logo=github&style=flat-square)](https://github.com/Zweihander-Main/forgingmodernity.com/actions?query=workflow%3A%22Run+E2E+tests+on+new+code+in+master%22)
 
 > Astro+Svelte marketing site for the book Forging Modernity
@@ -23,16 +22,15 @@
 
 ### Notes:
 
--   Netlify builds from `netlify`
-    -   `netlify` branch is protected from push/merge without E2E test passing
-    -   NetlifyCMS and netlify preview deploys working from `master` branch
+-   Cloudflare builds from `cloudflare`
+    -   `cloudflare` branch is protected from push/merge without E2E test passing
 
 ### Workflow for development:
 
 1. Pre-commit hooks run on code: all lint runners
 2. Push to `master` branch
 3. E2E tests run on new code
-4. If passed, branch pushed into `netlify`
+4. If passed, branch pushed into `cloudflare`
 
 ## Scripts
 
@@ -57,7 +55,7 @@
 -   `pnpm lint:svelte`: Run svelte-check
 -   `pnpm lint:astro`: Run astro check
 -   `pnpm format`: Auto-format using prettier
--   `pnpm netlify`: Script to run as netlify that builds and generates public coverage reports
+-   `pnpm cloudflare`: Script to run as cloudflare that builds and generates public coverage reports
 -   `pnpm prepare`: Prepare husky
 
 ## Possible improvements

@@ -1,5 +1,5 @@
 ---
-name: Push from master to netlify when all green
+name: Push from master to cloudflare when all green
 'on':
   push:
     branches:
@@ -25,5 +25,5 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.REPO_GITHUB_TOKEN }}
-          branch: netlify
+          branch: cloudflare
           force: true

@@ -1,6 +1,5 @@
 .cache
 .typings
-.netlify
 package-lock.json
 public
 node_modules

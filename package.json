@@ -25,7 +25,7 @@
 		"lint:svelte": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings css-unused-selector:ignore",
 		"lint:astro": "astro check",
 		"format": "prettier --write \"./src/**/*.{astro,js,jsx,ts,tsx,css,scss,md,svelte}\"",
-		"netlify": "run-p test:coverage build && cp -r coverage public/coverage",
+		"cloudflare": "run-p test:coverage build && cp -r coverage public/coverage",
 		"prepare": "husky install"
 	},
 	"dependencies": {
