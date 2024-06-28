@@ -6,8 +6,8 @@
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build --port 9998",
-		"preview": "astro preview --host",
-		"serve": "astro build; astro preview",
+		"preview": "astro preview",
+		"serve": "astro build; astro preview --host 127.0.0.1",
 		"test": "is-ci-cli test:coverage test:watch",
 		"test:coverage": "vitest --coverage --run --api.port 9999",
 		"test:watch": "vitest --watch",
