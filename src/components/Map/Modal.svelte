@@ -79,11 +79,11 @@
 	}
 
 	.modal {
-		@include m.custom-scrollbar(v.$color-map-peach, v.$color-button);
-
 		overflow: hidden auto;
 		max-height: 85vh;
 		max-width: 95vw;
+
+		@include m.custom-scrollbar(v.$color-map-peach, v.$color-button);
 
 		@include m.media('>tablet') {
 			max-width: 90vw;
@@ -137,12 +137,6 @@
 	}
 
 	.name {
-		@include m.text-stroke(
-			v.$color-black,
-			1.3px,
-			0 0 0.4rem v.$color-black
-		);
-
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -156,6 +150,12 @@
 		margin-bottom: 0.3rem;
 		color: v.$color-map-white;
 		font-size: 10vw;
+
+		@include m.text-stroke(
+			v.$color-black,
+			1.3px,
+			0 0 0.4rem v.$color-black
+		);
 
 		@include m.media('>tablet') {
 			font-size: 3.5rem;
@@ -176,12 +176,12 @@
 	}
 
 	.text-container {
-		@include m.custom-scrollbar(transparent, v.$color-button);
-
 		background: v.$color-map-peach;
 		grid-area: text;
 		overflow-y: hidden;
 		padding: 0 1rem;
+
+		@include m.custom-scrollbar(transparent, v.$color-button);
 
 		@include m.media('>phone') {
 			padding: 0.5rem 2rem;

@@ -14,9 +14,9 @@ $breakpoints: b.$breakpoints;
 }
 
 @mixin parchment-emphasis {
-	@include smallcaps;
-
 	font-size: 1.03em;
+
+	@include smallcaps;
 }
 
 @mixin parchment-deboss {
@@ -47,6 +47,10 @@ $breakpoints: b.$breakpoints;
 }
 
 @mixin text-stroke($color, $width: 1px, $rest: 0 0 0 transparent) {
-	text-shadow: (-$width) (-$width) 0 $color, $width (-$width) 0 $color,
-		-$width $width 0 $color, $width $width 0 $color, $rest;
+	text-shadow:
+		(-$width) (-$width) 0 $color,
+		$width (-$width) 0 $color,
+		-$width $width 0 $color,
+		$width $width 0 $color,
+		$rest;
 }
