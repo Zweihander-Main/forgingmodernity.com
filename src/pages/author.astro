@@ -23,8 +23,12 @@ const footerItems = await getCollection('syndication');
 
 const mediaDesktopMinWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
 const mediaTabletMinWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
-const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px)` + `25vw`;
-`(min-width: ${mediaTabletMinWidth}px)` + `60vw,` + `70vw`;
+const pictureSizes =
+	`(min-width: ${mediaDesktopMinWidth}px)` +
+	`25vw` +
+	`(min-width: ${mediaTabletMinWidth}px)` +
+	`60vw,` +
+	`70vw`;
 ---
 
 <Global title={`${shortTitle}: ${subTitle}`} description={authorDescription}>
