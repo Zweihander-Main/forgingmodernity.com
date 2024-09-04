@@ -71,6 +71,7 @@
 	).innerHTML.replace(/loading=.lazy./, 'loading="eager"');
 </script>
 
+<!-- eslint-disable svelte/no-at-html-tags -->
 <Modal {name} {L} bind:showModal>
 	<svelte:fragment slot="text">
 		{@html bodyContent}

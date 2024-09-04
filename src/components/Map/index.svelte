@@ -37,6 +37,7 @@
 	{#if L}
 		<MapBG {L} {setMapLoadedPercentage} {setMapLoaded} let:map>
 			{#if typeof avifSupported !== 'undefined'}
+				<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 				{#each Array(TOTAL_CLOUDS) as _}
 					<Cloud {map} {L} {avifSupported} {setCloudLoaded} />
 				{/each}
