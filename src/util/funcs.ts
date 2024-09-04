@@ -2,14 +2,14 @@ export const isFormatSupported = (
 	format: string,
 	dataUri: string
 ): Promise<boolean> =>
-	new Promise<boolean>((resolve, reject) => {
+	new Promise<boolean>((resolve) => {
 		const image = new Image();
 		image.src = `data:image/${format};base64,${dataUri}`;
 		image.onload = () => {
 			resolve(true);
 		};
 		image.onerror = () => {
-			reject(false);
+			resolve(false);
 		};
 	}).catch(() => false);
 
@@ -43,7 +43,7 @@ export const loadImage = (
 
 		xhr.onloadend = function () {
 			if (!xhr.status.toString().match(/^2/)) {
-				reject(xhr);
+				reject(new Error(`Failed to load image: ${xhr.statusText}`));
 			} else {
 				if (!notifiedNotComputable) {
 					onprogress(100);
