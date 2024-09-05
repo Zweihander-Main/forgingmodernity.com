@@ -1,5 +1,5 @@
-// import globals from 'globals';
-// import eslint from '@eslint/js';
+import globals from 'globals';
+import eslint from '@eslint/js';
 import tselint from 'typescript-eslint';
 // import prettier from 'eslint-config-prettier';
 // // TODO Remove prettier plugin?
@@ -29,18 +29,26 @@ export default tselint.config(
 			'cypress',
 		],
 	},
-	...compat.config({
-		parser: '@typescript-eslint/parser',
-		parserOptions: {
-			project: 'tsconfig.json',
-			extraFileExtensions: ['.astro', '.svelte'],
+	eslint.configs.recommended,
+	...tselint.configs.strictTypeChecked,
+	// ...tselint.configs.stylisticTypeChecked, // TODO enable
+	{
+		languageOptions: {
+			globals: {
+				...globals.browser,
+				...globals.node,
+			},
 			ecmaVersion: 2023,
+			sourceType: 'commonjs',
+			parser: tselint.parser,
+			parserOptions: {
+				project: 'tsconfig.json',
+				extraFileExtensions: ['.astro', '.svelte'],
+			},
 		},
-		env: {
-			browser: true,
-			node: true,
+		plugins: {
+			'@typescript-eslint': tselint.plugin,
 		},
-		plugins: ['@typescript-eslint'],
 		rules: {
 			quotes: ['error', 'single'],
 			semi: ['error', 'always'],
@@ -59,17 +67,18 @@ export default tselint.config(
 				},
 			],
 			'a11y-no-noninteractive-element-interactions': 0,
+			// TODO remove
+			'@typescript-eslint/restrict-template-expressions': 0,
+			'@typescript-eslint/no-unnecessary-condition': 0,
+			'@typescript-eslint/no-confusing-void-expression': 0,
 		},
+	},
+	// TODO keep attacking this:
+	...compat.config({
 		overrides: [
 			{
 				files: ['*.js', '*.jsx', '*.ts', '*.tsx'],
-				extends: [
-					'eslint:recommended',
-					'plugin:@typescript-eslint/eslint-recommended',
-					'plugin:@typescript-eslint/recommended',
-					'plugin:@typescript-eslint/recommended-requiring-type-checking',
-					'plugin:prettier/recommended',
-				],
+				extends: ['plugin:prettier/recommended'],
 			},
 			{
 				files: ['*.astro'],
@@ -79,10 +88,6 @@ export default tselint.config(
 					extraFileExtensions: ['.astro'],
 				},
 				extends: [
-					'eslint:recommended',
-					'plugin:@typescript-eslint/eslint-recommended',
-					'plugin:@typescript-eslint/recommended',
-					'plugin:@typescript-eslint/recommended-requiring-type-checking',
 					'plugin:astro/recommended',
 					'plugin:prettier/recommended',
 				],
@@ -93,13 +98,7 @@ export default tselint.config(
 				parserOptions: {
 					parser: '@typescript-eslint/parser',
 				},
-				extends: [
-					'eslint:recommended',
-					'plugin:@typescript-eslint/eslint-recommended',
-					'plugin:@typescript-eslint/recommended',
-					'plugin:@typescript-eslint/recommended-requiring-type-checking',
-					'plugin:svelte/recommended',
-				],
+				extends: ['plugin:svelte/recommended'],
 			},
 		],
 	})
