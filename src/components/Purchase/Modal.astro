@@ -23,11 +23,11 @@ const normalPixels = 100;
 const normalRems = 2;
 
 const retailerSizes =
-	`(min-width: ${mediaTabletWidth}px) ` +
-	`calc(${mediaTabletPixels}px + ${mediaTabletRems}rem), ` +
-	`(min-width: ${mediaPhoneWidth}px) ` +
-	`calc(${mediaPhonePixels}px + ${mediaPhoneRems}rem), ` +
-	`calc(${normalPixels}px + ${normalRems}rem)`;
+	`(min-width: ${mediaTabletWidth.toString()}px) ` +
+	`calc(${mediaTabletPixels.toString()}px + ${mediaTabletRems.toString()}rem), ` +
+	`(min-width: ${mediaPhoneWidth.toString()}px) ` +
+	`calc(${mediaPhonePixels.toString()}px + ${mediaPhoneRems.toString()}rem), ` +
+	`calc(${normalPixels.toString()}px + ${normalRems.toString()}rem)`;
 ---
 
 <input
@@ -63,9 +63,9 @@ const retailerSizes =
 <style
 	lang="scss"
 	define:vars={{
-		'retailer-tablet-min': `calc(${mediaTabletPixels}px + ${mediaTabletRems}rem)`,
-		'retailer-phone-min': `calc(${mediaPhonePixels}px + ${mediaPhoneRems}rem)`,
-		'retailer-min': `calc(${normalPixels}px + ${normalRems}rem)`,
+		'retailer-tablet-min': `calc(${mediaTabletPixels.toString()}px + ${mediaTabletRems.toString()}rem)`,
+		'retailer-phone-min': `calc(${mediaPhonePixels.toString()}px + ${mediaPhoneRems.toString()}rem)`,
+		'retailer-min': `calc(${normalPixels.toString()}px + ${normalRems.toString()}rem)`,
 	}}
 >
 	@use 'src/styles/_variables.scss' as v;

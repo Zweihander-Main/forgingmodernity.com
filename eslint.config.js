@@ -67,10 +67,6 @@ export default tselint.config(
 				},
 			],
 			'a11y-no-noninteractive-element-interactions': 0,
-			// TODO remove
-			'@typescript-eslint/restrict-template-expressions': 0,
-			'@typescript-eslint/no-unnecessary-condition': 0,
-			'@typescript-eslint/no-confusing-void-expression': 0,
 		},
 	},
 	// TODO keep attacking this:

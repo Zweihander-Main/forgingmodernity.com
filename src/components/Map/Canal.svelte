@@ -33,7 +33,10 @@
 	canalSVG.classList.add('canal');
 	canalSVG.setAttribute('data-testid', camelCaseName);
 	canalSVG.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-	canalSVG.setAttribute('viewBox', `0 0 ${width} ${height}`);
+	canalSVG.setAttribute(
+		'viewBox',
+		`0 0 ${width.toString()} ${height.toString()}`
+	);
 	canalSVG.style.cssText = 'pointer-events: none !important';
 	canalSVG.innerHTML = `
 <defs>
@@ -42,9 +45,9 @@
 		d="${path}"
 	/>
 </defs>
-<g transform="translate(0,${pathYAdjust})" id="${camelCaseName}" class="canal-group">
-    <use class="canal-hover" xlink:href="#${camelCaseName}SVGPath" style="stroke-width:${hoverStrokeWidth}" pointer-events="stroke"/>
-    <use class="canal-visible" xlink:href="#${camelCaseName}SVGPath" style="stroke-width:${visibleStrokeWidth}" />
+<g transform="translate(0,${pathYAdjust.toString()})" id="${camelCaseName}" class="canal-group">
+    <use class="canal-hover" xlink:href="#${camelCaseName}SVGPath" style="stroke-width:${hoverStrokeWidth.toString()}" pointer-events="stroke"/>
+    <use class="canal-visible" xlink:href="#${camelCaseName}SVGPath" style="stroke-width:${visibleStrokeWidth.toString()}" />
 </g>`;
 
 	const svgLayer = L.svgOverlay(canalSVG, canalBounds, {

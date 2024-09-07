@@ -39,14 +39,14 @@
 	}
 </script>
 
-<aside class={loadingScreenClass} style={`opacity:${bgOpacity}`}>
+<aside class={loadingScreenClass} style={`opacity:${bgOpacity.toString()}`}>
 	<noscript>
 		<p>Map requires JavaScript to work!</p>
 	</noscript>
 	<span
 		class="loading-indicator"
-		style={`opacity:${1 - visualPercentageDone / 100}`}
-		>{`${visualPercentageDone}%`}</span
+		style={`opacity:${(1 - visualPercentageDone / 100).toString()}`}
+		>{`${visualPercentageDone.toString()}%`}</span
 	>
 </aside>
 <slot {setMapLoadedPercentage} {setMapLoaded} {setCloudLoaded} />

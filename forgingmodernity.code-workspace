@@ -1,19 +1,19 @@
 {
 	"folders": [
 		{
-			"path": "."
-		}
+			"path": ".",
+		},
 	],
 	"settings": {
 		"workbench.colorCustomizations": {
 			"tab.activeBackground": "#303030",
 			"tab.activeBorder": "#32A8E3",
 			"tab.hoverBackground": "#161616",
-			"tab.border": "#303030"
+			"tab.border": "#303030",
 		},
 		"prettier.documentSelectors": ["**/*.astro"],
 		"svelte.plugin.svelte.compilerWarnings": {
-			"css-unused-selector": "ignore"
-		}
-	}
+			"css-unused-selector": "ignore",
+		},
+	},
 }

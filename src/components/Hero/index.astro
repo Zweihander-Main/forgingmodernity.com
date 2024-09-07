@@ -82,7 +82,7 @@ const { title, subTitle } = Astro.props;
 		<HeroImage
 			src={cathedralImageFile}
 			alt="St. Peter's Cathedral by Canaletto"
-			sizes={`${cathedralWidth}vw`}
+			sizes={`${cathedralWidth.toString()}vw`}
 			widths={[957, 613, 460, 327, 245, 154]}
 			type="png"
 		/>
@@ -124,7 +124,7 @@ const { title, subTitle } = Astro.props;
 		<HeroImage
 			src={manImageFile}
 			alt="Man in top hat standing watching London"
-			sizes={`${manWidth}vw`}
+			sizes={`${manWidth.toString()}vw`}
 			widths={[900, 576, 432, 308, 231, 144]}
 			type="png"
 		/>
@@ -135,8 +135,8 @@ const { title, subTitle } = Astro.props;
 <style
 	lang="scss"
 	define:vars={{
-		'cathedral-width': `${cathedralWidth}vw`,
-		'man-width': `${manWidth}vw`,
+		'cathedral-width': `${cathedralWidth.toString()}vw`,
+		'man-width': `${manWidth.toString()}vw`,
 	}}
 >
 	@use 'sass:math';

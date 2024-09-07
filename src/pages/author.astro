@@ -13,9 +13,6 @@ const metaEntry = await getEntry('meta', 'site');
 const { shortTitle, subTitle, author, authorDescription } = metaEntry.data;
 
 const bookInfo = await getEntry('pages', 'author');
-if (!bookInfo) {
-	throw new Error('No author item found');
-}
 
 const { Content } = await bookInfo.render();
 
@@ -24,9 +21,9 @@ const footerItems = await getCollection('syndication');
 const mediaDesktopMinWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
 const mediaTabletMinWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
 const pictureSizes =
-	`(min-width: ${mediaDesktopMinWidth}px)` +
+	`(min-width: ${mediaDesktopMinWidth.toString()}px)` +
 	`25vw` +
-	`(min-width: ${mediaTabletMinWidth}px)` +
+	`(min-width: ${mediaTabletMinWidth.toString()}px)` +
 	`60vw,` +
 	`70vw`;
 ---

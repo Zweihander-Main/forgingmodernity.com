@@ -7,7 +7,7 @@
 
 	let dialog: HTMLDialogElement;
 
-	$: if (dialog && showModal) {
+	$: if ((dialog as HTMLDialogElement | undefined) && showModal) {
 		dialog.showModal();
 		L.DomEvent.disableScrollPropagation(dialog);
 		L.DomEvent.disableClickPropagation(dialog);
@@ -18,8 +18,12 @@
 <dialog
 	bind:this={dialog}
 	on:close={() => (showModal = false)}
-	on:click|self={() => dialog.close()}
-	on:keypress|self={() => dialog.close()}
+	on:click|self={() => {
+		dialog.close();
+	}}
+	on:keypress|self={() => {
+		dialog.close();
+	}}
 >
 	<div
 		class="modal"
@@ -42,8 +46,12 @@
 		class="close-button"
 		title="Close"
 		data-testid={`close-${camelCaseString(name)}`}
-		on:click={() => dialog.close()}
-		on:keypress={() => dialog.close()}
+		on:click={() => {
+			dialog.close();
+		}}
+		on:keypress={() => {
+			dialog.close();
+		}}
 		role="button"
 		tabindex="0"
 	>

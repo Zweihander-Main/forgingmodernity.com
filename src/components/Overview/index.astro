@@ -49,14 +49,14 @@ const mediaDesktopCoverSize = (
 const mediaDesktopGutter = bookInfoGridGap / 4 + overviewSideMargin / 2;
 
 const coverSizes =
-	`(min-width: ${mediaXxlargeMinWidth}px) ` +
-	`calc(${mediaDesktopCoverSize}vw - ${mediaXxlargeGutter}rem), ` +
-	`(min-width: ${mediaXlargeMinWidth}px) ` +
-	`calc(${mediaDesktopCoverSize}vw - ${mediaXlargeGutter}rem), ` +
-	`(min-width: ${mediaLargeMinWidth}px) ` +
-	`calc(${mediaDesktopCoverSize}vw - ${mediaLargeGutter}rem), ` +
-	`(min-width: ${mediaDesktopMinWidth}px) ` +
-	`calc(${mediaDesktopCoverSize}vw - ${mediaDesktopGutter}rem), ` +
+	`(min-width: ${mediaXxlargeMinWidth.toString()}px) ` +
+	`calc(${mediaDesktopCoverSize}vw - ${mediaXxlargeGutter.toString()}rem), ` +
+	`(min-width: ${mediaXlargeMinWidth.toString()}px) ` +
+	`calc(${mediaDesktopCoverSize}vw - ${mediaXlargeGutter.toString()}rem), ` +
+	`(min-width: ${mediaLargeMinWidth.toString()}px) ` +
+	`calc(${mediaDesktopCoverSize}vw - ${mediaLargeGutter.toString()}rem), ` +
+	`(min-width: ${mediaDesktopMinWidth.toString()}px) ` +
+	`calc(${mediaDesktopCoverSize}vw - ${mediaDesktopGutter.toString()}rem), ` +
 	'100vw';
 ---
 
@@ -95,9 +95,9 @@ const coverSizes =
 <style
 	lang="scss"
 	define:vars={{
-		'book-info-column-width': `${bookInfoColumnWidth}fr`,
-		'book-cover-column-width': `${bookCoverColumnWidth}fr`,
-		'book-info-grid-gap': `${bookInfoGridGap}rem`,
+		'book-info-column-width': `${bookInfoColumnWidth.toString()}fr`,
+		'book-cover-column-width': `${bookCoverColumnWidth.toString()}fr`,
+		'book-info-grid-gap': `${bookInfoGridGap.toString()}rem`,
 	}}
 >
 	@use 'src/styles/_variables.scss' as v;

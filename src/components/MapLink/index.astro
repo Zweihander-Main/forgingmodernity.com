@@ -11,7 +11,7 @@ export interface Props {
 const { canalsMapTitle } = Astro.props;
 
 const mediaDesktopMinWidth = parseInt(cssVars.mediaLarge, 10) + 1;
-const pictureSizes = `(min-width: ${mediaDesktopMinWidth}px) 32vw, 80vw`;
+const pictureSizes = `(min-width: ${mediaDesktopMinWidth.toString()}px) 32vw, 80vw`;
 ---
 
 <a

@@ -19,9 +19,6 @@ const {
 } = metaEntry.data;
 
 const bookInfo = await getEntry('pages', 'bookoverview');
-if (!bookInfo) {
-	throw new Error('No book overview item found');
-}
 
 const reviewItems = await getCollection('reviews');
 const endorsementItems = await getCollection('endorsements');

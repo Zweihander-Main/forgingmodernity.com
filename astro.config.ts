@@ -26,6 +26,7 @@ export default defineConfig({
 				/leaflet-disabled/,
 				/leaflet-top/,
 				/leaflet-left/,
+				/parchment/,
 			],
 		}),
 		sitemap(),

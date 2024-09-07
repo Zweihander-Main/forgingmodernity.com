@@ -56,9 +56,9 @@ const mediaLargeWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
 const mediaDesktopWidth = parseInt(cssVars.mediaDesktop, 10) + 1;
 const mediaTabletWidth = parseInt(cssVars.mediaTablet, 10) + 1;
 const canalImageSizes =
-	`(min-width: ${mediaLargeWidth}) 40vw, ` +
-	`(min-width: ${mediaDesktopWidth}) 45vw, ` +
-	`(min-width: ${mediaTabletWidth}) 90vw, ` +
+	`(min-width: ${mediaLargeWidth.toString()}) 40vw, ` +
+	`(min-width: ${mediaDesktopWidth.toString()}) 45vw, ` +
+	`(min-width: ${mediaTabletWidth.toString()}) 90vw, ` +
 	'95vw';
 ---
 
@@ -85,8 +85,8 @@ const canalImageSizes =
 							sizes={canalImageSizes}
 							quality={75}
 							alt={name}
-							{...(fit && { fit })}
-							{...(position && { position })}
+							{...{ fit }}
+							{...{ position }}
 						/>
 					</div>
 				</>
