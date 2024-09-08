@@ -65,8 +65,7 @@
 	const contentID: canalContentDOMId = `canal_${camelCaseName}`;
 	const imageID: canalPictureDOMId = `canal_${camelCaseName}_image`;
 
-	const bodyContent = (document.getElementById(contentID) as HTMLElement)
-		.innerHTML;
+	const bodyContent = document.getElementById(contentID)?.innerHTML ?? '';
 
 	// Replace forces image loading when component mounted
 	const imageContent = (

@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
-	footerItems: Array<CollectionEntry<'syndication'>>;
+	footerItems: CollectionEntry<'syndication'>[];
 	authorName: string;
 }
 

@@ -11,7 +11,7 @@ export interface slimCanal {
 	pathYAdjust: number;
 }
 
-export type slimCanals = Array<slimCanal>;
+export type slimCanals = slimCanal[];
 
 export type canalContentDOMId = `canal_${string}`;
 export type canalPictureDOMId = `canal_${string}_image`;

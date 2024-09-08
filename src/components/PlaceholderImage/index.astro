@@ -37,7 +37,7 @@ const {
 const formats = ['avif', 'webp'];
 if (type) formats.push(type);
 
-const buffer = await fs.readFile(path.join('./public', publicSrc as string));
+const buffer = await fs.readFile(path.join('./public', publicSrc ?? ''));
 const { svg } = await getPlaiceholder(buffer, {
 	size: placeholderSize,
 });

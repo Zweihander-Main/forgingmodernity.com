@@ -5,7 +5,7 @@ import cssVars from '@styles/_jsalias.module.scss';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
-	retailerItems: Array<CollectionEntry<'retailers'>>;
+	retailerItems: CollectionEntry<'retailers'>[];
 }
 
 const { retailerItems } = Astro.props;

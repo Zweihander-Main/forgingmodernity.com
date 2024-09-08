@@ -33,15 +33,14 @@ const slimmedCanals: slimCanals = canals.map((canal) => {
 	};
 });
 
-const canalEntries: Array<{
+const canalEntries: {
 	Content: AstroComponentFactory;
 	image: CollectionEntry<'canals'>['data']['image'];
 	name: string;
 	camelCaseName: string;
-}> = [];
+}[] = [];
 
-for (let i = 0; i < canals.length; i++) {
-	const canal = canals[i] as CollectionEntry<'canals'>;
+for (const canal of canals) {
 	const { Content } = await canal.render();
 	const camelCaseName = camelCaseString(canal.data.name);
 	canalEntries.push({

@@ -115,8 +115,10 @@
 		);
 	}
 
+	const randomCloudBasename =
+		CLOUD_IMAGES[Math.floor(Math.random() * CLOUD_IMAGES.length)];
 	const cloudSrc = `${
-		CLOUD_IMAGES[Math.floor(Math.random() * CLOUD_IMAGES.length)] as string
+		randomCloudBasename ?? ''
 	}.${avifSupported ? 'avif' : 'png'}`;
 	const cloudImage = new Image();
 	cloudImage.src = cloudSrc;

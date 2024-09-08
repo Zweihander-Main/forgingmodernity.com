@@ -13,9 +13,9 @@ export interface Props {
 	availableText: string;
 	canalsMapTitle: string;
 	bookInfo: CollectionEntry<'pages'>;
-	reviewItems: Array<CollectionEntry<'reviews'>>;
-	endorsementItems: Array<CollectionEntry<'endorsements'>>;
-	footerItems: Array<CollectionEntry<'syndication'>>;
+	reviewItems: CollectionEntry<'reviews'>[];
+	endorsementItems: CollectionEntry<'endorsements'>[];
+	footerItems: CollectionEntry<'syndication'>[];
 }
 
 const {

@@ -31,7 +31,7 @@ export default tselint.config(
 	},
 	eslint.configs.recommended,
 	...tselint.configs.strictTypeChecked,
-	// ...tselint.configs.stylisticTypeChecked, // TODO enable
+	...tselint.configs.stylisticTypeChecked,
 	{
 		languageOptions: {
 			globals: {

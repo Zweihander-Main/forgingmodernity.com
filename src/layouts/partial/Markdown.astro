@@ -1,7 +1,9 @@
 ---
 import '@styles/base.global.scss';
 import Parchment from '@layouts/partial/Parchment.astro';
-export type Props = { children: unknown };
+export interface Props {
+	children: unknown;
+}
 ---
 
 <Parchment class="full-page-parchment">

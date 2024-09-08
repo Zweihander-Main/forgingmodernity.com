@@ -42,7 +42,7 @@ export const loadImage = (
 		};
 
 		xhr.onloadend = function () {
-			if (!xhr.status.toString().match(/^2/)) {
+			if (!/^2/.exec(xhr.status.toString())) {
 				reject(new Error(`Failed to load image: ${xhr.statusText}`));
 			} else {
 				if (!notifiedNotComputable) {
@@ -51,9 +51,9 @@ export const loadImage = (
 
 				const options: BlobPropertyBag = {};
 				const headers = xhr.getAllResponseHeaders();
-				const m = headers.match(/^Content-Type:\s*(.*?)$/im);
+				const m = /^Content-Type:\s*(.*?)$/im.exec(headers);
 
-				if (m && m[1]) {
+				if (m?.[1]) {
 					options.type = m[1];
 				}
 
