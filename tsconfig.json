@@ -15,8 +15,7 @@
 			"~*": ["*"]
 		},
 		"sourceMap": true,
-		"target": "ES2021",
-		"typeRoots": ["./.typings", "./node_modules/@types"]
+		"target": "ES2021"
 	},
 	"include": ["src/**/*", "eslint.config.js"]
 }

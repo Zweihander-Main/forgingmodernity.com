@@ -3,7 +3,7 @@
 	"compilerOptions": {
 		"noEmit": true,
 		"sourceMap": false,
-		"types": ["cypress", "@testing-library/cypress", "cypress-axe"]
+		"types": ["cypress", "@testing-library/cypress", "cypress-axe", "node"]
 	},
 	"include": ["../node_modules/cypress", "./**/*"]
 }

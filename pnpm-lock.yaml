@@ -90,7 +90,7 @@ importers:
         specifier: ^1.9.3
         version: 1.9.3(patch_hash=mgyid7lpxmpmwuucazwsuk6c3u)
       '@types/node':
-        specifier: ^22.5.1
+        specifier: ^22.5.2
         version: 22.5.2
       '@typescript-eslint/parser':
         specifier: ^8.4.0
