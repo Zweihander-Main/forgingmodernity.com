@@ -5,6 +5,20 @@ describe('Accessibility tests', () => {
 	it('Has no detectable accessibility violations on load', () => {
 		cy.checkA11yWithLog();
 	});
+	it('Opens the modal and checks violations', () => {
+		cy.findByTitle(/Where to buy/).click();
+		cy.findByTitle(/Stores which stock the book/).should('be.visible');
+		/**
+		 * Axe is picking up the h2 element in the modal as a color-violation
+		 * because it's not waiting for the animation to finish. There are a
+		 * bunch of issues on axe related to layering and animations so this is
+		 * likely one of them.
+		 *
+		 * Hacky solution is to wait until the animation and all jank is done.
+		 */
+		cy.wait(500);
+		cy.get('main').checkA11yWithLog();
+	});
 	it('Navigates to the author page and checks a11y', () => {
 		cy.findByTitle(/About the author/)
 			.click()

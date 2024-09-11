@@ -11,6 +11,7 @@ export default defineConfig({
 		specPattern: 'cypress/e2e',
 		viewportWidth: 1200,
 		viewportHeight: 600,
+		waitForAnimations: true,
 		setupNodeEvents(on, config) {
 			on('task', {
 				log(message) {
