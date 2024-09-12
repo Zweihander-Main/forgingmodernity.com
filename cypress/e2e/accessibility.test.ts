@@ -3,6 +3,10 @@ describe('Accessibility tests', () => {
 		cy.visit('/').get('main').injectAxe();
 	});
 	it('Has no detectable accessibility violations on load', () => {
+		/**
+		 * Axe is not waiting for the hero animations to finish in CI, see below.
+		 */
+		cy.wait(500);
 		cy.checkA11yWithLog();
 	});
 	it('Opens the modal and checks violations', () => {
