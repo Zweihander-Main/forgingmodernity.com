@@ -18,16 +18,17 @@ export default defineConfig({
 		purgecss({
 			fontFace: false,
 			variables: true,
-			safelist: [
-				/leaflet-pane/,
-				/leaflet-map/,
-				/leaflet-control/,
-				/leaflet-bar/,
-				/leaflet-disabled/,
-				/leaflet-top/,
-				/leaflet-left/,
-				/parchment/,
-			],
+			safelist: {
+				standard: [
+					/leaflet-pane/,
+					/leaflet-map/,
+					/leaflet-control/,
+					/leaflet-bar/,
+					/leaflet-disabled/,
+					/leaflet-top/,
+					/leaflet-left/,
+					/parchment/,
+				],
 		}),
 		sitemap(),
 	],
