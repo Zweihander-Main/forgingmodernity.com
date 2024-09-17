@@ -4,9 +4,11 @@ import purgecss from 'astro-purgecss';
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 
-// https://astro.build/config
 export default defineConfig({
 	site: 'https://www.forgingmodernity.com/',
+	build: {
+		inlineStylesheets: 'never', // required for purgecss
+	},
 	integrations: [
 		icon({
 			include: {
@@ -16,10 +18,12 @@ export default defineConfig({
 		}),
 		svelte(),
 		purgecss({
+			keyframes: false,
 			fontFace: false,
 			variables: true,
 			safelist: {
-				standard: [
+				greedy: [
+					/.*astro.*/,
 					/leaflet-pane/,
 					/leaflet-map/,
 					/leaflet-control/,
@@ -29,6 +33,8 @@ export default defineConfig({
 					/leaflet-left/,
 					/parchment/,
 				],
+			},
+			content: [process.cwd() + '/src/**/*.{astro,svelte}'],
 		}),
 		sitemap(),
 	],
