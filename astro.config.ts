@@ -16,27 +16,26 @@ export default defineConfig({
 				lucide: ['pointer'],
 			},
 		}),
-		// TODO Keep playing around with the safelist
 		svelte(),
-		purgecss({
-			keyframes: false,
-			fontFace: false,
-			variables: true,
-			safelist: {
-				greedy: [
-					/.*astro.*/,
-					/.*leaflet-pane.*/,
-					/.*leaflet-map.*/,
-					/.*leaflet-control.*/,
-					/.*leaflet-bar.*/,
-					/.*leaflet-disabled.*/,
-					/.*leaflet-top.*/,
-					/.*leaflet-left.*/,
-					/.*parchment.*/,
-				],
-			},
-			content: [process.cwd() + '/src/**/*.{astro,svelte}'],
-		}),
+		// purgecss({
+		// 	keyframes: false,
+		// 	fontFace: false,
+		// 	variables: true,
+		// 	safelist: {
+		// 		greedy: [
+		// 			/.*astro.*/,
+		// 			/leaflet-pane/,
+		// 			/leaflet-map/,
+		// 			/leaflet-control/,
+		// 			/leaflet-bar/,
+		// 			/leaflet-disabled/,
+		// 			/leaflet-top/,
+		// 			/leaflet-left/,
+		// 			/parchment/,
+		// 		],
+		// 	},
+		// 	// content: [process.cwd() + '/src/**/*.{astro,svelte}'],
+		// }),
 		sitemap(),
 	],
 	vite: {
