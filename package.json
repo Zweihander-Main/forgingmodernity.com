@@ -39,7 +39,7 @@
 		"@iconify-json/mdi": "^1.1.68",
 		"@iconify/svelte": "^4.0.2",
 		"@img/sharp-linux-x64": "^0.33.5",
-		"astro": "^4.15.1",
+		"astro": "^5.15.9",
 		"astro-icon": "^1.1.1",
 		"astro-purgecss": "^4.5.0",
 		"astro-seo": "^0.8.4",
