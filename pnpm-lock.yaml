@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@types/leaflet@1.9.3':
-    hash: mgyid7lpxmpmwuucazwsuk6c3u
+    hash: 513a6ecc55c65688e96c3455537fb5118b578537da3d915f8bf9e81cd611196f
     path: patches/@types__leaflet@1.9.3.patch
 
 importers:
@@ -88,7 +88,7 @@ importers:
         version: 8.42.3
       '@types/leaflet':
         specifier: ^1.9.3
-        version: 1.9.3(patch_hash=mgyid7lpxmpmwuucazwsuk6c3u)
+        version: 1.9.3(patch_hash=513a6ecc55c65688e96c3455537fb5118b578537da3d915f8bf9e81cd611196f)
       '@types/node':
         specifier: ^22.5.2
         version: 22.5.2
@@ -701,6 +701,7 @@ packages:
   '@img/sharp-linux-x64@0.33.5':
     resolution: {integrity: sha512-opC+Ok5pRNAzuvq1AG0ar+1owsu842/Ab+4qvU879ippJBHvyY5n2mxF1izXqkPYlGuP/M556uh53jRLJmzTWA==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
+    cpu: [x64]
     os: [linux]
 
   '@img/sharp-linuxmusl-arm64@0.33.5':
@@ -2078,6 +2079,7 @@ packages:
   follow-redirects@1.15.7:
     resolution: {integrity: sha512-aAW9al/NMw4COcZnwgUaG8kAjBUXq/El+1R11e9RDHAIlxa1fb1b5SP0K6BbMoNgWdmJ/kXAwoTlVDlUN3OTDw==}
     engines: {node: '>=4.0'}
+    deprecated: Browser detection issues fixed in v1.15.9
     peerDependencies:
       debug: '*'
     peerDependenciesMeta:
@@ -4157,6 +4159,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
 
   test-exclude@7.0.1:
     resolution: {integrity: sha512-pFYqmTw68LXVjeWJMST4+borgQP2AyMNbg1BpZh9LbyhUeNkeaPF9gzfPGUAnSMV3qPYdWUwDIjjCLiSDOl7vg==}
@@ -4563,6 +4566,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
@@ -5485,7 +5489,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/leaflet@1.9.3(patch_hash=mgyid7lpxmpmwuucazwsuk6c3u)':
+  '@types/leaflet@1.9.3(patch_hash=513a6ecc55c65688e96c3455537fb5118b578537da3d915f8bf9e81cd611196f)':
     dependencies:
       '@types/geojson': 7946.0.14
 
